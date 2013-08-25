@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.nodeclipse.bundle.coffee.feature"
-      label="Feature"
+      label="CoffeeScript"
       version="1.6.3">
 
    <description url="http://www.example.com/description">
