@@ -22,5 +22,5 @@ Export-Package: org.nodeclipse.ui,
  org.nodeclipse.ui.preferences,
  org.nodeclipse.ui.util
 Bundle-Vendor: Nodeclipse organization
-Import-Package: org.nodeclipse.bundle.coffee_script,
+Import-Package: org.nodeclipse.bundle.coffee,
  org.nodeclipse.bundle.express

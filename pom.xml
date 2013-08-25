@@ -23,8 +23,8 @@
 		<module>org.nodeclipse.debug</module>
 		<module>org.nodeclipse.feature</module>
 		
-		<module>org.nodeclipse.bundle.coffee-script</module>
-		<module>org.nodeclipse.bundle.coffee_script.feature</module>
+		<module>org.nodeclipse.bundle.coffee</module>
+		<module>org.nodeclipse.bundle.coffee.feature</module>
 		<module>org.nodeclipse.bundle.express</module>
 		<module>org.nodeclipse.bundle.express.feature</module>
 		

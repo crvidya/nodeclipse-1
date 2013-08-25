@@ -10,8 +10,8 @@
 		<version>0.5.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.nodeclipse.bundle.coffee_script.feature</artifactId>
-	<packaging>eclipse-feature</packaging>
+	<artifactId>org.nodeclipse.bundle.coffee</artifactId>
+	<packaging>eclipse-plugin</packaging>
 
 </project>
 

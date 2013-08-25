@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Coffee
+Bundle-SymbolicName: org.nodeclipse.bundle.coffee
+Bundle-Version: 1.6.3
+Bundle-Activator: org.nodeclipse.bundle.coffee.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.nodeclipse.bundle.coffee

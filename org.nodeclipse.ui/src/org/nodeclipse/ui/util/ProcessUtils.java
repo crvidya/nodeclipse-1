@@ -76,7 +76,7 @@ public class ProcessUtils {
 			Method m = clazz.getMethod("getPath");
 			String path = (String)m.invoke(clazz, null);
 			return path;
-		} catch (ReflectiveOperationException e) {
+		} catch (Exception e) {
 		}
 		return "";
 //		return getBundledPath("node_modules/express/bin/express");
@@ -87,11 +87,11 @@ public class ProcessUtils {
 	
 	public static String getBundledCoffeePath() {
 		try {
-			Class clazz = Class.forName("org.nodeclipse.bundle.coffee_script.BundlePath");
+			Class clazz = Class.forName("org.nodeclipse.bundle.coffee.BundlePath");
 			Method m = clazz.getMethod("getPath");
 			String path = (String)m.invoke(clazz, null);
 			return path;
-		} catch (ReflectiveOperationException e) {
+		} catch (Exception e) {
 		}
 		return "";
 //		return getBundledPath("node_modules/coffee-script/bin/coffee");
