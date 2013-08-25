@@ -58,6 +58,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		file = new File(path);
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.NODE_PATH, path);
+		} else {
+			file = findNode();
+			if (file.exists()) {
+				store.setDefault(PreferenceConstants.NODE_PATH, file.getAbsolutePath());
+			}			
 		}
 		file = new File(express_path);
 		if (file.exists()) {
@@ -84,6 +89,41 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			}
 		}
 	}
+	
+    private static File findNode() {
+        String nodeFileName = getNodeFileName();
+        String path = System.getenv("PATH");
+        String[] paths = path.split("" + File.pathSeparatorChar, 0);
+        List<String> directories = new ArrayList<String>();
+        for(String p : paths) {
+        	directories.add(p);
+        }
+
+        // ensure /usr/local/bin is included for OS X
+        if (OSUtils.isMacOS()) {
+            directories.add("/usr/local/bin");
+        }
+
+        // search for Node.js in the PATH directories
+        for (String directory : directories) {
+            File nodeFile = new File(directory, nodeFileName);
+
+            if (nodeFile.exists()) {
+                return nodeFile;
+            }
+        }
+
+        throw new IllegalStateException("Could not find Node.js.");
+    }
+
+    private static String getNodeFileName() {
+        if (OSUtils.isWindows()) {
+            return "node.exe";
+        }
+
+        return "node";
+    }
+	
 
 	private String getExpressVersion(String express) {
 		List<String> cmdLine = new ArrayList<String>();

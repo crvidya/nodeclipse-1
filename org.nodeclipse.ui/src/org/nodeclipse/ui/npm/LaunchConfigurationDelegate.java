@@ -3,6 +3,7 @@ package org.nodeclipse.ui.npm;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -30,18 +31,14 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
     public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
         // Using configuration to build command line
         List<String> cmdLine = new ArrayList<String>();
-        // Application path should be stored in preference.
         String nodePath = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.NODE_PATH);
-        String npmPath = nodePath.substring(0, nodePath.lastIndexOf(File.separator) + 1);
-        if (OSUtils.isWindows()) {
-            cmdLine.add(npmPath + Constants.NPM_CMD);
-        } else {
-            cmdLine.add(npmPath + Constants.NPM);
-        }
+        cmdLine.add(findNpm(nodePath));
+        
         String goal = configuration.getAttribute(Constants.KEY_GOAL, Constants.BLANK_STRING);
         cmdLine.add(goal);
         String file = configuration.getAttribute(Constants.KEY_FILE_PATH, Constants.BLANK_STRING);
         String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
+
         String[] cmds = {};
         cmds = cmdLine.toArray(cmds);
         Process p = null;
@@ -52,5 +49,46 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
         	p = DebugPlugin.exec(cmds, (new File(filePath)).getParentFile());
         }
         DebugPlugin.newProcess(launch, p, Constants.NPM_PROCESS_MESSAGE + goal);
+    }
+    
+    private static String findNpm(String nodePath) {
+        // Application path should be stored in preference.
+        String npmFileName = getNpmFileName();
+        String npmPath = nodePath.substring(0, nodePath.lastIndexOf(File.separator) + 1) + npmFileName;
+    	File npmFile = new File(npmPath);
+    	if(npmFile.exists()) {
+    		return npmFile.getAbsolutePath();
+    	}
+    	
+        String path = System.getenv("PATH");
+        String[] paths = path.split("" + File.pathSeparatorChar, 0);
+        List<String> directories = new ArrayList<String>();
+        for(String p : paths) {
+        	directories.add(p);
+        }
+
+        // ensure /usr/local/bin is included for OS X
+        if (OSUtils.isMacOS()) {
+            directories.add("/usr/local/bin");
+        }
+
+        // search for Node.js in the PATH directories
+        for (String directory : directories) {
+        	npmFile = new File(directory, npmFileName);
+
+            if (npmFile.exists()) {
+                return npmFile.getAbsolutePath();
+            }
+        }
+
+        throw new IllegalStateException("Could not find npm.");
+    }
+
+    private static String getNpmFileName() {
+        if (OSUtils.isWindows()) {
+            return "npm.cmd";
+        }
+
+        return "npm";
     }
 }
