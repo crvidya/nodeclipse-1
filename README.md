@@ -2,7 +2,7 @@
 
 ![nodeclipse-logo](Nodeclipse_logo_light.png)
 
-We have released version 0.4. Enjoy!
+We are to release 0.5 in the end of August.
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
@@ -13,8 +13,6 @@ We have released version 0.4. Enjoy!
 	- [Usage](#usage)
 	- [What's new](#whats-new)
 	- [Roadmap](#roadmap)
-		- [0.5 (June-July 2013)](#05-june-july-2013)
-		- [0.6](#06)
 		- [1.0](#10)
 		- [Next](#next)
 		- [Ideas, proposals, work-in-progress etc.](#ideas-proposals-work-in-progress-etc)
@@ -25,6 +23,7 @@ We have released version 0.4. Enjoy!
 		- [Preparing environment](#preparing-environment)
 			- [Recommended way](#recommended-way)
 				- [Other way, not recommended way](#other-way-not-recommended-way)
+		- [Maven build](#maven-build)
 		- [Code standard](#code-standard)
 		- [Update forked project](#update-forked-project)
 		- [Send Pull Request steps](#send-pull-request-steps)
@@ -41,12 +40,14 @@ We have released version 0.4. Enjoy!
 
 Moved from [https://github.com/tomotaro1065/nodeclipse](https://github.com/tomotaro1065/nodeclipse)
  to [https://github.com/Nodeclipse/nodeclipse-1](https://github.com/Nodeclipse/nodeclipse-1) .
+ Initially based on <https://github.com/Nodeclipse/nodeclipse> .
 
-> [Nodeclipse](http://www.nodeclipse.org/) or [Nodeclipse-1 v0.4](https://github.com/Nodeclipse/nodeclipse-1) is [Eclipse](http://www.eclipse.org/) plugin for the [Node.js](http://www.nodejs.org/). 
+> [Nodeclipse](http://www.nodeclipse.org/) ( sources [nodeclipse-1](https://github.com/Nodeclipse/nodeclipse-1))
+ is [Eclipse](http://www.eclipse.org/) plugin for the [Node.js](http://www.nodejs.org/). 
 The purpose of Nodeclipse is to create environment in 
 which Node.js development is easy for any user from beginner to professional. 
 
-Check [news](https://github.com/Nodeclipse/nodeclipse-blog#news)
+Check [developers news](https://github.com/Nodeclipse/nodeclipse-blog#news)
 
 ## Vision
 
@@ -64,7 +65,7 @@ We can't develop everything at once, but we let you know what are the best thing
 * Generating Express project
 * Support for [JSHint](http://www.jshint.com/).<br/>
 	Download site: <code>http://github.eclipsesource.com/jshint-eclipse/updates/</code>
-* Support for Juno
+* Support for Juno, Kepler
 
 ## Installing
 Drag and drop <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=759140" title="Drag and drop into a running Eclipse
@@ -73,12 +74,12 @@ or use Download site : <code>http://www.nodeclipse.org/updates</code>
 
 ## Usage
 
-Check out [great article](http://www.tomotaro1065.com/nodeclipse/) and [watch video](http://tomotaro1065.github.com/nodeclipse/index2.htm).    
+Check out [website](http://www.nodeclipse.org/) and [watch video](http://www.nodeclipse.org/index2.htm).    
 For debugging check [Using-Eclipse-as-Node-Applications-Debugger]( https://github.com/joyent/node/wiki/Using-Eclipse-as-Node-Applications-Debugger)
 
 For [Markdown](http://daringfireball.net/projects/markdown/dingus): 
 
-1. Window -> Show View -> Other... -> Markdown
+~~1. Window -> Show View -> Other... -> Markdown~~
 2. Click inside "Markdown HTML Preview" view to refresh rendering
 3. (Optional, may be useful because double whitespace is hard line break) 
 	Show whitespace character via Preferences > General > Editors > Text Editors : checkbox labeled "Show whitespace characters"
@@ -88,12 +89,14 @@ For [Markdown](http://daringfireball.net/projects/markdown/dingus):
 
 ## What's new 
 
+<http://www.nodeclipse.org/>
+
 See Changelong.md  
 and also Changelong.md & History.md at [www.nodeclipse.org repository](https://github.com/Nodeclipse/www.nodeclipse.org).
 
 ## Roadmap
 
-Check also [news](https://github.com/Nodeclipse/nodeclipse-blog#news).
+Check also [developers news](https://github.com/Nodeclipse/nodeclipse-blog#news).
 
 We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, where  
 
@@ -101,10 +104,10 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 - MINOR indicates updates, that are fully backward-compatible
 - PATCH indicates that is bug-fix
 
-Please participate in discussion and [vote](https://github.com/Nodeclipse/nodeclipse-1/issues/13)
- on features on https://github.com/Nodeclipse/nodeclipse-1/issues
+Please participate in discussion, [propose and vote on new feature](http://nodeclipse.uservoice.com/forums/216804-general),
+ on raise bugs on <https://github.com/Nodeclipse/nodeclipse-1/issues>
 
-### 0.5 (June-July 2013)
+### 0.x 
 
 - #1 [Kepler 4.3](http://www.eclipse.org/downloads/index-developer.php) support
 - Improving Code Assist (new ideas needed)
@@ -115,9 +118,6 @@ Please participate in discussion and [vote](https://github.com/Nodeclipse/nodecl
  when righ-clicking project folder](https://github.com/tomotaro1065/nodeclipse/issues/4)
 - (Optional) Support for Sublime Text
 - Improving Code Assist with convention-based <code>completions.json<code>
-
-### 0.6 
-
 - JSquared Editor
 
 ### 1.0
@@ -156,14 +156,15 @@ Is expected together with Node.js 1.0
 
 1. Register & login within [GitHub](https://github.com/Nodeclipse)
 2. Add stars to the projects, that you like
-3. Fork to your account, play with code 
+3. Fork to your account, learn the code 
 
 ### Before starting development, please do
 
-1. Carefully read materials
+1. Carefully read materials (this README)
 2. Install and give thorough try
 3. Contact developers, make friends
-4. Say what you are going to do, before you head in. Share and discuss ideas.
+4. Say what you are going to do, before you head in. Share and discuss ideas.  
+ (We had pull request that we could not merge, because it was not compatible with changes we were going to make.)
 
 ### Preparing environment
 
@@ -184,6 +185,8 @@ In Eclipse for Java or RCP developers
 
 ### How to build it
 
+(see also Maven build below)
+
 It will be started building automatically when you import it into your workspace and whenever you save code which is changed.
 If you got build error, probably you don't have installed JSDT yet.  Try as follows.
 
@@ -199,6 +202,21 @@ If you got build error, probably you don't have installed JSDT yet.  Try as foll
 ![RunOrDebug](RunOrDebug.png)
 
 A new Eclipse workbench starts. Nodeclipse which you started to run or debug has been installed into this runtime Eclipse.
+
+### Maven build
+
+[Maven](http://maven.apache.org/) build (using [Tycho plugin](http://eclipse.org/tycho/)) is headless build, that doesn't require Eclipse.
+Just run `mvn package`. Run offline when to re-build `mvn clean package -o`
+
+1. `mvn package`  
+
+#### Install from freshly built p2 repository
+
+2. `npm install http-server -g`  
+3. `http-server org.nodeclipse.site\target\repository -p 8010`
+4. start http://localhost:8010/  
+5. // navigate `http://localhost:8010/` in browser to check  
+5. Help->Install New Software, enter http://localhost:8010/ in Work With  
 
 ### Code standard
 
@@ -237,13 +255,19 @@ Developers may try latest unreleased version at update URL:
 <code>http://www.tomotaro1065.com/nodeclipse/staging/</code>
 
 ## Contributors
-LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
-Scott Elcomb https://github.com/psema4  
-Tomoyuki Inagaki https://github.com/tomotaro1065 (debugging integration v0.2) [blog](http://d.hatena.ne.jp/tomotaro1065/)   
-Paul Verest https://github.com/PaulVI/  (Vision, readme, reference to plugings) [blog](https://github.com/PaulVI/blog)   
-Pushkar Gupte https://github.com/pushkar85 (together for 0.4)
+
+- LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
+- Scott Elcomb https://github.com/psema4  (just forked)
+- Tomoyuki Inagaki https://github.com/tomotaro1065 (debugging integration v0.2..0.5+) [blog](http://d.hatena.ne.jp/tomotaro1065/)   
+- Paul Verest https://github.com/PaulVI/  (Vision, site, help, docs, all the research, finding plugings, less code, maven build; Enide; making it all to be next level)
+ [DemoDays](http://demodays.github.io/), [Eclipse-China](http://eclipse-china.github.io/), [blog](https://github.com/PaulVI/blog)  
+- Daniel Winterstein ([Markdown Editor](http://www.winterwell.com/software/markdown-editor.php))
+- Pushkar Gupte https://github.com/pushkar85 (together for 0.4)
+- Adam Schmideg (CoffeeScript Editor before 0.3)
+- Robert Gründler 
 
 ## Contacts
+
 Do not hesitate to contact developers. 
 Create issue or send [email to dev group](mailto:dev@nodeclipse.org).
 Or skype by ID pverest, QQ 908781544.  
@@ -290,9 +314,9 @@ http://www.iteye.com/news/23933
 - JetBrains WebStorm or [IntelliJ IDEA](www.jetbrains.com/idea/features/nodejs.html) (commercial products)  
 - Microsoft WebMatrix (free) or Visual Studio (commercial product)  
 - CloudIDE [c9.io](https://c9.io) (cloud service)  
-- Scripted https://github.com/scripted-editor/scripted  
-- Eclipse Orion  
-- komodo-ide http://www.activestate.com/komodo-ide (commercial product)  
+- Scripted https://github.com/scripted-editor/scripted (no news for 3 months) 
+- Eclipse Orion (will it really support Node.js?) 
+- komodo-ide http://www.activestate.com/komodo-ide (commercial product that nobody tried)  
 - Netbeans have a [NodeJS plugin](http://plugins.netbeans.org/plugin/36653/nodejs)  
 
 #### Other Eclipse-based IDEs
