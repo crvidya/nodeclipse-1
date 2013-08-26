@@ -11,8 +11,11 @@
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>org.chromium.debug.feature</artifactId>	
+	<groupId>org.chromium.chromedevtools.features</groupId>
+	<artifactId>org.chromium.debug</artifactId><!-- .feature -->
 	<packaging>eclipse-feature</packaging>
+	
+	<name>org.chromium.debug (feature)</name>
 
 </project>
 

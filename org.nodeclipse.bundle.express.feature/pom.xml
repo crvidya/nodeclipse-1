@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>org.nodeclipse.bundle.express.feature</artifactId>
+	<version>3.2.5</version>
 	<packaging>eclipse-feature</packaging>
 
 </project>
