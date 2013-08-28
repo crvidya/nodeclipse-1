@@ -2,7 +2,7 @@
 
 This is Eclipse plugin created by wizard.
 
-Online help is set of .md files at <https://github.com/Nodeclipse/org.nodeclipse.help/tree/master/contents>
+Online help is set of .md files at <https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.help/contents>
 
 Content is to be authored in Markdown, then converted to HTML.
 
