@@ -28,6 +28,7 @@
 		<module>org.nodeclipse.bundle.express</module>
 		<module>org.nodeclipse.bundle.express.feature</module>
 		
+		<module>org.nodeclipse.help</module>
 		<module>org.nodeclipse.site</module>
 	</modules>
 

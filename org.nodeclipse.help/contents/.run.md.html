@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\pverest\git\org.nodeclipse.help\contents\.run.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h2>
+<a name="running" class="anchor" href="#running"><span class="octicon octicon-link"></span></a>Running</h2>
+
+<p>Right-click <code>.js</code> file with Node.js app and select "Run As -&gt; Node Application" (similar to Java applications).</p>
+
+<h3>
+<a name="run-configuration" class="anchor" href="#run-configuration"><span class="octicon octicon-link"></span></a>Run Configuration</h3>
+
+<p>Right-click <code>.js</code> file with Node.js app and select "Run As -&gt; Run Configuration..."</p>
+
+<p>You can configure to pass</p>
+
+<ul>
+<li>program arguments</li>
+<li>Node arguments</li>
+<li>set working directory</li>
+</ul><p>It is not yet possible to set environment variables in a launch configuration. The "Environment" tab is not there in the Node launcher.</p>
+
+<p>As a workaround you can add another JS file that sets the variables before it calls the node app and run that instead.</p>
+
+<p>e.g.</p>
+
+<div class="highlight"><pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="o">=</span><span class="s2">"development"</span><span class="p">;</span>
+<span class="nx">require</span><span class="p">(</span><span class="s2">"./app.js"</span><span class="p">);</span>
+<span class="p">},</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</body>
+</html>
