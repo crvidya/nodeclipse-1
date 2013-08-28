@@ -8,7 +8,7 @@ Content is to be authored in Markdown, then converted to HTML.
 
 Online help URL <https://github.com/Nodeclipse/org.nodeclipse.help/tree/master/contents>
 
-- [ ] TODO convert to Tycho build.
+- [v] TODO convert to Tycho build.
 
 ## Developing
 
@@ -23,15 +23,4 @@ Ideas:
 - marked - quick but command line util is dumb
 - https://github.com/aponxi/grunt-readme-generator
 
-## Mavenize note
 
-This is not yet maven project.
-
-`mvn org.eclipse.tycho:tycho-pomgenerator-plugin:generate-poms -DgroupId=org.nodeclipse.help`
-to generate pom.xml
-
-Mavenized but requires parent to define Tycho and other settings.
-
-
-
- 

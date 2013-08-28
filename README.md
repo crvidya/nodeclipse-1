@@ -210,7 +210,18 @@ Just run `mvn package`. Run offline when to re-build `mvn clean package -o`
 
 1. `mvn package`  
 
-#### Install from freshly built p2 repository
+#### Install site.zip (quick and simple way)
+
+1. Locate zip file under `org.nodeclipse.site\target` in Project Explorer, StartExplore-> Copy Resource Path to Clipboard
+2. Help -> Install New Software ...
+3. <kbd>Add...</kbd>
+4. <kbd>Archive...</kbd>
+5. Insert copied string into name and path.  
+ E.g. `C:\Users\pverest\git\nodeclipse-056\org.nodeclipse.site\target\org.nodeclipse.site-0.5.0-SNAPSHOT.zip`
+ 
+For the next time just select the zip entry from Work With drop-down list. 
+
+#### Install from freshly built p2 repository (cool and long way)
 
 2. `npm install http-server -g`  
 3. `http-server org.nodeclipse.site\target\repository -p 8010`
