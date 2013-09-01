@@ -1,5 +1,7 @@
 # Nodeclipse - Node.js support in Eclipse IDE
 
+[![Build Status](https://secure.travis-ci.org/Nodeclipse/nodeclipse-1.png)](http://travis-ci.org/Nodeclipse/nodeclipse-1)
+
 ![nodeclipse-logo](Nodeclipse_logo_light.png)
 
 We are to release 0.5 in the end of August.
@@ -80,6 +82,7 @@ For debugging check [Using-Eclipse-as-Node-Applications-Debugger]( https://githu
 For [Markdown](http://daringfireball.net/projects/markdown/dingus): 
 
 ~~1. Window -> Show View -> Other... -> Markdown~~
+
 2. Click inside "Markdown HTML Preview" view to refresh rendering
 3. (Optional, may be useful because double whitespace is hard line break) 
 	Show whitespace character via Preferences > General > Editors > Text Editors : checkbox labeled "Show whitespace characters"
