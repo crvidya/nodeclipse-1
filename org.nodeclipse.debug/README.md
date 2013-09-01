@@ -5,7 +5,11 @@
 
 debug port 5858 is hard-coded
 
-in 2 classes: LaunchConfigurationDelegate & NodeDebugUtil
+in 2 classes: [LaunchConfigurationDelegate](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+ & NodeDebugUtil
+
+org.nodeclipse.debug\src\org\nodeclipse\debug\launch\LaunchConfigurationDelegate.java
+
 
 
 --debug-brk=5858
