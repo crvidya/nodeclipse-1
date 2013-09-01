@@ -65,7 +65,26 @@
             id="org.nodeclipse.ui.editors.NodeEditor"
             name="Node Editor">
       </editor>
-   </extension>
+      <editor
+            class="winterwell.markdown.editors.MarkdownEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="true"
+            extensions="litcoffee"
+            icon="icons/coffee.png"
+            id="org.nodeclipse.ui.editors.LitCoffeeEditor"
+            name="LitCoffee (Markdown) Editor">
+      </editor>
+      <!-- compare to
+      <editor
+            name="Markdown Editor"
+            extensions="txt,md"
+            icon="icons/notepad.gif"
+            contributorClass="winterwell.markdown.editors.ActionBarContributor"
+            class="winterwell.markdown.editors.MarkdownEditor"
+            id="winterwell.markdown.editors.MarkdownEditor">
+      </editor>
+       -->
+    </extension>
 	<extension point="org.eclipse.debug.ui.toggleBreakpointsTargetFactories">
 	    <toggleTargetFactory
 	            id="org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory"
