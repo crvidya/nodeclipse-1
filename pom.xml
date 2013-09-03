@@ -45,7 +45,7 @@
 		</developer>
 		<developer>
 			<id>PaulVI</id>
-			<name>Paul Verest 伟保罗</name>
+			<name>Paul Verest</name>
 			<email>paul.verest@live.com</email>
 			<roles>
 				<role>Developer</role>
@@ -63,6 +63,7 @@
 	<properties>
 		<tycho-version>0.18.1</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<modules>
@@ -107,6 +108,42 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
@@ -121,16 +158,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!--  -->
-	<dependencyManagement>
-	</dependencyManagement>
-	
-	
-	<reporting>
-		<plugins>
-		</plugins>
-	</reporting>
-	
 
 </project>
