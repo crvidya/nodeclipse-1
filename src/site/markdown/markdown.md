@@ -10,5 +10,5 @@ Visit the [official Markdown syntax reference page](http://daringfireball.net/pr
 Markdown support via [Markdown Editor plugin for Eclipse](http://www.winterwell.com/software/markdown-editor.php) developped by [Daniel Winterstein](http://winterstein.me.uk)    
 	Download site: http://winterwell.com/software/updatesite/
 	
-Unfortunately Redmine uses different Textile markup language.
+Redmine uses different Textile markup language.
 But there is [Markdown formatter plugin](http://www.redmine.org/projects/redmine/wiki/Plugin_List#Markdown-formatter-plugin) (not tried).

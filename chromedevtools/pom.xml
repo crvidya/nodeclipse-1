@@ -15,6 +15,9 @@
 	<version>0.3.9-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
+	<name>org.chromium.parent</name>
+	<description>org.chromium.parent</description>
+	
 	<modules>
 		<module>features/org.chromium.debug</module>
 		<module>features/org.chromium.sdk</module>
