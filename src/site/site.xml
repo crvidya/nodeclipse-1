@@ -17,8 +17,8 @@
     </fluidoSkin>
   </custom>
   <body>
-    <menu ref="modules"/> 
     <menu ref="reports" inherit="top"/>
+    <menu ref="modules"/> 
 	<menu name="markdown note">
       <item href="markdown.html" name="markdown" />
     </menu>    
