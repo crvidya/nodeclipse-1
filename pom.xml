@@ -18,6 +18,12 @@
     	<name>Nodeclipse organization</name>
     	<url>http://www.nodeclipse.org/</url>
     </organization>
+	<!-- http://maven.apache.org/scm/git.html -->
+	<scm>
+		<url>https://github.com/nodeclipse/nodeclipse-1/</url>
+		<connection>scm:git:https://github.com/Nodeclipse/nodeclipse-1.git</connection>
+		<developerConnection>scm:git:https://github.com/Nodeclipse/nodeclipse-1.git</developerConnection>
+	</scm>
     <issueManagement>
     	<system>GitHub</system>
     	<url>https://github.com/nodeclipse/nodeclipse-1/issues</url>
@@ -54,6 +60,13 @@
 	</developers>
 	<contributors>
 	</contributors>
+	<distributionManagement>
+		<site>
+			<id>nodeclipse-1-site</id>
+			<name>Nodeclipse-1 site</name>
+			<url>D:\TEMP\site\</url>
+		</site>
+	</distributionManagement>
 	
 
 	<prerequisites>
