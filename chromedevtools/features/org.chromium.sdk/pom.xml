@@ -16,6 +16,7 @@
 	<packaging>eclipse-feature</packaging>
 	
 	<name>org.chromium.sdk (feature)</name>
+	<description>org.chromium.sdk (feature)</description>
 
 </project>
 

@@ -12,4 +12,6 @@
 	<artifactId>org.nodeclipse.help</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.nodeclipse.help</name>
+	<description>org.nodeclipse.help</description>
 </project>

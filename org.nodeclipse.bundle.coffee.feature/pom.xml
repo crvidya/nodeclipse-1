@@ -14,5 +14,7 @@
 	<version>1.6.3</version>
 	<packaging>eclipse-feature</packaging>
 
+	<name>org.nodeclipse.bundle.coffee.feature</name>
+	<description>org.nodeclipse.bundle.coffee.feature</description>
 </project>
 

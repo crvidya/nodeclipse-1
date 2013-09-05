@@ -13,5 +13,7 @@
 	<artifactId>org.nodeclipse.ui</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.nodeclipse.ui</name>
+	<description>org.nodeclipse.ui</description>
 </project>
 

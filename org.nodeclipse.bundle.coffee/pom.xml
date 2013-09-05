@@ -14,5 +14,7 @@
 	<version>1.6.3</version>
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.nodeclipse.bundle.coffee</name>
+	<description>org.nodeclipse.bundle.coffee</description>
 </project>
 

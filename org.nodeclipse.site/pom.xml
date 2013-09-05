@@ -12,4 +12,7 @@
 
 	<artifactId>org.nodeclipse.site</artifactId>
 	<packaging>eclipse-repository</packaging>
+
+	<name>org.nodeclipse.site</name>
+	<description>org.nodeclipse.site</description>
 </project>

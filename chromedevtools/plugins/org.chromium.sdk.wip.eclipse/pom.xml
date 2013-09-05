@@ -13,6 +13,9 @@
 
 	<artifactId>org.chromium.sdk.wip.eclipse</artifactId>
 	<packaging>eclipse-plugin</packaging>
+	
+	<name>org.chromium.sdk.wip.eclipse</name>
+	<description>org.chromium.sdk.wip.eclipse</description>
 
 	<build>
 		<plugins>

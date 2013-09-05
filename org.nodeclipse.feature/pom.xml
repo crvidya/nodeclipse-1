@@ -13,5 +13,7 @@
 	<artifactId>org.nodeclipse</artifactId> <!-- .feature -->
 	<packaging>eclipse-feature</packaging>
 
+	<name>org.nodeclipse (feature)</name>
+	<description>org.nodeclipse  (feature)</description>
 </project>
 

@@ -13,6 +13,9 @@
 
 	<artifactId>org.chromium.debug</artifactId>	
 	<packaging>eclipse-plugin</packaging>
+	
+	<name>org.chromium.debug</name>
+	<description>org.chromium.debug</description>
 
 </project>
 

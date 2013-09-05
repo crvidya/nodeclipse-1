@@ -14,5 +14,7 @@
 	<version>3.2.5</version>
 	<packaging>eclipse-feature</packaging>
 
+	<name>org.nodeclipse.bundle.express.feature</name>
+	<description>org.nodeclipse.bundle.express.feature</description>
 </project>
 

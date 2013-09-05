@@ -14,5 +14,7 @@
 	<artifactId>org.chromium.debug.core</artifactId>	
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.chromium.debug.core</name>
+	<description>org.chromium.debug.core</description>
 </project>
 

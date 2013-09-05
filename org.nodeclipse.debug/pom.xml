@@ -13,5 +13,7 @@
 	<artifactId>org.nodeclipse.debug</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.nodeclipse.debug</name>
+	<description>org.nodeclipse.debug</description>
 </project>
 

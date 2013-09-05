@@ -14,5 +14,7 @@
 	<artifactId>org.chromium.debug.ui</artifactId>	
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.chromium.debug.ui</name>
+	<description>org.chromium.debug.ui</description>
 </project>
 

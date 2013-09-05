@@ -14,5 +14,7 @@
 	<artifactId>org.chromium.sdk</artifactId>	
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.chromium.sdk</name>
+	<description>org.chromium.sdk</description>
 </project>
 

@@ -14,5 +14,7 @@
 	<version>3.2.5</version>
 	<packaging>eclipse-plugin</packaging>
 
+	<name>org.nodeclipse.bundle.express</name>
+	<description>org.nodeclipse.bundle.express</description>
 </project>
 
