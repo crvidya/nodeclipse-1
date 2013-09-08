@@ -14,5 +14,5 @@
 	<packaging>eclipse-repository</packaging>
 
 	<name>org.nodeclipse.site</name>
-	<description>org.nodeclipse.site</description>
+	<description>org.nodeclipse.site (p2 repository / update site)</description>
 </project>

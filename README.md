@@ -209,7 +209,16 @@ A new Eclipse workbench starts. Nodeclipse which you started to run or debug has
 ### Maven build
 
 [Maven](http://maven.apache.org/) build (using [Tycho plugin](http://eclipse.org/tycho/)) is headless build, that doesn't require Eclipse.
-Just run `mvn package`. Run offline when to re-build `mvn clean package -o`
+
+Update site defines Markdown Editor dependency in `org.nodeclipse.site\category.xml`.
+ You need build and install in your maven repository before Nodeclipse-1 build.
+ (This is one time operation)
+
+1. `git clone https://github.com/Nodeclipse/Eclipse-Markdown-Editor-Plugin.git`
+2. `cd Eclipse-Markdown-Editor-Plugin\parent`
+3. `mvn install`
+
+Then just run `mvn package`. Run offline when to re-build `mvn clean package -o`. From Nodeclipse-1 base folder:
 
 1. `mvn package`  
 

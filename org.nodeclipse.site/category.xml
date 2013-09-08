@@ -5,7 +5,7 @@
          Nodeclipse core, Chromium tools
       </description>
    </category-def>
-   <!-- as of csep v0.3 we should not include it, as it creates more questions than solves.
+   <!-- as of csep v0.3, we should not include it, as it creates more questions than solves.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">
       <description>
          General CoffeeScript Editor
@@ -14,7 +14,7 @@
     -->
    <category-def name="npm-bundle" label="Node package module bundle">
       <description>
-         If you have already installed these Node.js packages using npm, you don&apos;t need install these plug-ins.
+         If you have already installed these Node.js packages using npm (e.g. npm installl express -g), you don&apos;t need to install these plug-ins.
       </description>
    </category-def>
    <category-def name="Tools" label="Tools">   
@@ -23,10 +23,10 @@
       </description>
    </category-def>
 
-   <!-- 
-   <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
+    <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
       <category name="Tools"/>
    </feature>
+  <!-- 
    <feature url="features/com.eclipsesource.jshint.feature_0.9.6.jar" id="com.eclipsesource.jshint.feature" version="0.9.6">
       <category name="Tools"/>
    </feature>
