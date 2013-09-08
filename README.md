@@ -1,10 +1,10 @@
 # Nodeclipse - Node.js support in Eclipse IDE
 
 [![Build Status](https://secure.travis-ci.org/Nodeclipse/nodeclipse-1.png)](http://travis-ci.org/Nodeclipse/nodeclipse-1)
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=759140" title="Drag and drop into a running Eclipse
+ to install Nodeclipse"><img src="http://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png"/></a>
 
 ![nodeclipse-logo](Nodeclipse_logo_light.png)
-
-We are to release 0.5 in the end of August.
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
