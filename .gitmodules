@@ -1,0 +1,3 @@
+[submodule "markdown/Eclipse-Markdown-Editor-Plugin"]
+	path = markdown/Eclipse-Markdown-Editor-Plugin
+	url = https://github.com/Nodeclipse/Eclipse-Markdown-Editor-Plugin.git
