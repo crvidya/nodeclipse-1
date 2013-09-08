@@ -102,9 +102,22 @@
                                 property= "org.eclipse.debug.ui.matchesPattern"   
                                 value= "*.coffee" >   
                           </test>   
+                       </or>
+                       <!-- TODO how to? 
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.litcoffee" >   
+                          </test>   
                        </or>   
-                      </iterate>   
-                     
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.coffee.md" >   
+                          </test>   
+                       </or> 
+                        -->   
+                      </iterate>
                  </with>   
               </enablement>   
            </contextualLaunch>   
