@@ -1,3 +1,6 @@
 [submodule "markdown/Eclipse-Markdown-Editor-Plugin"]
 	path = markdown/Eclipse-Markdown-Editor-Plugin
 	url = https://github.com/Nodeclipse/Eclipse-Markdown-Editor-Plugin.git
+[submodule "markdown/gfm_viewer"]
+	path = markdown/gfm_viewer
+	url = https://github.com/satyagraha/gfm_viewer.git

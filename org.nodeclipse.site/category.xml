@@ -23,10 +23,10 @@
       </description>
    </category-def>
 
+  <!-- 
     <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
       <category name="Tools"/>
    </feature>
-  <!-- 
    <feature url="features/com.eclipsesource.jshint.feature_0.9.6.jar" id="com.eclipsesource.jshint.feature" version="0.9.6">
       <category name="Tools"/>
    </feature>
