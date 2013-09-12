@@ -19,19 +19,21 @@ Window -> Show View -> Other... -> GFM Support -> GFM View
 
 Window -> Show View -> Other... -> REST Client -> REST Client Tool
 
-#### [NTS](http://www.nodeclipse.org/nts/) Only
-
-Window -> Show View -> Other... -> MiniMap -> MiniMap
+### Before 0.6
 
 #### File associations
 
 Window -> Preferences -> General -> Editors -> File Associations <kbd>Add...</kbd>
 
 - *.jade - associate with Scrapbook (from JDT)
-- *.ejs - associate with HTML Editor (from WebTools)
+- *.ejs - associate with HTML Editor (from WebTools, Aptana, etc)
 
+#### [NTS](http://www.nodeclipse.org/nts/) Only
+
+Window -> Show View -> Other... -> MiniMap -> MiniMap
   
 ### Before 0.4
   
 Window -> Show View -> Other... -> Markdown -> Markdown HTML Preview  
 (Very useful when exploring <code>node_modules</code> folders) 
+
