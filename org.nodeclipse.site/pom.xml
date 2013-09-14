@@ -32,6 +32,11 @@
 			<layout>p2</layout>
 			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
 		</repository>
+		<repository>
+			<id>startexplorer</id>
+			<layout>p2</layout>
+			<url>http://basti1302.github.com/startexplorer/update/</url>
+		</repository>
 	</repositories>
 
 </project>

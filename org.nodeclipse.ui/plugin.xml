@@ -67,14 +67,15 @@
       </editor>
       <editor
             class="winterwell.markdown.editors.MarkdownEditor"
-            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            contributorClass="winterwell.markdown.editors.ActionBarContributor"
             default="true"
             extensions="litcoffee"
             icon="icons/coffee.png"
             id="org.nodeclipse.ui.editors.LitCoffeeEditor"
             name="LitCoffee (Markdown) Editor">
       </editor>
-      <!-- compare to
+      <!-- TODO above Editor for litcoffee fails
+       compare to
       <editor
             name="Markdown Editor"
             extensions="txt,md"
@@ -173,12 +174,20 @@
       <perspectiveExtension
             targetID="org.nodeclipse.ui.perspectives.NodePerspective">
 			<viewShortcut id="winterwell.markdown.views.MarkdownPreview"/>
+			<viewShortcut id="code.satyagraha.gfm.viewer.views.GfmView"/>
 			<view id="winterwell.markdown.views.MarkdownPreview" 
                 relative="org.eclipse.ui.console.ConsoleView" 
                 relationship="stack"/>          	
-			<view id="org.eclipse.pde.runtime.LogView" 
+			<view id="code.satyagraha.gfm.viewer.views.GfmView" 
                 relative="winterwell.markdown.views.MarkdownPreview" 
                 relationship="stack"/>          	
+			<view id="org.eclipse.ui.views.ProblemView" 
+                relative="code.satyagraha.gfm.viewer.views.GfmView" 
+                relationship="stack"/>   
+			<view id="org.eclipse.pde.runtime.LogView" 
+                relative="winterwell.markdown.views.MarkdownPreview" 
+                relationship="stack"/> 
+                        	
       </perspectiveExtension>
       <perspectiveExtension
             targetID="org.eclipse.ui.resourcePerspective">

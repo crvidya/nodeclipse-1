@@ -43,6 +43,9 @@
    <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.8.qualifier">
       <category name="Tools"/>
    </feature>
+   <feature url="features/de.bastiankrol.startexplorer.feature_1.4.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.4.1">
+      <category name="Tools"/>
+   </feature>
 
    <!-- as of csep v0.3, we should not include it, as it creates more questions than solves.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">
