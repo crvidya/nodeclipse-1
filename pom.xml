@@ -93,6 +93,11 @@
 		<module>org.nodeclipse.bundle.express.feature</module>
 
 		<module>org.nodeclipse.help</module>
+		
+		<!-- for Full Build with Git Submodules only 
+		<module>markdown</module>
+		-->
+		
 		<module>org.nodeclipse.site</module>
 	</modules>
 
@@ -156,41 +161,7 @@
 					</environments>
 				</configuration>
 			</plugin>
-			
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
-			</plugin>
+
 			<!-- mvn site -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -15,4 +15,23 @@
 
 	<name>org.nodeclipse.site</name>
 	<description>org.nodeclipse.site (p2 repository / update site)</description>
+
+	<repositories>
+		<repository>
+			<id>winterwell.markdown</id>
+			<layout>p2</layout>
+			<url>http://winterwell.com/software/updatesite/</url>
+		</repository>
+		<repository>
+			<id>gfm.viewer</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/satyagraha/gfm-viewer/</url>
+		</repository>
+		<repository>
+			<id>jshint-eclipse</id>
+			<layout>p2</layout>
+			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
+		</repository>
+	</repositories>
+
 </project>
