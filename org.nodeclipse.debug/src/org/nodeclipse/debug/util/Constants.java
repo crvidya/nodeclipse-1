@@ -1,10 +1,8 @@
 /*******************************************************************************
  * Copyright (c) 2012 Lamb. All rights reserved. 
- *
+ * Copyright (c) 2013 Nodeclipse organization
  *******************************************************************************/
 package org.nodeclipse.debug.util;
-
-import org.eclipse.debug.core.DebugPlugin;
 
 public class Constants {
 
@@ -35,4 +33,6 @@ public class Constants {
 
 	public static final String ATTR_ENVIRONMENT_VARIABLES = "attr_environment_variables";	
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";	
+	
+	public static final String ATTR_NODE_MONITOR = "attr_node_monitor";	
 }

@@ -12,10 +12,11 @@ import org.nodeclipse.ui.Activator;
  */
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-    private FileFieldEditor fileFieldEditor;
+    private FileFieldEditor nodePath;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
-    //private FileFieldEditor completionsPath;
+    private FileFieldEditor nodeMonitorPath;
+   //private FileFieldEditor completionsPath;
     
     public NodePreferencePage() {
         super(GRID);
@@ -30,15 +31,18 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
     @Override
     protected void createFieldEditors() {
-        fileFieldEditor = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node Path:", getFieldEditorParent());
-        addField(fileFieldEditor);
-        
+        nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node Path:", getFieldEditorParent());
+        addField(nodePath);
+
         expressPath = new FileFieldEditor(PreferenceConstants.EXPRESS_PATH, "Express Path:", getFieldEditorParent());
         addField(expressPath);
 
         coffeePath = new FileFieldEditor(PreferenceConstants.COFFEE_PATH, "Coffee Path:", getFieldEditorParent());
         addField(coffeePath);
         
+        nodeMonitorPath = new FileFieldEditor(PreferenceConstants.NODE_MONITOR_PATH, "Node monitor Path:", getFieldEditorParent());
+        addField(nodeMonitorPath);
+
 //        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
 //        addField(completionsPath);
     }

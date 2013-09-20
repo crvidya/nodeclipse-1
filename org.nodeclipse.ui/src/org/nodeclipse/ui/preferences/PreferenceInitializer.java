@@ -14,7 +14,7 @@ import org.nodeclipse.ui.util.ProcessUtils;
 
 /**
  * 
- * @author oncereply
+ * @author oncereply, pverest
  * 
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
@@ -28,6 +28,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		String path = "/usr/local/bin/node";
 		String express_path = "/usr/local/lib/node_modules/express/bin/express";
 		String coffee_path = "/usr/local/bin/coffee";
+		String node_monitor_path = "/usr/local/lib/node_modules/node-dev/bin/node-dev";
 		
 		File file;
 		if (OSUtils.isWindows()) {
@@ -40,6 +41,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 					+ "/AppData/Roaming/npm/node_modules/express/bin/express".replace('/', File.separatorChar);
 			coffee_path = System.getProperty("user.home") 
 					+ "/AppData/Roaming/npm/node_modules/coffee-script/bin/coffee".replace('/', File.separatorChar);
+			node_monitor_path = System.getProperty("user.home") 
+					+ "/AppData/Roaming/npm/node_modules/node-dev/bin/node-dev".replace('/', File.separatorChar);
 		}
 		if (OSUtils.isMacOS()) {
 			file = new File(path);
@@ -54,6 +57,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			if (!file.exists()) {
 				coffee_path = "/opt/local/lib/node_modules/coffee-script/bin/coffee";
 			}
+			file = new File(node_monitor_path);
+			if (!file.exists()) {
+				node_monitor_path = "/opt/local/lib/node_modules/node-dev/bin/node-dev";
+			}
 		}
 		file = new File(path);
 		if (file.exists()) {
@@ -64,6 +71,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				store.setDefault(PreferenceConstants.NODE_PATH, file.getAbsolutePath());
 			}			
 		}
+		// using bundles Node.js modules
 		file = new File(express_path);
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.EXPRESS_PATH, express_path);
@@ -88,6 +96,16 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				store.setDefault(PreferenceConstants.COFFEE_PATH, coffee_path);
 			}
 		}
+//		file = new File(node_monitor_path);
+//		if (file.exists()) {
+//			store.setDefault(PreferenceConstants.COFFEE_PATH, node_monitor_path);
+//		} else {
+//			node_monitor_path = ProcessUtils.getBundledCoffeePath();
+//			file = new File(node_monitor_path);
+//			if (file.exists()) {
+//				store.setDefault(PreferenceConstants.COFFEE_PATH, node_monitor_path);
+//			}
+//		}
 	}
 	
     private static File findNode() {

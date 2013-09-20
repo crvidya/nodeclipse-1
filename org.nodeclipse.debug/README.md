@@ -1,5 +1,21 @@
 
-## 
+## org.nodeclipse.debug
+
+Running and debugging node applications
+
+### Developing
+
+Open `plugin.xml`, in "Testing" section click "Launch an Eclipse application"
+
+#### New Run/debug definition
+
+1. in `plugin.xml` add `LaunchShortcut`
+
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+
+2. create new `public class LaunchShortcutName implements ILaunchShortcut`
+
 
 ## TODO notes
 

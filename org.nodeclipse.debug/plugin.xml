@@ -22,6 +22,13 @@
             modes="run, debug" 
             name="Node Application">
         </launchConfigurationType> 
+        <!-- node run/debug with monitor (not yet used)-->
+        <launchConfigurationType 
+            delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.debug.launch.LaunchTypeWithMonitor" 
+            modes="run, debug" 
+            name="Node with monitor">
+        </launchConfigurationType> 
 	    <launchConfigurationType
 	        id="org.nodeclipse.debug.launch.LaunchType$StandaloneV8"
 	        delegate="org.nodeclipse.debug.launch.StandaloneV8LaunchTypeWrapper"
@@ -45,7 +52,8 @@
              icon= "icons/node.png"   
              id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
-    </extension>  
+    </extension>
+    <!-- node run/debug -->  
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
@@ -71,21 +79,21 @@
                                 value= "*.js" >   
                           </test>   
                        </or>   
-                      </iterate>   
-                     
+                    </iterate>   
                  </with>   
               </enablement>   
            </contextualLaunch>   
        </shortcut>   
    </extension>
+   <!-- node run/debug with monitor-->
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
-             class= "org.nodeclipse.debug.launch.LaunchShortcut"   
-             icon= "icons/coffee.png"
-             id= "org.nodeclipse.debug.launch.LaunchShortcut"   
-             label= "coffee"   
-             modes= "run" >   
+             class= "org.nodeclipse.debug.launch.LaunchShortcutWithMonitor"   
+             icon= "icons/node.png"
+             id= "org.nodeclipse.debug.launch.LaunchShortcutWithMonitor"   
+             label= "Node with monitor"   
+             modes= "run, debug" >   
           <configurationType
                 id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
           </configurationType>   
@@ -100,23 +108,54 @@
                        <or>   
                           <test   
                                 property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.js" >   
+                          </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
                                 value= "*.coffee" >   
                           </test>   
-                       </or>
-                       <!-- TODO how to? 
+                       </or>   
+                    </iterate>
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   <!-- coffee run/debug -->
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.debug.launch.LaunchShortcut"   
+             icon= "icons/coffee.png"
+             id= "org.nodeclipse.debug.launch.LaunchShortcut"   
+             label= "coffee"   
+             modes= "run, debug" >   
+          <configurationType
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>  <!-- TODO how to? 3 filenameext  -->  
                        <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.coffee" >   
+                          </test>   
                           <test   
                                 property= "org.eclipse.debug.ui.matchesPattern"   
                                 value= "*.litcoffee" >   
                           </test>   
-                       </or>   
-                       <or>   
                           <test   
                                 property= "org.eclipse.debug.ui.matchesPattern"   
                                 value= "*.coffee.md" >   
                           </test>   
                        </or> 
-                        -->   
+                        
                       </iterate>
                  </with>   
               </enablement>   
