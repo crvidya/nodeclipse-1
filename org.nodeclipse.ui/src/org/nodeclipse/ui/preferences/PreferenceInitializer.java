@@ -14,7 +14,7 @@ import org.nodeclipse.ui.util.ProcessUtils;
 
 /**
  * 
- * @author oncereply, pverest
+ * @author oncereply, Paul Verest
  * 
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
@@ -25,6 +25,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		store.setDefault(PreferenceConstants.NODE_DEBUG_PORT, "5858");
+		
 		String path = "/usr/local/bin/node";
 		String express_path = "/usr/local/lib/node_modules/express/bin/express";
 		String coffee_path = "/usr/local/bin/coffee";
@@ -43,8 +45,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 					+ "/AppData/Roaming/npm/node_modules/coffee-script/bin/coffee".replace('/', File.separatorChar);
 			node_monitor_path = System.getProperty("user.home") 
 					+ "/AppData/Roaming/npm/node_modules/node-dev/bin/node-dev".replace('/', File.separatorChar);
-		}
-		if (OSUtils.isMacOS()) {
+		} else if (OSUtils.isMacOS()) {
 			file = new File(path);
 			if (!file.exists()) {
 				path = "/opt/local/bin/node";
@@ -98,12 +99,12 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		}
 //		file = new File(node_monitor_path);
 //		if (file.exists()) {
-//			store.setDefault(PreferenceConstants.COFFEE_PATH, node_monitor_path);
+//			store.setDefault(PreferenceConstants.NODE_MONITOR_PATH, node_monitor_path);
 //		} else {
 //			node_monitor_path = ProcessUtils.getBundledCoffeePath();
 //			file = new File(node_monitor_path);
 //			if (file.exists()) {
-//				store.setDefault(PreferenceConstants.COFFEE_PATH, node_monitor_path);
+//				store.setDefault(PreferenceConstants.NODE_MONITOR_PATH, node_monitor_path);
 //			}
 //		}
 	}

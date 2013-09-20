@@ -20,6 +20,7 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -54,10 +55,12 @@ public class LaunchConfigurationDelegate implements
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if(nodeProcess != null && !nodeProcess.isTerminated()) {
 			throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
+			//TODO show warning dialog
 		}
 
-		// Using configuration to build command line		
-		String nodePath= Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.NODE_PATH);
+		// Using configuration to build command line	
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		String nodePath= preferenceStore.getString(PreferenceConstants.NODE_PATH);
 
 		// Check if the node location is correctly configured
 		File nodeFile = new File(nodePath);
@@ -77,7 +80,9 @@ public class LaunchConfigurationDelegate implements
 			// otherwise small apps or first line can be undebuggable.
 			// TODO flexible debugging port, instead of hard-coded 5858
 			// #61 https://github.com/Nodeclipse/nodeclipse-1/issues/61
-			cmdLine.add("--debug-brk=5858"); 
+			int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
+			if (nodeDebugPort==0) { nodeDebugPort=5858;};
+			cmdLine.add("--debug-brk="+nodeDebugPort); //--debug-brk=5858
 		}
 		
 		String nodeArgs = configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, "");
@@ -104,7 +109,7 @@ public class LaunchConfigurationDelegate implements
 		if(!nodeMonitor.equals("")) { // any value
 			//TODO support selection, now only one
 			
-			String nodeMonitorPath= Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.NODE_MONITOR_PATH);
+			String nodeMonitorPath= preferenceStore.getString(PreferenceConstants.NODE_MONITOR_PATH);
 			
 			// Check if the node monitor location is correctly configured
 			File nodeMonitorFile = new File(nodeMonitorPath);
@@ -118,7 +123,7 @@ public class LaunchConfigurationDelegate implements
 			cmdLine.add(nodeMonitorPath);
 		} else {
 			if("coffee".equals(extension)) {
-				cmdLine.add(Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.COFFEE_PATH));
+				cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
 			}
 		}
 		

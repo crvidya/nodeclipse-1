@@ -11,7 +11,10 @@ import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.ui.DebugUITools;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
+import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.preferences.PreferenceConstants;
 
 public class NodeDebugUtil {
 	private static final String CONFIG_NAME = "STANDALONE_V8";
@@ -29,7 +32,11 @@ public class NodeDebugUtil {
 			ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(
 					null, CONFIG_NAME);
 			workingCopy.setAttribute("debug_host", "localhost");
-			workingCopy.setAttribute("debug_port", 5858);
+			//workingCopy.setAttribute("debug_port", 5858);
+			IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+			int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
+			if (nodeDebugPort==0) { nodeDebugPort=5858;};
+			workingCopy.setAttribute("debug_port", nodeDebugPort);
 			final ILaunchConfiguration config = workingCopy.doSave();
 			// super.launch(config, mode, launch, monitor);
 			Display.getDefault().asyncExec(new Runnable() {
