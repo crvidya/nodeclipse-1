@@ -5,12 +5,16 @@
 package org.chromium.debug.ui.editors;
 
 import org.chromium.debug.ui.PluginUtil;
-import org.eclipse.ui.editors.text.TextEditor;
+//import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor;
 
 /**
  * A simplistic JavaScript editor which supports its own key binding scope.
  */
-public class JsEditor extends TextEditor {
+// Change JsEditor to be based on JSDT JS Editor
+// like `public class NodeEditor extends CompilationUnitEditor`
+@SuppressWarnings("restriction")
+public class JsEditor extends CompilationUnitEditor { //was extends TextEditor {
 
   /** The ID of this editor as defined in plugin.xml */
   public static final String EDITOR_ID =
