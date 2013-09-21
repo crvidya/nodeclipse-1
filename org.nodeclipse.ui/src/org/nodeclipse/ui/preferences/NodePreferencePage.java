@@ -2,6 +2,7 @@ package org.nodeclipse.ui.preferences;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.nodeclipse.ui.Activator;
@@ -13,6 +14,7 @@ import org.nodeclipse.ui.Activator;
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor nodePath;
+    private IntegerFieldEditor nodeDebugPort;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
     private FileFieldEditor nodeMonitorPath;
@@ -33,6 +35,9 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     protected void createFieldEditors() {
         nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node Path:", getFieldEditorParent());
         addField(nodePath);
+
+        nodeDebugPort = new IntegerFieldEditor(PreferenceConstants.NODE_DEBUG_PORT, "Node debug port:", getFieldEditorParent());
+        addField(nodeDebugPort);
 
         expressPath = new FileFieldEditor(PreferenceConstants.EXPRESS_PATH, "Express Path:", getFieldEditorParent());
         addField(expressPath);
