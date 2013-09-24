@@ -1,5 +1,6 @@
 package org.nodeclipse.ui.preferences;
 
+import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IntegerFieldEditor;
@@ -14,6 +15,7 @@ import org.nodeclipse.ui.Activator;
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor nodePath;
+    private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
@@ -35,6 +37,11 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     protected void createFieldEditors() {
         nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node Path:", getFieldEditorParent());
         addField(nodePath);
+
+        // "Node debug no -break (disable interruption of Node.js app on first line, check debug Help)" would make dialog wider
+        nodeDebugNoBreak = new BooleanFieldEditor(PreferenceConstants.NODE_DEBUG_NO_BREAK, 
+        		"Node debug no -break (disable interruption of Node.js app)", getFieldEditorParent());
+        addField(nodeDebugNoBreak);
 
         nodeDebugPort = new IntegerFieldEditor(PreferenceConstants.NODE_DEBUG_PORT, "Node debug port:", getFieldEditorParent());
         addField(nodeDebugPort);

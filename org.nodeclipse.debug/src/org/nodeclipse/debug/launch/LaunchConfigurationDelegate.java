@@ -78,11 +78,14 @@ public class LaunchConfigurationDelegate implements
 			// -brk says to Node runtime wait until Chromium Debugger starts and connects
 			// that is causing "stop on first line" behavior,
 			// otherwise small apps or first line can be undebuggable.
-			// TODO flexible debugging port, instead of hard-coded 5858
+			String brk = "-brk" ; //default "-brk"
+			if (preferenceStore.getBoolean(PreferenceConstants.NODE_DEBUG_NO_BREAK)) //default false
+				brk = "";
+			// done: flexible debugging port, instead of hard-coded 5858
 			// #61 https://github.com/Nodeclipse/nodeclipse-1/issues/61
 			int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
 			if (nodeDebugPort==0) { nodeDebugPort=5858;};
-			cmdLine.add("--debug-brk="+nodeDebugPort); //--debug-brk=5858
+			cmdLine.add("--debug"+brk+"="+nodeDebugPort); //--debug-brk=5858
 		}
 		
 		String nodeArgs = configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, "");
