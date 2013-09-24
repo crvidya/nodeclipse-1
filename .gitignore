@@ -17,3 +17,4 @@ chromedevtools/utils/org.chromium.sdk.tests.system.runner/bin
 /.project
 .*.md.html
 target/
+*.settings/
