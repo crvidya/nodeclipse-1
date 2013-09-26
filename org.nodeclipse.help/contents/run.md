@@ -5,6 +5,7 @@ Title:  Nodeclipse Online Help - Run
 
 Right-click `.js` file with Node.js app and select "Run As -> Node Application" (similar to Java applications).
 
+Press <kbd>Ctrl+F11</kbd> to run [again].
 
 ### Run Configuration
 
@@ -16,9 +17,9 @@ You can configure to pass
 - Node arguments
 - set working directory
 
-It is not yet possible to set environment variables in a launch configuration. The "Environment" tab is not there in the Node launcher.
+Since Nodeclipse 0.6 it is possible to set environment variables in a launch configuration. The "Environment" tab is not there in the Node launcher.
 
-As a workaround you can add another JS file that sets the variables before it calls the node app and run that instead.
+As a workaround you can also add another JS file that sets the variables before it calls the node app and run that instead.
 
 e.g.
 
