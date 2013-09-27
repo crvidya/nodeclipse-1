@@ -44,5 +44,7 @@ You will get "Failed to connect to Standalone V8 VM" error, when the app has alr
 
 ![Connection-to-V8-timed-out.png](images/Connection-to-V8-timed-out.png)
 
+### Sources
 
-
+Check [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+for launching Node.js logic.

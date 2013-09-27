@@ -33,9 +33,10 @@ import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
 /**
- * launch() implements starting Node and passing all parameters
+ * launch() implements starting Node and passing all parameters.
+ * Node is launched as node, coffee, coffee -c, tsc or node-dev(or other monitors)
  * 
- * @author Lamb, Tomoyuki, Pushkar, Paul Vverest
+ * @author Lamb, Tomoyuki, Pushkar, Paul Verest
  */
 public class LaunchConfigurationDelegate implements
 		ILaunchConfigurationDelegate {
@@ -54,8 +55,9 @@ public class LaunchConfigurationDelegate implements
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if(nodeProcess != null && !nodeProcess.isTerminated()) {
-			throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
-			//TODO show warning dialog
+			//throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
+			showErrorDialog("Other node process is running!");
+			return;
 		}
 
 		// Using configuration to build command line	
@@ -124,10 +126,21 @@ public class LaunchConfigurationDelegate implements
 				return;
 			}
 			cmdLine.add(nodeMonitorPath);
-		} else {
-			if("coffee".equals(extension)) {
-				cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
+		} else if ( ("coffee".equals(extension))||("litcoffee".equals(extension))||("md".equals(extension)) ) {
+			cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
+			// coffee -c
+			String coffeeCompile = configuration.getAttribute(Constants.ATTR_COFFEE_COMPILE, "");
+			if(!coffeeCompile.equals("")) { // any value
+				cmdLine.add("-c");
+				String coffeeCompileOptions = preferenceStore.getString(PreferenceConstants.COFFEE_COMPILE_OPTIONS);
+				if(!coffeeCompileOptions.equals("")) {
+					cmdLine.add(coffeeCompileOptions);
+				}
 			}
+		} else if ("ts".equals(extension)) {
+			// the only thing we can do now with .ts is to compile, so no need to check if it was launched as tsc
+			//String typescriptCompiler = configuration.getAttribute(Constants.ATTR_TYPESCRIPT_COMPILER, "");
+			cmdLine.add(preferenceStore.getString(PreferenceConstants.TYPESCRIPT_COMPILER_PATH));
 		}
 		
 		String filePath = 
@@ -178,6 +191,18 @@ public class LaunchConfigurationDelegate implements
 		nodeProcess = process;
 	}
 
+	private void showErrorDialog(final String message) {
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, message, 
+						MessageDialog.ERROR, new String[] { "OK" }, 0);
+				dialog.open();
+			}
+		});
+	}
+	
 	private void showPreferencesDialog(final String message) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {

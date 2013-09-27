@@ -17,11 +17,11 @@ Open `plugin.xml`, in "Testing" section click "Launch an Eclipse application"
 2. create new `public class LaunchShortcutName implements ILaunchShortcut`
 
 
-## TODO notes
+## notes
 
-debug port 5858 is hard-coded
+debug port 5858 was hard-coded
 
-in 2 classes: [LaunchConfigurationDelegate](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+in 2 classes: [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
  & NodeDebugUtil
 
 org.nodeclipse.debug\src\org\nodeclipse\debug\launch\LaunchConfigurationDelegate.java

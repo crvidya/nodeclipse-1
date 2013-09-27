@@ -34,5 +34,7 @@ public class Constants {
 	public static final String ATTR_ENVIRONMENT_VARIABLES = "attr_environment_variables";	
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";	
 	
+	public static final String ATTR_COFFEE_COMPILE = "attr_coffee_compile";	
+	public static final String ATTR_TYPESCRIPT_COMPILER = "attr_typescript_compiler";	
 	public static final String ATTR_NODE_MONITOR = "attr_node_monitor";	
 }

@@ -3,6 +3,7 @@
 
 <toc label="Nodeclipse Help" topic="contents/.index.md.html">
 	<topic label="Configuration"  href="contents/.configuration.md.html"/>
+	<topic label="Node.js"  href="contents/.nodejs.md.html"/>
 	<topic label="Run"  href="contents/.run.md.html"/>
 	<topic label="Debug"  href="contents/.debug.md.html"/>
 	<topic label="Monitor"  href="contents/.monitor.md.html"/>

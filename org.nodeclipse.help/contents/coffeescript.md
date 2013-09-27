@@ -28,3 +28,30 @@ Note that when debugging, source map are not implemeted, and execution start fro
  that compiles your module.
  Stay in Node perspective until compilation to see your modules appear in V8 virtual project.
  Then open those files and set breakpoints.
+ 
+### coffee Util
+
+	$coffee --help
+	
+	Usage: coffee [options] path/to/script.coffee -- [args]
+	
+	If called without options, `coffee` will run your script.
+	
+	  -b, --bare         compile without a top-level function wrapper
+	  -c, --compile      compile to JavaScript and save as .js files
+	  -e, --eval         pass a string from the command line as input
+	  -h, --help         display this help message
+	  -i, --interactive  run an interactive CoffeeScript REPL
+	  -j, --join         concatenate the source CoffeeScript before compiling
+	  -m, --map          generate source map and save as .map files
+	  -n, --nodes        print out the parse tree that the parser produces
+	      --nodejs       pass options directly to the "node" binary
+	  -o, --output       set the output directory for compiled JavaScript
+	  -p, --print        print out the compiled JavaScript
+	  -s, --stdio        listen for and compile scripts over stdio
+	  -l, --literate     treat stdio as literate style coffee-script
+	  -t, --tokens       print out the tokens that the lexer/rewriter produce
+	  -v, --version      display the version number
+	  -w, --watch        watch scripts for changes and rerun commands 
+	 
+	 

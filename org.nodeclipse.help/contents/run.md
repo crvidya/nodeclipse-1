@@ -29,3 +29,8 @@ process.env.NODE_ENV="development";
 require("./app.js");
 },100);
 ```
+
+### Sources
+
+Check [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+for launching Node.js logic.

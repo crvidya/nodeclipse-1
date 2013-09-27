@@ -22,13 +22,14 @@
             modes="run, debug" 
             name="Node Application">
         </launchConfigurationType> 
-        <!-- node run/debug with monitor (not yet used)-->
+        <!-- node run/debug with monitor (not yet used)
         <launchConfigurationType 
             delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
             id="org.nodeclipse.debug.launch.LaunchTypeWithMonitor" 
             modes="run, debug" 
             name="Node with monitor">
         </launchConfigurationType> 
+        -->
 	    <launchConfigurationType
 	        id="org.nodeclipse.debug.launch.LaunchType$StandaloneV8"
 	        delegate="org.nodeclipse.debug.launch.StandaloneV8LaunchTypeWrapper"
@@ -140,7 +141,7 @@
                     <count   
                           value= "1" >   
                     </count>   
-                    <iterate>  <!-- TODO how to? 3 filenameext  -->  
+                    <iterate>
                        <or>   
                           <test   
                                 property= "org.eclipse.debug.ui.matchesPattern"   
@@ -155,7 +156,78 @@
                                 value= "*.coffee.md" >   
                           </test>   
                        </or> 
-                        
+                      </iterate>
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   <!-- coffee -c (compile) -->
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
+             icon= "icons/coffee.png"
+             id= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
+             label= "coffee -c"   
+             modes= "run, debug" >   
+          <configurationType
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.coffee" >   
+                          </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.litcoffee" >   
+                          </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.coffee.md" >   
+                          </test>   
+                       </or> 
+                      </iterate>
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   <!-- typescript compiler -->
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.debug.launch.LaunchShortcutTypescriptCompiler"   
+             icon= "icons/coffee.png"
+             id= "org.nodeclipse.debug.launch.LaunchShortcutTypescriptCompiler"   
+             label= "tsc"   
+             modes= "run, debug" >   
+          <configurationType
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.ts" >   
+                          </test>   
+                        </or> 
                       </iterate>
                  </with>   
               </enablement>   

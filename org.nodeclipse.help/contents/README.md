@@ -2,7 +2,9 @@ Title:  README Nodeclipse Online Help
 
 # Intro
 
-Online help is set of .md files at <https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.help/contents>
+Online help is set of .md files at <https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.help/contents> .
+
+When viewing on GitHub they are just above this note.
 
 One topic is one .md file:
  <./configuration.md>, <./run.md>, <./debug.md>, <./coffeescript.md>, <./typescript.md>, <./plugins.md> .
