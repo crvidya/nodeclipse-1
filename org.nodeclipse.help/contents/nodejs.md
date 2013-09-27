@@ -1,21 +1,4 @@
-# ${projectname}
 
-## Objective
-
-
-
-## Usage
-
-
-
-## Developing
-
-
-
-### Tools
-
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
 
 Add following snippet to project `.project` file to reference Node.js sources. They are in `lib` folder. 
 
@@ -27,4 +10,4 @@ Add following snippet to project `.project` file to reference Node.js sources. T
 		</link>
 	</linkedResources>
  
- 
+![](images/nodejs-sources-lib.PNG) 
