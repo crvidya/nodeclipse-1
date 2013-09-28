@@ -39,8 +39,8 @@ public class NodePerspective implements IPerspectiveFactory {
         left.addView(IPageLayout.ID_PROJECT_EXPLORER);
 
         IFolderLayout rightBottom = factory.createFolder("rightBottom", IPageLayout.BOTTOM, 0.75f, factory.getEditorArea());// NON-NLS-1
-        rightBottom.addView(IPageLayout.ID_PROBLEM_VIEW);
         rightBottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+        rightBottom.addView(IPageLayout.ID_PROBLEM_VIEW);
 
         IFolderLayout rightTopRight = factory.createFolder("rightTopRight", IPageLayout.RIGHT, 0.75f, factory.getEditorArea());
         rightTopRight.addView(IPageLayout.ID_OUTLINE);
@@ -62,8 +62,8 @@ public class NodePerspective implements IPerspectiveFactory {
     }
 
     private void addNewWizardShortcuts() {
-        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.ExpressProjectWizard");
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeProjectWizard");
+        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.ExpressProjectWizard");
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeFileWizard");
         factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder");// NON-NLS-1
         factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.file");// NON-NLS-1

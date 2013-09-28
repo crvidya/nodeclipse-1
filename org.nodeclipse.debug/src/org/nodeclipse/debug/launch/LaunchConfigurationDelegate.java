@@ -30,6 +30,7 @@ import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.NodeclipseConsole;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
 /**
@@ -60,6 +61,7 @@ public class LaunchConfigurationDelegate implements
 			return;
 		}
 
+		 
 		// Using configuration to build command line	
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		String nodePath= preferenceStore.getString(PreferenceConstants.NODE_PATH);
@@ -76,6 +78,7 @@ public class LaunchConfigurationDelegate implements
 		List<String> cmdLine = new ArrayList<String>();
 		// Application path should be stored in preference.
 		cmdLine.add(nodePath);
+		
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
 			// -brk says to Node runtime wait until Chromium Debugger starts and connects
 			// that is causing "stop on first line" behavior,
@@ -177,6 +180,11 @@ public class LaunchConfigurationDelegate implements
 			String value = envm.get(key);
 			envp[idx++] = key + "=" + value;
 		}
+		
+		for(String s : cmdLine){
+			NodeclipseConsole.write(s+" ");
+		}
+		NodeclipseConsole.write("\n");
 		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);

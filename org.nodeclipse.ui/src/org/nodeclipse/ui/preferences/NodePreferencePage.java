@@ -19,13 +19,13 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private FileFieldEditor nodeSourcesLibPath;
     private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
+    private FileFieldEditor nodeMonitorPath;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
     private StringFieldEditor coffeeCompileOptions;
     private StringFieldEditor coffeeCompileOutputFolder;
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
-    private FileFieldEditor nodeMonitorPath;
    //private FileFieldEditor completionsPath;
     
     public NodePreferencePage() {
@@ -49,11 +49,14 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
         // "Node debug no -break (disable interruption of Node.js app on first line, check debug Help)" would make dialog wider
         nodeDebugNoBreak = new BooleanFieldEditor(PreferenceConstants.NODE_DEBUG_NO_BREAK, 
-        		"Node debug no -break (disable interruption of Node.js app)", getFieldEditorParent());
+        		"Node debug without -brk (disable interruption of Node.js app)", getFieldEditorParent());
         addField(nodeDebugNoBreak);
 
         nodeDebugPort = new IntegerFieldEditor(PreferenceConstants.NODE_DEBUG_PORT, "Node debug port:", getFieldEditorParent());
         addField(nodeDebugPort);
+
+        nodeMonitorPath = new FileFieldEditor(PreferenceConstants.NODE_MONITOR_PATH, "Node monitor path:", getFieldEditorParent());
+        addField(nodeMonitorPath);
 
         expressPath = new FileFieldEditor(PreferenceConstants.EXPRESS_PATH, "Express path:", getFieldEditorParent());
         addField(expressPath);
@@ -72,9 +75,6 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
         typescriptCompilerOptions = new StringFieldEditor(PreferenceConstants.TYPESCRIPT_COMPILER_OPTIONS, "TypeScript compiler options:", getFieldEditorParent());
         addField(typescriptCompilerOptions);
-
-        nodeMonitorPath = new FileFieldEditor(PreferenceConstants.NODE_MONITOR_PATH, "Node monitor path:", getFieldEditorParent());
-        addField(nodeMonitorPath);
 
 //        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
 //        addField(completionsPath);

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="Nodeclipse" label="Nodeclipse">
+   <category-def name="Nodeclipse" label="Nodeclipse Core (nodeclispe-1)">
       <description>
          Nodeclipse-1 core, Chromium tools
       </description>
    </category-def>
-   <category-def name="npm-bundle" label="Node package module bundle">
+   <category-def name="npm-bundle" label="Optional Node.js modules bundles">
       <description>
          No need to install these plug-ins, if you have already installed these Node.js packages using npm (e.g. npm installl express -g).
       </description>
    </category-def>
-   <category-def name="Tools" label="Tools">   
+   <category-def name="Tools" label="Enide NodeX Tools">   
       <description>
          Markdown Editor, JSHInt integration
       </description>
@@ -43,7 +43,7 @@
    <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.8.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/de.bastiankrol.startexplorer.feature_1.4.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.4.1">
+   <feature url="features/de.bastiankrol.startexplorer.feature_1.5.0.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.0">
       <category name="Tools"/>
    </feature>
 
