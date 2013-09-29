@@ -8,7 +8,8 @@ import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.console.MessageConsole;
 
 /**
- * For tracing node launch parameters
+ * Console Helping
+ * fsor tracing node launch parameters
  * 
  * @author pverest
  * 
@@ -19,7 +20,7 @@ public class NodeclipseConsole {
 	private static IOConsoleOutputStream stream = null;
 
 	public NodeclipseConsole() {
-		MessageConsole console = new MessageConsole("NodeclipseDev", null);
+		MessageConsole console = new MessageConsole("Nodeclipse Console", null);
 		console.activate();
 		ConsolePlugin.getDefault().getConsoleManager()
 				.addConsoles(new IConsole[] { console });
