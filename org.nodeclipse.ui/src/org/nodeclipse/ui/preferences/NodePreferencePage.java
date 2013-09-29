@@ -44,7 +44,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node path:", getFieldEditorParent());
         addField(nodePath);
 
-        nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path:", getFieldEditorParent());
+        nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path TODO#75", getFieldEditorParent());
         addField(nodeSourcesLibPath);
 
         // "Node debug no -break (disable interruption of Node.js app on first line, check debug Help)" would make dialog wider
@@ -67,7 +67,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         coffeeCompileOptions = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OPTIONS, "Coffee compile options:", getFieldEditorParent());
         addField(coffeeCompileOptions);
 
-        coffeeCompileOutputFolder = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OUTPUT_FOLDER, "Coffee output folder (TODO):", getFieldEditorParent());
+        coffeeCompileOutputFolder = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OUTPUT_FOLDER, "Coffee output folder TODO#76", getFieldEditorParent());
         addField(coffeeCompileOutputFolder);
 
         typescriptCompilerPath = new FileFieldEditor(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, "TypeScript compiler path:", getFieldEditorParent());
