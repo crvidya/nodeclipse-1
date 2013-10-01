@@ -18,6 +18,14 @@ Window -> Show View -> Other... -> REST Client -> REST Client Tool
 
 REST Client Tool is also nice to use in Debug perspective.
 
+### Preferences
+
+Check preferences ( Window -> Preferences ) for Node.js related settings.
+
+![](images/Nodeclipse-Preferences.png)
+
+## In previous versions
+
 ### Before 0.6
 
 Window -> Show View -> Other... -> GFM Support -> GFM View  

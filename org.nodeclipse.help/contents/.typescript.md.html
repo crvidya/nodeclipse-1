@@ -75,38 +75,42 @@ function setDocumentScrollTop(ypos)
 <p><a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1060522"> <img src="images/installbutton.png" style="max-width:100%;" /></a></p> 
 <p>Current 1.0.0 version is unstable and causes Eclipse freezes.</p> 
 <h3> <a name="hello-world-server-in-typescript" class="anchor" href="..md.html#hello-world-server-in-typescript"><span class="octicon octicon-link"></span></a>Hello world server in TypeScript</h3> 
-<pre><code>declare function require(name:string);
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello TypeScript\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
-</code></pre> 
+<div class="highlight highlight-typescript">
+ <pre><span class="kr">declare</span> <span class="kd">function</span> <span class="nx">require</span><span class="p">(</span><span class="nx">name</span>:<span class="kt">string</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">);</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">'Content-Type'</span><span class="o">:</span> <span class="s1">'text/plain'</span><span class="p">});</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hello TypeScript\n'</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span> <span class="s1">'127.0.0.1'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Server running at http://127.0.0.1:1337/'</span><span class="p">);</span>
+</pre>
+</div> 
 <h3> <a name="tsc-util" class="anchor" href="..md.html#tsc-util"><span class="octicon octicon-link"></span></a>tsc Util</h3> 
-<pre><code>$ tsc
-Version 0.9.0.1
-Syntax:   tsc [options] [file ..]
+<div class="highlight highlight-txt">
+ <pre><span class="err">$</span> <span class="err">tsc</span>
+<span class="err">Version</span> <span class="err">0.9.0.1</span>
+<span class="err">Syntax:</span>   <span class="err">tsc</span> <span class="err">[options]</span> <span class="err">[file</span> <span class="err">..]</span>
 
-Examples: tsc hello.ts
-          tsc --out foo.js foo.ts
-          tsc @args.txt
+<span class="err">Examples:</span> <span class="err">tsc</span> <span class="err">hello.ts</span>
+          <span class="err">tsc</span> <span class="err">--out</span> <span class="err">foo.js</span> <span class="err">foo.ts</span>
+          <span class="err">tsc</span> <span class="err">@args.txt</span>
 
-Options:
-  -c, --comments              Emit comments to output
-  -d, --declaration           Generates corresponding .d.ts file
-  -b, --disallowbool          Throw error for use of deprecated &quot;bool&quot; type
-  -m, --disallowimportmodule  Throw error for use of deprecated &quot;module&quot; keyword when referencing an external module. Only allow &quot;require&quot; keyword.
-  -e, --exec                  Execute the script after compilation
-  -h, --help                  Print this message
-  --module KIND               Specify module code generation: &quot;commonjs&quot; (default) or &quot;amd&quot;
-  --nolib                     Do not include a default lib.d.ts with global declarations
-  --out FILE|DIRECTORY        Concatenate and emit output to single file | Redirect output structure to the directory
-  --sourcemap                 Generates corresponding .map file
-  --target VER                Specify ECMAScript target version: &quot;ES3&quot; (default), or &quot;ES5&quot;
-  -v, --version               Print the compiler's version: 0.9.0.1
-  -w, --watch                 Watch input files
-  @&lt;file&gt;                     Insert command line options and files from a file.    
-</code></pre>
+<span class="err">Options:</span>
+  <span class="err">-c,</span> <span class="err">--comments</span>              <span class="err">Emit</span> <span class="err">comments</span> <span class="err">to</span> <span class="err">output</span>
+  <span class="err">-d,</span> <span class="err">--declaration</span>           <span class="err">Generates</span> <span class="err">corresponding</span> <span class="err">.d.ts</span> <span class="err">file</span>
+  <span class="err">-b,</span> <span class="err">--disallowbool</span>          <span class="err">Throw</span> <span class="err">error</span> <span class="err">for</span> <span class="err">use</span> <span class="err">of</span> <span class="err">deprecated</span> <span class="err">&quot;bool&quot;</span> <span class="err">type</span>
+  <span class="err">-m,</span> <span class="err">--disallowimportmodule</span>  <span class="err">Throw</span> <span class="err">error</span> <span class="err">for</span> <span class="err">use</span> <span class="err">of</span> <span class="err">deprecated</span> <span class="err">&quot;module&quot;</span> <span class="err">keyword</span> <span class="err">when</span> <span class="err">referencing</span> <span class="err">an</span> <span class="err">external</span> <span class="err">module.</span> <span class="err">Only</span> <span class="err">allow</span> <span class="err">&quot;require&quot;</span> <span class="err">keyword.</span>
+  <span class="err">-e,</span> <span class="err">--exec</span>                  <span class="err">Execute</span> <span class="err">the</span> <span class="err">script</span> <span class="err">after</span> <span class="err">compilation</span>
+  <span class="err">-h,</span> <span class="err">--help</span>                  <span class="err">Print</span> <span class="err">this</span> <span class="err">message</span>
+  <span class="err">--module</span> <span class="err">KIND</span>               <span class="err">Specify</span> <span class="err">module</span> <span class="err">code</span> <span class="err">generation:</span> <span class="err">&quot;commonjs&quot;</span> <span class="err">(default)</span> <span class="err">or</span> <span class="err">&quot;amd&quot;</span>
+  <span class="err">--nolib</span>                     <span class="err">Do</span> <span class="err">not</span> <span class="err">include</span> <span class="err">a</span> <span class="err">default</span> <span class="err">lib.d.ts</span> <span class="err">with</span> <span class="err">global</span> <span class="err">declarations</span>
+  <span class="err">--out</span> <span class="err">FILE|DIRECTORY</span>        <span class="err">Concatenate</span> <span class="err">and</span> <span class="err">emit</span> <span class="err">output</span> <span class="err">to</span> <span class="err">single</span> <span class="err">file</span> <span class="err">|</span> <span class="err">Redirect</span> <span class="err">output</span> <span class="err">structure</span> <span class="err">to</span> <span class="err">the</span> <span class="err">directory</span>
+  <span class="err">--sourcemap</span>                 <span class="err">Generates</span> <span class="err">corresponding</span> <span class="err">.map</span> <span class="err">file</span>
+  <span class="err">--target</span> <span class="err">VER</span>                <span class="err">Specify</span> <span class="err">ECMAScript</span> <span class="err">target</span> <span class="err">version:</span> <span class="err">&quot;ES3&quot;</span> <span class="err">(default),</span> <span class="err">or</span> <span class="err">&quot;ES5&quot;</span>
+  <span class="err">-v,</span> <span class="err">--version</span>               <span class="err">Print</span> <span class="err">the</span> <span class="err">compiler's</span> <span class="err">version:</span> <span class="err">0.9.0.1</span>
+  <span class="err">-w,</span> <span class="err">--watch</span>                 <span class="err">Watch</span> <span class="err">input</span> <span class="err">files</span>
+  <span class="err">@&lt;file&gt;</span>                     <span class="err">Insert</span> <span class="err">command</span> <span class="err">line</span> <span class="err">options</span> <span class="err">and</span> <span class="err">files</span> <span class="err">from</span> <span class="err">a</span> <span class="err">file.</span>    
+</pre>
+</div>
 </body>
 </html>

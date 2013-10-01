@@ -10,6 +10,11 @@ Notice that Nodeclipse by default enters step-by-step debugging mode from very f
 
 Press <kbd>F11</kbd> to launch debug [again].
 
+### Issue with Github Flavored Markdown (GFM) Viewer
+
+Check [Github Flavored Markdown (GFM)](.github-flavored-markdown.md.html).
+It is recommended to close GFM View during debugging time.
+
 ### debug-brk option
 
 By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms)

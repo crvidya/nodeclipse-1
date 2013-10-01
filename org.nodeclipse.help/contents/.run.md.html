@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\pverest\git\org.nodeclipse.help\contents\.run.md.html</title>
+<title>C:\Users\pverest\git\nodeclipse-056\org.nodeclipse.help\contents\.run.md.html</title>
 
 
 <style type="text/css">
@@ -70,32 +70,29 @@ function setDocumentScrollTop(ypos)
 
 </head>
 <body class="markdown-body">
-<h2>
-<a name="running" class="anchor" href="#running"><span class="octicon octicon-link"></span></a>Running</h2>
-
-<p>Right-click <code>.js</code> file with Node.js app and select "Run As -&gt; Node Application" (similar to Java applications).</p>
-
-<h3>
-<a name="run-configuration" class="anchor" href="#run-configuration"><span class="octicon octicon-link"></span></a>Run Configuration</h3>
-
-<p>Right-click <code>.js</code> file with Node.js app and select "Run As -&gt; Run Configuration..."</p>
-
-<p>You can configure to pass</p>
-
-<ul>
-<li>program arguments</li>
-<li>Node arguments</li>
-<li>set working directory</li>
-</ul><p>It is not yet possible to set environment variables in a launch configuration. The "Environment" tab is not there in the Node launcher.</p>
-
-<p>As a workaround you can add another JS file that sets the variables before it calls the node app and run that instead.</p>
-
-<p>e.g.</p>
-
-<div class="highlight"><pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="o">=</span><span class="s2">"development"</span><span class="p">;</span>
-<span class="nx">require</span><span class="p">(</span><span class="s2">"./app.js"</span><span class="p">);</span>
+<p>Title: Nodeclipse Online Help - Run </p> 
+<h2> <a name="running" class="anchor" href="..md.html#running"><span class="octicon octicon-link"></span></a>Running</h2> 
+<p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Node Application&quot; (similar to Java applications).</p> 
+<p>Press <kbd>Ctrl+F11</kbd> to run [again].</p> 
+<h3> <a name="run-configuration" class="anchor" href="..md.html#run-configuration"><span class="octicon octicon-link"></span></a>Run Configuration</h3> 
+<p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Run Configuration...&quot;</p> 
+<p>You can configure to pass</p> 
+<ul> 
+ <li>program arguments</li> 
+ <li>Node arguments</li> 
+ <li>set working directory</li> 
+</ul>
+<p>Since Nodeclipse 0.6 it is possible to set environment variables in a launch configuration. The &quot;Environment&quot; tab is not there in the Node launcher.</p> 
+<p>As a workaround you can also add another JS file that sets the variables before it calls the node app and run that instead.</p> 
+<p>e.g.</p> 
+<div class="highlight highlight-javascript">
+ <pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="o">=</span><span class="s2">&quot;development&quot;</span><span class="p">;</span>
+<span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app.js&quot;</span><span class="p">);</span>
 <span class="p">},</span><span class="mi">100</span><span class="p">);</span>
-</pre></div>
+</pre>
+</div> 
+<h3> <a name="sources" class="anchor" href="..md.html#sources"><span class="octicon octicon-link"></span></a>Sources</h3> 
+<p>Check <a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java">LaunchConfigurationDelegate.java</a> for launching Node.js logic.</p>
 </body>
 </html>

@@ -76,15 +76,17 @@ function setDocumentScrollTop(ypos)
 <p>It has XText dependency, that can usually be automatically resolved by Eclipse (that was downloaded from eclipse.org)</p> 
 <p>for other Eclipse distributions use Enide or install prior from <a href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/">http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</a></p> 
 <h3> <a name="hello-world-server-in-coffeescript" class="anchor" href="..md.html#hello-world-server-in-coffeescript"><span class="octicon octicon-link"></span></a>Hello world server in CoffeeScript</h3> 
-<pre><code>http = require 'http'
+<div class="highlight highlight-coffeescript">
+ <pre><span class="nv">http = </span><span class="nx">require</span> <span class="s">'http'</span>
 
-http.createServer (req, res) -&gt;
-  res.writeHead 200, {'Content-Type': 'text/plain'}
-  res.end 'Hello World\n'
-.listen 1337, '127.0.0.1'
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req, res) -&gt;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'text/plain'</span><span class="p">}</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="s">'Hello World\n'</span>
+<span class="p">.</span><span class="nx">listen</span> <span class="mi">1337</span><span class="p">,</span> <span class="s">'127.0.0.1'</span>
 
-console.log 'Server running at http://127.0.0.1:1337/'
-</code></pre> 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">'Server running at http://127.0.0.1:1337/'</span>
+</pre>
+</div> 
 <h3> <a name="runningdebugging" class="anchor" href="..md.html#runningdebugging"><span class="octicon octicon-link"></span></a>Running/debugging</h3> 
 <p>Nodeclipse since version 0.6 allows to run and debug .coffee file directly. Node.js command line tool 'coffee' is used. Note that when debugging, source map are not implemeted, and execution start from this coffee tool that compiles your module. Stay in Node perspective until compilation to see your modules appear in V8 virtual project. Then open those files and set breakpoints.</p> 
 <h3> <a name="coffee-util" class="anchor" href="..md.html#coffee-util"><span class="octicon octicon-link"></span></a>coffee Util</h3> 
@@ -110,6 +112,8 @@ If called without options, `coffee` will run your script.
   -t, --tokens       print out the tokens that the lexer/rewriter produce
   -v, --version      display the version number
   -w, --watch        watch scripts for changes and rerun commands 
-</code></pre>
+</code></pre> 
+<p>Run <code>coffee -c -w .</code> from project root to compile every time you save .coffee file.</p> 
+<p>It is very convenient to have this command running in Eclipse integrated Terminal. </p>
 </body>
 </html>

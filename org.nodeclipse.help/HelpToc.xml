@@ -4,6 +4,7 @@
 <toc label="Nodeclipse Help" topic="contents/.index.md.html">
 	<topic label="Configuration"  href="contents/.configuration.md.html"/>
 	<topic label="Node.js"  href="contents/.nodejs.md.html"/>
+	<topic label="Import"  href="contents/.import.md.html"/>
 	<topic label="Run"  href="contents/.run.md.html"/>
 	<topic label="Debug"  href="contents/.debug.md.html"/>
 	<topic label="Monitor"  href="contents/.monitor.md.html"/>
@@ -13,6 +14,7 @@
 	<topic label="CoffeeScript"  href="contents/.coffeescript.md.html"/>
 	<topic label="TypeScript"  href="contents/.typescript.md.html"/>
 	<topic label="Plugins"  href="contents/.plugins.md.html"/>
+	<topic label="FAQ"  href="contents/.FAQ.md.html"/>
 	<!-- examples are below 
 	<topic label="Main Topic"  href="html/maintopic.html"/>
 	<link toc="LinkedToc.xml" />
