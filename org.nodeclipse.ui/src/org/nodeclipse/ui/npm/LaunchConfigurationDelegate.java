@@ -52,7 +52,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
     }
     
     private static String findNpm(String nodePath) {
-        // Application path should be stored in preference.
+        //TODO npm application path should be stored in preference.
         String npmFileName = getNpmFileName();
         String npmPath = nodePath.substring(0, nodePath.lastIndexOf(File.separator) + 1) + npmFileName;
     	File npmFile = new File(npmPath);

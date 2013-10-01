@@ -14,7 +14,7 @@ import org.nodeclipse.ui.util.ProcessUtils;
 
 /**
  * 
- * @author oncereply
+ * @author oncereply, Paul Verest
  * 
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
@@ -25,9 +25,14 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		//store.setDefault(PreferenceConstants.NODE_DEBUG_NO_BREAK, ""); //default is empty,null,no
+		store.setDefault(PreferenceConstants.NODE_DEBUG_PORT, "5858");
+		
 		String path = "/usr/local/bin/node";
+		String node_monitor_path = "/usr/local/lib/node_modules/node-dev/bin/node-dev";
 		String express_path = "/usr/local/lib/node_modules/express/bin/express";
 		String coffee_path = "/usr/local/bin/coffee";
+		String typescript_compiler_path = "/usr/local/lib/node_modules/typescript/bin/tsc";
 		
 		File file;
 		if (OSUtils.isWindows()) {
@@ -36,15 +41,20 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			if (!file.exists()) {
 				path = "C:/Program Files (x86)/nodejs/node.exe".replace('/', File.separatorChar);
 			}
-			express_path = System.getProperty("user.home") 
-					+ "/AppData/Roaming/npm/node_modules/express/bin/express".replace('/', File.separatorChar);
-			coffee_path = System.getProperty("user.home") 
-					+ "/AppData/Roaming/npm/node_modules/coffee-script/bin/coffee".replace('/', File.separatorChar);
-		}
-		if (OSUtils.isMacOS()) {
+			String windowsNodeModulesPath = System.getProperty("user.home") 
+					+ "/AppData/Roaming/npm/node_modules/";
+			node_monitor_path = (windowsNodeModulesPath+"node-dev/bin/node-dev").replace('/', File.separatorChar);
+			express_path = (windowsNodeModulesPath+"express/bin/express").replace('/', File.separatorChar);
+			coffee_path = (windowsNodeModulesPath+"coffee-script/bin/coffee").replace('/', File.separatorChar);
+			typescript_compiler_path = (windowsNodeModulesPath+"typescript/bin/tsc").replace('/', File.separatorChar);
+		} else if (OSUtils.isMacOS()) {
 			file = new File(path);
 			if (!file.exists()) {
 				path = "/opt/local/bin/node";
+			}
+			file = new File(node_monitor_path);
+			if (!file.exists()) {
+				node_monitor_path = "/opt/local/lib/node_modules/node-dev/bin/node-dev";
 			}
 			file = new File(express_path);
 			if (!file.exists()) {
@@ -54,7 +64,14 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			if (!file.exists()) {
 				coffee_path = "/opt/local/lib/node_modules/coffee-script/bin/coffee";
 			}
+			file = new File(typescript_compiler_path);
+			if (!file.exists()) {
+				typescript_compiler_path = "/opt/local/lib/node_modules/typescript/bin/tsc";
+			}
 		}
+		
+		// Check & set Preferences
+		
 		file = new File(path);
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.NODE_PATH, path);
@@ -64,6 +81,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				store.setDefault(PreferenceConstants.NODE_PATH, file.getAbsolutePath());
 			}			
 		}
+		file = new File(node_monitor_path);
+		if (file.exists()) {
+			store.setDefault(PreferenceConstants.NODE_MONITOR_PATH, node_monitor_path);
+		}
+		// using bundles Node.js modules for Express & CoffeeScript
 		file = new File(express_path);
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.EXPRESS_PATH, express_path);
@@ -87,6 +109,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			if (file.exists()) {
 				store.setDefault(PreferenceConstants.COFFEE_PATH, coffee_path);
 			}
+		}
+		file = new File(typescript_compiler_path);
+		if (file.exists()) {
+			store.setDefault(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, typescript_compiler_path);
 		}
 	}
 	

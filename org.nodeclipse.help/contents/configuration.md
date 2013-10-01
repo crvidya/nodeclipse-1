@@ -14,12 +14,14 @@ Team -> Git -> History : Check "Follow renames"
 
 Switch to Node perspective (e.g. Window -> Open Perspective -> Other ... -> Node)
 
-Window -> Show View -> Other... -> GFM Support -> GFM View  
-(Very useful when exploring <code>node_modules</code> folders) 
-
 Window -> Show View -> Other... -> REST Client -> REST Client Tool
 
+REST Client Tool is also nice to use in Debug perspective.
+
 ### Before 0.6
+
+Window -> Show View -> Other... -> GFM Support -> GFM View  
+(Very useful when exploring <code>node_modules</code> folders) 
 
 #### File associations
 

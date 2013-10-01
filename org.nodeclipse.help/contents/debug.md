@@ -1,15 +1,22 @@
-Title:  Nodeclipse Online Help - Debug  
+Title:  Nodeclipse Help - Debug  
 
 
 ## Debugging
 
 Right-click `.js` file with Node.js app and select "Debug As -> Node Application" (similar to Java applications).
 
-Notice that Nodeclipse enters step-by-step debugging mode. Press <kbd>F8</kbd> to continue until breakpoint is reached.
+Notice that Nodeclipse by default enters step-by-step debugging mode from very first line.
+ Press <kbd>F8</kbd> to continue until breakpoint is reached.
+
+Press <kbd>F11</kbd> to launch debug [again].
 
 ### debug-brk option
 
-Currently Nodeclipse stops on the first line when debugging. The cause timing of Node.js and V8 debugger connection.
+By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms)
+ to connect to Node.js and get actual modules loaded in V8.
+
+Since Nodeclipse 0.6 there is option "Node debug no -break:" in Preferences to disable interruption at first line.
+It is good when your application is web server and you don't need to debug initialization lines, but mostly request handlers. 
 
 From [Node wiki](https://github.com/joyent/node/wiki/Using-Eclipse-as-Node-Applications-Debugger)
 
@@ -32,4 +39,12 @@ and wait for debugger to connect. The behavior upon connection is now different 
 Note that V8 engine debugger is not behaving very good when it steps over or steps into require() method (it will crash), 
 so try to set up first breakpoint past the initial module loading. This will also enable you to set breakpoints in any of those modules as well.
 
-That is, if `--debug` was used, than small apps and the beginning of an application would be unable to debug.
+That is, when `--debug` is used, than small apps and the beginning of an application are unable to debug.
+You will get "Failed to connect to Standalone V8 VM" error, when the app has already finished.
+
+![Connection-to-V8-timed-out.png](images/Connection-to-V8-timed-out.png)
+
+### Sources
+
+Check [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+for launching Node.js logic.

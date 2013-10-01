@@ -7,7 +7,6 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.debug.internal.ui.DebugUIPlugin;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -76,6 +75,7 @@ public class LaunchShortcut implements ILaunchShortcut {
         ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(Constants.LAUNCH_CONFIGURATION_TYPE_ID);
         ILaunchConfiguration configuration = createLaunchConfiguration(type, path, file);
         DebugUITools.launch(configuration, mode);
+        // then execution goes in LaunchConfigurationDelegate.java launch() method
     }
 
     /**
@@ -103,6 +103,11 @@ public class LaunchShortcut implements ILaunchShortcut {
     	// create a new configuration for the file
         ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, configname);
         workingCopy.setAttribute(Constants.KEY_FILE_PATH, path);
+        setMoreAttributes(workingCopy);
         return workingCopy.doSave();
     }
+
+	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
+		// stub for extension		
+	}
 }

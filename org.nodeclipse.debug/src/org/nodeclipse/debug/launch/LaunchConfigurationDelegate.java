@@ -20,6 +20,7 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -29,8 +30,15 @@ import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.NodeclipseConsole;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
+/**
+ * launch() implements starting Node and passing all parameters.
+ * Node is launched as node, coffee, coffee -c, tsc or node-dev(or other monitors)
+ * 
+ * @author Lamb, Tomoyuki, Pushkar, Paul Verest
+ */
 public class LaunchConfigurationDelegate implements
 		ILaunchConfigurationDelegate {
 	private static RuntimeProcess nodeProcess = null;
@@ -48,25 +56,41 @@ public class LaunchConfigurationDelegate implements
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if(nodeProcess != null && !nodeProcess.isTerminated()) {
-			throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
+			//throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
+			showErrorDialog("Other node process is running!");
+			return;
 		}
 
-		// Using configuration to build command line		
-		String nodePath= Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.NODE_PATH);
+		 
+		// Using configuration to build command line	
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		String nodePath= preferenceStore.getString(PreferenceConstants.NODE_PATH);
 
 		// Check if the node location is correctly configured
 		File nodeFile = new File(nodePath);
 		if(!nodeFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			showPreferencesDialog();
+			showPreferencesDialog("Node.js runtime is not correctly configured.\n\n"
+					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
 			return;
 		}
 		
 		List<String> cmdLine = new ArrayList<String>();
 		// Application path should be stored in preference.
 		cmdLine.add(nodePath);
+		
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-			cmdLine.add("--debug-brk=5858");
+			// -brk says to Node runtime wait until Chromium Debugger starts and connects
+			// that is causing "stop on first line" behavior,
+			// otherwise small apps or first line can be undebuggable.
+			String brk = "-brk" ; //default "-brk"
+			if (preferenceStore.getBoolean(PreferenceConstants.NODE_DEBUG_NO_BREAK)) //default false
+				brk = "";
+			// done: flexible debugging port, instead of hard-coded 5858
+			// #61 https://github.com/Nodeclipse/nodeclipse-1/issues/61
+			int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
+			if (nodeDebugPort==0) { nodeDebugPort=5858;};
+			cmdLine.add("--debug"+brk+"="+nodeDebugPort); //--debug-brk=5858
 		}
 		
 		String nodeArgs = configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, "");
@@ -77,17 +101,49 @@ public class LaunchConfigurationDelegate implements
 			}
 		}
 		
-		String file = 
-				configuration.getAttribute(Constants.KEY_FILE_PATH,	Constants.BLANK_STRING);
+		String file = configuration.getAttribute(Constants.KEY_FILE_PATH,	Constants.BLANK_STRING);
 		String extension = null;
 		int i = file.lastIndexOf('.');
 		if(i > 0) {
 			extension = file.substring(i+1);
 		} else {
-			throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, "Target file does not have extension: " + file, null));
+			throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID,
+				"Target file does not have extension: " + file, null));
 		}
-		if("coffee".equals(extension)) {
-			cmdLine.add(Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.COFFEE_PATH));
+		
+		// #57 running app.js with node-dev, forever, supervisor, nodemon etc
+		// https://github.com/Nodeclipse/nodeclipse-1/issues/57
+		String nodeMonitor = configuration.getAttribute(Constants.ATTR_NODE_MONITOR, "");
+		if(!nodeMonitor.equals("")) { // any value
+			//TODO support selection, now only one
+			
+			String nodeMonitorPath= preferenceStore.getString(PreferenceConstants.NODE_MONITOR_PATH);
+			
+			// Check if the node monitor location is correctly configured
+			File nodeMonitorFile = new File(nodeMonitorPath);
+			if(!nodeMonitorFile.exists()){
+				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+				showPreferencesDialog("Node.js monitor is not correctly configured.\n"
+						+ "Select path to installed util: forever, node-dev, nodemon or superviser.\n\n"
+						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
+				return;
+			}
+			cmdLine.add(nodeMonitorPath);
+		} else if ( ("coffee".equals(extension))||("litcoffee".equals(extension))||("md".equals(extension)) ) {
+			cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
+			// coffee -c
+			String coffeeCompile = configuration.getAttribute(Constants.ATTR_COFFEE_COMPILE, "");
+			if(!coffeeCompile.equals("")) { // any value
+				cmdLine.add("-c");
+				String coffeeCompileOptions = preferenceStore.getString(PreferenceConstants.COFFEE_COMPILE_OPTIONS);
+				if(!coffeeCompileOptions.equals("")) {
+					cmdLine.add(coffeeCompileOptions);
+				}
+			}
+		} else if ("ts".equals(extension)) {
+			// the only thing we can do now with .ts is to compile, so no need to check if it was launched as tsc
+			//String typescriptCompiler = configuration.getAttribute(Constants.ATTR_TYPESCRIPT_COMPILER, "");
+			cmdLine.add(preferenceStore.getString(PreferenceConstants.TYPESCRIPT_COMPILER_PATH));
 		}
 		
 		String filePath = 
@@ -125,6 +181,11 @@ public class LaunchConfigurationDelegate implements
 			envp[idx++] = key + "=" + value;
 		}
 		
+		for(String s : cmdLine){
+			NodeclipseConsole.write(s+" ");
+		}
+		NodeclipseConsole.write("\n");
+		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,
@@ -138,16 +199,29 @@ public class LaunchConfigurationDelegate implements
 		nodeProcess = process;
 	}
 
-	private void showPreferencesDialog() {
+	private void showErrorDialog(final String message) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
-				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, "Node.js runtime is not correctly configured.\n\n"
-						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location", MessageDialog.ERROR, new String[] { "Open Prefrences ...", "Cancel" }, 0);
+				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, message, 
+						MessageDialog.ERROR, new String[] { "OK" }, 0);
+				dialog.open();
+			}
+		});
+	}
+	
+	private void showPreferencesDialog(final String message) {
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, message, 
+						MessageDialog.ERROR, new String[] { "Open Prefrences ...", "Cancel" }, 0);
 				int result = dialog.open();
 				if (result == 0) {
-					PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(shell, PreferenceConstants.PREFERENCES_PAGE, null, null);
+					PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(shell,
+						PreferenceConstants.PREFERENCES_PAGE, null, null);
 					if (pref != null)
 						pref.open();
 				}

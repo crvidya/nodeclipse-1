@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\pverest\git\org.nodeclipse.help\contents\.debug.md.html</title>
+<title>C:\Users\weibl\git\NTS\nodeclipse-w-E\org.nodeclipse.help\contents\.debug.md.html</title>
 
 
 <style type="text/css">
@@ -70,11 +70,22 @@ function setDocumentScrollTop(ypos)
 
 </head>
 <body class="markdown-body">
-<h2>
-<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
-
-<p>Right-click <code>.js</code> file with Node.js app and select "Debug As -&gt; Node Application" (similar to Java applications).</p>
-
-<p>Notice that Nodeclipse enters step-by-step debugging mode. Press <kbd>F8</kbd> to continue until breakpoint is reached.</p>
+<p>Title: Nodeclipse Help - Debug </p> 
+<h2> <a name="debugging" class="anchor" href="..md.html#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2> 
+<p>Right-click <code>.js</code> file with Node.js app and select &quot;Debug As -&gt; Node Application&quot; (similar to Java applications).</p> 
+<p>Notice that Nodeclipse enters step-by-step debugging mode. Press <kbd>F8</kbd> to continue until breakpoint is reached.</p> 
+<h3> <a name="debug-brk-option" class="anchor" href="..md.html#debug-brk-option"><span class="octicon octicon-link"></span></a>debug-brk option</h3> 
+<p>By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms) to connect to Node.js and get actual modules loaded in V8.</p> 
+<p>Since Nodeclispe 0.6 there is option &quot;Node debug no -break:&quot; in Preferences to disable interruption at first line. It is good when your application is web server and you don't need to debug initialization lines, but mostly request handlers. </p> 
+<p>From <a href="https://github.com/joyent/node/wiki/Using-Eclipse-as-Node-Applications-Debugger">Node wiki</a></p> 
+<blockquote> 
+ <p>There are 2 debug related node options:</p> 
+ <p>node --debug[=port] NodeApp.js</p> 
+ <p>node --debug-brk[=port] NodeApp.js</p> 
+ <p>The <code>--debug</code> option will just enable remote debugger connection on given port and then start the application normally. Even when debugger is connected to the running node instance later on, the script execution will not be stopped until “Suspend” command is issued by Eclipse debugger. Another way to stop the execution is to browse the source code of the JavaScript modules comprising the application and double click on the line number at the desired position in script to break at (most likely a callback). Once execution stops you can set/clear more breakpoints, but also inspect call stack and view content of all program variables.</p> 
+ <p>The <code>--debug-brk</code> option is needed when your script is short lived (no time to attach debugger) and/or you want to observe the NodeApp.js execution from the very start. This option will force execution to break at the first line of the main script and wait for debugger to connect. The behavior upon connection is now different – the script is suspended and no breakpoints are set. Note that V8 engine debugger is not behaving very good when it steps over or steps into require() method (it will crash), so try to set up first breakpoint past the initial module loading. This will also enable you to set breakpoints in any of those modules as well.</p> 
+</blockquote> 
+<p>That is, when <code>--debug</code> is used, than small apps and the beginning of an application are unable to debug. You will get &quot;Failed to connect to Standalone V8 VM&quot; error, when the app has already finished.</p> 
+<p><a href="images/Connection-to-V8-timed-out.png" target="_blank"><img src="images/Connection-to-V8-timed-out.png" alt="Connection-to-V8-timed-out.png" style="max-width:100%;" /></a></p>
 </body>
 </html>
