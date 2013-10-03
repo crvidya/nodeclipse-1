@@ -12,8 +12,9 @@
    </category-def>
    <category-def name="Tools" label="Enide NodeX Tools">
       <description>
-         Markdown Editor by Daniel Winterstein, JSHint integration by Ralf Sternberg, StartExplorer by Bastian Krol,
-         Github Flavored Markdown Viewer by Satyagraha
+         Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
+         JSHint integration by Ralf Sternberg, 
+         RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol
       </description>
    </category-def>
 
@@ -23,7 +24,7 @@
    <feature url="features/org.chromium.sdk_0.3.9.qualifier.jar" id="org.chromium.sdk" version="0.3.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse_0.5.0.qualifier.jar" id="org.nodeclipse" version="0.5.0.qualifier">
+   <feature url="features/org.nodeclipse_0.6.0.qualifier.jar" id="org.nodeclipse" version="0.6.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
 
@@ -44,9 +45,17 @@
    <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.8.qualifier">
       <category name="Tools"/>
    </feature>
+   <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
+      <category name="Tools"/>
+   </feature>
    <feature url="features/de.bastiankrol.startexplorer.feature_1.5.0.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.0">
       <category name="Tools"/>
    </feature>
+   <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
+   <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">
+      <category name="Tools"/>
+   </feature>
+   -->
 
    <!-- as of csep v0.3, we should not include it, as it creates more questions than solves.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">

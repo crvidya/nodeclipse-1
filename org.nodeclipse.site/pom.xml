@@ -37,6 +37,18 @@
 			<layout>p2</layout>
 			<url>http://basti1302.github.com/startexplorer/update/</url>
 		</repository>
+		<repository>
+			<id>restclient-tool</id>
+			<layout>p2</layout>
+			<url>https://svn.codespot.com/a/eclipselabs.org/restclient-tool/trunk/eclipse/update/</url>
+		</repository>
+		<!-- 	
+		<repository>
+			<id>quicksearch</id>
+			<layout>p2</layout>
+			<url>http://dist.springsource.com/release/TOOLS/update/e4.3/</url>
+		</repository>	
+		 -->		
 	</repositories>
 
 </project>
