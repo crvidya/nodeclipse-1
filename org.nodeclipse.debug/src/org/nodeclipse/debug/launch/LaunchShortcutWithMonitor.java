@@ -14,7 +14,7 @@ public class LaunchShortcutWithMonitor extends LaunchShortcut{
 
 	@Override
 	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
-		NodeclipseConsole.write("LaunchShortcutWithMonitor\n");
+		NodeclipseConsole.write(this.getClass().getName()+"\n");
 		workingCopy.setAttribute(Constants.ATTR_NODE_MONITOR, "e.g. node_dev"); // any value
 	}
 }

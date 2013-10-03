@@ -16,6 +16,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.nodeclipse.debug.util.Constants;
+import org.nodeclipse.ui.NodeclipseConsole;
 
 /**
  * Using "Run As" --> "Node Application" or "Run As" --> "coffee" will lead here
@@ -108,6 +109,6 @@ public class LaunchShortcut implements ILaunchShortcut {
     }
 
 	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
-		// stub for extension		
+		NodeclipseConsole.write(this.getClass().getName()+"\n");
 	}
 }

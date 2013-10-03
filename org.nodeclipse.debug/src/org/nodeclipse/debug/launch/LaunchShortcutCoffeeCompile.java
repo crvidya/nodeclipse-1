@@ -14,7 +14,7 @@ public class LaunchShortcutCoffeeCompile extends LaunchShortcut{
 
 	@Override
 	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
-		NodeclipseConsole.write("LaunchShortcutCoffeeCompile\n");
+		NodeclipseConsole.write(this.getClass().getName()+"\n");		
 		workingCopy.setAttribute(Constants.ATTR_COFFEE_COMPILE, "-c"); // any value
 	}
 }

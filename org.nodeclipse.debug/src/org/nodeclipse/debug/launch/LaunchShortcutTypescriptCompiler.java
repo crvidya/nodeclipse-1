@@ -14,7 +14,7 @@ public class LaunchShortcutTypescriptCompiler extends LaunchShortcut{
 
 	@Override
 	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
-		NodeclipseConsole.write("LaunchShortcutTypescriptCompiler\n");
+		NodeclipseConsole.write(this.getClass().getName()+"\n");
 		workingCopy.setAttribute(Constants.ATTR_TYPESCRIPT_COMPILER, "tsc"); // any value
 	}
 }
