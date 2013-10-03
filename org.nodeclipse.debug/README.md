@@ -15,6 +15,9 @@ Open `plugin.xml`, in "Testing" section click "Launch an Eclipse application"
           point= "org.eclipse.debug.ui.launchShortcuts" >   
 
 2. create new `public class LaunchShortcutName implements ILaunchShortcut`
+for example see `org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile.java`
+
+3. Check `org.nodeclipse.debug.launch.LaunchConfigurationDelegate.java`
 
 
 ## notes

@@ -1,9 +1,19 @@
 Title:  Nodeclipse Help - Node.js
 
+### Node.js instances
+
+Nodeclipse lets you define exact location of Node.js installations, or with checkbox "just node" let OS to find `node`
+on current PATH.
+
+Hint: if you have 2 or more Node.js instances, let the newest be on PATH and select older in "Node path:".
+Then by checking/unchecking "just node" you can switch to and from the newest Node.js.
 
 ### Node.js sources
 
-Node.js sources have "Node.js Core Modules" in `lib` foilder, that may be useful.
+If you got Node.js via pre-built installer, visit <http://www.nodejs.org/download/> again to get Node.js sources
+and extract archive to a folder. Now you also have local copy of API documentations.
+
+Node.js sources have "Node.js Core Modules" in `lib` folder, that may be useful.
 
 Add following snippet to project `.project` file to reference Node.js sources.
 

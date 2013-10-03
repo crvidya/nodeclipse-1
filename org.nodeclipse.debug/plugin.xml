@@ -169,7 +169,7 @@
              class= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
              icon= "icons/coffee.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
-             label= "coffee -c"   
+             label= "coffee --compile"   
              modes= "run, debug" >   
           <configurationType
                 id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >

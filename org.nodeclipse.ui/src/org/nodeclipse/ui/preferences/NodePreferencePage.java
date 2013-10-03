@@ -16,12 +16,14 @@ import org.nodeclipse.ui.Activator;
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor nodePath;
+    private BooleanFieldEditor nodeJustNode;
     private FileFieldEditor nodeSourcesLibPath;
     private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
     private FileFieldEditor nodeMonitorPath;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
+    private BooleanFieldEditor coffeeJustCoffee;
     private StringFieldEditor coffeeCompileOptions;
     private StringFieldEditor coffeeCompileOutputFolder;
     private FileFieldEditor typescriptCompilerPath;
@@ -44,6 +46,10 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node path:", getFieldEditorParent());
         addField(nodePath);
 
+        nodeJustNode = new BooleanFieldEditor(PreferenceConstants.NODE_JUST_NODE, 
+        		"just node (find node on PATH. Useful when there are 2 or more Node.js instances)", getFieldEditorParent());
+        addField(nodeJustNode);
+
         nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path TODO#75", getFieldEditorParent());
         addField(nodeSourcesLibPath);
 
@@ -63,6 +69,10 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
         coffeePath = new FileFieldEditor(PreferenceConstants.COFFEE_PATH, "Coffee path:", getFieldEditorParent());
         addField(coffeePath);
+
+//        coffeeJustCoffee = new BooleanFieldEditor(PreferenceConstants.COFFEE_JUST_COFFEE, 
+//        		"just coffee (let Node.js find coffee CLI)", getFieldEditorParent());
+//        addField(coffeeJustCoffee);
 
         coffeeCompileOptions = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OPTIONS, "Coffee compile options:", getFieldEditorParent());
         addField(coffeeCompileOptions);

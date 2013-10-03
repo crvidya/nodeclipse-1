@@ -1,14 +1,5 @@
 Title:  Nodeclipse Online Help - CoffeeScript  
 
-
-## CoffeeSctipt Editor
-
-Included in [Enide](www.nodeclipse.org/enide) since 0.4.20
-
-It has XText dependency, that can usually be automatically resolved by Eclipse (that was downloaded from eclipse.org)
-
-for other Eclipse distributions use Enide or install prior from <http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/>
-
 ### Hello world server in CoffeeScript
 
 ```coffeescript
@@ -61,4 +52,17 @@ If called without options, `coffee` will run your script.
 Run `coffee -c -w .` from project root to compile every time you save .coffee file.
 
 It is very convenient to have this command running in Eclipse integrated Terminal.	 
+
+### CoffeeSctipt Editor
+
+CoffeeSctipt Editor 0.3.0 (as version show) is in early stage, and looking for contributors familiar with XTend
+or just brave enough to dive into [code](https://github.com/Nodeclipse/coffeescript-eclipse).
+
+Included in [Enide](www.nodeclipse.org/enide) since 0.4.20
+
+It has XText dependency, that can usually be automatically resolved by Eclipse (that was downloaded from eclipse.org)
+
+for other Eclipse distributions use [CoffeeScript Editor quick installer](http://marketplace.eclipse.org/content/coffeescript-editor-quick-installer) 
+or install prior from <http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/>
+
 	 

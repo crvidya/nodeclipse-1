@@ -63,21 +63,24 @@ public class LaunchConfigurationDelegate implements
 
 		 
 		// Using configuration to build command line	
-		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
-		String nodePath= preferenceStore.getString(PreferenceConstants.NODE_PATH);
-
-		// Check if the node location is correctly configured
-		File nodeFile = new File(nodePath);
-		if(!nodeFile.exists()){
-			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			showPreferencesDialog("Node.js runtime is not correctly configured.\n\n"
-					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
-			return;
-		}
-		
 		List<String> cmdLine = new ArrayList<String>();
-		// Application path should be stored in preference.
-		cmdLine.add(nodePath);
+
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		if (preferenceStore.getBoolean(PreferenceConstants.NODE_JUST_NODE)){
+			cmdLine.add("node");
+		}else{
+			// old way: Application path should be stored in preference.
+			String nodePath= preferenceStore.getString(PreferenceConstants.NODE_PATH);
+			// Check if the node location is correctly configured
+			File nodeFile = new File(nodePath);
+			if(!nodeFile.exists()){
+				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+				showPreferencesDialog("Node.js runtime is not correctly configured.\n\n"
+						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
+				return;
+			}			
+			cmdLine.add(nodePath);
+		}
 		
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
 			// -brk says to Node runtime wait until Chromium Debugger starts and connects
@@ -130,7 +133,11 @@ public class LaunchConfigurationDelegate implements
 			}
 			cmdLine.add(nodeMonitorPath);
 		} else if ( ("coffee".equals(extension))||("litcoffee".equals(extension))||("md".equals(extension)) ) {
-			cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
+			//if (preferenceStore.getBoolean(PreferenceConstants.COFFEE_JUST_COFFEE)){
+			//	cmdLine.add("coffee"); //TODO should be instead of node above
+			//}else{
+				cmdLine.add(preferenceStore.getString(PreferenceConstants.COFFEE_PATH));
+			//}
 			// coffee -c
 			String coffeeCompile = configuration.getAttribute(Constants.ATTR_COFFEE_COMPILE, "");
 			if(!coffeeCompile.equals("")) { // any value
