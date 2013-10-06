@@ -15,8 +15,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.chromium.sdk;bundle-version="0.3.9",
  org.eclipse.core.expressions;bundle-version="3.4.0"
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: bin/,
- .
 Export-Package: org.chromium.debug.core,
  org.chromium.debug.core.model,
  org.chromium.debug.core.sourcemap,
