@@ -77,7 +77,7 @@ function setDocumentScrollTop(ypos)
 <blockquote> 
  <p>Q: <a href="https://github.com/Nodeclipse/nodeclipse-1/issues/60">How to install nodeclipse in myeclipse2013? I have no eclipse.</a></p> 
 </blockquote> 
-<p>If you don't have Eclipse and you use Windows, you can download Nodeclipse NTS <a href="http://www.nodeclipse.org/nts/">http://www.nodeclipse.org/nts/</a> (quick link <a href="https://sourceforge.net/projects/nodeclipse/files/Node-Tool-Suite/">https://sourceforge.net/projects/nodeclipse/files/Node-Tool-Suite/</a>)</p> 
+<p>If you don't have Eclipse and you use Windows, you can download <a href="http://www.nodeclipse.org/nts/">Nodeclipse NTS</a> or <a href="http://www.nodeclipse.org/enide/studio/">Enide Studio</a>. (quick link <a href="https://sourceforge.net/projects/nodeclipse/files/">https://sourceforge.net/projects/nodeclipse/files/</a>)</p> 
 <p>Otherwise follow instructions on <a href="http://www.nodeclipse.org/updates/">http://www.nodeclipse.org/updates/</a></p> 
 <p>Check also <a href="https://github.com/Nodeclipse/eclipse-node-ide/blob/master/Hints.md#hints">https://github.com/Nodeclipse/eclipse-node-ide/blob/master/Hints.md#hints</a></p> 
 <blockquote> 
@@ -96,7 +96,17 @@ function setDocumentScrollTop(ypos)
 <ol> 
  <li>Double-click package.json on the Package Explorer to open it.</li> 
  <li>Add into dependencies section what you want to install, and save it.</li> 
+</ol>
+<div class="highlight highlight-javascript">
+ <pre>  <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;beloved-module&quot;</span><span class="o">:</span> <span class="s2">&quot;1.1.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;awesome-module&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+  <span class="p">}</span>
+</pre>
+</div> 
+<ol> 
  <li>Select package.json on the Package Explorer, open context menu by right-clicking, and select [Run As]-[npm install] menu.</li> 
 </ol>
+<p>or from Terminal <code>npm install beloved-module --save</code></p>
 </body>
 </html>

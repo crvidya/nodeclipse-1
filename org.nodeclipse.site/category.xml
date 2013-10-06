@@ -14,7 +14,8 @@
       <description>
          Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
          JSHint integration by Ralf Sternberg, 
-         RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol
+         RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol,
+         Nodeclipse Git Addon & Plugins List by Paul Verest 
       </description>
    </category-def>
 
@@ -56,6 +57,12 @@
       <category name="Tools"/>
    </feature>
    -->
+   <feature url="features/org.nodeclipse.pluginslist.feature_0.1.0.qualifier.jar" id="org.nodeclipse.pluginslist.feature" version="0.1.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/gitaddon.feature_0.1.0.qualifier.jar" id="gitaddon.feature" version="0.1.0.qualifier">
+      <category name="Tools"/>
+   </feature>
 
    <!-- as of csep v0.3, we should not include it, as it creates more questions than solves.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">

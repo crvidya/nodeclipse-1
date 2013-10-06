@@ -74,6 +74,8 @@ function setDocumentScrollTop(ypos)
 <h2> <a name="running" class="anchor" href="..md.html#running"><span class="octicon octicon-link"></span></a>Running</h2> 
 <p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Node Application&quot; (similar to Java applications).</p> 
 <p>Press <kbd>Ctrl+F11</kbd> to run [again].</p> 
+<h3> <a name="warning-06-behavior" class="anchor" href="..md.html#warning-06-behavior"><span class="octicon octicon-link"></span></a>Warning 0.6 behavior</h3> 
+<p>In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page) or launch coffee util to compile <code>*.coffee</code> files. However these have ran into problem <a href="http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype">http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype</a> That will be fixed as soon as solution is found.</p> 
 <h3> <a name="run-configuration" class="anchor" href="..md.html#run-configuration"><span class="octicon octicon-link"></span></a>Run Configuration</h3> 
 <p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Run Configuration...&quot;</p> 
 <p>You can configure to pass</p> 
@@ -82,8 +84,8 @@ function setDocumentScrollTop(ypos)
  <li>Node arguments</li> 
  <li>set working directory</li> 
 </ul>
-<p>Since Nodeclipse 0.6 it is possible to set environment variables in a launch configuration. The &quot;Environment&quot; tab is not there in the Node launcher.</p> 
-<p>As a workaround you can also add another JS file that sets the variables before it calls the node app and run that instead.</p> 
+<p>Since Nodeclipse 0.5 it is possible to set environment variables in a launch configuration. The &quot;Environment&quot; tab is not there in the Node launcher.</p> 
+<p>As an alternative way you can also add another JS file that sets the variables before it calls the node app and run that instead.</p> 
 <p>e.g.</p> 
 <div class="highlight highlight-javascript">
  <pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>

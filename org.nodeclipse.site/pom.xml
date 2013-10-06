@@ -49,6 +49,16 @@
 			<url>http://dist.springsource.com/release/TOOLS/update/e4.3/</url>
 		</repository>	
 		 -->		
+		<repository>
+			<id>plugin-list</id>
+			<layout>p2</layout>
+			<url>http://www.nodeclipse.org/updates/pluginslist/</url>
+		</repository>
+		<repository>
+			<id>git-addon</id>
+			<layout>p2</layout>
+			<url>http://www.nodeclipse.org/git/addon/</url>
+		</repository>
 	</repositories>
 
 </project>

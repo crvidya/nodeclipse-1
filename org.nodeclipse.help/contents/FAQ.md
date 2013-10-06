@@ -7,8 +7,9 @@ title: Nodeclipse - Community - Q & A
 
 > Q: [How to install nodeclipse in myeclipse2013? I have no eclipse.](https://github.com/Nodeclipse/nodeclipse-1/issues/60)
 
-If you don't have Eclipse and you use Windows, you can download Nodeclipse NTS <http://www.nodeclipse.org/nts/>
-(quick link <https://sourceforge.net/projects/nodeclipse/files/Node-Tool-Suite/>)
+If you don't have Eclipse and you use Windows, you can download [Nodeclipse NTS](http://www.nodeclipse.org/nts/)
+ or [Enide Studio](http://www.nodeclipse.org/enide/studio/).
+(quick link <https://sourceforge.net/projects/nodeclipse/files/>)
 
 Otherwise follow instructions on <http://www.nodeclipse.org/updates/>
 
@@ -28,6 +29,15 @@ Then the existing project will appear in Project Explorer.
 
 1. Double-click package.json on the Package Explorer to open it.
 2. Add into dependencies section what you want to install, and save it.
+
+```javascript
+  "dependencies": {
+    "beloved-module": "1.1.0",
+    "awesome-module": "*"
+  }
+```
+
 3. Select package.json on  the Package Explorer, open context menu by right-clicking, and select [Run As]-[npm install] menu.
 
+or from Terminal `npm install beloved-module --save`
  
