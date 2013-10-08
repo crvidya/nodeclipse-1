@@ -17,6 +17,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
     private FileFieldEditor nodePath;
     private BooleanFieldEditor nodeJustNode;
+    private BooleanFieldEditor nodeAllowMany;
     private FileFieldEditor nodeSourcesLibPath;
     private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
@@ -49,6 +50,10 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         nodeJustNode = new BooleanFieldEditor(PreferenceConstants.NODE_JUST_NODE, 
         		"just node (find node on PATH. Useful when there are 2 or more Node.js instances)", getFieldEditorParent());
         addField(nodeJustNode);
+
+        nodeAllowMany = new BooleanFieldEditor(PreferenceConstants.NODE_ALLOW_MANY, 
+        		"allow many Node instances running (experimental)", getFieldEditorParent());
+        addField(nodeAllowMany);
 
         nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path TODO#75", getFieldEditorParent());
         addField(nodeSourcesLibPath);

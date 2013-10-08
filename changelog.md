@@ -1,5 +1,7 @@
 ## Changelog
 
+http://www.nodeclipse.org/history is continuation. 
+
 ## What's new (ver 0.3)
 
 - Add support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  

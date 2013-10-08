@@ -3,6 +3,7 @@ package org.nodeclipse.debug.launch;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,8 +42,9 @@ import org.nodeclipse.ui.preferences.PreferenceConstants;
  */
 public class LaunchConfigurationDelegate implements
 		ILaunchConfigurationDelegate {
-	private static RuntimeProcess nodeProcess = null;
-
+	private static RuntimeProcess nodeProcess = null; //since 0.7 it should be debuggable instance
+	//@since 0.7. contain all running Node thread, including under debug. Non Thread-safe, as it should be only in GUI thread
+	private static List<RuntimeProcess> nodeRunningProcesses = new LinkedList<RuntimeProcess>(); 
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -55,17 +57,32 @@ public class LaunchConfigurationDelegate implements
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		if(nodeProcess != null && !nodeProcess.isTerminated()) {
-			//throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
-			showErrorDialog("Other node process is running!");
-			return;
+		
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		boolean allowedMany = preferenceStore.getBoolean(PreferenceConstants.NODE_ALLOW_MANY);//@since 0.7
+		boolean isDebugMode = mode.equals(ILaunchManager.DEBUG_MODE);
+
+		if (allowedMany){//@since 0.7
+			if ( isDebugMode  
+				&& (nodeProcess != null && !nodeProcess.isTerminated()) ) {
+				showErrorDialog("Only 1 node process can be debugged in 1 Eclipse instance!\n"+
+				"Open other Eclipse with different node debug port configurred. ");
+				return;
+			}
+		
+		}else{	
+			if(nodeProcess != null && !nodeProcess.isTerminated()) {
+				//throw new CoreException(new Status(IStatus.OK, ChromiumDebugPlugin.PLUGIN_ID, null, null));
+				showErrorDialog("Other node process is running!");
+				return;
+				//TODO suggest to terminate and start new
+			}	
 		}
 
 		 
 		// Using configuration to build command line	
 		List<String> cmdLine = new ArrayList<String>();
 
-		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		if (preferenceStore.getBoolean(PreferenceConstants.NODE_JUST_NODE)){
 			cmdLine.add("node");
 		}else{
@@ -203,7 +220,15 @@ public class LaunchConfigurationDelegate implements
 				NodeDebugUtil.launch(mode, launch, monitor);
 			}
 		}
-		nodeProcess = process;
+		
+		if (allowedMany){ //@since 0.7
+			if (isDebugMode){
+				nodeProcess = process;	
+			}
+			nodeRunningProcesses.add(process);
+		}else{
+			nodeProcess = process;	
+		}
 	}
 
 	private void showErrorDialog(final String message) {
