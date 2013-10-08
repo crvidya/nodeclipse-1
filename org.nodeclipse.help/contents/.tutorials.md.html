@@ -75,7 +75,140 @@ function setDocumentScrollTop(ypos)
 <ul> 
  <li> <a href="http://www.nodebeginner.org/">http://www.nodebeginner.org/</a> The Node Beginner Book by Manuel Kiessling</li> 
  <li><a href="http://project70.com/nodejs/beginners-tutorial-node-js/">A Beginner’s Tutorial for Node.js</a></li> 
+ <li><a href="http://readwrite.com/2011/04/02/6-free-e-books-on-nodejs">http://readwrite.com/2011/04/02/6-free-e-books-on-nodejs</a></li> 
  <li> <a href="http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js">http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js</a><br /> </li> 
 </ul>
+<h3> <a name="books" class="anchor" href="..md.html#books"><span class="octicon octicon-link"></span></a>Books</h3> 
+<ul> 
+ <li> <a href="http://chimera.labs.oreilly.com/books/1234000001808">Node: Up and Running</a> by Tom Hughes-Croucher</li> 
+</ul>
+<h4> <a name="sample-1" class="anchor" href="..md.html#sample-1"><span class="octicon octicon-link"></span></a>Sample 1</h4> 
+<div class="highlight highlight-javascript">
+ <pre><span class="kd">var</span> <span class="nx">net</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'net'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">chatServer</span> <span class="o">=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
+
+<span class="nx">chatServer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'Hi!\n'</span><span class="p">);</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'Bye!\n'</span><span class="p">);</span>
+
+  <span class="nx">client</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="nx">chatServer</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">9000</span><span class="p">)</span>
+</pre>
+</div> 
+<p>then run <code>telnet</code> to connect:</p> 
+<blockquote> 
+ <p>$ telnet 127.0.0.1 9000</p> 
+</blockquote> 
+<p>and then by and by you get</p> 
+<div class="highlight highlight-javascript">
+ <pre><span class="kd">var</span> <span class="nx">net</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'net'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">chatServer</span> <span class="o">=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(),</span> <span class="nx">clientList</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nx">chatServer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">remoteAddress</span> <span class="o">+</span> <span class="s1">':'</span> <span class="o">+</span> <span class="nx">client</span><span class="p">.</span><span class="nx">remotePort</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'Hi '</span> <span class="o">+</span> <span class="nx">client</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'!\n'</span><span class="p">);</span>
+
+    <span class="nx">clientList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="nx">broadcast</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'end'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">clientList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">clientList</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="p">})</span>
+
+<span class="kd">function</span> <span class="nx">broadcast</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cleanup</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">clientList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">client</span> <span class="o">!==</span> <span class="nx">clientList</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">clientList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">writable</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">clientList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">write</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; says &quot;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">cleanup</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">clientList</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+                <span class="nx">clientList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">destroy</span><span class="p">()</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="c1">// Remove dead Nodes out of write loop to avoid trashing loop index</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cleanup</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">clientList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">clientList</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">cleanup</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">chatServer</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">9000</span><span class="p">)</span>
+</pre>
+</div> 
+<h4> <a name="sample-2-lets-build-twitter" class="anchor" href="..md.html#sample-2-lets-build-twitter"><span class="octicon octicon-link"></span></a>Sample 2 Let’s Build Twitter</h4> 
+<p>Example 2-15. Adding a basic API</p> 
+<div class="highlight highlight-javascript">
+ <pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">tweets</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Welcome to Node Twitter'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/send'</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">tweet</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tweets</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">tweet</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="nx">status</span><span class="o">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="o">:</span><span class="s2">&quot;Tweet received&quot;</span><span class="p">})</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">//no tweet?</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="nx">status</span><span class="o">:</span><span class="s2">&quot;nok&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="o">:</span><span class="s2">&quot;No tweet received&quot;</span><span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/tweets'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">tweets</span><span class="p">)</span>
+<span class="p">})</span>
+</pre>
+</div> 
+<p>Example 2-16. A test for the POST API</p> 
+<div class="highlight highlight-javascript">
+ <pre><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">),</span>
+    <span class="nx">assert</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'assert'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="mi">8000</span><span class="p">,</span>
+  <span class="nx">path</span><span class="o">:</span> <span class="s1">'/send'</span><span class="p">,</span>
+  <span class="nx">method</span><span class="o">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span><span class="s1">'content-type'</span><span class="o">:</span><span class="s1">'application/x-www-form-urlencoded'</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">)</span>
+
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">data</span> <span class="o">+=</span> <span class="nx">d</span>
+  <span class="p">})</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'end'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">assert</span><span class="p">.</span><span class="nx">strictEqual</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">'{&quot;status&quot;:&quot;ok&quot;,&quot;message&quot;:&quot;Tweet received&quot;}'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'tweet=test'</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+</pre>
+</div>
 </body>
 </html>

@@ -19,8 +19,13 @@ Works great in first time, then cann't refresh -> Use 'Launch Eclipse applicatio
 
 using Markdown ->HTML conversion
 
-Ideas:
+Ideas for tool:
 - marked - quick but command line util is dumb
 - https://github.com/aponxi/grunt-readme-generator
 
+Finally using GFM View
+
+### Q
+
+Can Eclipse Help show .js file?
 

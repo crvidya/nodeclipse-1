@@ -12,3 +12,12 @@ Links:
 - <http://en.wikipedia.org/wiki/JavaScript>
 - <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
 
+### Nodeclipse JavaScript Editor 
+
+Nodeclipse JavaScript Editor is based on standard Eclipse JSDT (JavaScript Development Tools).
+Check JavaScript Development Guide in Help.
+
+#### Hints
+
+Press <kbd>Ctrl+Shift+F</kbd> to format.
+
