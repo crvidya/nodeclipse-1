@@ -15,10 +15,6 @@
 	- [Usage](#usage)
 	- [What's new](#whats-new)
 	- [Roadmap](#roadmap)
-		- [1.0](#10)
-		- [Next](#next)
-		- [Ideas, proposals, work-in-progress etc.](#ideas-proposals-work-in-progress-etc)
-		- [Shelved](#shelved)
 	- [Developing](#developing)
 		- [First tiny steps](#first-tiny-steps)
 		- [Before starting development, please do](#before-starting-development-please-do)
@@ -99,8 +95,6 @@ and also Changelong.md & History.md at [www.nodeclipse.org repository](https://g
 
 ## Roadmap
 
-Check also [developers news](https://github.com/Nodeclipse/nodeclipse-blog#news).
-
 We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, where  
 
 - MAJOR indicates substantially new release, possibly with API change
@@ -109,6 +103,12 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 
 Please participate in discussion, [propose and vote on new feature](http://nodeclipse.uservoice.com/forums/216804-general),
  on raise bugs on <https://github.com/Nodeclipse/nodeclipse-1/issues>
+
+UPDATE: Roadmap is defnied by currently raised issues, voted ideas on uservoice, and desires of developers.
+ Below is what was discussed in Spring 2013.
+
+Check also [developers news](https://github.com/Nodeclipse/nodeclipse-blog#news).
+
 
 ### 0.x 
 

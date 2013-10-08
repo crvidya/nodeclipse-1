@@ -36,7 +36,7 @@
       <category name="npm-bundle"/>
    </feature>
 
-   <!-- for Full Build with Maven/Tycho (or Git Submodules) -->
+   <!-- for Full Build with Maven/Tycho (or Git Submodules) 
     <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
       <category name="Tools"/>
    </feature>
@@ -52,18 +52,19 @@
    <feature url="features/de.bastiankrol.startexplorer.feature_1.5.0.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.0">
       <category name="Tools"/>
    </feature>
-   <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
-   <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">
-      <category name="Tools"/>
-   </feature>
-   -->
    <feature url="features/org.nodeclipse.pluginslist.feature_0.1.0.qualifier.jar" id="org.nodeclipse.pluginslist.feature" version="0.1.0.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/gitaddon.feature_0.1.0.qualifier.jar" id="gitaddon.feature" version="0.1.0.qualifier">
       <category name="Tools"/>
    </feature>
+   -->
 
+   <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
+   <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">
+      <category name="Tools"/>
+   </feature>
+   -->
    <!-- as of csep v0.3, we should not include it, as it creates more questions than solves.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">
       <description>

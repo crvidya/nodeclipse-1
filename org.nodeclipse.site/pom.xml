@@ -17,6 +17,7 @@
 	<description>org.nodeclipse.site (p2 repository / update site)</description>
 
 	<repositories>
+		<!-- for Full Build with Maven/Tycho (or Git Submodules) 
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
@@ -42,13 +43,6 @@
 			<layout>p2</layout>
 			<url>https://svn.codespot.com/a/eclipselabs.org/restclient-tool/trunk/eclipse/update/</url>
 		</repository>
-		<!-- 	
-		<repository>
-			<id>quicksearch</id>
-			<layout>p2</layout>
-			<url>http://dist.springsource.com/release/TOOLS/update/e4.3/</url>
-		</repository>	
-		 -->		
 		<repository>
 			<id>plugin-list</id>
 			<layout>p2</layout>
@@ -59,6 +53,15 @@
 			<layout>p2</layout>
 			<url>http://www.nodeclipse.org/git/addon/</url>
 		</repository>
+		-->
+		
+		<!-- 	
+		<repository>
+			<id>quicksearch</id>
+			<layout>p2</layout>
+			<url>http://dist.springsource.com/release/TOOLS/update/e4.3/</url>
+		</repository>	
+		 -->		
 	</repositories>
 
 </project>
