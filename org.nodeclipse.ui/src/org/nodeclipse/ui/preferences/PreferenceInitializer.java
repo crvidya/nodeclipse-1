@@ -114,6 +114,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, typescript_compiler_path);
 		}
+		
+		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true); 
 	}
 	
     private static File findNode() {

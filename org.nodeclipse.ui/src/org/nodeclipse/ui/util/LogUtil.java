@@ -5,6 +5,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.nodeclipse.ui.Activator;
 
+/**
+ * 
+ * @author ?, Paul Verest
+ */
 public class LogUtil {
 
     public static void info(String message) {
@@ -34,5 +38,6 @@ public class LogUtil {
     public static void log(IStatus status) {
         ILog log = Activator.getDefault().getLog();
         log.log(status);
+        NodeclipseConsole.write(status.getMessage()+"\n");
     }
 }

@@ -31,8 +31,8 @@ import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
-import org.nodeclipse.ui.NodeclipseConsole;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
  * launch() implements starting Node and passing all parameters.

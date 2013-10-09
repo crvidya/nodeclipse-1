@@ -16,7 +16,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.nodeclipse.debug.util.Constants;
-import org.nodeclipse.ui.NodeclipseConsole;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
  * Using "Run As" --> "Node Application" or "Run As" --> "coffee" will lead here

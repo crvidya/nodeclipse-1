@@ -2,7 +2,7 @@ package org.nodeclipse.debug.launch;
 
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.nodeclipse.debug.util.Constants;
-import org.nodeclipse.ui.NodeclipseConsole;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
  * Using "Run As" --> "coffee -c" will lead here

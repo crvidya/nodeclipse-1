@@ -1,11 +1,14 @@
-package org.nodeclipse.ui;
+package org.nodeclipse.ui.util;
 
 import java.io.IOException;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.console.MessageConsole;
+import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.preferences.PreferenceConstants;
 
 /**
  * Console Helping
@@ -34,6 +37,11 @@ public class NodeclipseConsole {
 	}
 
 	public static void write(String s) {
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		boolean nodeclipseConsoleEnabled = preferenceStore.getBoolean(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED);//@since 0.7
+		if (!nodeclipseConsoleEnabled)
+			return;
+		
 		instance = getInstance();
 		try {
 			stream.write(s);
