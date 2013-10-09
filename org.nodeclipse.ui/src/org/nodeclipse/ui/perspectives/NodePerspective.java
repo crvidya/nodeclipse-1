@@ -62,10 +62,11 @@ public class NodePerspective implements IPerspectiveFactory {
     }
 
     private void addNewWizardShortcuts() {
-        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeProjectWizard");
-        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.ExpressProjectWizard");
-        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeFileWizard");
-        factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder");// NON-NLS-1
+        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeProjectWizard"); // NON-NLS-1
+        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.ExpressProjectWizard"); // NON-NLS-1
+        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeFileWizard"); // NON-NLS-1
+        factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.CoffeeFileWizard"); // NON-NLS-1
+        factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder"); // NON-NLS-1
         factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.file");// NON-NLS-1
     }
 

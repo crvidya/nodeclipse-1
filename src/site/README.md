@@ -8,3 +8,60 @@ First check [How to use markdown for maven project site?](http://stackoverflow.c
 
 	<name>org.nodeclipse.ui</name>
 	<description>org.nodeclipse.ui</description>
+
+###
+
+	mvn site:stage -DstagingDirectory=C:\TEMP\fullsite	
+	
+
+Some snippets	
+
+			<!-- http://maven.apache.org/plugins/maven-project-info-reports-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.6</version>
+				<!-- 
+				<configuration>
+					<webAccessUrl>http://svn.example.org/viewvc/project/trunk</webAccessUrl>
+					<anonymousConnection>scm:svn:http://svn.example.org/repo/project/trunk</anonymousConnection>
+					<developerConnection>scm:svn:https://svn.example.org/repo/project/trunk</developerConnection>
+				</configuration>
+				 -->
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+	<!-- http://mojo.codehaus.org/taglist-maven-plugin/usage.html -->
+	<reporting>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.codehaus.mojo</groupId>
+	        <artifactId>taglist-maven-plugin</artifactId>
+	        <version>2.4</version>
+	        <configuration>
+	          <tagListOptions>
+	            <tagClasses>
+	              <tagClass>
+	                <displayName>Todo Work</displayName>
+	                <tags>
+	                  <tag>
+	                    <matchString>todo</matchString>
+	                    <matchType>ignoreCase</matchType>
+	                  </tag>
+	                  <tag>
+	                    <matchString>FIXME</matchString>
+	                    <matchType>exact</matchType>
+	                  </tag>
+	                </tags>
+	              </tagClass>
+	            </tagClasses>
+	          </tagListOptions>
+	        </configuration>
+	      </plugin>
+	    </plugins>
+	  </reporting>
+  
+	

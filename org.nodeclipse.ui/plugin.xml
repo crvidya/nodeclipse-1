@@ -175,8 +175,11 @@
             targetID="org.nodeclipse.ui.perspectives.NodePerspective">
 			<viewShortcut id="winterwell.markdown.views.MarkdownPreview"/>
 			<viewShortcut id="code.satyagraha.gfm.viewer.views.GfmView"/>
-			<view id="winterwell.markdown.views.MarkdownPreview" 
+			<view id="org.eclipse.debug.ui.DebugView" 
                 relative="org.eclipse.ui.console.ConsoleView" 
+                relationship="stack"/>          	
+			<view id="winterwell.markdown.views.MarkdownPreview" 
+                relative="org.eclipse.debug.ui.DebugView" 
                 relationship="stack"/>          	
 			<view id="code.satyagraha.gfm.viewer.views.GfmView" 
                 relative="winterwell.markdown.views.MarkdownPreview" 
@@ -185,7 +188,7 @@
                 relative="code.satyagraha.gfm.viewer.views.GfmView" 
                 relationship="stack"/>   
 			<view id="org.eclipse.pde.runtime.LogView" 
-                relative="winterwell.markdown.views.MarkdownPreview" 
+                relative="org.eclipse.ui.views.ProblemView" 
                 relationship="stack"/> 
                         	
       </perspectiveExtension>
