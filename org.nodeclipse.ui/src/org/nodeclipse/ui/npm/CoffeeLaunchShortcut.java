@@ -18,15 +18,16 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
- * Using "Run As" --> "coffee" will lead here.
+ * was: Using "Run As" --> "coffee" will lead here.
  * 
  * @author Paul Verest
  * @since 0.5
  * 
- * TODO move to package org.nodeclipse.ui.coffee;
  **/
+@Deprecated //not used
 public class CoffeeLaunchShortcut implements ILaunchShortcut,IGoal {
 
     /**
@@ -45,6 +46,7 @@ public class CoffeeLaunchShortcut implements ILaunchShortcut,IGoal {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 
@@ -65,6 +67,7 @@ public class CoffeeLaunchShortcut implements ILaunchShortcut,IGoal {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 

@@ -99,7 +99,7 @@ public class LaunchConfigurationDelegate implements
 			cmdLine.add(nodePath);
 		}
 		
-		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
+		if (isDebugMode) {
 			// -brk says to Node runtime wait until Chromium Debugger starts and connects
 			// that is causing "stop on first line" behavior,
 			// otherwise small apps or first line can be undebuggable.
@@ -266,7 +266,8 @@ public class LaunchConfigurationDelegate implements
 			try {
 				nodeProcess.terminate();
 			} catch (DebugException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
+				NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
 			}
 			nodeProcess = null;
 		}

@@ -37,6 +37,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.VariablesUtil;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 public class NodeArgumentsTab  extends AbstractLaunchConfigurationTab {
 	protected Label fPrgmArgumentsLabel;
@@ -444,7 +445,8 @@ public class NodeArgumentsTab  extends AbstractLaunchConfigurationTab {
 			fNodeArgumentsText.setText((String)configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, ""));
 			workDirectoryField.setText((String)configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, ""));
 		} catch (CoreException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
 		}
 	}
 

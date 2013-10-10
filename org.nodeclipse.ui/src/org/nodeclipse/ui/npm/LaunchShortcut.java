@@ -18,6 +18,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
  * Using "Run As" --> "npm ..." will lead here from plugin.xml in .ui project.
@@ -40,6 +41,7 @@ public class LaunchShortcut implements ILaunchShortcut,IGoal {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 
@@ -60,6 +62,7 @@ public class LaunchShortcut implements ILaunchShortcut,IGoal {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 

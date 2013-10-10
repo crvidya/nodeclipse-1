@@ -11,11 +11,10 @@ import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
 /**
- * Console Helping
- * fsor tracing node launch parameters
+ * Console util
+ * for tracing node launch parameters and errors
  * 
  * @author pverest
- * 
  */
 public class NodeclipseConsole {
 
@@ -46,7 +45,8 @@ public class NodeclipseConsole {
 		try {
 			stream.write(s);
 		} catch (IOException e) {
-			e.printStackTrace();
+			//TODO how to show?
+			//e.printStackTrace();
 		}
 	}
 
@@ -55,7 +55,8 @@ public class NodeclipseConsole {
 		try {
 			stream.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//TODO how to show?
+			//e.printStackTrace();
 		}
 	}
 

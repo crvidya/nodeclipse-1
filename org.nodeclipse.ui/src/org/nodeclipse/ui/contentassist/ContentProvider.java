@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.ui.util.ProcessUtils;
 
 /**
@@ -29,9 +31,11 @@ public class ContentProvider {
             JSONObject object = new JSONObject(inputStream2String(is));
             COMPLETIONS = object.getJSONArray(Constants.COMPLETIONS_KEY);
         } catch (JSONException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 

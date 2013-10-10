@@ -15,6 +15,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 public class NodeDebugUtil {
 	private static final String CONFIG_NAME = "STANDALONE_V8";
@@ -60,7 +61,8 @@ public class NodeDebugUtil {
 				}
 			}
 		} catch (CoreException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
 		}	
 	}
 	
@@ -70,7 +72,8 @@ public class NodeDebugUtil {
         	try {
 				project.delete(true, null);
 			} catch (CoreException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
+				NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
 			}
         }		
 	}

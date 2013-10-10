@@ -39,6 +39,7 @@ public class LaunchShortcut implements ILaunchShortcut {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 
@@ -59,6 +60,7 @@ public class LaunchShortcut implements ILaunchShortcut {
                 MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
             }
         } catch (CoreException e) {
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }
 

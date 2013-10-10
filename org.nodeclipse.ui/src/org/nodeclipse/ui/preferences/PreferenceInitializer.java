@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.ui.util.OSUtils;
 import org.nodeclipse.ui.util.ProcessUtils;
 
@@ -162,7 +163,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		try {
 			ret = ProcessUtils.exec(cmdLine, null);
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
 		}
 		return ret;
 	}

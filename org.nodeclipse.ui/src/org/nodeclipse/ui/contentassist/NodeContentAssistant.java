@@ -2,6 +2,7 @@ package org.nodeclipse.ui.contentassist;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
@@ -15,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 
 public class NodeContentAssistant implements IContentAssistProcessor {
 
@@ -85,7 +87,8 @@ public class NodeContentAssistant implements IContentAssistProcessor {
                 }
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
         return list;
     }
