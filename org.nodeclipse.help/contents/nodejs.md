@@ -33,5 +33,5 @@ Add following snippet to project `.project` file to reference Node.js sources.
 ### Node.js modules
 
 Node.js modules (in `node_modules`) usually have `README.md` file.
-To see `README.md` as it look like on GitHub, right-click it and select `Show in GFM view`.
+To see `README.md` as it looks like on GitHub, right-click it and select `Show in GFM view`.
 Check also "Markdown" and "Github Flavored Markdown (GFM)" help pages.
