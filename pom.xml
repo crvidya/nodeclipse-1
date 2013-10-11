@@ -9,10 +9,11 @@
 	
 	<!-- Information block, used within maven site 
 	More Project Information http://maven.apache.org/pom.html -->
-	<name>Nodeclispe-1</name>
+	<name>Nodeclipse-1</name>
+    <url>http://nodeclipse.github.io</url>
 	<!-- http://www.sonatype.com/books/mvnex-book/reference/optimizing-sect-dependencies.html -->
 	<description>
-		Node.js development in Eclipse
+		Node.js http://nodejs.org/ development in Eclipse http://eclipse.org/
 	</description>
     <organization>
     	<name>Nodeclipse organization</name>
@@ -58,8 +59,16 @@
 			</roles>
 		</developer>
 	</developers>
+	<!-- 
 	<contributors>
 	</contributors>
+	<mailingLists>
+		<mailingList></mailingList>
+	</mailingLists>
+	<licenses>
+		<license></license>
+	</licenses>
+	 -->
 	<distributionManagement>
 		<site>
 			<id>nodeclipse-1-site</id>
@@ -196,10 +205,10 @@
 		</plugins>
 	</build>
 
-	<!-- http://mojo.codehaus.org/taglist-maven-plugin/usage.html -->
+	
 	<reporting>
 		<plugins>
-			<plugin>
+			<plugin><!-- http://mojo.codehaus.org/taglist-maven-plugin/usage.html -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>2.4</version>

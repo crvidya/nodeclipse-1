@@ -1,7 +1,7 @@
 
 ## org.nodeclipse.debug
 
-Running and debugging node applications
+Running and debugging Node applications
 
 ### Developing
 
@@ -56,9 +56,9 @@ http://stackoverflow.com/questions/591018/how-to-write-a-hyperlink-to-an-eclipse
 
 ### Many node instances running
 
-currecntly `private static RuntimeProcess nodeProcess`, that is only one Node process may be running.
+- [ ] currecntly `private static RuntimeProcess nodeProcess`, that is only one Node process may be running.
 
---debug-brk=5858
+- [ ] --debug-brk=5858
 
 http://stackoverflow.com/questions/11947409/nodejs-eclipse-v8-deb
 

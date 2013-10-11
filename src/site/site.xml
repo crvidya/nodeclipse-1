@@ -1,6 +1,6 @@
-<project name="Nodeclispe">
+<project name="Nodeclipse">
   <bannerLeft>
-    <name>Nodeclispe</name>
+    <name>Nodeclipse</name>
     <href>http://www.nodeclipse.org/</href>
     <src>header3.png</src>
   </bannerLeft>
@@ -20,19 +20,21 @@
         <sitesearch>${project.url}</sitesearch>
       </googleSearch>
       <gitHub>
-        <projectId>apache/maven-surefire</projectId>
+        <projectId>Nodeclipse/nodeclipse-1</projectId>
         <ribbonOrientation>right</ribbonOrientation>
         <ribbonColor>gray</ribbonColor>
       </gitHub>
     </fluidoSkin>
   </custom>
-
   
   <body>
     <menu ref="reports" inherit="top"/>
     <menu ref="modules"/> 
-	<menu name="markdown note">
+	<menu name="Developer Notes">
       <item href="markdown.html" name="markdown" />
+      <item href="build.html" name="build" />
+      <item href="git-remove-submodules.html" name="git-remove-submodules" />
+      <item href="tips.html" name="tips" />
     </menu>    
   </body>
 </project>
