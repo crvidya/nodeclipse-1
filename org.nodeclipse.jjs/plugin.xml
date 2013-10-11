@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension 
+          point="org.eclipse.debug.core.launchConfigurationTypes"> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.jjs.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.jjs.launch.LaunchConfigurationType" 
+            modes="run, debug" 
+            name="JJS Application">
+        </launchConfigurationType> 
+    </extension>
+    <extension
+          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.jjs.launch.LaunchConfigurationType"   
+             icon= "icons/java_16x16.png"   
+             id= "org.nodeclipse.jjs.launch.LaunchConfigurationTypeImage" >   
+       </launchConfigurationTypeImage>   
+    </extension>
+    <!-- jjs run/debug -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.jjs.launch.LaunchShortcut"   
+             icon= "icons/java_16x16.png"
+             id= "org.nodeclipse.debug.launch.LaunchShortcut"   
+             label= "JJS Application"   
+             modes= "run, debug" >   
+          <configurationType
+                id= "org.nodeclipse.jjs.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.js" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   
+
+   <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.jjs.launch.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.jjs.launch.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.jjs.launch.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+</plugin>

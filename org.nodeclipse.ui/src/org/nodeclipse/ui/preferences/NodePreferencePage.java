@@ -29,8 +29,12 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private StringFieldEditor coffeeCompileOutputFolder;
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
-    private BooleanFieldEditor nodeclipseConsoleEnabled;
+    
    //private FileFieldEditor completionsPath;
+    private FileFieldEditor jjsPath;
+    private BooleanFieldEditor jjsJustJJS;
+    
+    private BooleanFieldEditor nodeclipseConsoleEnabled;
     
     public NodePreferencePage() {
         super(GRID);
@@ -95,6 +99,16 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 //        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
 //        addField(completionsPath);
  
+        //-- JJS ---
+
+        jjsPath = new FileFieldEditor(PreferenceConstants.JJS_PATH, "`jjs` path:", getFieldEditorParent());
+        addField(jjsPath);
+
+        jjsJustJJS = new BooleanFieldEditor(PreferenceConstants.JJS_JUST_JJS, 
+        		"just `jjs` (find `jjs` on PATH. Useful when there are 2 or more JDK 8 instances)", getFieldEditorParent());
+        addField(jjsJustJJS);
+        
+        
         nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
         		"enable Nodeclipse Console", getFieldEditorParent());
         addField(nodeclipseConsoleEnabled);
