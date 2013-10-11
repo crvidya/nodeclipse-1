@@ -29,7 +29,7 @@ in 2 classes: [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/n
 
 org.nodeclipse.debug\src\org\nodeclipse\debug\launch\LaunchConfigurationDelegate.java
 
-NodeclispeDev console is in .ui package,
+Nodeclipee Console is in .ui package,
 no need for 
 
 	Import-Package: org.eclipse.ui.console
