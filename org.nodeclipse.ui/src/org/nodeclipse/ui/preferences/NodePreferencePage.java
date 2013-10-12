@@ -24,13 +24,14 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private FileFieldEditor nodeMonitorPath;
     private FileFieldEditor expressPath;
     private FileFieldEditor coffeePath;
-    private BooleanFieldEditor coffeeJustCoffee;
+    //private BooleanFieldEditor coffeeJustCoffee;
     private StringFieldEditor coffeeCompileOptions;
     private StringFieldEditor coffeeCompileOutputFolder;
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
     
-   //private FileFieldEditor completionsPath;
+    //private FileFieldEditor completionsPath;
+    private FileFieldEditor phanthomjsPath;
     private FileFieldEditor jjsPath;
     private BooleanFieldEditor jjsJustJJS;
     
@@ -99,7 +100,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 //        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
 //        addField(completionsPath);
  
-        //-- JJS ---
+        phanthomjsPath = new FileFieldEditor(PreferenceConstants.PHANTOMJS_PATH, "Phanthomjs path:", getFieldEditorParent());
+        addField(phanthomjsPath);
 
         jjsPath = new FileFieldEditor(PreferenceConstants.JJS_PATH, "`jjs` path:", getFieldEditorParent());
         addField(jjsPath);

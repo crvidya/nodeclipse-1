@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\weibl\git\NTS\nodeclipse-1\org.nodeclipse.help\contents\.phantomjs.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<p>Title: Nodeclipse Help - Phanthom.js</p> 
+<h2> <a name="phantomjs" class="anchor" href="..md.html#phantomjs"><span class="octicon octicon-link"></span></a>PhantomJS</h2> 
+<p>PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.</p> 
+<p>Web page <a href="http://phantomjs.org">http://phantomjs.org</a> </p> 
+<p>Sources <a href="https://github.com/ariya/phantomjs">https://github.com/ariya/phantomjs</a><br /> Examples <a href="https://github.com/ariya/phantomjs/wiki/Examples">https://github.com/ariya/phantomjs/wiki/Examples</a> are also included into distribution. </p> 
+<h3> <a name="render-multiple-urls-to-file" class="anchor" href="..md.html#render-multiple-urls-to-file"><span class="octicon octicon-link"></span></a>Render Multiple URLs to file</h3> 
+<div class="highlight highlight-javascript">
+ <pre><span class="c1">// Render Multiple URLs to file</span>
+
+<span class="kd">var</span> <span class="nx">RenderUrlsToFile</span><span class="p">,</span> <span class="nx">arrayOfUrls</span><span class="p">,</span> <span class="nx">system</span><span class="p">;</span>
+
+<span class="nx">system</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm">Render given urls</span>
+<span class="cm">@param array of URLs to render</span>
+<span class="cm">@param callbackPerUrl Function called after finishing each URL, including the last URL</span>
+<span class="cm">@param callbackFinal Function called after finishing everything</span>
+<span class="cm">*/</span>
+<span class="nx">RenderUrlsToFile</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">urls</span><span class="p">,</span> <span class="nx">callbackPerUrl</span><span class="p">,</span> <span class="nx">callbackFinal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">getFilename</span><span class="p">,</span> <span class="nx">next</span><span class="p">,</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">retrieve</span><span class="p">,</span> <span class="nx">urlIndex</span><span class="p">,</span> <span class="nx">webpage</span><span class="p">;</span>
+    <span class="nx">urlIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">webpage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;webpage&quot;</span><span class="p">);</span>
+    <span class="nx">page</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">getFilename</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;rendermulti-&quot;</span> <span class="o">+</span> <span class="nx">urlIndex</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">next</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">page</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="nx">callbackPerUrl</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">retrieve</span><span class="p">();</span>
+    <span class="p">};</span>
+    <span class="nx">retrieve</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">url</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">urls</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">url</span> <span class="o">=</span> <span class="nx">urls</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+            <span class="nx">urlIndex</span><span class="o">++</span><span class="p">;</span>
+            <span class="nx">page</span> <span class="o">=</span> <span class="nx">webpage</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+            <span class="nx">page</span><span class="p">.</span><span class="nx">viewportSize</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">width</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+                <span class="nx">height</span><span class="o">:</span> <span class="mi">600</span>
+            <span class="p">};</span>
+            <span class="nx">page</span><span class="p">.</span><span class="nx">settings</span><span class="p">.</span><span class="nx">userAgent</span> <span class="o">=</span> <span class="s2">&quot;Phantom.js bot&quot;</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span> <span class="o">+</span> <span class="nx">url</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">file</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="o">=</span> <span class="nx">getFilename</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="s2">&quot;success&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">((</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+                        <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
+                    <span class="p">}),</span> <span class="mi">200</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">callbackFinal</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">retrieve</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nx">arrayOfUrls</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">arrayOfUrls</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Usage: phantomjs render_multi_url.js [domain.name1, domain.name2, ...]&quot;</span><span class="p">);</span>
+    <span class="nx">arrayOfUrls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;www.google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;www.bbc.co.uk&quot;</span><span class="p">,</span> <span class="s2">&quot;www.phantomjs.org&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nx">RenderUrlsToFile</span><span class="p">(</span><span class="nx">arrayOfUrls</span><span class="p">,</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">status</span> <span class="o">!==</span> <span class="s2">&quot;success&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Unable to render '&quot;</span> <span class="o">+</span> <span class="nx">url</span> <span class="o">+</span> <span class="s2">&quot;'&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Rendered '&quot;</span> <span class="o">+</span> <span class="nx">url</span> <span class="o">+</span> <span class="s2">&quot;' at '&quot;</span> <span class="o">+</span> <span class="nx">file</span> <span class="o">+</span> <span class="s2">&quot;'&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+<span class="p">});</span>
+</pre>
+</div>
+</body>
+</html>

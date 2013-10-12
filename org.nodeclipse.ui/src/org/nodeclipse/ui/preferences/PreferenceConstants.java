@@ -25,7 +25,7 @@ public class PreferenceConstants {
 	public static final String TYPESCRIPT_COMPILER_OPTIONS = "typescript_compiler_options";
 	public static final String COMPLETIONS_JSON_PATH = "completionsjson_path";
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.ui.preferences.NodePreferencePage";
-	//-- JJS ---
+	public static final String PHANTOMJS_PATH = "phantomjs_path";
 	public static final String JJS_PATH = "jjs_path";
 	public static final String JJS_JUST_JJS = "jjs_just_jjs";
 	public static final String NODECLIPSE_CONSOLE_ENABLED = "nodeclipse_console_enabled";
