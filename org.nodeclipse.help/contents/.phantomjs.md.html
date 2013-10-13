@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\weibl\git\NTS\nodeclipse-1\org.nodeclipse.help\contents\.phantomjs.md.html</title>
+<title>C:\Users\pverest\git\nodeclipse-07891\org.nodeclipse.help\contents\.phantomjs.md.html</title>
 
 
 <style type="text/css">
@@ -75,6 +75,27 @@ function setDocumentScrollTop(ypos)
 <p>PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.</p> 
 <p>Web page <a href="http://phantomjs.org">http://phantomjs.org</a> </p> 
 <p>Sources <a href="https://github.com/ariya/phantomjs">https://github.com/ariya/phantomjs</a><br /> Examples <a href="https://github.com/ariya/phantomjs/wiki/Examples">https://github.com/ariya/phantomjs/wiki/Examples</a> are also included into distribution. </p> 
+<p>APIs <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#module-api">https://github.com/ariya/phantomjs/wiki/API-Reference#module-api</a></p> 
+<p><a name="module-api"></a></p> 
+<h1> <a name="module-api" class="anchor" href="..md.html#module-api"><span class="octicon octicon-link"></span></a>Module API</h1> 
+<p>The Module API is modeled after <a href="http://wiki.commonjs.org/wiki/Modules/1.1.1">CommonJS Modules</a> is available. Up through PhantomJS 1.6, the only supported modules that were built in:</p> 
+<ul> 
+ <li><a href="https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage">webpage</a></li> 
+ <li><a href="https://github.com/ariya/phantomjs/wiki/API-Reference-System">system</a></li> 
+ <li><a href="https://github.com/ariya/phantomjs/wiki/API-Reference-FileSystem">fs</a></li> 
+ <li><a href="https://github.com/ariya/phantomjs/wiki/API-Reference-WebServer">webserver</a></li> 
+ <li><a href="https://github.com/ariya/phantomjs/wiki/API-Reference-ChildProcess">child_process</a></li> 
+</ul>
+<p>As of PhantomJS 1.7, however, users can reference their own modules from the file system using <a href="..md.html#require"><code>require</code></a> as well.</p> 
+<p><a name="require"></a></p> 
+<h2> <a name="function-require" class="anchor" href="..md.html#function-require"><span class="octicon octicon-link"></span></a>Function: <code>require</code> </h2> 
+<p>To support the Module API, a <code>require</code> function modeled after <a href="http://wiki.commonjs.org/wiki/Modules/1.1.1#Require">CommonJS Modules' Require</a> is globally available. General usage:</p> 
+<div class="highlight highlight-js">
+ <pre><span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webserver'</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">Awesome</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'MyAwesomeModule'</span><span class="p">);</span>
+<span class="nx">Awesome</span><span class="p">.</span><span class="k">do</span><span class="p">();</span>
+</pre>
+</div> 
 <h3> <a name="render-multiple-urls-to-file" class="anchor" href="..md.html#render-multiple-urls-to-file"><span class="octicon octicon-link"></span></a>Render Multiple URLs to file</h3> 
 <div class="highlight highlight-javascript">
  <pre><span class="c1">// Render Multiple URLs to file</span>
@@ -150,6 +171,48 @@ function setDocumentScrollTop(ypos)
 <span class="p">}),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
 <span class="p">});</span>
+</pre>
+</div> 
+<h3> <a name="command-line-options" class="anchor" href="..md.html#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h3> 
+<div class="highlight highlight-txt">
+ <pre><span class="err">D:\Progs\phantomjs-1.9.2-windows&gt;phantomjs</span> <span class="err">-h</span>
+<span class="err">Usage:</span>
+   <span class="err">phantomjs</span> <span class="err">[switchs]</span> <span class="err">[options]</span> <span class="err">[script]</span> <span class="err">[argument</span> <span class="err">[argument</span> <span class="err">[...]]]</span>
+
+<span class="err">Options:</span>
+  <span class="err">--cookies-file=&lt;val&gt;</span>                 <span class="err">Sets</span> <span class="err">the</span> <span class="err">file</span> <span class="err">name</span> <span class="err">to</span> <span class="err">store</span> <span class="err">the</span> <span class="err">persistent</span> <span class="err">cookies</span>
+  <span class="err">--config=&lt;val&gt;</span>                       <span class="err">Specifies</span> <span class="err">JSON-formatted</span> <span class="err">configuration</span> <span class="err">file</span>
+  <span class="err">--debug=&lt;val&gt;</span>                        <span class="err">Prints</span> <span class="err">additional</span> <span class="err">warning</span> <span class="err">and</span> <span class="err">debug</span> <span class="err">message:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
+  <span class="err">--disk-cache=&lt;val&gt;</span>                   <span class="err">Enables</span> <span class="err">disk</span> <span class="err">cache:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
+  <span class="err">--ignore-ssl-errors=&lt;val&gt;</span>            <span class="err">Ignores</span> <span class="err">SSL</span> <span class="nb">errors</span> <span class="p">(</span><span class="s">expired/self-signed</span> <span class="s">certificate</span> <span class="s">errors</span><span class="p">)</span><span class="err">:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
+  <span class="err">--load-images=&lt;val&gt;</span>                  <span class="err">Loads</span> <span class="err">all</span> <span class="err">inlined</span> <span class="err">images:</span> <span class="err">'true'</span> <span class="err">(default)</span> <span class="err">or</span> <span class="err">'false'</span>
+  <span class="err">--local-storage-path=&lt;val&gt;</span>           <span class="err">Specifies</span> <span class="err">the</span> <span class="err">location</span> <span class="err">for</span> <span class="err">offline</span> <span class="err">local</span> <span class="err">storage</span>
+  <span class="err">--local-storage-quota=&lt;val&gt;</span>          <span class="err">Sets</span> <span class="err">the</span> <span class="err">maximum</span> <span class="err">size</span> <span class="err">of</span> <span class="err">the</span> <span class="err">offline</span> <span class="err">local</span> <span class="nb">storage</span> <span class="p">(</span><span class="s">in</span> <span class="s">KB</span><span class="p">)</span>
+  <span class="err">--local-to-remote-url-access=&lt;val&gt;</span>   <span class="err">Allows</span> <span class="err">local</span> <span class="err">content</span> <span class="err">to</span> <span class="err">access</span> <span class="err">remote</span> <span class="err">URL:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
+  <span class="err">--max-disk-cache-size=&lt;val&gt;</span>          <span class="err">Limits</span> <span class="err">the</span> <span class="err">size</span> <span class="err">of</span> <span class="err">the</span> <span class="err">disk</span> <span class="nb">cache</span> <span class="p">(</span><span class="s">in</span> <span class="s">KB</span><span class="p">)</span>
+  <span class="err">--output-encoding=&lt;val&gt;</span>              <span class="err">Sets</span> <span class="err">the</span> <span class="err">encoding</span> <span class="err">for</span> <span class="err">the</span> <span class="err">terminal</span> <span class="err">output,</span> <span class="err">default</span> <span class="err">is</span> <span class="err">'utf8'</span>
+  <span class="err">--remote-debugger-port=&lt;val&gt;</span>         <span class="err">Starts</span> <span class="err">the</span> <span class="err">script</span> <span class="err">in</span> <span class="err">a</span> <span class="err">debug</span> <span class="err">harness</span> <span class="err">and</span> <span class="err">listens</span> <span class="err">on</span> <span class="err">the</span> <span class="err">specified</span> <span class="err">port</span>
+  <span class="err">--remote-debugger-autorun=&lt;val&gt;</span>      <span class="err">Runs</span> <span class="err">the</span> <span class="err">script</span> <span class="err">in</span> <span class="err">the</span> <span class="err">debugger</span> <span class="err">immediately:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
+  <span class="err">--proxy=&lt;val&gt;</span>                        <span class="err">Sets</span> <span class="err">the</span> <span class="err">proxy</span> <span class="err">server,</span> <span class="err">e.g.</span> <span class="err">'--proxy=http://proxy.company.com:8080'</span>
+  <span class="err">--proxy-auth=&lt;val&gt;</span>                   <span class="err">Provides</span> <span class="err">authentication</span> <span class="err">information</span> <span class="err">for</span> <span class="err">the</span> <span class="err">proxy,</span> <span class="err">e.g.</span> <span class="err">''-proxy-auth=username:password'</span>
+  <span class="err">--proxy-type=&lt;val&gt;</span>                   <span class="err">Specifies</span> <span class="err">the</span> <span class="err">proxy</span> <span class="err">type,</span> <span class="err">'http'</span> <span class="err">(default),</span> <span class="err">'none'</span> <span class="err">(disable</span> <span class="err">completely),</span> <span class="err">or</span> <span class="err">'socks5'</span>
+  <span class="err">--script-encoding=&lt;val&gt;</span>              <span class="err">Sets</span> <span class="err">the</span> <span class="err">encoding</span> <span class="err">used</span> <span class="err">for</span> <span class="err">the</span> <span class="err">starting</span> <span class="err">script,</span> <span class="err">default</span> <span class="err">is</span> <span class="err">'utf8'</span>
+  <span class="err">--web-security=&lt;val&gt;</span>                 <span class="err">Enables</span> <span class="err">web</span> <span class="err">security,</span> <span class="err">'true'</span> <span class="err">(default)</span> <span class="err">or</span> <span class="err">'false'</span>
+  <span class="err">--ssl-protocol=&lt;val&gt;</span>                 <span class="err">Sets</span> <span class="err">the</span> <span class="err">SSL</span> <span class="nb">protocol</span> <span class="p">(</span><span class="s">supported</span> <span class="s">protocols:</span> <span class="s">'SSLv3'</span> <span class="p">(</span><span class="s">default</span><span class="p">)</span><span class="s">,</span> <span class="s">'SSLv2',</span> <span class="s">'TLSv1',</span> <span class="s">'any'</span><span class="p">)</span>
+  <span class="err">--ssl-certificates-path=&lt;val&gt;</span>        <span class="err">Sets</span> <span class="err">the</span> <span class="err">location</span> <span class="err">for</span> <span class="err">custom</span> <span class="err">CA</span> <span class="nb">certificates</span> <span class="p">(</span><span class="s">if</span> <span class="s">none</span> <span class="s">set,</span> <span class="s">uses</span> <span class="s">system</span> <span class="s">default</span><span class="p">)</span>
+  <span class="err">--webdriver=&lt;val&gt;</span>                    <span class="err">Starts</span> <span class="err">in</span> <span class="err">'Remote</span> <span class="err">WebDriver</span> <span class="err">mode'</span> <span class="err">(embedded</span> <span class="err">GhostDriver):</span> <span class="err">'[[&lt;IP&gt;:]&lt;PORT&gt;]'</span> <span class="err">(default</span> <span class="err">'127.0.0.1:8910')</span>
+  <span class="err">--webdriver-logfile=&lt;val&gt;</span>            <span class="err">File</span> <span class="err">where</span> <span class="err">to</span> <span class="err">write</span> <span class="err">the</span> <span class="err">WebDriver's</span> <span class="nb">Log</span> <span class="p">(</span><span class="s">default</span> <span class="s">'none'</span><span class="p">)</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
+  <span class="err">--webdriver-loglevel=&lt;val&gt;</span>           <span class="err">WebDriver</span> <span class="err">Logging</span> <span class="err">Level:</span> <span class="err">(supported:</span> <span class="err">'ERROR',</span> <span class="err">'WARN',</span> <span class="err">'INFO',</span> <span class="err">'DEBUG')</span> <span class="err">(default</span> <span class="err">'INFO')</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
+  <span class="err">--webdriver-selenium-grid-hub=&lt;val&gt;</span>  <span class="err">URL</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Selenium</span> <span class="err">Grid</span> <span class="err">HUB:</span> <span class="err">'URL_TO_HUB'</span> <span class="err">(default</span> <span class="err">'none')</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
+  <span class="err">-w,--wd</span>                              <span class="err">Equivalent</span> <span class="err">to</span> <span class="err">'--webdriver'</span> <span class="err">option</span> <span class="err">above</span>
+  <span class="err">-h,--help</span>                            <span class="err">Shows</span> <span class="err">this</span> <span class="err">message</span> <span class="err">and</span> <span class="err">quits</span>
+  <span class="err">-v,--version</span>                         <span class="err">Prints</span> <span class="err">out</span> <span class="err">PhantomJS</span> <span class="err">version</span>
+
+<span class="err">Any</span> <span class="err">of</span> <span class="err">the</span> <span class="err">options</span> <span class="err">that</span> <span class="err">accept</span> <span class="err">boolean</span> <span class="nb">values</span> <span class="p">(</span><span class="s">'true'/'false'</span><span class="p">)</span> <span class="err">can</span> <span class="err">also</span> <span class="err">accept</span> <span class="err">'yes'/'no'.</span>
+
+<span class="err">Without</span> <span class="err">any</span> <span class="err">argument,</span> <span class="err">PhantomJS</span> <span class="err">will</span> <span class="err">launch</span> <span class="err">in</span> <span class="err">interactive</span> <span class="nb">mode</span> <span class="p">(</span><span class="s">REPL</span><span class="p">)</span><span class="err">.</span>
+
+<span class="err">Documentation</span> <span class="err">can</span> <span class="err">be</span> <span class="err">found</span> <span class="err">at</span> <span class="err">the</span> <span class="err">web</span> <span class="err">site,</span> <span class="err">http://phantomjs.org.</span>
 </pre>
 </div>
 </body>

@@ -18,3 +18,4 @@ chromedevtools/utils/org.chromium.sdk.tests.system.runner/bin
 .*.md.html
 target/
 *.settings/
+/*.error
