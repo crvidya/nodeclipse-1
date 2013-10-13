@@ -3,17 +3,25 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<parent>
 		<groupId>org.nodeclipse.nodeclipse-1</groupId>
 		<artifactId>parent</artifactId>
 		<version>0.7.0-SNAPSHOT</version>
 	</parent>
-	 
-	<artifactId>org.nodeclipse.jjs</artifactId>
+
+	<artifactId>org.nodeclipse.phantomjs</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>org.nodeclipse.jjs</name>
-	<description>org.nodeclipse.jjs</description>
+	<name>org.nodeclipse.phantomjs</name>
+	<description>
+	Support for PhantomJS
+	
+	http://phantomjs.org/
+	
+	PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards:
+	DOM handling, CSS selector, JSON, Canvas, and SVG.
+	
+	</description>
 </project>
 

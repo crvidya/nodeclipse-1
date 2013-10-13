@@ -10,7 +10,7 @@
    </description>
 
    <copyright url="http://www.nodeclipse.org/">
-      Copyright@Nodeclipse
+      Copyright (c) 2012, 2013 The Nodeclipse Authors. All rights reserved.
    </copyright>
 
    <license url="http://www.apache.org/licenses/LICENSE-2.0">
@@ -247,4 +247,11 @@ http://www.apache.org/licenses/
          version="0.0.0"
          unpack="false"/>
          
+   <plugin
+         id="org.nodeclipse.phantomjs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
