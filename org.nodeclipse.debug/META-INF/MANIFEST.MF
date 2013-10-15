@@ -18,3 +18,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Nodeclipse organization
+Export-Package: org.nodeclipse.debug.launch,
+ org.nodeclipse.debug.util

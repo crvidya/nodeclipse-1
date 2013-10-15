@@ -116,6 +116,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 			store.setDefault(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, typescript_compiler_path);
 		}
 		
+		store.setDefault(PreferenceConstants.PHANTOMJS_DEBUG_PORT, "6060"); // is free as on http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_ports
+		
 		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true); 
 	}
 	

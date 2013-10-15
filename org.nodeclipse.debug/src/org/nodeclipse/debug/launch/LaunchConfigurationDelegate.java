@@ -22,15 +22,14 @@ import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
@@ -65,7 +64,7 @@ public class LaunchConfigurationDelegate implements
 		if (allowedMany){//@since 0.7
 			if ( isDebugMode  
 				&& (nodeProcess != null && !nodeProcess.isTerminated()) ) {
-				showErrorDialog("Only 1 node process can be debugged in 1 Eclipse instance!\n"+
+				showErrorDialog("Only 1 node process can be debugged in 1 Eclipse instance!\n\n"+
 				"Open other Eclipse with different node debug port configurred. ");
 				return;
 			}
@@ -92,7 +91,7 @@ public class LaunchConfigurationDelegate implements
 			File nodeFile = new File(nodePath);
 			if(!nodeFile.exists()){
 				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-				showPreferencesDialog("Node.js runtime is not correctly configured.\n\n"
+				Dialogs.showPreferencesDialog("Node.js runtime is not correctly configured.\n\n"
 						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
 				return;
 			}			
@@ -143,7 +142,7 @@ public class LaunchConfigurationDelegate implements
 			File nodeMonitorFile = new File(nodeMonitorPath);
 			if(!nodeMonitorFile.exists()){
 				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-				showPreferencesDialog("Node.js monitor is not correctly configured.\n"
+				Dialogs.showPreferencesDialog("Node.js monitor is not correctly configured.\n"
 						+ "Select path to installed util: forever, node-dev, nodemon or superviser.\n\n"
 						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location");
 				return;
@@ -170,8 +169,7 @@ public class LaunchConfigurationDelegate implements
 			cmdLine.add(preferenceStore.getString(PreferenceConstants.TYPESCRIPT_COMPILER_PATH));
 		}
 		
-		String filePath = 
-				ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
+		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
 		// path is relative, so can not found it.
 		cmdLine.add(filePath);
 
@@ -205,9 +203,7 @@ public class LaunchConfigurationDelegate implements
 			envp[idx++] = key + "=" + value;
 		}
 		
-		for(String s : cmdLine){
-			NodeclipseConsole.write(s+" ");
-		}
+		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
 		
 		String[] cmds = {};
@@ -215,9 +211,10 @@ public class LaunchConfigurationDelegate implements
 		// Launch a process to debug.eg,
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
 		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE);
-		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
+		if (isDebugMode) {
 			if(!process.isTerminated()) { 
-				NodeDebugUtil.launch(mode, launch, monitor);
+				int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
+				NodeDebugUtil.launch(mode, launch, monitor, nodeDebugPort);
 			}
 		}
 		
@@ -239,24 +236,6 @@ public class LaunchConfigurationDelegate implements
 				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, message, 
 						MessageDialog.ERROR, new String[] { "OK" }, 0);
 				dialog.open();
-			}
-		});
-	}
-	
-	private void showPreferencesDialog(final String message) {
-		Display.getDefault().syncExec(new Runnable() {
-			public void run() {
-				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-
-				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, message, 
-						MessageDialog.ERROR, new String[] { "Open Prefrences ...", "Cancel" }, 0);
-				int result = dialog.open();
-				if (result == 0) {
-					PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(shell,
-						PreferenceConstants.PREFERENCES_PAGE, null, null);
-					if (pref != null)
-						pref.open();
-				}
 			}
 		});
 	}

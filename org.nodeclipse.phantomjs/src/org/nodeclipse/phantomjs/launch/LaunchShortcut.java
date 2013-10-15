@@ -74,7 +74,8 @@ public class LaunchShortcut implements ILaunchShortcut {
         // check for an existing launch config for the file
         String path = file.getFullPath().toString();
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
-        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType("LAUNCH_CONFIGURATION_TYPE_ID"); //Constants.
+        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType("org.nodeclipse.phantomjs.launch.LaunchConfigurationType"); 
+        //Constants."LAUNCH_CONFIGURATION_TYPE_ID"
         ILaunchConfiguration configuration = createLaunchConfiguration(type, path, file);
         DebugUITools.launch(configuration, mode);
         // then execution goes in LaunchConfigurationDelegate.java launch() method
@@ -110,6 +111,6 @@ public class LaunchShortcut implements ILaunchShortcut {
     }
 
 	protected void setMoreAttributes(ILaunchConfigurationWorkingCopy workingCopy) {
-		NodeclipseConsole.write(this.getClass().getName()+"\n");
+		NodeclipseConsole.write(this.getClass().getCanonicalName()+"\n");
 	}
 }

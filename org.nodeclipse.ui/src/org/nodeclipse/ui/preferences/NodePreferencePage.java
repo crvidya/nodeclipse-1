@@ -32,6 +32,9 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     
     //private FileFieldEditor completionsPath;
     private FileFieldEditor phanthomjsPath;
+    private BooleanFieldEditor phanthomjsDebugAutorun;
+    private IntegerFieldEditor phanthomjsDebugPort;
+    
     private FileFieldEditor jjsPath;
     private BooleanFieldEditor jjsJustJJS;
     
@@ -40,7 +43,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     public NodePreferencePage() {
         super(GRID);
         setPreferenceStore(Activator.getDefault().getPreferenceStore());
-        setDescription("Node Settings");
+        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, jjs settings");
     }
 
     @Override
@@ -99,10 +102,18 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
 //        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
 //        addField(completionsPath);
+        
  
-        phanthomjsPath = new FileFieldEditor(PreferenceConstants.PHANTOMJS_PATH, "Phanthomjs path:", getFieldEditorParent());
+        phanthomjsPath = new FileFieldEditor(PreferenceConstants.PHANTOMJS_PATH, "PhanthomJS path:", getFieldEditorParent());
         addField(phanthomjsPath);
 
+        phanthomjsDebugPort = new IntegerFieldEditor(PreferenceConstants.PHANTOMJS_DEBUG_PORT, "PhantomJS debug port:", getFieldEditorParent());
+        addField(phanthomjsDebugPort);
+
+        phanthomjsDebugAutorun = new BooleanFieldEditor(PreferenceConstants.PHANTOMJS_DEBUG_AUTORUN, "PhantomJS debug autorun", getFieldEditorParent());
+        addField(phanthomjsDebugAutorun);
+        
+        
         jjsPath = new FileFieldEditor(PreferenceConstants.JJS_PATH, "`jjs` path:", getFieldEditorParent());
         addField(jjsPath);
 
