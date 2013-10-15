@@ -7,7 +7,7 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
 
 
 /**
- * Using "Run"-->"Run Configurations"--> "New Configuration"-- > "Run" willlead
+ * Using "Run"-->"Run Configurations"--> "New Configuration"-- > "Run" will lead
  * here.
  **/
 public class LaunchConfigurationTabGroup extends AbstractLaunchConfigurationTabGroup {
