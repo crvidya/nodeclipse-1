@@ -26,8 +26,11 @@ Nodeclipse is free open-source project that grows with your contributions.
 - [JavaScript](.javascript.md.html)
 - [CoffeeScript](.coffeescript.md.html)
 - [TypeeScript](.typescript.md.html)
+- [node_redis](.node_redis.md.html)
 - [Plugins](.plugins.md.html)
 - [FAQ](.FAQ.md.html)
+- [PhantomJS](.phantomjs.md.html)
+- [Nashorn](.nashorn.md.html)
 
 ### Contribute
 

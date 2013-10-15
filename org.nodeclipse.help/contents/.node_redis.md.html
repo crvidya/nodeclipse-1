@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\weibl\git\NTS\nodeclipse-1\org.nodeclipse.help\contents\.node_redis.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a name="redis" class="anchor" href="..md.html#redis"><span class="octicon octicon-link"></span></a>Redis</h1> 
+<p><a href="http://redis.io/">Redis</a> is an open-source, networked, in-memory, key-value data store with optional durability.</p> 
+<h2> <a name="node_redis" class="anchor" href="..md.html#node_redis"><span class="octicon octicon-link"></span></a>node_redis</h2> 
+<p><a href="https://github.com/mranney/node_redis">node_redis</a> is a node.js redis client.</p> 
+<p>Create new Node.js project, then run <code>npm install redis --save</code> in Terminal.</p> 
+<p><a href="images/Redis-project.PNG" target="_blank"><img src="images/Redis-project.PNG" alt="" style="max-width:100%;" /></a></p> 
+<p>Hint: drap&amp;drop redis-cli executable into Eclipse project to create comfortable link (see above).</p> 
+<p>Example</p> 
+<div class="highlight highlight-javascript">
+ <pre>    <span class="kd">var</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;redis&quot;</span><span class="p">),</span>
+        <span class="nx">client</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">();</span>
+
+    <span class="c1">// if you'd like to select database 3, instead of 0 (default), call</span>
+    <span class="c1">// client.select(3, function() { /* ... */ });</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;string key&quot;</span><span class="p">,</span> <span class="s2">&quot;string val&quot;</span><span class="p">,</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">print</span><span class="p">);</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">hset</span><span class="p">(</span><span class="s2">&quot;hash key&quot;</span><span class="p">,</span> <span class="s2">&quot;hashtest 1&quot;</span><span class="p">,</span> <span class="s2">&quot;some value&quot;</span><span class="p">,</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">print</span><span class="p">);</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">hset</span><span class="p">([</span><span class="s2">&quot;hash key&quot;</span><span class="p">,</span> <span class="s2">&quot;hashtest 2&quot;</span><span class="p">,</span> <span class="s2">&quot;some other value&quot;</span><span class="p">],</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">print</span><span class="p">);</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">hkeys</span><span class="p">(</span><span class="s2">&quot;hash key&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">replies</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">replies</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="s2">&quot; replies:&quot;</span><span class="p">);</span>
+        <span class="nx">replies</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">reply</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="nx">reply</span><span class="p">);</span>
+        <span class="p">});</span>
+        <span class="nx">client</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
+    <span class="p">});</span>
+</pre>
+</div> 
+<h3> <a name="contribute" class="anchor" href="..md.html#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3> 
+<p><a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/node_redis.md" target="_blank">Edit online on GitHub</a></p>
+</body>
+</html>

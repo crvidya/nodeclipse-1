@@ -14,9 +14,11 @@
 	<topic label="JavaScript"  href="contents/.javascript.md.html"/>
 	<topic label="CoffeeScript"  href="contents/.coffeescript.md.html"/>
 	<topic label="TypeScript"  href="contents/.typescript.md.html"/>
+	<topic label="Nashorn"  href="contents/.nashorn.md.html"/>
+	<topic label="node_redis"  href="contents/.node_redis.md.html"/>
 	<topic label="Plugins"  href="contents/.plugins.md.html"/>
 	<topic label="FAQ"  href="contents/.FAQ.md.html"/>
-	<topic label="Phantomjs"  href="contents/.phantomjs.md.html"/>
+	<topic label="PhantomJS"  href="contents/.phantomjs.md.html"/>
 	<topic label="Nashorn"  href="contents/.nashorn.md.html"/>
 	<!-- examples are below 
 	<topic label="Main Topic"  href="html/maintopic.html"/>

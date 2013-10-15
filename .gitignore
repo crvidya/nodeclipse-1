@@ -15,7 +15,7 @@ chromedevtools/utils/org.chromium.sdk.tests.system/bin
 chromedevtools/utils/org.chromium.sdk.tests.system.runner/bin
 *.DS_Store
 /.project
-.*.md.html
+/.*.md.html
 target/
 *.settings/
 /*.error
