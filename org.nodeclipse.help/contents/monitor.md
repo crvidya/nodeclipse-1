@@ -13,8 +13,10 @@ Configure your source file monitor of your choice:
 - `node-dev foo.js`
 - `supervisor [options] <program>`
 
+Below are some remarks about GitHub stars:
+
 - [forever](https://github.com/nodejitsu/forever) - 2700 stars
-- node-dev https://github.com/fgnass/node-dev - 380 stars (doesn't require any configuration)
+- [node-dev](https://github.com/fgnass/node-dev) - 380 stars (doesn't require any configuration)
 - [nodemon](https://github.com/remy/nodemon) 1500 stars - support running .coffee
 - [supervisor](https://github.com/isaacs/node-supervisor) 1100 stars 
 
