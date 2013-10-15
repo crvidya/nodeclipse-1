@@ -13,6 +13,12 @@ Examples <https://github.com/ariya/phantomjs/wiki/Examples> are also included in
 
 APIs <https://github.com/ariya/phantomjs/wiki/API-Reference#module-api>
 
+## PhantomJS in Nodeclipse
+
+As of v0.7 there is no special project type. (e.g. you can create Node.js project
+ to use JSHint validation and `npm` to get some ComonJS moduules)
+Use right-click <kbd>Run As -> PhantomJS Script</kbd> . 
+
 <a name="module-api" />
 # Module API #
 The Module API is modeled after [CommonJS Modules](http://wiki.commonjs.org/wiki/Modules/1.1.1) is available. Up through PhantomJS 1.6, the only supported modules that were built in:

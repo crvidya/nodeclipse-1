@@ -1,4 +1,4 @@
-Title:  Nodeclipse Online Help - CoffeeScript  
+
 
 ### Hello world server in CoffeeScript
 

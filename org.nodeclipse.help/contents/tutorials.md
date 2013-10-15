@@ -1,4 +1,4 @@
-Title:  Nodeclipse Help - Node.js Tutorials
+
 
 ### List of Node.js tutorials
 
@@ -30,7 +30,7 @@ chatServer.listen(9000)
 
 then run `telnet` to connect:
 
-> $ telnet 127.0.0.1 9000
+> $ `telnet 127.0.0.1 9000`
 
 and then by and by you get
 

@@ -4,6 +4,14 @@
 
 [Redis](http://redis.io/) is an open-source, networked, in-memory, key-value data store with optional durability.
 
+Redis as Node.js also runs single-threaded.
+
+Some helpful commands:
+
+- `SET key` and `GET key`
+- `KEYS *` list all keys. Not for production environment.
+- `EXISTS key`
+
 ## node_redis
 
 [node_redis](https://github.com/mranney/node_redis)  is a node.js redis client.
