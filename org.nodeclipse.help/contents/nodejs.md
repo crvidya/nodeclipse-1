@@ -75,3 +75,7 @@ Add following snippet to project `.project` file to reference Node.js sources.
 Node.js modules (in `node_modules`) usually have `README.md` file.
 To see `README.md` as it looks like on GitHub, right-click it and select `Show in GFM view`.
 Check also "Markdown" and "Github Flavored Markdown (GFM)" help pages.
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/nodejs.md" target="_blank">Edit online on GitHub</a>

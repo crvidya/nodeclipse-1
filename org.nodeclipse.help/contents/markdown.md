@@ -12,3 +12,8 @@ Home page is <http://daringfireball.net/projects/markdown/>
 
 Markdown is default on <stackoverflow.com> and <github.com>
  ( see [Github Flavored Markdown (GFM)](.github-flavored-markdown.md.html))
+ 
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/markdown.md" target="_blank">Edit online on GitHub</a>
+ 

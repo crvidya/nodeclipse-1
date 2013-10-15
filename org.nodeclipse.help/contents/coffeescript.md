@@ -65,4 +65,7 @@ It has XText dependency, that can usually be automatically resolved by Eclipse (
 for other Eclipse distributions use [CoffeeScript Editor quick installer](http://marketplace.eclipse.org/content/coffeescript-editor-quick-installer) 
 or install prior from <http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/>
 
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/coffeescript.md" target="_blank">Edit online on GitHub</a>
 	 

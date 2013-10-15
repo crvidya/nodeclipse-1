@@ -66,4 +66,8 @@
 	
 	C:\Program Files\Java\jdk1.8.0\bin>jrunscript.exe  -q
 	Language ECMAScript ECMA - 262 Edition 5.1 implemention "Oracle Nashorn" 1.8.0
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/nashorn.md" target="_blank">Edit online on GitHub</a>
 	

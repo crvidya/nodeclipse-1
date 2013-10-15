@@ -42,3 +42,7 @@ require("./app.js");
 
 Check [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
 for launching Node.js logic.
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/run.md" target="_blank">Edit online on GitHub</a>

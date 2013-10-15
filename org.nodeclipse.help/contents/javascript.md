@@ -21,3 +21,6 @@ Check JavaScript Development Guide in Help.
 
 Press <kbd>Ctrl+Shift+F</kbd> to format.
 
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/javascript.md" target="_blank">Edit online on GitHub</a>

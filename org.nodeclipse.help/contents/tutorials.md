@@ -143,3 +143,7 @@ var req = http.request(opts, function(res) {
 req.write('tweet=test')
 req.end()
 ```
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/tutorials.md" target="_blank">Edit online on GitHub</a>

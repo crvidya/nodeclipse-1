@@ -40,4 +40,7 @@ Then the existing project will appear in Project Explorer.
 3. Select package.json on  the Package Explorer, open context menu by right-clicking, and select [Run As]-[npm install] menu.
 
 or from Terminal `npm install beloved-module --save`
- 
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/FAQ.md" target="_blank">Edit online on GitHub</a>

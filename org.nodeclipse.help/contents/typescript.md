@@ -48,3 +48,8 @@ Options:
   -w, --watch                 Watch input files
   @<file>                     Insert command line options and files from a file.	
   ```
+  
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/typescript.md" target="_blank">Edit online on GitHub</a>
+  

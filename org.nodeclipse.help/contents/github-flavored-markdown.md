@@ -18,3 +18,6 @@ So close it before you start your debugging session.
 
 You can open it any time from Windows -> Show View -> GFM View
 
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/github-flavored-markdown.md" target="_blank">Edit online on GitHub</a>

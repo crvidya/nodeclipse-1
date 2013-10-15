@@ -47,3 +47,6 @@ Window -> Show View -> Other... -> MiniMap -> MiniMap
 Window -> Show View -> Other... -> Markdown -> Markdown HTML Preview  
 (Very useful when exploring <code>node_modules</code> folders) 
 
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/configuration.md" target="_blank">Edit online on GitHub</a>

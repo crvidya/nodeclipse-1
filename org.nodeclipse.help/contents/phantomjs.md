@@ -153,3 +153,7 @@ Without any argument, PhantomJS will launch in interactive mode (REPL).
 
 Documentation can be found at the web site, http://phantomjs.org.
 ```
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/phantomjs.md" target="_blank">Edit online on GitHub</a>

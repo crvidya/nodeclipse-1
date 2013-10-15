@@ -28,3 +28,7 @@ Nodeclipse is free open-source project that grows with your contributions.
 - [TypeeScript](.typescript.md.html)
 - [Plugins](.plugins.md.html)
 - [FAQ](.FAQ.md.html)
+
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/index.md" target="_blank">Edit online on GitHub</a>

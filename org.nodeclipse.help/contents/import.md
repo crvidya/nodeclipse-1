@@ -33,3 +33,7 @@ Now your project is Eclipse project :)
 
 2. Import via standard File -> Import -> General -> Existing Projects into Workspace and select folder where the project is located.
  	
+### Contribute
+
+<a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/import.md" target="_blank">Edit online on GitHub</a>
+ 	
