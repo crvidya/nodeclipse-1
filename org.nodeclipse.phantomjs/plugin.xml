@@ -7,7 +7,7 @@
             delegate="org.nodeclipse.phantomjs.launch.LaunchConfigurationDelegate" 
             id="org.nodeclipse.phantomjs.launch.LaunchConfigurationType" 
             modes="run, debug"
-            name="PhantomjsJS Script">
+            name="PhantomJS Script">
         </launchConfigurationType> 
     </extension>
     <extension
@@ -25,7 +25,7 @@
              class= "org.nodeclipse.phantomjs.launch.LaunchShortcut"   
              icon= "icons/phantomjs.png"
              id= "org.nodeclipse.phantomjs.launch.LaunchShortcut"   
-             label= "PhantomjsJS Script"   
+             label= "PhantomJS Script"   
              modes= "run, debug" >
           <configurationType
                 id= "org.nodeclipse.phantomjs.launch.LaunchConfigurationType" >

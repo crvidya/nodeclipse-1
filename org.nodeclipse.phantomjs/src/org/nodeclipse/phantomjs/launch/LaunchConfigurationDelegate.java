@@ -21,7 +21,7 @@ import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
- * Launching phantomjs is similar to Node.js
+ * Launching PhantomJS is similar to Node.js
 <pre>
 D:\Progs\phantomjs-1.9.2-windows>phantomjs.exe  --remote-debugger-port=6060 --remote-debugger-autorun=yes  examples\arguments.js 123
 0: examples\arguments.js
@@ -29,10 +29,11 @@ D:\Progs\phantomjs-1.9.2-windows>phantomjs.exe  --remote-debugger-port=6060 --re
 Phantom::exit() called but not quitting in debug mode.
 </pre>
  * 
+ * @since 0.7
  * @author Paul Verest
  */
 public class LaunchConfigurationDelegate 
-	extends org.nodeclipse.debug.launch.LaunchConfigurationDelegate
+	//extends org.nodeclipse.debug.launch.LaunchConfigurationDelegate
 	implements ILaunchConfigurationDelegate {
 
 	@Override
@@ -67,9 +68,8 @@ public class LaunchConfigurationDelegate
 		}
 			
 		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
-		
 		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
-		// path is relative, so can not found it.
+		// path is relative, so cannot find it, unless get absolute path
 		cmdLine.add(filePath);
 		
 		

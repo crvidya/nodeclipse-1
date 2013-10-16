@@ -104,6 +104,7 @@
 		<module>org.nodeclipse.help</module>
 		
 		<module>org.nodeclipse.phantomjs</module>
+		<module>org.nodeclipse.jjs</module>
 		
 		<!-- for Full Build with Git Submodules only 
 		<module>markdown</module>

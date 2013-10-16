@@ -6,7 +6,7 @@
       provider-name="Nodeclipse organization">
 
    <description url="http://www.nodeclipse.org/">
-      Node support for Eclipse
+      Node.js, PhantomJS and JJS in Eclipse
    </description>
 
    <copyright url="http://www.nodeclipse.org/">
@@ -251,6 +251,13 @@ http://www.apache.org/licenses/
          
    <plugin
          id="org.nodeclipse.phantomjs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.nodeclipse.jjs"
          download-size="0"
          install-size="0"
          version="0.0.0"
