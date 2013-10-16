@@ -4,6 +4,7 @@
 	// from https://gist.github.com/haschek/2595796
 	// with switch to Node.js by Paul Verest
 	// https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.ui/common-templates/.jshintrc
+	// Documentation is at http://www.jshint.com/docs/options/
 	// --------------------------------------------------------------------
 	//
 	// This is a options template for [JSHint][1], using [JSHint example][2]
