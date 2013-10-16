@@ -1,5 +1,31 @@
 
 
+# Nashorn
+
+## Links
+
+Main blog <https://blogs.oracle.com/nashorn/> by Jim Laskey
+
+Sources: <http://hg.openjdk.java.net/nashorn/jdk8/nashorn>
+
+- <http://insin-notes.readthedocs.org/en/latest/JavaOne2012/nashorn_node_jpa_persistence_bof.html>
+ references Node.jar project (implementation of Node.js on JVM). However there are no more news, and the projects 
+ is closed-sourced in Oracle.
+
+	- Node.jar, Akhil Arora
+	- JPA & Node.jar, Doug Clarke
+
+
+- [Java Platform, Standard Edition Nashorn User's Guide](http://download.java.net/jdk8/docs/technotes/guides/scripting/nashorn/)
+
+
+- [Java Scripting Programmer's Guide](http://hg.openjdk.java.net/nashorn/jdk8/nashorn/raw-file/29b2b2ed954c/docs/JavaScriptingProgrammersGuide.html)
+
+
+Old and excited blog post: <http://kaeff.net/posts/why-ruby-and-nodejs-folks-should-care-about-project-nashorn.html>
+
+
+
 ### `jjs` command line util
 
 	C:\Program Files\Java\jdk1.8.0\bin>jjs.exe -v

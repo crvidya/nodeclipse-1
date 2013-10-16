@@ -1,4 +1,7 @@
 
+Nodeclipse is developers-driven project. That means new features arrives
+ when someone cares to develop it, asks a question or raises a bug.  
+
 Reminder from <http://www.nodeclipse.org/#support>
 
 <h3><a name="support" class="anchor" href="#support"></a>Support</h3>
@@ -20,3 +23,8 @@ Should you report a bug, please include the following:
 	 or from '.log' file from the directory '.metadata' in your workspace.</li>					
 	<li>See example <a href="https://github.com/Nodeclipse/nodeclipse-1/issues/78">issue #78</a></li>
 </ol>
+</p>
+	<li>I have an idea/request -- suggest new <a href="http://nodeclipse.uservoice.com/forums/216804-general">ideas for Nodeclipse</a>!</li>
+	<li>Why do you? -- <a href="https://groups.google.com/forum/#!forum/nodeclipse">Nodeclipse forum(Mailing list)</a>!</li>
+	<li>When will you? -- <a href="https://groups.google.com/forum/#!forum/nodeclipse">Nodeclipse forum(Mailing list)</a>!</li>
+</ul>
