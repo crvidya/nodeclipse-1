@@ -60,4 +60,13 @@
         	type= "org.nodeclipse.jjs.launch.LaunchConfigurationType" >   
 		</launchConfigurationTabGroup>
    </extension>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="HelpToc.xml"
+            primary="false">
+      </toc>
+   </extension>
+
 </plugin>
