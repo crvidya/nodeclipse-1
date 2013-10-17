@@ -111,6 +111,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				store.setDefault(PreferenceConstants.COFFEE_PATH, coffee_path);
 			}
 		}
+		store.setDefault(PreferenceConstants.COFFEE_COMPILE_OPTIONS, "--watch");
 		file = new File(typescript_compiler_path);
 		if (file.exists()) {
 			store.setDefault(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, typescript_compiler_path);
