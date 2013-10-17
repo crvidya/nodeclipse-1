@@ -24,10 +24,16 @@ Sources: <http://hg.openjdk.java.net/nashorn/jdk8/nashorn>
 
 Old and excited blog post: <http://kaeff.net/posts/why-ruby-and-nodejs-folks-should-care-about-project-nashorn.html>
 
+If you use JavaFX inside JavaScript, you should use SDK, not just JRE.
 
+## Java 8 script utils 
+
+Java 8 goes with 2 utils: `jjs` for running JavaScript on Nashorn engine
+ and `jrunscript` for running any script engine
 
 ### `jjs` command line util
 
+```txt
 	C:\Program Files\Java\jdk1.8.0\bin>jjs.exe -v
 
 	nashorn 1.8.0
@@ -63,9 +69,11 @@ Old and excited blog post: <http://kaeff.net/posts/why-ruby-and-nodejs-folks-sho
 	
 	        -v, -version (Print version info of Nashorn.)
 	                param: [true|false]   default: false
+```
 	
 ### `jrunscript` command line util	
 	
+```txt
 	C:\Program Files\Java\jdk1.8.0\bin>jrunscript.exe  -h
 	Usage: jrunscript [options] [arguments...]
 	
@@ -92,6 +100,7 @@ Old and excited blog post: <http://kaeff.net/posts/why-ruby-and-nodejs-folks-sho
 	
 	C:\Program Files\Java\jdk1.8.0\bin>jrunscript.exe  -q
 	Language ECMAScript ECMA - 262 Edition 5.1 implemention "Oracle Nashorn" 1.8.0
+```
 
 ### Contribute
 

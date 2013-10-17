@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\weibl\git\NTS\nodeclipse-1\org.nodeclipse.help\contents\.nashorn.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a name="nashorn" class="anchor" href="..md.html#nashorn"><span class="octicon octicon-link"></span></a>Nashorn</h1> 
+<h2> <a name="links" class="anchor" href="..md.html#links"><span class="octicon octicon-link"></span></a>Links</h2> 
+<p>Main blog <a href="https://blogs.oracle.com/nashorn/">https://blogs.oracle.com/nashorn/</a> by Jim Laskey</p> 
+<p>Sources: <a href="http://hg.openjdk.java.net/nashorn/jdk8/nashorn">http://hg.openjdk.java.net/nashorn/jdk8/nashorn</a></p> 
+<ul> 
+ <li> <p><a href="http://insin-notes.readthedocs.org/en/latest/JavaOne2012/nashorn_node_jpa_persistence_bof.html">http://insin-notes.readthedocs.org/en/latest/JavaOne2012/nashorn_node_jpa_persistence_bof.html</a> references Node.jar project (implementation of Node.js on JVM). However there are no more news, and the projects is closed-sourced in Oracle.</p> 
+  <ul> 
+   <li>Node.jar, Akhil Arora</li> 
+   <li>JPA &amp; Node.jar, Doug Clarke</li> 
+  </ul> </li> 
+ <li><p><a href="http://download.java.net/jdk8/docs/technotes/guides/scripting/nashorn/">Java Platform, Standard Edition Nashorn User's Guide</a></p></li> 
+ <li><p><a href="http://hg.openjdk.java.net/nashorn/jdk8/nashorn/raw-file/29b2b2ed954c/docs/JavaScriptingProgrammersGuide.html">Java Scripting Programmer's Guide</a></p></li> 
+</ul>
+<p>Old and excited blog post: <a href="http://kaeff.net/posts/why-ruby-and-nodejs-folks-should-care-about-project-nashorn.html">http://kaeff.net/posts/why-ruby-and-nodejs-folks-should-care-about-project-nashorn.html</a></p> 
+<p>If you use JavaFX inside JavaScript, you should use SDK, not just JRE.</p> 
+<h2> <a name="java-8-script-utils" class="anchor" href="..md.html#java-8-script-utils"><span class="octicon octicon-link"></span></a>Java 8 script utils</h2> 
+<p>Java 8 goes with 2 utils: <code>jjs</code> for running JavaScript on Nashorn engine and <code>jrunscript</code> for running any script engine</p> 
+<h3> <a name="jjs-command-line-util" class="anchor" href="..md.html#jjs-command-line-util"><span class="octicon octicon-link"></span></a><code>jjs</code> command line util</h3> 
+<div class="highlight highlight-txt">
+ <pre>    <span class="err">C:\Program</span> <span class="err">Files\Java\jdk1.8.0\bin&gt;jjs.exe</span> <span class="err">-v</span>
+
+    <span class="err">nashorn</span> <span class="err">1.8.0</span>
+
+
+    <span class="err">C:\Program</span> <span class="err">Files\Java\jdk1.8.0\bin&gt;jjs.exe</span> <span class="err">-h</span>
+
+    <span class="err">jjs</span> <span class="err">[&lt;options&gt;]</span> <span class="err">&lt;files&gt;</span> <span class="err">[--</span> <span class="err">&lt;arguments&gt;]</span>
+            <span class="err">-</span><span class="nb">D</span> <span class="p">(</span><span class="s">-Dname=value.</span> <span class="s">Set</span> <span class="s">a</span> <span class="s">system</span> <span class="s">property.</span> <span class="s">This</span> <span class="s">option</span> <span class="s">can</span> <span class="s">be</span> <span class="s">repeated.</span><span class="p">)</span>
+
+            <span class="err">-cp,</span> <span class="err">-</span><span class="nb">classpath</span> <span class="p">(</span><span class="s">-cp</span> <span class="s">path.</span> <span class="s">Specify</span> <span class="s">where</span> <span class="s">to</span> <span class="s">find</span> <span class="s">user</span> <span class="s">class</span> <span class="s">files.</span><span class="p">)</span>
+
+            <span class="err">-doe,</span> <span class="err">-dump-on-</span><span class="nb">error</span> <span class="p">(</span><span class="s">Dump</span> <span class="s">a</span> <span class="s">stack</span> <span class="s">trace</span> <span class="s">on</span> <span class="s">errors.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-fv,</span> <span class="err">-</span><span class="nb">fullversion</span> <span class="p">(</span><span class="s">Print</span> <span class="s">full</span> <span class="s">version</span> <span class="s">info</span> <span class="s">of</span> <span class="s">Nashorn.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-</span><span class="nb">fx</span> <span class="p">(</span><span class="s">Launch</span> <span class="s">script</span> <span class="s">as</span> <span class="s">an</span> <span class="s">fx</span> <span class="s">application.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-h,</span> <span class="err">-</span><span class="nb">help</span> <span class="p">(</span><span class="s">Print</span> <span class="s">help</span> <span class="s">for</span> <span class="s">command</span> <span class="s">line</span> <span class="s">flags.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-</span><span class="nb">scripting</span> <span class="p">(</span><span class="s">Enable</span> <span class="s">scripting</span> <span class="s">features.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-</span><span class="nb">strict</span> <span class="p">(</span><span class="s">Run</span> <span class="s">scripts</span> <span class="s">in</span> <span class="s">strict</span> <span class="s">mode.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+
+            <span class="err">-t,</span> <span class="err">-</span><span class="nb">timezone</span> <span class="p">(</span><span class="s">Set</span> <span class="s">timezone</span> <span class="s">for</span> <span class="s">script</span> <span class="s">execution.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">&lt;timezone&gt;</span>   <span class="err">default:</span> <span class="err">Asia/Shanghai</span>
+
+            <span class="err">-v,</span> <span class="err">-</span><span class="nb">version</span> <span class="p">(</span><span class="s">Print</span> <span class="s">version</span> <span class="s">info</span> <span class="s">of</span> <span class="s">Nashorn.</span><span class="p">)</span>
+                    <span class="err">param:</span> <span class="err">[true|false]</span>   <span class="err">default:</span> <span class="err">false</span>
+</pre>
+</div> 
+<h3> <a name="jrunscript-command-line-util" class="anchor" href="..md.html#jrunscript-command-line-util"><span class="octicon octicon-link"></span></a><code>jrunscript</code> command line util</h3> 
+<div class="highlight highlight-txt">
+ <pre>    <span class="err">C:\Program</span> <span class="err">Files\Java\jdk1.8.0\bin&gt;jrunscript.exe</span>  <span class="err">-h</span>
+    <span class="err">Usage:</span> <span class="err">jrunscript</span> <span class="err">[options]</span> <span class="err">[arguments...]</span>
+
+    <span class="err">where</span> <span class="err">[options]</span> <span class="err">include:</span>
+      <span class="err">-classpath</span> <span class="err">&lt;path&gt;</span>    <span class="err">Specify</span> <span class="err">where</span> <span class="err">to</span> <span class="err">find</span> <span class="err">user</span> <span class="err">class</span> <span class="err">files</span>
+      <span class="err">-cp</span> <span class="err">&lt;path&gt;</span>           <span class="err">Specify</span> <span class="err">where</span> <span class="err">to</span> <span class="err">find</span> <span class="err">user</span> <span class="err">class</span> <span class="err">files</span>
+      <span class="err">-D&lt;name&gt;=&lt;value&gt;</span>     <span class="err">Set</span> <span class="err">a</span> <span class="err">system</span> <span class="err">property</span>
+      <span class="err">-J&lt;flag&gt;</span>             <span class="err">Pass</span> <span class="err">&lt;flag&gt;</span> <span class="err">directly</span> <span class="err">to</span> <span class="err">the</span> <span class="err">runtime</span> <span class="err">system</span>
+      <span class="err">-l</span> <span class="err">&lt;language&gt;</span>        <span class="err">Use</span> <span class="err">specified</span> <span class="err">scripting</span> <span class="err">language</span>
+      <span class="err">-e</span> <span class="err">&lt;script&gt;</span>          <span class="err">Evaluate</span> <span class="err">given</span> <span class="err">script</span>
+      <span class="err">-encoding</span> <span class="err">&lt;encoding&gt;</span> <span class="err">Specify</span> <span class="err">character</span> <span class="err">encoding</span> <span class="err">used</span> <span class="err">by</span> <span class="err">script</span> <span class="err">files</span>
+      <span class="err">-f</span> <span class="err">&lt;script</span> <span class="err">file&gt;</span>     <span class="err">Evaluate</span> <span class="err">given</span> <span class="err">script</span> <span class="err">file</span>
+      <span class="err">-f</span> <span class="err">-</span>                 <span class="err">Interactive</span> <span class="err">mode,</span> <span class="err">read</span> <span class="err">script</span> <span class="err">from</span> <span class="err">standard</span> <span class="err">input</span>
+                           <span class="err">If</span> <span class="err">this</span> <span class="err">is</span> <span class="err">used,</span> <span class="err">this</span> <span class="err">should</span> <span class="err">be</span> <span class="err">the</span> <span class="err">last</span> <span class="err">-f</span> <span class="err">option</span>
+      <span class="err">-help</span>                <span class="err">Print</span> <span class="err">this</span> <span class="err">usage</span> <span class="err">message</span> <span class="err">and</span> <span class="err">exit</span>
+      <span class="err">-?</span>                   <span class="err">Print</span> <span class="err">this</span> <span class="err">usage</span> <span class="err">message</span> <span class="err">and</span> <span class="err">exit</span>
+      <span class="err">-q</span>                   <span class="err">List</span> <span class="err">all</span> <span class="err">scripting</span> <span class="err">engines</span> <span class="err">available</span> <span class="err">and</span> <span class="err">exit</span>
+
+    <span class="err">If</span> <span class="err">[arguments..]</span> <span class="err">are</span> <span class="err">present</span> <span class="err">and</span> <span class="err">if</span> <span class="err">no</span> <span class="err">-e</span> <span class="err">or</span> <span class="err">-f</span> <span class="err">option</span> <span class="err">is</span> <span class="err">used,</span> <span class="err">then</span> <span class="err">first</span>
+    <span class="err">argument</span> <span class="err">is</span> <span class="err">script</span> <span class="err">file</span> <span class="err">and</span> <span class="err">the</span> <span class="err">rest</span> <span class="err">of</span> <span class="err">the</span> <span class="err">arguments,</span> <span class="err">if</span> <span class="err">any,</span> <span class="err">are</span> <span class="err">passed</span>
+    <span class="err">as</span> <span class="err">script</span> <span class="err">arguments.</span> <span class="err">If</span> <span class="err">[arguments..]</span> <span class="err">and</span> <span class="err">-e</span> <span class="err">or</span> <span class="err">-f</span> <span class="err">option</span> <span class="err">is</span> <span class="err">used,</span> <span class="err">then</span> <span class="err">all</span>
+    <span class="err">[arguments..]</span> <span class="err">are</span> <span class="err">passed</span> <span class="err">as</span> <span class="err">script</span> <span class="err">arguments.</span> <span class="err">If</span> <span class="err">[arguments..],</span> <span class="err">-e,</span> <span class="err">-f</span> <span class="err">are</span>
+    <span class="err">missing,</span> <span class="err">then</span> <span class="err">interactive</span> <span class="err">mode</span> <span class="err">is</span> <span class="err">used.</span>
+
+    <span class="err">C:\Program</span> <span class="err">Files\Java\jdk1.8.0\bin&gt;jrunscript.exe</span>  <span class="err">-q</span>
+    <span class="err">Language</span> <span class="err">ECMAScript</span> <span class="err">ECMA</span> <span class="err">-</span> <span class="err">262</span> <span class="err">Edition</span> <span class="err">5.1</span> <span class="err">implemention</span> <span class="err">&quot;Oracle</span> <span class="err">Nashorn&quot;</span> <span class="err">1.8.0</span>
+</pre>
+</div> 
+<h3> <a name="contribute" class="anchor" href="..md.html#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3> 
+<p><a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/nashorn.md" target="_blank">Edit online on GitHub</a></p>
+</body>
+</html>

@@ -2,7 +2,9 @@ package org.nodeclipse.jjs.launch;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -14,13 +16,16 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.debug.util.Constants;
+import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
- * Launching `jjs` from Java 8
+ * Launching `jjs` from Java 8.<br>
+ * see LaunchConfigurationDelegate in .debug and .phantomjs module for comparison.
  * 
  * @since 0.7
  * @author Paul Verest
@@ -51,7 +56,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		cmdLine.add(jjsPath);
 		
 		if (isDebugMode) {
-			//TODO how to debug
+			//TODO research how to debug
 		}
 
 		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
@@ -59,17 +64,39 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		// path is relative, so cannot find it, unless get absolute path
 		cmdLine.add(filePath);
 		
+		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		File workingPath = null;
+		if(workingDirectory.length() == 0) {
+			workingPath = (new File(filePath)).getParentFile();
+		} else {
+			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
+			if(workingDirectory == null) {
+				workingPath = (new File(filePath)).getParentFile();
+			} else {
+				workingPath = new File(workingDirectory);
+			}
+		}
+		
+		Map<String, String> envm = new HashMap<String, String>();
+		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
+		String[] envp = new String[envm.size()];
+		int idx = 0;
+		for(String key : envm.keySet()) {
+			String value = envm.get(key);
+			envp[idx++] = key + "=" + value;
+		}
+		
+		
 		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
 		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,
-		//TODO Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		Process p = DebugPlugin.exec(cmds, null, null);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE);
+		Process p = DebugPlugin.exec(cmds, workingPath, envp);
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, ConstantsJJS.PROCESS_MESSAGE);
 		if (isDebugMode) {
-			//TODO how to debug
+			//TODO research how to debug
 		}
 		
 	}
