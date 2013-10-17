@@ -94,7 +94,6 @@
 		<module>chromedevtools</module>
 
 		<module>org.nodeclipse.debug</module>
-		<module>org.nodeclipse.feature</module>
 
 		<module>org.nodeclipse.bundle.coffee</module>
 		<module>org.nodeclipse.bundle.coffee.feature</module>
@@ -106,7 +105,10 @@
 		<module>org.nodeclipse.phantomjs</module>
 		<module>features/org.nodeclipse.phantomjs.feature</module>
 		<module>org.nodeclipse.jjs</module>
+		<module>features/org.nodeclipse.jjs.feature</module>
 		
+		<module>org.nodeclipse.feature</module>
+
 		<!-- for Full Build with Git Submodules only 
 		<module>markdown</module>
 		-->
