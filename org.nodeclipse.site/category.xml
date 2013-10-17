@@ -28,6 +28,9 @@
    <feature url="features/org.nodeclipse_0.7.0.qualifier.jar" id="org.nodeclipse" version="0.7.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
+   <feature url="features/org.nodeclipse.phantomjs.feature_0.7.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.7.0.qualifier">
+      <category name="Nodeclipse"/>
+   </feature>
 
    <feature url="features/org.nodeclipse.bundle.coffee.feature_1.6.3.qualifier.jar" id="org.nodeclipse.bundle.coffee.feature" version="1.6.3.qualifier">
       <category name="npm-bundle"/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.nodeclipse"
-      label="Nodeclipse"
+      id="org.nodeclipse.phantomjs.feature"
+      label="Nodeclipse PhantomJS"
       version="0.7.0.qualifier"
       provider-name="Nodeclipse organization">
 
    <description url="http://www.nodeclipse.org/">
-      Node.js, PhantomJS and JJS in Eclipse
+      PhantomJS in Eclipse
    </description>
 
    <copyright url="http://www.nodeclipse.org/">
@@ -225,32 +225,11 @@ http://www.apache.org/licenses/
    </url>
 
    <requires>
-      <import plugin="org.chromium.debug.ui"/>
+      <import plugin="org.nodeclipse.debug"/>
    </requires>
 
    <plugin
-         id="org.nodeclipse.debug"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.nodeclipse.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.nodeclipse.help"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
-         id="org.nodeclipse.jjs"
+         id="org.nodeclipse.phantomjs"
          download-size="0"
          install-size="0"
          version="0.0.0"
