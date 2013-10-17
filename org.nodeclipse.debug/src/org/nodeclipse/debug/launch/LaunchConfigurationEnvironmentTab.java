@@ -73,7 +73,6 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.PlatformUI;
 import org.nodeclipse.debug.util.Constants;
 
-@SuppressWarnings("restriction")
 /**
  * Launch configuration tab for configuring the environment passed
  * into Runtime.exec(...) when a config is launched.
@@ -87,7 +86,8 @@ import org.nodeclipse.debug.util.Constants;
  * @since 3.0
  * @noextend This class is not intended to be subclassed by clients.
  */
-public class NodeEnvironmentTab extends AbstractLaunchConfigurationTab {
+@SuppressWarnings("restriction")
+public class LaunchConfigurationEnvironmentTab extends AbstractLaunchConfigurationTab {
 
 	protected TableViewer environmentTable;
 	protected String[] envTableColumnHeaders = {
@@ -185,7 +185,7 @@ public class NodeEnvironmentTab extends AbstractLaunchConfigurationTab {
 	/**
 	 * Constructs a new tab with default context help.
 	 */
-	public NodeEnvironmentTab() {
+	public LaunchConfigurationEnvironmentTab() {
 		setHelpContextId(IDebugHelpContextIds.LAUNCH_CONFIGURATION_DIALOG_ENVIRONMENT_TAB);
 	}
 	

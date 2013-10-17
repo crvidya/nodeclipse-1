@@ -17,7 +17,7 @@ public class LaunchConfigurationTabGroup extends AbstractLaunchConfigurationTabG
         ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { 
         		new LaunchConfigurationMainTab(),
         		new NodeArgumentsTab(),
-        		new NodeEnvironmentTab(),
+        		new LaunchConfigurationEnvironmentTab(),
         		new CommonTab() 
         };
         setTabs(tabs);

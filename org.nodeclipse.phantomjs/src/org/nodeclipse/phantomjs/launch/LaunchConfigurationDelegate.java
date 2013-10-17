@@ -2,7 +2,9 @@ package org.nodeclipse.phantomjs.launch;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -14,7 +16,9 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
+import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
@@ -36,6 +40,7 @@ public class LaunchConfigurationDelegate
 	//extends org.nodeclipse.debug.launch.LaunchConfigurationDelegate
 	implements ILaunchConfigurationDelegate {
 
+	//@SuppressWarnings("unchecked")
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
@@ -72,16 +77,37 @@ public class LaunchConfigurationDelegate
 		// path is relative, so cannot find it, unless get absolute path
 		cmdLine.add(filePath);
 		
+		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		File workingPath = null;
+		if(workingDirectory.length() == 0) {
+			workingPath = (new File(filePath)).getParentFile();
+		} else {
+			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
+			if(workingDirectory == null) {
+				workingPath = (new File(filePath)).getParentFile();
+			} else {
+				workingPath = new File(workingDirectory);
+			}
+		}
+		
+		Map<String, String> envm = new HashMap<String, String>();
+		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
+		String[] envp = new String[envm.size()];
+		int idx = 0;
+		for(String key : envm.keySet()) {
+			String value = envm.get(key);
+			envp[idx++] = key + "=" + value;
+		}
+		
 		
 		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
 		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
-		// Launch a process to debug.eg,
-		//TODO Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		Process p = DebugPlugin.exec(cmds, null, null);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE);
+		// Launch a process to run or debug
+		Process p = DebugPlugin.exec(cmds, workingPath, envp);
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, ConstantsPhantomJS.PROCESS_MESSAGE);
 		if (isDebugMode) {
 			int phantomjsDebugPort = preferenceStore.getInt(PreferenceConstants.PHANTOMJS_DEBUG_PORT);
 			NodeDebugUtil.launch(mode, launch, monitor, phantomjsDebugPort);
