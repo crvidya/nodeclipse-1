@@ -79,6 +79,10 @@
                                 property= "org.eclipse.debug.ui.matchesPattern"   
                                 value= "*.js" >   
                           </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.njs" >   
+                          </test>   
                        </or>   
                     </iterate>   
                  </with>   

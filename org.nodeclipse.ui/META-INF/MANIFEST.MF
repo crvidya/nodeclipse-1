@@ -19,6 +19,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.nodeclipse.ui,
+ org.nodeclipse.ui.editors,
  org.nodeclipse.ui.preferences,
  org.nodeclipse.ui.util
 Bundle-Vendor: Nodeclipse organization
