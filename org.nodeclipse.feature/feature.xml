@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.nodeclipse"
-      label="Nodeclipse"
+      label="Nodeclipse Core and Node.js"
       version="0.7.0.qualifier"
       provider-name="Nodeclipse organization">
 
@@ -248,5 +248,5 @@ http://www.apache.org/licenses/
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
 </feature>
