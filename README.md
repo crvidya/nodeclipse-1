@@ -6,6 +6,20 @@
 
 ![nodeclipse-logo](Nodeclipse_logo_light.png)
 
+Hello, I am Paul Verest, one of Nodeclipse [contributors](https://github.com/Nodeclipse/nodeclipse-1/graphs/contributors).
+I am Java developer adopting Node.js, ( and then PhantomJS and Nashorn Javascript) into my set of tools.
+In January 2013 I just started developing Node.js in Eclipse without any plugins, but then I then I came to point "how to debug".
+That lead me to know Nodeclipse 0.2 by Tomoyuki Inagaki, that by that time was fork in his own account.
+We unified 0.2 back into Nodeclipse organization, the rest can be seen in [history](http://www.nodeclipse.org/history).
+Try out next 0.7 version from this sources just by `clone`, `mvn package` then install from .zip (see Maven build for more)
+
+Check README.md in project modules (e.g. `org.nodeclipse.debug` ). See launching Node.js logic in
+[LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+
+Below is long and a little bit old notes. You should better start with building yourself, checking <http://www.nodeclipse.org>
+that has all links.
+
+
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Nodeclipse - Node.js support in Eclipse IDE](#nodeclipse---nodejs-support-in-eclipse-ide)
