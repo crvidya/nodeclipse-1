@@ -26,7 +26,7 @@
 		<repository>
 			<id>gfm.viewer</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/gfm-viewer/</url>
+			<url>http://dl.bintray.com/satyagraha/generic/1.4.0-SNAPSHOT/</url>
 		</repository>
 		<repository>
 			<id>jshint-eclipse</id>
