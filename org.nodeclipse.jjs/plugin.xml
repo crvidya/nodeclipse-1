@@ -83,7 +83,7 @@
          point="org.eclipse.help.toc">
       <toc
             file="HelpToc.xml"
-            primary="false">
+            primary="true">
       </toc>
    </extension>
 
