@@ -37,7 +37,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.mongodb.launch.LaunchShortcut"   
-             icon= "icons/java_16x16.png"
+             icon= "icons/mongodb.png"
              id= "org.nodeclipse.mongodb.launch.LaunchShortcut"   
              label= "MongoDB Shell JavaScript"   
              modes= "run" >   
