@@ -45,7 +45,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     public NodePreferencePage() {
         super(GRID);
         setPreferenceStore(Activator.getDefault().getPreferenceStore());
-        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs & Mongo DB Shell settings");
+        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs and MongoDB Shell settings");
     }
 
     @Override

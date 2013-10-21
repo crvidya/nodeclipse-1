@@ -36,7 +36,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		NodeclipseConsole.write("launch mongodb shell\n");
+		//NodeclipseConsole.write("launch mongodb shell\n");
 		
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		boolean isDebugMode = mode.equals(ILaunchManager.DEBUG_MODE);
@@ -54,6 +54,8 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			return;
 		}			
 		cmdLine.add(mongoDBShellPath);
+		
+		cmdLine.add("--shell"); //run the shell after executing files		
 		
 		if (isDebugMode) {
 			//TODO research how to debug
