@@ -106,6 +106,8 @@
 		<module>features/org.nodeclipse.phantomjs.feature</module>
 		<module>org.nodeclipse.jjs</module>
 		<module>features/org.nodeclipse.jjs.feature</module>
+		<module>org.nodeclipse.mongodb</module>
+		<module>features/org.nodeclipse.mongodb.feature</module>
 		
 		<module>features/org.nodeclipse.feature</module>
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\Users\weibl\git\NTS\nodeclipse-1\org.nodeclipse.mongodb\help\.mongo.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<p>From MongoDB README</p> 
+<div class="highlight highlight-txt">
+ <pre>    <span class="err">COMPONENTS</span>
+
+      <span class="err">bin/mongod</span> <span class="err">-</span> <span class="err">The</span> <span class="err">database</span> <span class="err">process.</span>
+      <span class="err">bin/mongos</span> <span class="err">-</span> <span class="err">Sharding</span> <span class="err">controller.</span>
+      <span class="err">bin/mongo</span>  <span class="err">-</span> <span class="err">The</span> <span class="err">database</span> <span class="nb">shell</span> <span class="p">(</span><span class="s">uses</span> <span class="s">interactive</span> <span class="s">javascript</span><span class="p">)</span><span class="err">.</span>
+
+    <span class="err">UTILITIES</span>
+
+      <span class="err">bin/mongodump</span>         <span class="err">-</span> <span class="err">MongoDB</span> <span class="err">dump</span> <span class="err">tool</span> <span class="err">-</span> <span class="err">for</span> <span class="err">backups,</span> <span class="err">snapshots,</span> <span class="err">etc..</span>
+      <span class="err">bin/mongorestore</span>      <span class="err">-</span> <span class="err">MongoDB</span> <span class="err">restore</span> <span class="err">a</span> <span class="err">dump</span>
+      <span class="err">bin/mongoexport</span>       <span class="err">-</span> <span class="err">Export</span> <span class="err">a</span> <span class="err">single</span> <span class="err">collection</span> <span class="err">to</span> <span class="nb">test</span> <span class="p">(</span><span class="s">JSON,</span> <span class="s">CSV</span><span class="p">)</span>
+      <span class="err">bin/mongoimport</span>       <span class="err">-</span> <span class="err">Import</span> <span class="err">from</span> <span class="err">JSON</span> <span class="err">or</span> <span class="err">CSV</span>
+      <span class="err">bin/mongofiles</span>        <span class="err">-</span> <span class="err">Utility</span> <span class="err">for</span> <span class="err">putting</span> <span class="err">and</span> <span class="err">getting</span> <span class="err">files</span> <span class="err">from</span> <span class="err">MongoDB</span> <span class="err">GridFS</span>
+      <span class="err">bin/mongostat</span>         <span class="err">-</span> <span class="err">Show</span> <span class="err">performance</span> <span class="err">statistics</span>
+</pre>
+</div> 
+<div class="highlight highlight-txt">
+ <pre>    <span class="err">D:\Progs\MongoDB\mongodb-win32-x86_64-2.4.6\bin&gt;mongo.exe</span> <span class="err">-h</span>
+    <span class="err">MongoDB</span> <span class="err">shell</span> <span class="err">version:</span> <span class="err">2.4.6</span>
+    <span class="err">usage:</span> <span class="err">D:\Progs\MongoDB\mongodb-win32-x86_64-2.4.6\bin\mongo.exe</span> <span class="err">[options]</span> <span class="err">[db</span> <span class="err">address]</span> <span class="err">[file</span> <span class="nb">names</span> <span class="p">(</span><span class="s">ending</span> <span class="s">in</span> <span class="s">.js</span><span class="p">)</span><span class="err">]</span>
+    <span class="err">db</span> <span class="err">address</span> <span class="err">can</span> <span class="err">be:</span>
+      <span class="err">foo</span>                   <span class="err">foo</span> <span class="err">database</span> <span class="err">on</span> <span class="err">local</span> <span class="err">machine</span>
+      <span class="err">192.169.0.5/foo</span>       <span class="err">foo</span> <span class="err">database</span> <span class="err">on</span> <span class="err">192.168.0.5</span> <span class="err">machine</span>
+      <span class="err">192.169.0.5:9999/foo</span>  <span class="err">foo</span> <span class="err">database</span> <span class="err">on</span> <span class="err">192.168.0.5</span> <span class="err">machine</span> <span class="err">on</span> <span class="err">port</span> <span class="err">9999</span>
+    <span class="err">options:</span>
+      <span class="err">--shell</span>                               <span class="err">run</span> <span class="err">the</span> <span class="err">shell</span> <span class="err">after</span> <span class="err">executing</span> <span class="err">files</span>
+      <span class="err">--nodb</span>                                <span class="err">don't</span> <span class="err">connect</span> <span class="err">to</span> <span class="err">mongod</span> <span class="err">on</span> <span class="err">startup</span> <span class="err">-</span> <span class="err">no</span>
+                                            <span class="err">'db</span> <span class="err">address'</span> <span class="err">arg</span> <span class="err">expected</span>
+      <span class="err">--norc</span>                                <span class="err">will</span> <span class="err">not</span> <span class="err">run</span> <span class="err">the</span> <span class="err">&quot;.mongorc.js&quot;</span> <span class="err">file</span> <span class="err">on</span>
+                                            <span class="err">start</span> <span class="err">up</span>
+      <span class="err">--quiet</span>                               <span class="err">be</span> <span class="err">less</span> <span class="err">chatty</span>
+      <span class="err">--port</span> <span class="err">arg</span>                            <span class="err">port</span> <span class="err">to</span> <span class="err">connect</span> <span class="err">to</span>
+      <span class="err">--host</span> <span class="err">arg</span>                            <span class="err">server</span> <span class="err">to</span> <span class="err">connect</span> <span class="err">to</span>
+      <span class="err">--eval</span> <span class="err">arg</span>                            <span class="err">evaluate</span> <span class="err">javascript</span>
+      <span class="err">-u</span> <span class="err">[</span> <span class="err">--username</span> <span class="err">]</span> <span class="err">arg</span>                 <span class="err">username</span> <span class="err">for</span> <span class="err">authentication</span>
+      <span class="err">-p</span> <span class="err">[</span> <span class="err">--password</span> <span class="err">]</span> <span class="err">arg</span>                 <span class="err">password</span> <span class="err">for</span> <span class="err">authentication</span>
+      <span class="err">--authenticationDatabase</span> <span class="err">arg</span>          <span class="err">user</span> <span class="nb">source</span> <span class="p">(</span><span class="s">defaults</span> <span class="s">to</span> <span class="s">dbname</span><span class="p">)</span>
+      <span class="err">--authenticationMechanism</span> <span class="nb">arg</span> <span class="p">(</span><span class="s">=MONGODB-CR</span><span class="p">)</span>
+                                            <span class="err">authentication</span> <span class="err">mechanism</span>
+      <span class="err">-h</span> <span class="err">[</span> <span class="err">--help</span> <span class="err">]</span>                         <span class="err">show</span> <span class="err">this</span> <span class="err">usage</span> <span class="err">information</span>
+      <span class="err">--version</span>                             <span class="err">show</span> <span class="err">version</span> <span class="err">information</span>
+      <span class="err">--verbose</span>                             <span class="err">increase</span> <span class="err">verbosity</span>
+      <span class="err">--ipv6</span>                                <span class="err">enable</span> <span class="err">IPv6</span> <span class="nb">support</span> <span class="p">(</span><span class="s">disabled</span> <span class="s">by</span>
+                                            <span class="s">default</span><span class="p">)</span>
+
+    <span class="err">file</span> <span class="err">names:</span> <span class="err">a</span> <span class="err">list</span> <span class="err">of</span> <span class="err">files</span> <span class="err">to</span> <span class="err">run.</span> <span class="err">files</span> <span class="err">have</span> <span class="err">to</span> <span class="err">end</span> <span class="err">in</span> <span class="err">.js</span> <span class="err">and</span> <span class="err">will</span> <span class="err">exit</span> <span class="err">after</span> <span class="err">unless</span> <span class="err">--shell</span> <span class="err">is</span> <span class="err">specified</span>
+</pre>
+</div>
+</body>
+</html>

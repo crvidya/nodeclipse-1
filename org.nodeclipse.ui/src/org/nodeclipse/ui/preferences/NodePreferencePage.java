@@ -37,13 +37,15 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     
     private FileFieldEditor jjsPath;
     private BooleanFieldEditor jjsJustJJS;
+
+    private FileFieldEditor mongoDBShellPath;
     
     private BooleanFieldEditor nodeclipseConsoleEnabled;
     
     public NodePreferencePage() {
         super(GRID);
         setPreferenceStore(Activator.getDefault().getPreferenceStore());
-        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, jjs settings");
+        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs & Mongo DB Shell settings");
     }
 
     @Override
@@ -121,6 +123,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         		"just `jjs` (find `jjs` on PATH. Useful when there are 2 or more JDK 8 instances)", getFieldEditorParent());
         addField(jjsJustJJS);
         
+        mongoDBShellPath = new FileFieldEditor(PreferenceConstants.MONGODB_SHELL_PATH, "MongoDB Shell path:", getFieldEditorParent());
+        addField(mongoDBShellPath);
         
         nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
         		"enable Nodeclipse Console", getFieldEditorParent());

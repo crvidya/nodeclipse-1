@@ -30,6 +30,7 @@ public class PreferenceConstants {
 	public static final String PHANTOMJS_DEBUG_AUTORUN = "phantomjs_debug_autorun";
 	public static final String JJS_PATH = "jjs_path";
 	public static final String JJS_JUST_JJS = "jjs_just_jjs";
+	public static final String MONGODB_SHELL_PATH = "mongodb_shell_path";
 	public static final String NODECLIPSE_CONSOLE_ENABLED = "nodeclipse_console_enabled";
 	
 }

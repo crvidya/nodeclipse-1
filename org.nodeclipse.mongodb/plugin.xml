@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.nodeclipse.ui.editors.NodeEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="true"
+            extensions="mjs"
+            icon="icons/mongodb.png"
+            id="org.nodeclipse.mongodb.editors.MongoJSEditor"
+            name="MongoDB JavaScript Editor">
+      </editor>
+    </extension>
+
+	<extension 
+          point="org.eclipse.debug.core.launchConfigurationTypes"> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.mongodb.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.mongodb.launch.LaunchConfigurationType" 
+            modes="run" 
+            name="MongoDB Shell JavaScript">
+        </launchConfigurationType> 
+    </extension>
+    <extension
+          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.mongodb.launch.LaunchConfigurationType"   
+             icon= "icons/mongodb.png"   
+             id= "org.nodeclipse.mongodb.launch.LaunchConfigurationTypeImage" >   
+       </launchConfigurationTypeImage>   
+    </extension>
+    <!-- mongodb shell run -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.mongodb.launch.LaunchShortcut"   
+             icon= "icons/java_16x16.png"
+             id= "org.nodeclipse.mongodb.launch.LaunchShortcut"   
+             label= "MongoDB Shell JavaScript"   
+             modes= "run" >   
+          <configurationType
+                id= "org.nodeclipse.mongodb.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.js" >   
+                          </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.mjs" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   
+
+   <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.mongodb.launch.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.mongodb.launch.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.mongodb.launch.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="HelpToc.xml"
+            primary="true">
+      </toc>
+   </extension>
+
+</plugin>
