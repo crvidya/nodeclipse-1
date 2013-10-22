@@ -39,6 +39,12 @@ import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
+/**
+ * These sources definitely came from some example like
+ * https://eclipse.googlesource.com/pdt/org.eclipse.pdt/+/508aebe616434cff2b7ba10178d818e9db7d3399/plugins/org.eclipse.php.debug.ui/src/org/eclipse/php/internal/debug/ui/launching/PHPExecutableLaunchTab.java
+ * @author ?
+ *
+ */
 public class NodeArgumentsTab  extends AbstractLaunchConfigurationTab {
 	protected Label fPrgmArgumentsLabel;
 	protected Text fPrgmArgumentsText;
