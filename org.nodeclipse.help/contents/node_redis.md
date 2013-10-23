@@ -12,7 +12,43 @@ Some helpful commands:
 - `KEYS *` list all keys. Not for production environment.
 - `EXISTS key`
 
-## node_redis
+
+### redis-cli
+
+redis-cli doesn't allow to execte scripts only commands.
+
+```txt
+	C:\Program Files\Redis>redis-cli.exe -h
+	redis-cli 2.4.6 (git:26cdd13a)
+	
+	Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
+	  -h <hostname>    Server hostname (default: 127.0.0.1)
+	  -p <port>        Server port (default: 6379)
+	  -s <socket>      Server socket (overrides hostname and port)
+	  -a <password>    Password to use when connecting to the server
+	  -r <repeat>      Execute specified command N times
+	  -i <interval>    When -r is used, waits <interval> seconds per command.
+	                   It is possible to specify sub-second times like -i 0.1.
+	  -n <db>          Database number
+	  -x               Read last argument from STDIN
+	  -d <delimiter>   Multi-bulk delimiter in for raw formatting (default: \n)
+	  --raw            Use raw formatting for replies (default when STDOUT is not a tty)
+	  --latency        Enter a special mode continuously sampling latency.
+	  --help           Output this help and exit
+	  --version        Output version and exit
+	
+	Examples:
+	  cat /etc/passwd | redis-cli -x set mypasswd
+	  redis-cli get mypasswd
+	  redis-cli -r 100 lpush mylist x
+	  redis-cli -r 100 -i 1 info | grep used_memory_human:
+	
+	When no command is given, redis-cli starts in interactive mode.
+	Type "help" in interactive mode for information on available commands.
+```
+
+
+### node_redis
 
 [node_redis](https://github.com/mranney/node_redis)  is a node.js redis client.
 

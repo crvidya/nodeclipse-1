@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Nodeclipse Redis
+Bundle-SymbolicName: org.nodeclipse.redis;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.nodeclipse.redis.Activator
+Bundle-Vendor: Enide
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.editors,
+ org.eclipse.debug.ui,
+ org.nodeclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.nodeclipse.debug.launch,
+ org.nodeclipse.debug.util
