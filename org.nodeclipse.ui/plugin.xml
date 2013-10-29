@@ -122,7 +122,7 @@
 	          class="org.chromium.debug.ui.actions.JsInspectSnippetAction"
 	          enablesFor="+"
 	          label="Inspect"
-	          tooltip="Inspect Result of Evaluating Selected Text">
+	          tooltip="Inspect Result of Evaluating Selected Text using ChromeDevTools (available during debugging)">
 	        <enablement>
 	            <objectClass
 	                name="org.eclipse.jface.text.ITextSelection"/>
