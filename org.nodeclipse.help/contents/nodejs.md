@@ -82,6 +82,30 @@ Node.js modules (in `node_modules`) usually have `README.md` file.
 To see `README.md` as it looks like on GitHub, right-click it and select `Show in GFM view`.
 Check also "Markdown" and "Github Flavored Markdown (GFM)" help pages.
 
+### Example
+
+```javascript
+	var http = require('http');
+	var server = http.createServer();
+	var handleReq = function(req,res){
+	  res.writeHead(200, {});
+	  res.end('hello world');
+	};
+	server.on('request', handleReq);
+	server.listen(8080);
+```
+
+```javascript
+	var fs = require('fs');
+	fs.writeFile("/tmp/test", "Hey there!", function(err) {
+	    if(err) {
+	        console.log(err);
+	    } else {
+	        console.log("The file was saved!");
+	    }
+	}); 
+```
+
 ### Contribute
 
 <a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/nodejs.md" target="_blank">Edit online on GitHub</a>
