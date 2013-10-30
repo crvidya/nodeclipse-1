@@ -65,6 +65,7 @@
             id="org.nodeclipse.ui.editors.NodeEditor"
             name="Node Editor">
       </editor>
+      <!-- class is not on plugin classpath!
       <editor
             class="winterwell.markdown.editors.MarkdownEditor"
             contributorClass="winterwell.markdown.editors.ActionBarContributor"
@@ -74,6 +75,7 @@
             id="org.nodeclipse.ui.editors.LitCoffeeEditor"
             name="LitCoffee (Markdown) Editor">
       </editor>
+      -->
       <!-- TODO above Editor for litcoffee fails
        compare to
       <editor

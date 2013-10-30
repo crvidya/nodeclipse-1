@@ -22,14 +22,31 @@
             modes="run, debug" 
             name="Node Application">
         </launchConfigurationType> 
-        <!-- node run/debug with monitor (not yet used)
         <launchConfigurationType 
             delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
-            id="org.nodeclipse.debug.launch.LaunchTypeWithMonitor" 
+            id="org.nodeclipse.debug.launch.LaunchConfigurationTypeNodeWithMonitor" 
             modes="run, debug" 
             name="Node with monitor">
         </launchConfigurationType> 
-        -->
+        <launchConfigurationType 
+            delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee" 
+            modes="run, debug" 
+            name="Coffee">
+        </launchConfigurationType> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffeeCompile" 
+            modes="run, debug" 
+            name="Coffee --compile">
+        </launchConfigurationType> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.debug.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.debug.launch.LaunchConfigurationTypeTypescriptCompiler" 
+            modes="run, debug" 
+            name="Typescript Compiler">
+        </launchConfigurationType> 
+       
 	    <launchConfigurationType
 	        id="org.nodeclipse.debug.launch.LaunchType$StandaloneV8"
 	        delegate="org.nodeclipse.debug.launch.StandaloneV8LaunchTypeWrapper"
@@ -47,7 +64,30 @@
              configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationType"   
              icon= "icons/node.png"   
              id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeImage" >   
-       </launchConfigurationTypeImage>   
+       </launchConfigurationTypeImage>
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationTypeNodeWithMonitor"   
+             icon= "icons/node_with_monitor.png"   
+             id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeNodeWithMonitor.image" >   
+       </launchConfigurationTypeImage>
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee"   
+             icon= "icons/coffee.png"   
+             id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee.image" >   
+       </launchConfigurationTypeImage>
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationTypeTypescriptCompiler"   
+             icon= "icons/coffee_compile.png"   
+             id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeTypescriptCompiler.image" >   
+       </launchConfigurationTypeImage>
+       <!-- TODO tsc
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffeeCompile"   
+             icon= "icons/coffee_compile.png"   
+             id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffeeCompile.image" >   
+       </launchConfigurationTypeImage>
+       -->
+          
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.debug.launch.LaunchType$StandaloneV8"   
              icon= "icons/node.png"   
@@ -95,12 +135,12 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.debug.launch.LaunchShortcutWithMonitor"   
-             icon= "icons/node.png"
+             icon= "icons/node_with_monitor.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcutWithMonitor"   
              label= "Node with monitor"   
              modes= "run, debug" >   
           <configurationType
-                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeNodeWithMonitor" >
           </configurationType>   
            <contextualLaunch>   
               <enablement>   
@@ -136,7 +176,7 @@
              label= "coffee"   
              modes= "run, debug" >   
           <configurationType
-                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee" >
           </configurationType>   
            <contextualLaunch>   
               <enablement>   
@@ -171,12 +211,12 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
-             icon= "icons/coffee.png"
+             icon= "icons/coffee_compile.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcutCoffeeCompile"   
              label= "coffee --compile"   
              modes= "run, debug" >   
           <configurationType
-                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffeeCompile" >
           </configurationType>   
            <contextualLaunch>   
               <enablement>   
@@ -216,7 +256,7 @@
              label= "tsc"   
              modes= "run, debug" >   
           <configurationType
-                id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
+                id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeTypescriptCompiler" >
           </configurationType>   
            <contextualLaunch>   
               <enablement>   
