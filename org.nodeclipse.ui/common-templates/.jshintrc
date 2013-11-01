@@ -2,7 +2,7 @@
 	// --------------------------------------------------------------------
 	// JSHint Configuration, Strict Edition 
 	// from https://gist.github.com/haschek/2595796
-	// with switch to Node.js by Paul Verest
+	// with switch to Node.js, no `use strict` by Paul Verest
 	// https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.ui/common-templates/.jshintrc
 	// Documentation is at http://www.jshint.com/docs/options/
 	// --------------------------------------------------------------------
@@ -43,7 +43,7 @@
 	"plusplus" : true, // Prohibit use of `++` & `--`.
 	"regexp" : true, // Prohibit `.` and `[^...]` in regular expressions.
 	"undef" : true, // Require all non-global variables be declared before they are used.
-	"strict" : true, // Require `use strict` pragma in every file.
+	"strict" : false, // Require `use strict` pragma in every file.
 	"trailing" : true, // Prohibit trailing whitespaces.
 	// == Relaxing Options ================================================
 	//
@@ -112,5 +112,5 @@
 	//"anotherCoolGlobal",
 	//"iLoveDouglas"
 	],
-	"indent" : 4 // Specify indentation spacing
+	"indent" : 2 // Specify indentation spacing
 }

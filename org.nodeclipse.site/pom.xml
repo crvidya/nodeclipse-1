@@ -24,21 +24,6 @@
 			<url>http://winterwell.com/software/updatesite/</url>
 		</repository>
 		<repository>
-			<id>gfm.viewer</id>
-			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.4.0-SNAPSHOT/</url>
-		</repository>
-		<repository>
-			<id>jshint-eclipse</id>
-			<layout>p2</layout>
-			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
-		</repository>
-		<repository>
-			<id>startexplorer</id>
-			<layout>p2</layout>
-			<url>http://basti1302.github.com/startexplorer/update/</url>
-		</repository>
-		<repository>
 			<id>restclient-tool</id>
 			<layout>p2</layout>
 			<url>https://svn.codespot.com/a/eclipselabs.org/restclient-tool/trunk/eclipse/update/</url>
@@ -52,6 +37,41 @@
 			<id>git-addon</id>
 			<layout>p2</layout>
 			<url>http://www.nodeclipse.org/git/addon/</url>
+		</repository>
+		<repository>
+			<id>gfm.viewer</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/satyagraha/generic/1.5.0/</url>
+		</repository>
+		<repository>
+			<id>startexplorer</id>
+			<layout>p2</layout>
+			<url>http://basti1302.github.com/startexplorer/update/</url>
+		</repository>
+		<repository>
+			<id>jshint-eclipse</id>
+			<layout>p2</layout>
+			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
+		</repository>
+		<repository>
+			<id>Icons-Editor</id>
+			<layout>p2</layout>
+			<url>http://eclipse-icons-editor.eclipselabs.org.codespot.com/git/site/org.eclipse_icons.editor.site/</url>
+		</repository>
+		<repository>
+			<id>PDE-Tools</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/jeeeyul/pde-tools/master/net.jeeeyul.pdetools.updatesite/</url>
+		</repository>
+		<repository>
+			<id>Regular-Expression</id>
+			<layout>p2</layout>
+			<url>http://zapletnev.github.io/eclipse-regexp/repository/</url>
+		</repository>
+		<repository>
+			<id>net.jumperz.app.MMonjaDB</id>
+			<layout>p2</layout>
+			<url>http://www.jumperz.net/update/</url>
 		</repository>
 		-->
 		

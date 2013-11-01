@@ -12,10 +12,14 @@
    </category-def>
    <category-def name="Tools" label="Enide NodeX Tools">
       <description>
-         Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
-         JSHint integration by Ralf Sternberg, 
-         RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol,
-         Nodeclipse Git Addon and Plugins List by Paul Verest 
+        Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
+        JSHint integration by Ralf Sternberg, 
+        RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol,
+        Nodeclipse Git Addon and Plugins List by Paul Verest,
+        Icons Editor by Jabier Martinez (requires org.eclipse.draw2d), 
+ 		PDE-Tools by Jeeeyul, 
+ 		Regular Expression by Igor Zapletnev,
+ 		MonjaDB (MongoDB GUI) by Kanatoko Anvil          
       </description>
    </category-def>
 
@@ -46,28 +50,40 @@
    </feature>
 
    <!-- for Full Build with Maven/Tycho (or Git Submodules) 
-    <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
-      <category name="Tools"/>
-   </feature>
-   <feature url="features/code.satyagraha.gfm.viewer.feature_1.4.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.4.0.qualifier">
-      <category name="Tools"/>
-   </feature>
-   <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.8.qualifier">
+   <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
       <category name="Tools"/>
    </feature>
    <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
-   <feature url="features/de.bastiankrol.startexplorer.feature_1.5.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.1">
-      <category name="Tools"/>
-   </feature>
    <feature url="features/org.nodeclipse.pluginslist.feature_0.1.0.qualifier.jar" id="org.nodeclipse.pluginslist.feature" version="0.1.0.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/gitaddon.feature_0.1.0.qualifier.jar" id="gitaddon.feature" version="0.1.0.qualifier">
+   <feature url="features/gitaddon.feature_1.0.0.qualifier.jar" id="gitaddon.feature" version="1.0.0.qualifier">
       <category name="Tools"/>
    </feature>
-   -->
+   <feature url="features/code.satyagraha.gfm.viewer.feature_1.5.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.5.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/de.bastiankrol.startexplorer.feature_1.5.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.1">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.9.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/org.eclipse_icons.editor.feature_2.4.0.qualifier.jar" id="org.eclipse_icons.editor.feature" version="2.4.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/net.jeeeyul.pdetools.feature_1.1.0.qualifier.jar" id="net.jeeeyul.pdetools.feature" version="1.1.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/org.eclipse.regexp.feature_0.3.0.qualifier.jar" id="org.eclipse.regexp.feature" version="0.3.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/net.jumperz.app.MMonjaDB_1.0.16.qualifier.jar" id="net.jumperz.app.MMonjaDB" version="1.0.16.qualifier">
+      <category name="Tools"/>
+   </feature>
+  -->
 
    <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
    <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">
