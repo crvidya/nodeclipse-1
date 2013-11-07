@@ -20,8 +20,10 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.nodeclipse.ui,
  org.nodeclipse.ui.editors,
+ org.nodeclipse.ui.perspectives,
  org.nodeclipse.ui.preferences,
- org.nodeclipse.ui.util
+ org.nodeclipse.ui.util,
+ org.nodeclipse.ui.wizards
 Bundle-Vendor: Nodeclipse organization
 Import-Package: org.nodeclipse.bundle.coffee,
  org.nodeclipse.bundle.express

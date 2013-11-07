@@ -3,6 +3,46 @@
 <plugin>
 
    <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.nodeclipse.ui.wizards.category"
+            name="Nodeclipse">
+      </category>
+      <wizard
+            category="org.nodeclipse.ui.wizards.category"
+            class="org.nodeclipse.phantomjs.wizards.PhantomjsProjectWizard"
+            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
+            icon="icons/phantomjs.png"
+            id="org.nodeclipse.phantomjs.wizards.PhantomjsProjectWizard"
+            name="PhantomJS Project"
+            project="true">
+         <description>
+            Create a new PhantomJS project (or add .project file to existing project)
+         </description>
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/phantomjs.png"
+            id="org.nodeclipse.phantomjs.PhantomjsNature.Image"
+            natureId="org.nodeclipse.phantomjs.PhantomjsNature">
+      </image>
+   </extension>
+   <extension
+         id="org.nodeclipse.phantomjs.PhantomjsNature"
+         name="PhantomJS Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.nodeclipse.phantomjs.nature.PhantomjsNature">
+         </run>
+      </runtime>
+   </extension>
+
+
+   <extension
          point="org.eclipse.ui.editors">
       <editor
             class="org.nodeclipse.ui.editors.NodeEditor"
