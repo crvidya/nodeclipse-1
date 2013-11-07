@@ -39,6 +39,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private BooleanFieldEditor jjsJustJJS;
 
     private FileFieldEditor mongoDBShellPath;
+    private StringFieldEditor mongoDBShellOptions;
     
     private BooleanFieldEditor nodeclipseConsoleEnabled;
     
@@ -125,6 +126,10 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         
         mongoDBShellPath = new FileFieldEditor(PreferenceConstants.MONGODB_SHELL_PATH, "MongoDB Shell path:", getFieldEditorParent());
         addField(mongoDBShellPath);
+        
+        mongoDBShellOptions = new StringFieldEditor(PreferenceConstants.MONGODB_SHELL_OPTIONS, "MongoDB Shell options:", getFieldEditorParent());
+        addField(mongoDBShellOptions);
+        
         
         nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
         		"enable Nodeclipse Console", getFieldEditorParent());
