@@ -62,9 +62,6 @@
    <feature url="features/gitaddon.feature_1.0.0.qualifier.jar" id="gitaddon.feature" version="1.0.0.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/code.satyagraha.gfm.viewer.feature_1.5.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.5.0.qualifier">
-      <category name="Tools"/>
-   </feature>
    <feature url="features/de.bastiankrol.startexplorer.feature_1.5.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.1">
       <category name="Tools"/>
    </feature>
@@ -84,6 +81,16 @@
       <category name="Tools"/>
    </feature>
   -->
+   <feature url="features/code.satyagraha.gfm.viewer.feature_1.6.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.6.0.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/com.xored.glance_1.1.1.qualifier.jar" id="com.xored.glance" version="1.1.1.qualifier">
+      <category name="Tools"/>
+   </feature>
+   
 
    <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
    <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">

@@ -39,11 +39,6 @@
 			<url>http://www.nodeclipse.org/git/addon/</url>
 		</repository>
 		<repository>
-			<id>gfm.viewer</id>
-			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.5.0/</url>
-		</repository>
-		<repository>
 			<id>startexplorer</id>
 			<layout>p2</layout>
 			<url>http://basti1302.github.com/startexplorer/update/</url>
@@ -74,6 +69,21 @@
 			<url>http://www.jumperz.net/update/</url>
 		</repository>
 		-->
+		<repository>
+			<id>gfm.viewer</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/satyagraha/generic/1.6.0/</url>
+		</repository>
+		<repository>
+			<id>shelled</id>
+			<layout>p2</layout>
+			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
+		</repository>
+		<repository>
+			<id>com.xored.glance</id>
+			<layout>p2</layout>
+			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
+		</repository>
 		
 		<!-- 	
 		<repository>
