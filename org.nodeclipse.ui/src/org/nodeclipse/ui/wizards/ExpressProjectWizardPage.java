@@ -33,8 +33,10 @@ import org.nodeclipse.ui.util.Constants;
 import org.eclipse.swt.widgets.Button;
 
 /**
- * @author Tomoyuki Inagaki
+ * @author Tomoyuki Inagaki, Paul Verest
  * 
+ * 
+<pre>
 >express -h
 
   Usage: express [options]
@@ -47,8 +49,9 @@ import org.eclipse.swt.widgets.Button;
     -e, --ejs           add ejs engine support (defaults to jade)
     -J, --jshtml        add jshtml engine support (defaults to jade)
     -H, --hogan         add hogan.js engine support
-    -c, --css <engine>  add stylesheet <engine> support (less|stylus) (defaults to plain css)
+    -c, --css `engine`  add stylesheet `engine` support (less|stylus) (defaults to plain css)
     -f, --force         force on non-empty directory
+</pre>
 */
 
 @SuppressWarnings("restriction")
@@ -64,6 +67,10 @@ public class ExpressProjectWizardPage extends WizardPage {
     Button btnJshtml;
     Button btnHogan;
 
+    Button btnCss;
+    Button btnLess;
+    Button btnStylus;
+    
     private Listener nameModifyListener = new Listener() {
         public void handleEvent(Event e) {
             setLocationForSelection();
@@ -111,6 +118,8 @@ public class ExpressProjectWizardPage extends WizardPage {
             locationArea.updateProjectName(initialProjectFieldValue);
         }
         createTemplateGroup(composite);
+        
+        createStylesheetEngineGroup(composite);
 
         // Scale the button based on the rest of the dialog
         setButtonLayoutData(locationArea.getBrowseButton());
@@ -247,6 +256,27 @@ public class ExpressProjectWizardPage extends WizardPage {
         btnHogan.setText("hogan.js");
     }
 
+    private final void createStylesheetEngineGroup(Composite parent) {
+        Composite stylesheetEngineGroup = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 5;
+        stylesheetEngineGroup.setLayout(layout);
+        stylesheetEngineGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        Label lblTemplateEngine = new Label(stylesheetEngineGroup, SWT.NONE);
+        lblTemplateEngine.setText("Stylesheet Engine:");
+
+        btnCss = new Button(stylesheetEngineGroup, SWT.RADIO);
+        btnCss.setSelection(true);
+        btnCss.setText("CSS");
+
+        btnLess = new Button(stylesheetEngineGroup, SWT.RADIO);
+        btnLess.setText("LESS");
+
+        btnStylus = new Button(stylesheetEngineGroup, SWT.RADIO);
+        btnStylus.setText("Stylus");
+    }
+    
     /**
      * Returns the current project location path as entered by the user, or its
      * anticipated initial value. Note that if the default has been returned the
@@ -429,6 +459,16 @@ public class ExpressProjectWizardPage extends WizardPage {
             return Constants.TEMPLATE_HOGAN;
         }
         return Constants.BLANK_STRING;
+    }
+    
+    public String getSelectedStylesheetEngine() {
+        if (btnLess.getSelection()) {
+            return Constants.STYLESHEET_LESS;
+        }
+        if (btnStylus.getSelection()) {
+            return Constants.STYLESHEET_STYLUS;
+        }
+        return Constants.STYLESHEET_CSS;
     }
 }
 

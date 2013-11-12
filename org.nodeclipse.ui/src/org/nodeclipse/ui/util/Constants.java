@@ -26,7 +26,14 @@ public class Constants {
 
     public static final String PACKAGE_JSON = "package.json";
     public static final String MODE_RUN = "run";
+    
+    /**
+     * see ExpressProjectWizardPage
+     */
     public static final String TEMPLATE_EJS = "ejs";
 	public static final String TEMPLATE_JSHTML = "jshtml";
 	public static final String TEMPLATE_HOGAN = "hogan";
+	public static final String STYLESHEET_LESS = "less";
+	public static final String STYLESHEET_STYLUS = "stylus";
+	public static final String STYLESHEET_CSS = BLANK_STRING;
 }

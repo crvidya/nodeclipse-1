@@ -33,6 +33,7 @@ import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.npm.InstallLaunchShortcut;
 import org.nodeclipse.ui.util.Constants;
 import org.nodeclipse.ui.util.LogUtil;
+import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.ui.util.ProcessUtils;
 import org.osgi.framework.Bundle;
 
@@ -69,7 +70,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 			}
 		};
 		mainPage.setTitle("Create a Express Project");
-		mainPage.setDescription("Create a new Express project (Express should be installed before with <code>npm install -g express</code>).");
+		mainPage.setDescription("Create a new Express project (Express should be installed before with `npm install -g express`).");
 		addPage(mainPage);
 	}
 
@@ -95,6 +96,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 		final boolean exists = isExistsProjectFolder(description);
 		final String projectName = mainPage.getProjectName();
 		final String templateEngine = mainPage.getSelectedTemplateEngine();
+		final String stylesheetEngine = mainPage.getSelectedStylesheetEngine();
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override
@@ -115,7 +117,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				}
 				
 				generateExpressApplication(monitor, projectName, newProjectHandle,
-						templateEngine, workingDirectory);
+						templateEngine, stylesheetEngine, workingDirectory);
 				importExpressApplication(monitor, newProjectHandle,
 						workingDirectory);
 
@@ -187,7 +189,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 	}
 
 	private void generateExpressApplication(IProgressMonitor monitor,
-			String projectName, IProject projectHandle, String templateEngine, File workingDirectory)
+			String projectName, IProject projectHandle, String templateEngine, String stylesheetEngine, File workingDirectory)
 			throws InvocationTargetException {
 		Bundle bundle = Activator.getDefault().getBundle();
 		if (bundle == null) {
@@ -211,6 +213,13 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 			}
 		}
 
+		if (!stylesheetEngine.equals(Constants.BLANK_STRING)) {
+			cmdLine.add("--css " + stylesheetEngine);
+		}
+		
+		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
+		NodeclipseConsole.write("\n");
+		
 		ProcessUtils.exec(cmdLine, workingDirectory);
 	}
 
