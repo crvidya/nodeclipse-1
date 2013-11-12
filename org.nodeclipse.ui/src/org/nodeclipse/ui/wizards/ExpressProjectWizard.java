@@ -69,7 +69,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 			}
 		};
 		mainPage.setTitle("Create a Express Project");
-		mainPage.setDescription("Create a new Express project.");
+		mainPage.setDescription("Create a new Express project (Express should be installed before with <code>npm install -g express</code>).");
 		addPage(mainPage);
 	}
 
@@ -125,9 +125,10 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				monitor.worked(1);
 
 				try {
-					//TODO make universal method for all templates
+					// universal method for all templates
 					generateTemplates("common-templates", newProjectHandle);
 					rewriteFile("README.md", newProjectHandle);
+					
 					rewritePackageJson(monitor, newProjectHandle);
 
 					// JSHint support

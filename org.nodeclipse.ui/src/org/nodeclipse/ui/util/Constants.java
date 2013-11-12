@@ -27,4 +27,6 @@ public class Constants {
     public static final String PACKAGE_JSON = "package.json";
     public static final String MODE_RUN = "run";
     public static final String TEMPLATE_EJS = "ejs";
+	public static final String TEMPLATE_JSHTML = "jshtml";
+	public static final String TEMPLATE_HOGAN = "hogan";
 }
