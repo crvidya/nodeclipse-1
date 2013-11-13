@@ -42,7 +42,7 @@ import org.nodeclipse.ui.util.LogUtil;
 import org.osgi.framework.Bundle;
 
 /**
- * Superclass for Node & PhantomJS projects
+ * Superclass for Node, Express & PhantomJS projects
 * @author ..., Paul Verest
 */
 
