@@ -28,7 +28,7 @@ import org.eclipse.ui.ide.IDE;
  */
 public class CoffeeFileWizard extends Wizard implements INewWizard {
 
-    private final String WINDOW_TITLE = "New CoffeeScript Source File";
+    private final String WINDOW_TITLE = "New CoffeeScript File";
 
     private CoffeeFileWizardPage page;
     private ISelection selection;

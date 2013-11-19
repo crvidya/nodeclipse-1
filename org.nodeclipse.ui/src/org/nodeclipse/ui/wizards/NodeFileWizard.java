@@ -26,7 +26,7 @@ import org.eclipse.ui.ide.IDE;
 
 public class NodeFileWizard extends Wizard implements INewWizard {
 
-    private final String WINDOW_TITLE = "New Node Source File";
+    private final String WINDOW_TITLE = "New JavaScript File";
 
     private NodeFileWizardPage page;
     private ISelection selection;
