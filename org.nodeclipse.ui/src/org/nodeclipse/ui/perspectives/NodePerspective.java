@@ -64,6 +64,8 @@ public class NodePerspective implements IPerspectiveFactory {
     private void addNewWizardShortcuts() {
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeProjectWizard"); // NON-NLS-1
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.ExpressProjectWizard"); // NON-NLS-1
+        factory.addNewWizardShortcut("org.nodeclipse.phantomjs.wizards.PhantomjsProjectWizard"); // NON-NLS-1 @since 0.8
+        factory.addNewWizardShortcut("org.nodeclipse.jjs.wizards.NashornProjectWizard"); // NON-NLS-1 @since 0.8
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.NodeFileWizard"); // NON-NLS-1
         factory.addNewWizardShortcut("org.nodeclipse.ui.wizards.CoffeeFileWizard"); // NON-NLS-1
         factory.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder"); // NON-NLS-1
@@ -73,9 +75,11 @@ public class NodePerspective implements IPerspectiveFactory {
     private void addViewShortcuts() {
         factory.addShowViewShortcut("org.eclipse.team.ui.GenericHistoryView"); // NON-NLS-1
         factory.addShowViewShortcut(IConsoleConstants.ID_CONSOLE_VIEW);
-        factory.addShowViewShortcut("org.eclipse.ui.views.ResourceNavigator");
+        factory.addShowViewShortcut("org.eclipse.ui.views.ResourceNavigator"); // NON-NLS-1
         factory.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
         factory.addShowViewShortcut(IPageLayout.ID_OUTLINE);
+        factory.addShowViewShortcut(IPageLayout.ID_BOOKMARKS); //@since 0.8
+        factory.addShowViewShortcut("com.eclipserunner.views.RunnerView"); // NON-NLS-1 @since 0.8
     }
 
 }

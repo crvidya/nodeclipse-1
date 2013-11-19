@@ -3,6 +3,46 @@
 <plugin>
 
    <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.nodeclipse.ui.wizards.category"
+            name="Nodeclipse">
+      </category>
+      <wizard
+            category="org.nodeclipse.ui.wizards.category"
+            class="org.nodeclipse.jjs.wizards.NashornProjectWizard"
+            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
+            icon="icons/nashorn_16x16.png"
+            id="org.nodeclipse.jjs.wizards.NashornProjectWizard"
+            name="Nashorn Project"
+            project="true">
+         <description>
+            Create a new Nashorn project (or add .project file to existing project)
+         </description>
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/nashorn_16x16.png"
+            id="org.nodeclipse.jjs.NashornNature.Image"
+            natureId="org.nodeclipse.jjs.NashronNature">
+      </image>
+   </extension>
+   <extension
+         id="org.nodeclipse.jjs.NashronNature"
+         name="Nashorn Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.nodeclipse.jjs.nature.NashornNature">
+         </run>
+      </runtime>
+   </extension>
+
+
+   <extension
          point="org.eclipse.ui.editors">
       <editor
             class="org.nodeclipse.ui.editors.NodeEditor"
