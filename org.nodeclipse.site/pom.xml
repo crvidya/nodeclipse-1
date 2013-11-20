@@ -79,8 +79,35 @@
 			<layout>p2</layout>
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
+		<repository>
+			<id>Closure-by-Vincent.Simonet.p2f</id>
+			<layout>p2</layout>
+			<url>http://www.normalesup.org/~simonet/soft/ow/update/</url>
+		</repository>
+		<!-- can't be used
+		<repository>
+			<id>eclipsejsonedit</id>
+			<layout>p2</layout>
+			<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
+		</repository>
+		 -->
 		
 		
+		<!-- General -->
+		<repository>
+			<id>EclipseRunner</id>
+			<layout>p2</layout>
+			<url>http://eclipserunnerplugin.googlecode.com/svn/trunk/EclipseRunnerSite</url>
+		</repository>
+		<!-- 
+		<repository>
+			<id>net.jeeeyul.eclipse.themes.updatesite</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
+		</repository>
+		 -->
+
+		<!-- Other -->
 		<repository>
 			<id>com.xored.glance</id>
 			<layout>p2</layout>
@@ -92,15 +119,11 @@
 			<url>http://puremvcnotificationviewer.googlecode.com/svn/trunk/PracticallyMacroGoogleUpdateSite</url>
 		</repository>
 		<repository>
-			<id>EclipseRunner</id>
-			<layout>p2</layout>
-			<url>http://eclipserunnerplugin.googlecode.com/svn/trunk/EclipseRunnerSite</url>
-		</repository>
-		<repository>
 			<id>SelectionExplorer</id>
 			<layout>p2</layout>
 			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/SelectionExplorerUpdateSite</url>
 		</repository>
+
 		
 		<!-- 	
 		<repository>
