@@ -18,7 +18,18 @@ Window -> Show View -> Other... -> REST Client -> REST Client Tool
 
 REST Client Tool is also nice to use in Debug perspective.
 
-### Preferences
+#### Optional general Eclipse configuration
+
+General -> Workspace ->Refresh using native hooks or polling (so that you don't need to press <kbd>F5</kbd>
+ after <code>npm install<code> or other changes on file system)
+
+General -> Editors -> Text Editors -> Show print margin, 120
+
+General -> Editors -> Text Editors -> Show whitespace characters (just remeber where is this setting)
+ 
+Take a time to explore other Eclipse setting, you may be rewarded with findings. 
+
+### Nodeclipse Preferences
 
 Check preferences ( Window -> Preferences ) for Node.js related settings.
 
@@ -37,6 +48,7 @@ Window -> Preferences -> General -> Editors -> File Associations <kbd>Add...</kb
 
 - *.jade - associate with Scrapbook (from JDT)
 - *.ejs - associate with HTML Editor (from WebTools, Aptana, etc)
+ or better with Amateras HTML Editor (check on Nodeclipse Plugin List)
 
 #### [NTS](http://www.nodeclipse.org/nts/) Only
 
