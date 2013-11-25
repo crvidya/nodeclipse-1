@@ -31,10 +31,12 @@ Take a time to explore other Eclipse setting, you may be rewarded with findings.
 
 ### Nodeclipse Preferences
 
-Check preferences ( Window -> Preferences ) for Node.js related settings.
+Check preferences ( Window -> Preferences ) for Node.js, PhantomJS, MongoDB and Nashorn related settings.
 
+<!--
 ![](images/Nodeclipse-Preferences.png)
-
+-->
+ 
 ## In previous versions
 
 ### Before 0.6
