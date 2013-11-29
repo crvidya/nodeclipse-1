@@ -1,4 +1,25 @@
 
+# Nodeclipse
+
+## Node.js Development with Eclipse
+
+Install with `npm install -g nodeclipse`
+
+Usage: just run `nodeclipse` to add needed `.project file` to current directory
+
+In Eclipse File -> Import -> General / Existing Projects into Workspace
+
+###
+
+https://npmjs.org/doc/developers.html
+
+try with 
+
+npm install . -g
+
+before publishing
+
+### Eclipse RCP notes
 
 http://stackoverflow.com/questions/16755481/eclipse-plugin-how-to-show-resources-by-default-in-perspective
 

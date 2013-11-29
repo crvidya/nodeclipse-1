@@ -1,0 +1,28 @@
+{
+  "name": "nodeclipse",
+  "version": "0.1.0",
+  "description": "Prepare (Node.js) project to be imported into Eclipse (Nodeclipse)",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nodeclipse/nodeclipse-1.git"
+  },
+  "keywords": [
+    "Eclipse",
+    "Nodeclipse",
+    "import",
+    "node.js",
+    "IDE",
+    "debug"
+  ],
+  "author": "Paul Verest",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "optimist": "~0.6.0",
+    "shelljs": "~0.2.6"
+  }
+}
