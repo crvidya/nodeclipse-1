@@ -16,7 +16,7 @@
             name="Node Project"
             project="true">
          <description>
-            Create a new Node.js project (or add .project file to existing project)
+            Create a new Node.js project (or add .project file to an existing project)
          </description>
       </wizard>
       <wizard

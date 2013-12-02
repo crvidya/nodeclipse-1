@@ -11,16 +11,16 @@
    <feature url="features/org.chromium.sdk_0.3.9.qualifier.jar" id="org.chromium.sdk" version="0.3.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse_0.7.0.qualifier.jar" id="org.nodeclipse" version="0.7.0.qualifier">
+   <feature url="features/org.nodeclipse_0.8.0.qualifier.jar" id="org.nodeclipse" version="0.8.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.jjs.feature_0.7.0.qualifier.jar" id="org.nodeclipse.jjs.feature" version="0.7.0.qualifier">
+   <feature url="features/org.nodeclipse.jjs.feature_0.8.0.qualifier.jar" id="org.nodeclipse.jjs.feature" version="0.8.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.mongodb.feature_0.7.0.qualifier.jar" id="org.nodeclipse.mongodb.feature" version="0.7.0.qualifier">
+   <feature url="features/org.nodeclipse.mongodb.feature_0.8.0.qualifier.jar" id="org.nodeclipse.mongodb.feature" version="0.8.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.phantomjs.feature_0.7.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.7.0.qualifier">
+   <feature url="features/org.nodeclipse.phantomjs.feature_0.8.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.8.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
 
@@ -86,6 +86,8 @@
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
       <category name="Tools"/>
    </feature>
+   <!-- can't be used
+   needs Xtend
    <feature url="features/net.vtst.ow.eclipse.soy.feature_1.0.9.qualifier.jar" id="net.vtst.ow.eclipse.soy.feature" version="1.0.9.qualifier">
       <category name="Tools"/>
    </feature>
@@ -95,7 +97,6 @@
    <feature url="features/net.vtst.ow.eclipse.less.feature_1.0.18.qualifier.jar" id="net.vtst.ow.eclipse.less.feature" version="1.0.18.qualifier">
       <category name="Tools"/>
    </feature>
-   <!-- can't be used
    <feature url="features/jsonedit-feature_0.9.7.qualifier.jar" id="jsonedit-feature" version="0.9.7.qualifier">
       <category name="Tools"/>
    </feature>

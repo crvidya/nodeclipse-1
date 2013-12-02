@@ -2,7 +2,7 @@
 <feature
       id="org.nodeclipse.mongodb.feature"
       label="Nodeclipse MongoDB Shell Integration"
-      version="0.7.0.qualifier"
+      version="0.8.0.qualifier"
       provider-name="Enide organization">
 
    <description url="http://www.nodeclipse.org/">

@@ -17,7 +17,7 @@
             name="PhantomJS Project"
             project="true">
          <description>
-            Create a new PhantomJS project (or add .project file to existing project)
+            Create a new PhantomJS project (or add .project file to an existing project)
          </description>
       </wizard>
    </extension>
