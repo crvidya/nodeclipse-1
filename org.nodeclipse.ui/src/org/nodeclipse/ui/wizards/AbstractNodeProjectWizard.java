@@ -39,8 +39,12 @@ import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.nature.NodeNature;
 import org.nodeclipse.ui.perspectives.NodePerspective;
 import org.nodeclipse.ui.util.LogUtil;
-import org.nodeclipse.ui.util.ProcessUtils;
 import org.osgi.framework.Bundle;
+
+/**
+ * Superclass for Node, Express & PhantomJS projects
+* @author ..., Paul Verest
+*/
 
 @SuppressWarnings("restriction")
 public abstract class AbstractNodeProjectWizard extends Wizard implements INewWizard {
@@ -82,6 +86,11 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
     
     protected abstract IProject createNewProject();
     
+    //+ to let overriding
+    protected String getProjectNature(){
+		return NodeNature.NATURE_ID;    	
+    }
+    
     protected IProjectDescription createProjectDescription(IProject newProjectHandle, URI location) {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		final IProjectDescription description = workspace
@@ -90,7 +99,7 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
 		String[] natures = description.getNatureIds();
 		String[] newNatures = new String[natures.length + 2];
 		System.arraycopy(natures, 0, newNatures, 0, natures.length);
-		newNatures[natures.length] = NodeNature.NATURE_ID;
+		newNatures[natures.length] = getProjectNature();
 		newNatures[natures.length+1] = JavaScriptCore.NATURE_ID;
 		description.setNatureIds(newNatures);    	
 		

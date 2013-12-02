@@ -2,52 +2,431 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\pverest\git\nodeclipse-07891\org.nodeclipse.help\contents\.phantomjs.md.html</title>
+<title>C:\Users\weibl\git\Enide-nodeclipse-1\org.nodeclipse.help\contents\.phantomjs.md.html</title>
 
 
 <style type="text/css">
+body {
+	color: #333;
+	font: 13px/1.4 Helvetica,arial,freesans,clean,sans-serif;
+}
 
 .markdown-body {
     border: 1px solid #CACACA;
     padding: 30px;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
+}
+.markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+}
+.markdown-body a.absent {
+    color: #C00;
+}
+.markdown-body a.anchor {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    margin-left: -30px;
+    padding-left: 30px;
+    padding-right: 6px;
+    position: absolute;
+    top: 0;
+}
+.markdown-body a.anchor:focus {
+    outline: medium none;
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+    cursor: text;
+    font-weight: bold;
+    line-height: 1.7;
+    margin: 1em 0 15px;
+    padding: 0;
+    position: relative;
 }
 
+.markdown-body h1 .octicon-link, .markdown-body h2 .octicon-link, .markdown-body h3 .octicon-link, .markdown-body h4 .octicon-link, .markdown-body h5 .octicon-link, .markdown-body h6 .octicon-link {
+    color: #000;
+    display: none;
+}
+.markdown-body h1:hover a.anchor, .markdown-body h2:hover a.anchor, .markdown-body h3:hover a.anchor, .markdown-body h4:hover a.anchor, .markdown-body h5:hover a.anchor, .markdown-body h6:hover a.anchor {
+    line-height: 1;
+    margin-left: -22px;
+    padding-left: 0;
+    text-decoration: none;
+    top: 15%;
+}
+.markdown-body h1:hover a.anchor .octicon-link, .markdown-body h2:hover a.anchor .octicon-link, .markdown-body h3:hover a.anchor .octicon-link, .markdown-body h4:hover a.anchor .octicon-link, .markdown-body h5:hover a.anchor .octicon-link, .markdown-body h6:hover a.anchor .octicon-link {
+    display: inline-block;
+}
+.markdown-body h1 tt, .markdown-body h1 code, .markdown-body h2 tt, .markdown-body h2 code, .markdown-body h3 tt, .markdown-body h3 code, .markdown-body h4 tt, .markdown-body h4 code, .markdown-body h5 tt, .markdown-body h5 code, .markdown-body h6 tt, .markdown-body h6 code {
+    font-size: inherit;
+}
+.markdown-body h1 {
+    border-bottom: 1px solid #DDD;
+    font-size: 2.5em;
+}
 .markdown-body h2 {
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #EEE;
+    font-size: 2em;
 }
-
-.markdown-body code {
-    white-space: nowrap;
+.markdown-body h3 {
+    font-size: 1.5em;
 }
-
+.markdown-body h4 {
+    font-size: 1.2em;
+}
+.markdown-body h5 {
+    font-size: 1em;
+}
+.markdown-body h6 {
+    color: #777;
+    font-size: 1em;
+}
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
+    margin: 15px 0;
+}
+.markdown-body ul, .markdown-body ol {
+    padding-left: 30px;
+}
+.markdown-body ul.no-list, .markdown-body ol.no-list {
+    list-style-type: none;
+    padding: 0;
+}
+.markdown-body ul ul, .markdown-body ul ol, .markdown-body ol ol, .markdown-body ol ul {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.markdown-body dl {
+    padding: 0;
+}
+.markdown-body dl dt {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 0;
+}
+.markdown-body dl dd {
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+.markdown-body blockquote {
+    border-left: 4px solid #DDD;
+    color: #777;
+    padding: 0 15px;
+}
+.markdown-body blockquote > *:first-child {
+    margin-top: 0;
+}
+.markdown-body blockquote > *:last-child {
+    margin-bottom: 0;
+}
+.markdown-body table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+.markdown-body table th {
+    font-weight: bold;
+}
+.markdown-body table th, .markdown-body table td {
+    border: 1px solid #DDD;
+    padding: 6px 13px;
+}
+.markdown-body table tr {
+    background-color: #FFF;
+    border-top: 1px solid #CCC;
+}
+.markdown-body table tr:nth-child(2n) {
+    background-color: #F8F8F8;
+}
+.markdown-body img {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    border: 0px;
+}
+.markdown-body span.frame {
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.frame > span {
+    border: 1px solid #DDD;
+    display: block;
+    float: left;
+    margin: 13px 0 0;
+    overflow: hidden;
+    padding: 7px;
+    width: auto;
+}
+.markdown-body span.frame span img {
+    display: block;
+    float: left;
+}
+.markdown-body span.frame span span {
+    clear: both;
+    color: #333;
+    display: block;
+    padding: 5px 0 0;
+}
+.markdown-body span.align-center {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-center > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: center;
+}
+.markdown-body span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+.markdown-body span.align-right {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-right > span {
+    display: block;
+    margin: 13px 0 0;
+    overflow: hidden;
+    text-align: right;
+}
+.markdown-body span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+.markdown-body span.float-left {
+    display: block;
+    float: left;
+    margin-right: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-left span {
+    margin: 13px 0 0;
+}
+.markdown-body span.float-right {
+    display: block;
+    float: right;
+    margin-left: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-right > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: right;
+}
 .markdown-body code, .markdown-body tt {
     background-color: #F8F8F8;
-    border: 1px solid #EAEAEA;
-    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
     margin: 0 2px;
     padding: 0 5px;
 }
-
+.markdown-body code {
+    white-space: nowrap;
+}
+.markdown-body pre > code {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+}
 .markdown-body .highlight pre, .markdown-body pre {
     background-color: #F8F8F8;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
     font-size: 13px;
     line-height: 19px;
     overflow: auto;
     padding: 6px 10px;
 }
-
-.markdown-body img {
-    border: 0 none;
+.markdown-body pre code, .markdown-body pre tt {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
 }
 
 pre, code, tt {
     font-family: Consolas,"Liberation Mono",Courier,monospace;
     font-size: 12px;
 }
+
+.highlight {
+    background: #FFF;
+}
+.highlight .k,
+.highlight .o,
+.highlight .cp,
+.highlight .cs,
+.highlight .gs,
+.highlight .gu,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .nc,
+.highlight .ne,
+.highlight .nf,
+.highlight .ow {
+    font-weight: bold;
+}
+.highlight .gd,
+.highlight .gd .x,
+.highlight .gi,
+.highlight .gi .x,
+.type-csharp .highlight .nf,
+.type-csharp .highlight .nn {
+    color: #000;
+}
+.highlight .c,
+.highlight .cm,
+.highlight .c1 {
+    color: #998;
+    font-style: italic;
+}
+.highlight .err {
+    background-color: #E3D2D2;
+    color: #A61717;
+}
+.highlight .cp,
+.highlight .cs {
+    color: #999;
+}
+.highlight .cs,
+.highlight .ge {
+    font-style: italic;
+}
+.highlight .gd {
+    background-color: #FDD;
+}
+.highlight .gd .x {
+    background-color: #FAA;
+}
+.highlight .gr,
+.highlight .gt {
+    color: #A00;
+}
+.highlight .gh {
+    color: #999;
+}
+.highlight .gi {
+    background-color: #DFD;
+}
+.highlight .gi .x {
+    background-color: #AFA;
+}
+.highlight .go {
+    color: #888;
+}
+.highlight .gp,
+.highlight .nn {
+    color: #555;
+}
+.highlight .gu,
+.highlight .ni {
+    color: #800080;
+}
+.highlight .kt {
+    color: #458;
+}
+.highlight .m {
+    color: #099;
+}
+.highlight .s {
+    color: #D14;
+}
+.highlight .n {
+    color: #333;
+}
+.highlight .na,
+.highlight .no,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+    color: #008080;
+}
+.highlight .nb {
+    color: #0086B3;
+}
+.highlight .nc {
+    color: #458;
+}
+.highlight .ne,
+.highlight .nf {
+    color: #900;
+}
+.highlight .nt {
+    color: #000080;
+}
+.highlight .w {
+    color: #BBB;
+}
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+    color: #099;
+}
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .s1 {
+    color: #D14;
+}
+.highlight .sr {
+    color: #009926;
+}
+.highlight .ss {
+    color: #990073;
+}
+.highlight .bp {
+    color: #999;
+}
+.highlight .il {
+    color: #099;
+}
+.highlight .gc {
+    background-color: #EAF2F5;
+    color: #999;
+}
+.type-csharp .highlight .k,
+.type-csharp .highlight .kt {
+    color: #00F;
+}
+.type-csharp .highlight .nf {
+    font-weight: normal;
+}
+.type-csharp .highlight .nc {
+    color: #2B91AF;
+}
+.type-csharp .highlight .s,
+.type-csharp .highlight .sc {
+    color: #A31515;
+}
+
 </style>
 
 
@@ -76,6 +455,8 @@ function setDocumentScrollTop(ypos)
 <p>Web page <a href="http://phantomjs.org">http://phantomjs.org</a> </p> 
 <p>Sources <a href="https://github.com/ariya/phantomjs">https://github.com/ariya/phantomjs</a><br /> Examples <a href="https://github.com/ariya/phantomjs/wiki/Examples">https://github.com/ariya/phantomjs/wiki/Examples</a> are also included into distribution. </p> 
 <p>APIs <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#module-api">https://github.com/ariya/phantomjs/wiki/API-Reference#module-api</a></p> 
+<h2> <a name="phantomjs-in-nodeclipse" class="anchor" href="..md.html#phantomjs-in-nodeclipse"><span class="octicon octicon-link"></span></a>PhantomJS in Nodeclipse</h2> 
+<p>As of v0.7 there is no special project type. (e.g. you can create Node.js project to use JSHint validation and <code>npm</code> to get some ComonJS moduules) Use right-click <kbd>Run As -&gt; PhantomJS Script</kbd> . </p> 
 <p><a name="module-api"></a></p> 
 <h1> <a name="module-api" class="anchor" href="..md.html#module-api"><span class="octicon octicon-link"></span></a>Module API</h1> 
 <p>The Module API is modeled after <a href="http://wiki.commonjs.org/wiki/Modules/1.1.1">CommonJS Modules</a> is available. Up through PhantomJS 1.6, the only supported modules that were built in:</p> 
@@ -174,46 +555,46 @@ function setDocumentScrollTop(ypos)
 </pre>
 </div> 
 <h3> <a name="command-line-options" class="anchor" href="..md.html#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h3> 
-<div class="highlight highlight-txt">
- <pre><span class="err">D:\Progs\phantomjs-1.9.2-windows&gt;phantomjs</span> <span class="err">-h</span>
-<span class="err">Usage:</span>
-   <span class="err">phantomjs</span> <span class="err">[switchs]</span> <span class="err">[options]</span> <span class="err">[script]</span> <span class="err">[argument</span> <span class="err">[argument</span> <span class="err">[...]]]</span>
+<pre><code>    D:\Progs\phantomjs-1.9.2-windows&gt;phantomjs -h
+    Usage:
+       phantomjs [switchs] [options] [script] [argument [argument [...]]]
 
-<span class="err">Options:</span>
-  <span class="err">--cookies-file=&lt;val&gt;</span>                 <span class="err">Sets</span> <span class="err">the</span> <span class="err">file</span> <span class="err">name</span> <span class="err">to</span> <span class="err">store</span> <span class="err">the</span> <span class="err">persistent</span> <span class="err">cookies</span>
-  <span class="err">--config=&lt;val&gt;</span>                       <span class="err">Specifies</span> <span class="err">JSON-formatted</span> <span class="err">configuration</span> <span class="err">file</span>
-  <span class="err">--debug=&lt;val&gt;</span>                        <span class="err">Prints</span> <span class="err">additional</span> <span class="err">warning</span> <span class="err">and</span> <span class="err">debug</span> <span class="err">message:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
-  <span class="err">--disk-cache=&lt;val&gt;</span>                   <span class="err">Enables</span> <span class="err">disk</span> <span class="err">cache:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
-  <span class="err">--ignore-ssl-errors=&lt;val&gt;</span>            <span class="err">Ignores</span> <span class="err">SSL</span> <span class="nb">errors</span> <span class="p">(</span><span class="s">expired/self-signed</span> <span class="s">certificate</span> <span class="s">errors</span><span class="p">)</span><span class="err">:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
-  <span class="err">--load-images=&lt;val&gt;</span>                  <span class="err">Loads</span> <span class="err">all</span> <span class="err">inlined</span> <span class="err">images:</span> <span class="err">'true'</span> <span class="err">(default)</span> <span class="err">or</span> <span class="err">'false'</span>
-  <span class="err">--local-storage-path=&lt;val&gt;</span>           <span class="err">Specifies</span> <span class="err">the</span> <span class="err">location</span> <span class="err">for</span> <span class="err">offline</span> <span class="err">local</span> <span class="err">storage</span>
-  <span class="err">--local-storage-quota=&lt;val&gt;</span>          <span class="err">Sets</span> <span class="err">the</span> <span class="err">maximum</span> <span class="err">size</span> <span class="err">of</span> <span class="err">the</span> <span class="err">offline</span> <span class="err">local</span> <span class="nb">storage</span> <span class="p">(</span><span class="s">in</span> <span class="s">KB</span><span class="p">)</span>
-  <span class="err">--local-to-remote-url-access=&lt;val&gt;</span>   <span class="err">Allows</span> <span class="err">local</span> <span class="err">content</span> <span class="err">to</span> <span class="err">access</span> <span class="err">remote</span> <span class="err">URL:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
-  <span class="err">--max-disk-cache-size=&lt;val&gt;</span>          <span class="err">Limits</span> <span class="err">the</span> <span class="err">size</span> <span class="err">of</span> <span class="err">the</span> <span class="err">disk</span> <span class="nb">cache</span> <span class="p">(</span><span class="s">in</span> <span class="s">KB</span><span class="p">)</span>
-  <span class="err">--output-encoding=&lt;val&gt;</span>              <span class="err">Sets</span> <span class="err">the</span> <span class="err">encoding</span> <span class="err">for</span> <span class="err">the</span> <span class="err">terminal</span> <span class="err">output,</span> <span class="err">default</span> <span class="err">is</span> <span class="err">'utf8'</span>
-  <span class="err">--remote-debugger-port=&lt;val&gt;</span>         <span class="err">Starts</span> <span class="err">the</span> <span class="err">script</span> <span class="err">in</span> <span class="err">a</span> <span class="err">debug</span> <span class="err">harness</span> <span class="err">and</span> <span class="err">listens</span> <span class="err">on</span> <span class="err">the</span> <span class="err">specified</span> <span class="err">port</span>
-  <span class="err">--remote-debugger-autorun=&lt;val&gt;</span>      <span class="err">Runs</span> <span class="err">the</span> <span class="err">script</span> <span class="err">in</span> <span class="err">the</span> <span class="err">debugger</span> <span class="err">immediately:</span> <span class="err">'true'</span> <span class="err">or</span> <span class="err">'false'</span> <span class="err">(default)</span>
-  <span class="err">--proxy=&lt;val&gt;</span>                        <span class="err">Sets</span> <span class="err">the</span> <span class="err">proxy</span> <span class="err">server,</span> <span class="err">e.g.</span> <span class="err">'--proxy=http://proxy.company.com:8080'</span>
-  <span class="err">--proxy-auth=&lt;val&gt;</span>                   <span class="err">Provides</span> <span class="err">authentication</span> <span class="err">information</span> <span class="err">for</span> <span class="err">the</span> <span class="err">proxy,</span> <span class="err">e.g.</span> <span class="err">''-proxy-auth=username:password'</span>
-  <span class="err">--proxy-type=&lt;val&gt;</span>                   <span class="err">Specifies</span> <span class="err">the</span> <span class="err">proxy</span> <span class="err">type,</span> <span class="err">'http'</span> <span class="err">(default),</span> <span class="err">'none'</span> <span class="err">(disable</span> <span class="err">completely),</span> <span class="err">or</span> <span class="err">'socks5'</span>
-  <span class="err">--script-encoding=&lt;val&gt;</span>              <span class="err">Sets</span> <span class="err">the</span> <span class="err">encoding</span> <span class="err">used</span> <span class="err">for</span> <span class="err">the</span> <span class="err">starting</span> <span class="err">script,</span> <span class="err">default</span> <span class="err">is</span> <span class="err">'utf8'</span>
-  <span class="err">--web-security=&lt;val&gt;</span>                 <span class="err">Enables</span> <span class="err">web</span> <span class="err">security,</span> <span class="err">'true'</span> <span class="err">(default)</span> <span class="err">or</span> <span class="err">'false'</span>
-  <span class="err">--ssl-protocol=&lt;val&gt;</span>                 <span class="err">Sets</span> <span class="err">the</span> <span class="err">SSL</span> <span class="nb">protocol</span> <span class="p">(</span><span class="s">supported</span> <span class="s">protocols:</span> <span class="s">'SSLv3'</span> <span class="p">(</span><span class="s">default</span><span class="p">)</span><span class="s">,</span> <span class="s">'SSLv2',</span> <span class="s">'TLSv1',</span> <span class="s">'any'</span><span class="p">)</span>
-  <span class="err">--ssl-certificates-path=&lt;val&gt;</span>        <span class="err">Sets</span> <span class="err">the</span> <span class="err">location</span> <span class="err">for</span> <span class="err">custom</span> <span class="err">CA</span> <span class="nb">certificates</span> <span class="p">(</span><span class="s">if</span> <span class="s">none</span> <span class="s">set,</span> <span class="s">uses</span> <span class="s">system</span> <span class="s">default</span><span class="p">)</span>
-  <span class="err">--webdriver=&lt;val&gt;</span>                    <span class="err">Starts</span> <span class="err">in</span> <span class="err">'Remote</span> <span class="err">WebDriver</span> <span class="err">mode'</span> <span class="err">(embedded</span> <span class="err">GhostDriver):</span> <span class="err">'[[&lt;IP&gt;:]&lt;PORT&gt;]'</span> <span class="err">(default</span> <span class="err">'127.0.0.1:8910')</span>
-  <span class="err">--webdriver-logfile=&lt;val&gt;</span>            <span class="err">File</span> <span class="err">where</span> <span class="err">to</span> <span class="err">write</span> <span class="err">the</span> <span class="err">WebDriver's</span> <span class="nb">Log</span> <span class="p">(</span><span class="s">default</span> <span class="s">'none'</span><span class="p">)</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
-  <span class="err">--webdriver-loglevel=&lt;val&gt;</span>           <span class="err">WebDriver</span> <span class="err">Logging</span> <span class="err">Level:</span> <span class="err">(supported:</span> <span class="err">'ERROR',</span> <span class="err">'WARN',</span> <span class="err">'INFO',</span> <span class="err">'DEBUG')</span> <span class="err">(default</span> <span class="err">'INFO')</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
-  <span class="err">--webdriver-selenium-grid-hub=&lt;val&gt;</span>  <span class="err">URL</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Selenium</span> <span class="err">Grid</span> <span class="err">HUB:</span> <span class="err">'URL_TO_HUB'</span> <span class="err">(default</span> <span class="err">'none')</span> <span class="err">(NOTE:</span> <span class="err">needs</span> <span class="err">'--webdriver')</span>
-  <span class="err">-w,--wd</span>                              <span class="err">Equivalent</span> <span class="err">to</span> <span class="err">'--webdriver'</span> <span class="err">option</span> <span class="err">above</span>
-  <span class="err">-h,--help</span>                            <span class="err">Shows</span> <span class="err">this</span> <span class="err">message</span> <span class="err">and</span> <span class="err">quits</span>
-  <span class="err">-v,--version</span>                         <span class="err">Prints</span> <span class="err">out</span> <span class="err">PhantomJS</span> <span class="err">version</span>
+    Options:
+      --cookies-file=&lt;val&gt;                 Sets the file name to store the persistent cookies
+      --config=&lt;val&gt;                       Specifies JSON-formatted configuration file
+      --debug=&lt;val&gt;                        Prints additional warning and debug message: 'true' or 'false' (default)
+      --disk-cache=&lt;val&gt;                   Enables disk cache: 'true' or 'false' (default)
+      --ignore-ssl-errors=&lt;val&gt;            Ignores SSL errors (expired/self-signed certificate errors): 'true' or 'false' (default)
+      --load-images=&lt;val&gt;                  Loads all inlined images: 'true' (default) or 'false'
+      --local-storage-path=&lt;val&gt;           Specifies the location for offline local storage
+      --local-storage-quota=&lt;val&gt;          Sets the maximum size of the offline local storage (in KB)
+      --local-to-remote-url-access=&lt;val&gt;   Allows local content to access remote URL: 'true' or 'false' (default)
+      --max-disk-cache-size=&lt;val&gt;          Limits the size of the disk cache (in KB)
+      --output-encoding=&lt;val&gt;              Sets the encoding for the terminal output, default is 'utf8'
+      --remote-debugger-port=&lt;val&gt;         Starts the script in a debug harness and listens on the specified port
+      --remote-debugger-autorun=&lt;val&gt;      Runs the script in the debugger immediately: 'true' or 'false' (default)
+      --proxy=&lt;val&gt;                        Sets the proxy server, e.g. '--proxy=http://proxy.company.com:8080'
+      --proxy-auth=&lt;val&gt;                   Provides authentication information for the proxy, e.g. ''-proxy-auth=username:password'
+      --proxy-type=&lt;val&gt;                   Specifies the proxy type, 'http' (default), 'none' (disable completely), or 'socks5'
+      --script-encoding=&lt;val&gt;              Sets the encoding used for the starting script, default is 'utf8'
+      --web-security=&lt;val&gt;                 Enables web security, 'true' (default) or 'false'
+      --ssl-protocol=&lt;val&gt;                 Sets the SSL protocol (supported protocols: 'SSLv3' (default), 'SSLv2', 'TLSv1', 'any')
+      --ssl-certificates-path=&lt;val&gt;        Sets the location for custom CA certificates (if none set, uses system default)
+      --webdriver=&lt;val&gt;                    Starts in 'Remote WebDriver mode' (embedded GhostDriver): '[[&lt;IP&gt;:]&lt;PORT&gt;]' (default '127.0.0.1:8910')
+      --webdriver-logfile=&lt;val&gt;            File where to write the WebDriver's Log (default 'none') (NOTE: needs '--webdriver')
+      --webdriver-loglevel=&lt;val&gt;           WebDriver Logging Level: (supported: 'ERROR', 'WARN', 'INFO', 'DEBUG') (default 'INFO') (NOTE: needs '--webdriver')
+      --webdriver-selenium-grid-hub=&lt;val&gt;  URL to the Selenium Grid HUB: 'URL_TO_HUB' (default 'none') (NOTE: needs '--webdriver')
+      -w,--wd                              Equivalent to '--webdriver' option above
+      -h,--help                            Shows this message and quits
+      -v,--version                         Prints out PhantomJS version
 
-<span class="err">Any</span> <span class="err">of</span> <span class="err">the</span> <span class="err">options</span> <span class="err">that</span> <span class="err">accept</span> <span class="err">boolean</span> <span class="nb">values</span> <span class="p">(</span><span class="s">'true'/'false'</span><span class="p">)</span> <span class="err">can</span> <span class="err">also</span> <span class="err">accept</span> <span class="err">'yes'/'no'.</span>
+    Any of the options that accept boolean values ('true'/'false') can also accept 'yes'/'no'.
 
-<span class="err">Without</span> <span class="err">any</span> <span class="err">argument,</span> <span class="err">PhantomJS</span> <span class="err">will</span> <span class="err">launch</span> <span class="err">in</span> <span class="err">interactive</span> <span class="nb">mode</span> <span class="p">(</span><span class="s">REPL</span><span class="p">)</span><span class="err">.</span>
+    Without any argument, PhantomJS will launch in interactive mode (REPL).
 
-<span class="err">Documentation</span> <span class="err">can</span> <span class="err">be</span> <span class="err">found</span> <span class="err">at</span> <span class="err">the</span> <span class="err">web</span> <span class="err">site,</span> <span class="err">http://phantomjs.org.</span>
-</pre>
-</div>
+    Documentation can be found at the web site, http://phantomjs.org.
+</code></pre> 
+<h3> <a name="contribute" class="anchor" href="..md.html#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3> 
+<p><a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/phantomjs.md" target="_blank">Edit online on GitHub</a></p>
 </body>
 </html>

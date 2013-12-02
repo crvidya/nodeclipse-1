@@ -1,0 +1,16 @@
+.classpath
+.npmignore
+.project
+.project_
+bin
+build.properties
+common-templates
+icons
+META-INF
+plugin.xml
+pom.xml
+src
+target
+templates/coffee
+templates/h*
+templates-proposed

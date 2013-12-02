@@ -26,6 +26,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true); 
+		store.setDefault(PreferenceConstants.NODE_JUST_NODE, true); 
+		store.setDefault(PreferenceConstants.NODE_ALLOW_MANY, true);
+		
 		//store.setDefault(PreferenceConstants.NODE_DEBUG_NO_BREAK, ""); //default is empty,null,no
 		store.setDefault(PreferenceConstants.NODE_DEBUG_PORT, "5858");
 		
@@ -119,7 +123,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		
 		store.setDefault(PreferenceConstants.PHANTOMJS_DEBUG_PORT, "6060"); // is free as on http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_ports
 		
-		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true); 
+		store.setDefault(PreferenceConstants.MONGODB_SHELL_OPTIONS, "--shell");
 	}
 	
     private static File findNode() {

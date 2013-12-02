@@ -15,8 +15,11 @@ import org.nodeclipse.ui.Activator;
  */
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
+    private BooleanFieldEditor nodeclipseConsoleEnabled;
+    //private FileFieldEditor completionsPath;
+
+	private BooleanFieldEditor nodeJustNode;
     private FileFieldEditor nodePath;
-    private BooleanFieldEditor nodeJustNode;
     private BooleanFieldEditor nodeAllowMany;
     private FileFieldEditor nodeSourcesLibPath;
     private BooleanFieldEditor nodeDebugNoBreak;
@@ -30,7 +33,6 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
     
-    //private FileFieldEditor completionsPath;
     private FileFieldEditor phanthomjsPath;
     private BooleanFieldEditor phanthomjsDebugAutorun;
     private IntegerFieldEditor phanthomjsDebugPort;
@@ -39,8 +41,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private BooleanFieldEditor jjsJustJJS;
 
     private FileFieldEditor mongoDBShellPath;
+    private StringFieldEditor mongoDBShellOptions;
     
-    private BooleanFieldEditor nodeclipseConsoleEnabled;
     
     public NodePreferencePage() {
         super(GRID);
@@ -55,18 +57,26 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
     @Override
     protected void createFieldEditors() {
-        nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node path:", getFieldEditorParent());
-        addField(nodePath);
+        
+        nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
+        		"enable Nodeclipse Console", getFieldEditorParent());
+        addField(nodeclipseConsoleEnabled);
 
+//        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
+//        addField(completionsPath);
+    	
         nodeJustNode = new BooleanFieldEditor(PreferenceConstants.NODE_JUST_NODE, 
-        		"just node (find node on PATH. Useful when there are 2 or more Node.js instances)", getFieldEditorParent());
+        		"find node on PATH. Otherwise use Node.js instance in location below", getFieldEditorParent());
         addField(nodeJustNode);
 
+        nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node.js path:", getFieldEditorParent());
+        addField(nodePath);
+
         nodeAllowMany = new BooleanFieldEditor(PreferenceConstants.NODE_ALLOW_MANY, 
-        		"allow many Node instances running (experimental)", getFieldEditorParent());
+        		"allow many Node.js instances running", getFieldEditorParent());
         addField(nodeAllowMany);
 
-        nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path TODO#75", getFieldEditorParent());
+        nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path Help! #75", getFieldEditorParent());
         addField(nodeSourcesLibPath);
 
         // "Node debug no -break (disable interruption of Node.js app on first line, check debug Help)" would make dialog wider
@@ -93,7 +103,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         coffeeCompileOptions = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OPTIONS, "Coffee compile options:", getFieldEditorParent());
         addField(coffeeCompileOptions);
 
-        coffeeCompileOutputFolder = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OUTPUT_FOLDER, "Coffee output folder TODO#76", getFieldEditorParent());
+        coffeeCompileOutputFolder = new StringFieldEditor(PreferenceConstants.COFFEE_COMPILE_OUTPUT_FOLDER, "Coffee output folder Help! #76", getFieldEditorParent());
         addField(coffeeCompileOutputFolder);
 
         typescriptCompilerPath = new FileFieldEditor(PreferenceConstants.TYPESCRIPT_COMPILER_PATH, "TypeScript compiler path:", getFieldEditorParent());
@@ -102,10 +112,6 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         typescriptCompilerOptions = new StringFieldEditor(PreferenceConstants.TYPESCRIPT_COMPILER_OPTIONS, "TypeScript compiler options:", getFieldEditorParent());
         addField(typescriptCompilerOptions);
 
-//        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
-//        addField(completionsPath);
-        
- 
         phanthomjsPath = new FileFieldEditor(PreferenceConstants.PHANTOMJS_PATH, "PhanthomJS path:", getFieldEditorParent());
         addField(phanthomjsPath);
 
@@ -126,9 +132,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         mongoDBShellPath = new FileFieldEditor(PreferenceConstants.MONGODB_SHELL_PATH, "MongoDB Shell path:", getFieldEditorParent());
         addField(mongoDBShellPath);
         
-        nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
-        		"enable Nodeclipse Console", getFieldEditorParent());
-        addField(nodeclipseConsoleEnabled);
+        mongoDBShellOptions = new StringFieldEditor(PreferenceConstants.MONGODB_SHELL_OPTIONS, "MongoDB Shell options:", getFieldEditorParent());
+        addField(mongoDBShellOptions);
     }
 
     @Override

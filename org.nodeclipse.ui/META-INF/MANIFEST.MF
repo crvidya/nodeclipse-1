@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Nodeclipse
 Bundle-SymbolicName: org.nodeclipse.ui;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.nodeclipse.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -20,8 +20,10 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.nodeclipse.ui,
  org.nodeclipse.ui.editors,
+ org.nodeclipse.ui.perspectives,
  org.nodeclipse.ui.preferences,
- org.nodeclipse.ui.util
+ org.nodeclipse.ui.util,
+ org.nodeclipse.ui.wizards
 Bundle-Vendor: Nodeclipse organization
 Import-Package: org.nodeclipse.bundle.coffee,
  org.nodeclipse.bundle.express

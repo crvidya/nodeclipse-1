@@ -55,7 +55,12 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		}			
 		cmdLine.add(mongoDBShellPath);
 		
-		cmdLine.add("--shell"); //run the shell after executing files		
+		//cmdLine.add("--shell"); //run the shell after executing files
+		
+		String mongoShellOptions = preferenceStore.getString(PreferenceConstants.MONGODB_SHELL_OPTIONS);
+		if(!mongoShellOptions.equals("")) {
+			cmdLine.add(mongoShellOptions);
+		}
 		
 		if (isDebugMode) {
 			//TODO research how to debug

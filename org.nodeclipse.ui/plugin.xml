@@ -16,14 +16,14 @@
             name="Node Project"
             project="true">
          <description>
-            Create a new Node.js project (or add .project file to existing project)
+            Create a new Node.js project (or add .project file to an existing project)
          </description>
       </wizard>
       <wizard
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
+            icon="icons/e_16x16.png"
             id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
             name="Node Express Project"
             project="true">
@@ -37,7 +37,7 @@
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
             icon="icons/node.png"
             id="org.nodeclipse.ui.wizards.NodeFileWizard"
-            name="Node Source File">
+            name="JavaScript File">
          <description>
             Create a new JavaScript source file
          </description>
@@ -46,9 +46,9 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.CoffeeFileWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
+            icon="icons/coffee.png"
             id="org.nodeclipse.ui.wizards.CoffeeFileWizard"
-            name="Node CoffeeScript File">
+            name="CoffeeScript File">
          <description>
             Create a new CoffeeScript source file
          </description>

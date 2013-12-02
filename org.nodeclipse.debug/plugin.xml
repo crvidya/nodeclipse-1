@@ -102,7 +102,7 @@
              icon= "icons/node.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcut"   
              label= "Node Application"   
-             modes= "run, debug" >   
+             modes= "run, debug" > <!-- , profile ?how -->  
           <configurationType
                 id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
           </configurationType>   
@@ -130,6 +130,23 @@
            </contextualLaunch>   
        </shortcut>   
    </extension>
+   <!-- http://stackoverflow.com/questions/1437323/assigning-a-keyboard-shortcut-for-a-specific-eclipse-build-configuration -->
+<extension point="org.eclipse.ui.commands">
+    <command id="org.nodeclipse.nodejs.run"
+             categoryId="org.eclipse.debug.ui.category.run"
+             name="Run as Node Application"
+             description="Run as Node Application"/>
+ </extension>
+<!-- binding can be configured by user in Properties -> General -> Keys 
+
+<extension point="org.eclipse.ui.bindings">
+    <key sequence="M1+R"
+         contextId="org.eclipse.ui.globalScope"  <- Referenced identifier 'org.eclipse.ui.globalScope' in attribute 'contextId' cannot be found
+         commandId="org.nodeclipse.nodejs.run"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+ </extension>
+-->
+      
    <!-- node run/debug with monitor-->
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
