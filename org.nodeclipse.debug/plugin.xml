@@ -102,7 +102,7 @@
              icon= "icons/node.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcut"   
              label= "Node Application"   
-             modes= "run, debug" >   
+             modes= "run, debug" > <!-- , profile ?how -->  
           <configurationType
                 id= "org.nodeclipse.debug.launch.LaunchConfigurationType" >
           </configurationType>   

@@ -17,12 +17,19 @@
 	<description>org.nodeclipse.site (p2 repository / update site)</description>
 
 	<repositories>
-		<!-- for Full Build with Maven/Tycho (or Git Submodules) 
+		<!-- for Full Build with Maven/Tycho (or Git Submodules)
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
 			<url>http://winterwell.com/software/updatesite/</url>
 		</repository>
+		--> 
+		<repository>
+			<id>winterwell.markdown</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/enide/Markdown/1.0.0/</url>
+		</repository>
+		<!-- -->
 		<repository>
 			<id>restclient-tool</id>
 			<layout>p2</layout>
@@ -68,11 +75,11 @@
 			<layout>p2</layout>
 			<url>http://www.jumperz.net/update/</url>
 		</repository>
-		-->
+		
 		<repository>
 			<id>gfm.viewer</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.6.0/</url>
+			<url>http://dl.bintray.com/satyagraha/generic/1.7.0/</url>
 		</repository>
 		<repository>
 			<id>shelled</id>
@@ -99,6 +106,11 @@
 			<layout>p2</layout>
 			<url>http://eclipserunnerplugin.googlecode.com/svn/trunk/EclipseRunnerSite</url>
 		</repository>
+		<repository>
+			<id>com.xored.glance</id>
+			<layout>p2</layout>
+			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
+		</repository>
 		<!-- 
 		<repository>
 			<id>net.jeeeyul.eclipse.themes.updatesite</id>
@@ -108,11 +120,6 @@
 		 -->
 
 		<!-- Other -->
-		<repository>
-			<id>com.xored.glance</id>
-			<layout>p2</layout>
-			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
-		</repository>
 		<repository>
 			<id>practicallymacro</id>
 			<layout>p2</layout>

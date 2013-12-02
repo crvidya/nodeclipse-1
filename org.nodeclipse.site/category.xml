@@ -2,7 +2,7 @@
 <site>
    <category-def name="Nodeclipse" label="Nodeclipse Core (nodeclipse-1)">
       <description>
-         Nodeclipse-1 core, Chromium tools
+         Nodeclipse-1 Core, Chromium tools
       </description>
    </category-def>
    <feature url="features/org.chromium.debug_0.3.9.qualifier.jar" id="org.chromium.debug" version="0.3.9.qualifier">
@@ -49,10 +49,10 @@
       </description>
    </category-def>
 
-   <!-- for Full Build with Maven/Tycho (or Git Submodules) 
-   <feature url="features/markdown.editor.feature_0.2.3.jar" id="markdown.editor.feature" version="0.2.3">
+   <feature url="features/markdown.editor.feature_1.0.0.jar" id="markdown.editor.feature" version="1.0.0">
       <category name="Tools"/>
    </feature>
+   <!-- for Full Build with Maven/Tycho (or Git Submodules)   -->
    <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
@@ -80,14 +80,13 @@
    <feature url="features/net.jumperz.app.MMonjaDB_1.0.16.qualifier.jar" id="net.jumperz.app.MMonjaDB" version="1.0.16.qualifier">
       <category name="Tools"/>
    </feature>
-  -->
-   <feature url="features/code.satyagraha.gfm.viewer.feature_1.6.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.6.0.qualifier">
+   <feature url="features/code.satyagraha.gfm.viewer.feature_1.7.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.7.0.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/net.vtst.ow.eclipse.soy.feature_1.0.9.4.qualifier.jar" id="net.vtst.ow.eclipse.soy.feature" version="1.0.9.4.qualifier">
+   <feature url="features/net.vtst.ow.eclipse.soy.feature_1.0.9.qualifier.jar" id="net.vtst.ow.eclipse.soy.feature" version="1.0.9.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/net.vtst.ow.eclipse.js.closure.feature_0.2.8.qualifier.jar" id="net.vtst.ow.eclipse.js.closure.feature" version="0.2.8.qualifier">
@@ -106,10 +105,14 @@
    <category-def name="General" label="General plugins">
       <description>
         EclipseRunner by Lukasz Wachowicz and Bartosz Roznowski (Runner View) http://code.google.com/p/eclipserunnerplugin/
+        Glance by Xored (Highlight anywhere, Ctrl+Alt+F)
       </description>
    </category-def>
    <feature url="features/EclipseRunnerFeature_1.3.0.qualifier.jar" id="EclipseRunnerFeature" version="1.3.0.qualifier">
       <category name="General"/>
+   </feature>
+   <feature url="features/com.xored.glance_1.1.1.qualifier.jar" id="com.xored.glance" version="1.1.1.qualifier">
+      <category name="Other"/>
    </feature>
    <!-- 
       <description>
@@ -122,14 +125,10 @@
    
    <category-def name="Other" label="Other Optional Tools">
       <description>
-        Glance by Xored (Highlight anywhere, Ctrl+Alt+F)
         PracticallyMacro by Ernest Pasour (Macros for Editors using BeanShell.org) http://sourceforge.net/projects/practicalmacro/ 
         SelectionExplorer by Sandip Chitales
       </description>
    </category-def>
-   <feature url="features/com.xored.glance_1.1.1.qualifier.jar" id="com.xored.glance" version="1.1.1.qualifier">
-      <category name="Other"/>
-   </feature>
    <feature url="features/PracticallyMacroFeature_0.4.2.qualifier.jar" id="PracticallyMacroFeature" version="0.4.2.qualifier">
       <category name="Other"/>
    </feature>
