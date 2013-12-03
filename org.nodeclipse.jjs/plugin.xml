@@ -12,7 +12,7 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.jjs.wizards.NashornProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/nashorn_16x16.png"
+            icon="icons/nashorn_16x16_top_right_corner_new.png"
             id="org.nodeclipse.jjs.wizards.NashornProjectWizard"
             name="Nashorn Project"
             project="true">

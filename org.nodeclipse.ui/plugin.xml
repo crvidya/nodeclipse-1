@@ -11,9 +11,9 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.NodeProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
+            icon="icons/node_top_right_corner_new.png"
             id="org.nodeclipse.ui.wizards.NodeProjectWizard"
-            name="Node Project"
+            name="Node.js Project"
             project="true">
          <description>
             Create a new Node.js project (or add .project file to an existing project)
@@ -23,9 +23,9 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/e_16x16.png"
+            icon="icons/e_16x16_top_right_corner_new.png"
             id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
-            name="Node Express Project"
+            name="Node.js Express Project"
             project="true">
          <description>
             Create a new Node.js project with Express.js framework (Express should be installed before with <code>npm install -g express</code>)
@@ -35,22 +35,22 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.NodeFileWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
+            icon="icons/node_top_right_corner_new.png"
             id="org.nodeclipse.ui.wizards.NodeFileWizard"
             name="JavaScript File">
          <description>
-            Create a new JavaScript source file
+            Create a new JavaScript file
          </description>
       </wizard>
       <wizard
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.CoffeeFileWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/coffee.png"
+            icon="icons/coffee_top_right_corner_new.png"
             id="org.nodeclipse.ui.wizards.CoffeeFileWizard"
             name="CoffeeScript File">
          <description>
-            Create a new CoffeeScript source file
+            Create a new CoffeeScript file
          </description>
       </wizard>
    </extension>
