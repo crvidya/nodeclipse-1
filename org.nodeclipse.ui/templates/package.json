@@ -1,11 +1,14 @@
 {
   "name": "nodeclipse",
-  "version": "0.1.0",
-  "description": "Prepare (Node.js) project to be imported into Eclipse (Nodeclipse)",
-  "main": "app.js",
+  "version": "0.2.0",
+  "description": "nodeclipse CLI - prepare Node.js project to be imported into Eclipse (Nodeclipse)",
+  "main": "copier.js",
   "scripts": {
     "test": "test"
   },
+  "bin": {
+	    "nodeclipse": "./bin/nodeclipse.js"
+	  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Nodeclipse/nodeclipse-1.git"
