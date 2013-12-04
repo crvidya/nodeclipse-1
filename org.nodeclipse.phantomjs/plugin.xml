@@ -12,7 +12,7 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.phantomjs.wizards.PhantomjsProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/phantomjs.png"
+            icon="icons/phantomjs_top_right_corner_new.png"
             id="org.nodeclipse.phantomjs.wizards.PhantomjsProjectWizard"
             name="PhantomJS Project"
             project="true">
