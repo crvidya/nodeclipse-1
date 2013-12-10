@@ -1,6 +1,8 @@
 
 
-# Nodeclipse CLI #91
+# Nodeclipse CLI 
+
+#91
 
 ## Node.js Development with Eclipse or Enide Studio
 
@@ -28,6 +30,7 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	Templates are just folders in this project sources:
 	  hello-world              The famous hello world HTTP server in 6 lines
 	  hello-coffee	           The same server written in CoffeeScript
+	  hello-typescript         The same server written in TypeScript
 
 ## Other commands (TODO)
 
@@ -44,7 +47,9 @@ Examples:
 	
 	nodeclipse --create project2
 	
-	nodeclipse --create project2 --use hello-coffee
+	nodeclipse --create project3 --use hello-coffee
+	
+	nodeclipse -c project4 -u hello-coffee
 
 ## Eclipse Workspace and Project
 
