@@ -1,24 +1,25 @@
 {
   "name": "nodeclipse",
-  "version": "0.2.0",
+  "version": "0.3.0.DEV",
   "description": "nodeclipse CLI - prepare Node.js project to be imported into Eclipse (Nodeclipse)",
   "main": "copier.js",
   "scripts": {
     "test": "test"
   },
   "bin": {
-	    "nodeclipse": "./bin/nodeclipse.js"
-	  },
+    "nodeclipse": "./bin/nodeclipse.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Nodeclipse/nodeclipse-1.git"
   },
   "keywords": [
-    "Eclipse",
-    "Nodeclipse",
+    "eclipse",
+    "ide",
+    "enide",
+    "nodeclipse",
     "import",
     "node.js",
-    "IDE",
     "debug"
   ],
   "author": "Paul Verest",

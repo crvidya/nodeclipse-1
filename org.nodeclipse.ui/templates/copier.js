@@ -1,7 +1,8 @@
 
 var argv = require('optimist')
-			.boolean('V')
-			.boolean('verbose')
+			.boolean('h').boolean('help')
+			.boolean('v').boolean('version')
+			.boolean('V').boolean('verbose')
 			.argv;
 require('shelljs/global');
 var fs= require('fs');
@@ -15,25 +16,47 @@ fs.exists('./.project', function check(exists) {
 	copyFromTemplates();
 });
 
-function copyFromTemplates() {
+var copyFromTemplates = function () {
 	console.log(require.main.filename); // = __filename
 	
 	console.log('Passed parameters: name=%s, verbose=%s', argv.name, argv.verbose);
-	var name = argv.name || argv.n;
-	var verbose = true || argv.verbose;
+	var help = argv.help || argv.h;
+	var version = argv.version || argv.v;
+	var create = argv.create || argv.c;
+	var use = argv.use || argv.u || argv.template || argv.t;
+	var name = argv.name || argv.n; // could be   create || 
+	var verbose = true || argv.verbose || argv.V;
+
+	if (help){
+		console.log("Check README");		
+		return;
+	}
+	if (version){
+		console.log("Nodeclipse CLI 0.3.0");	// BUG #71	
+		return;
+	}
+	if (create){
+		if (create.toString().length===0){
+			console.error("Folder/project name is required for creation!");
+			//process.exit(1);
+			return;
+		}
+		mkdir(create);
+		cd(create);
+	}
+	var templatesfolder = __dirname;
+	if (verbose) console.log("Templates folder is: " + templatesfolder);
+	if (use){
+		//cp(__dirname+use+'/*','.');
+		var fromfolder = path.join(templatesfolder, use, '/*') 
+		console.log( fromfolder );
+		cp( fromfolder, '.' )
+	}
 	
 	var curfolder = pwd();
 	if (verbose) console.log("Current folder is: " + curfolder);
 	if (!name)
 		name = path.basename(curfolder);
-	
-	var templatesfolder = __dirname;
-	if (verbose) console.log("Templates folder is: " + templatesfolder);
-	
-	
-	// cp('./eclipse/.project','.');
-	
-	//e.g. var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
 	
 	var str = cat(__dirname+'/eclipse/.project').replace('${projectname}', name);
 	var destfile = curfolder + '/.project';
@@ -49,5 +72,11 @@ function copyFromTemplates() {
 	
 	console.log(str); // ''.toString()
 	
+	inviteToSiteAsTheLastLine();
+}
+var inviteToSiteAsTheLastLine = function () {
+	setTimeout(inviteToSite,100);
+}
+var inviteToSite = function () {
 	console.log("\nCheck http://www.nodeclipse.org/ for news.");
 }

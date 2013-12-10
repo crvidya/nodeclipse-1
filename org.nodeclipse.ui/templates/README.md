@@ -1,6 +1,6 @@
 
 
-# Nodeclipse CLI
+# Nodeclipse CLI #91
 
 ## Node.js Development with Eclipse or Enide Studio
 
@@ -14,46 +14,58 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 
 ## Commands
 
-	  -n, --name <name>        project name (default is folder name)
+	Usage: nodeclipse [arguments]
 
+	Arguments:
+	  -c, --create <name>      create project folder and prepare it
+	  -u, --use <template>     create project folder (using specified template folder) and prepare it
+	  -p, --prepare            prepare for import, i.e. add needed `.project` file (default action)
+	  -n, --name [<name>]      project name (default is folder name)
+	  -h, --help               Check README
+	  -v, --version            print nodeclipse CLI's version
+	  -V, --verbose            be verbose
+
+	Templates are just folders in this project sources:
+	  hello-world              The famous hello world HTTP server in 6 lines
+	  hello-coffee	           The same server written in CoffeeScript
 
 ## Other commands (TODO)
 
 	$ nodeclipse -h
 	Usage: nodeclipse [arguments]
 	
-	Arguments:
-	  -c, --create <name>      create project folder and prepare it
-	  -u, --use <template>     create project folder (using specified template folder) and prepare it
-	  -p, --prepare            prepare for import, i.e. add needed `.project` file (default action)
-	  -n, --name <name>        project name (default is folder name)
-	  -v, --version            print nodeclipse CLI's version
-	  -V, --verbose            be verbose
       -f, --force              force on non-empty directory (by default existing files are not updated)
 
-Examples
+Examples:
 
-nodeclipse --prepare project1
-
-nodeclipse --create project2 | cd project2
-
+'nodeclipse' (without parameters adds `.project` file to current directory with name as directory name)
+	
+	nodeclipse --prepare project1
+	
+	nodeclipse --create project2
+	
+	nodeclipse --create project2 --use hello-coffee
 
 ## Eclipse Workspace and Project
 
 Eclipse Workspace is just folder that contains Eclipse Projects.
 Eclipse Projects is just folder with `.project` file.
 
-### Developing CLI
+## Developing Nodeclipse CLI
+
+Project sources are at https://github.com/Nodeclipse/nodeclipse-1
+under https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/templates
 
 <https://npmjs.org/doc/developers.html>
 
 try with 'npm install . -g' before publishing
-
-Project sources are at https://github.com/Nodeclipse/nodeclipse-1
-under https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/templates
 
 #### Links
 
 > The only feature that differentiates a command-line program from a library is the bin field in the package.json file.
 
 <http://howtonode.org/how-to-module>
+
+## News
+
+Check <http://www.nodeclipse.org/>
