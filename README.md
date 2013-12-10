@@ -16,9 +16,47 @@ Try out next 0.7 version from this sources just by `git clone`, `mvn package' , 
 Check README.md in project modules (e.g. `org.nodeclipse.debug` ). See launching Node.js logic in
 [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
 
+Build
+
+	mvn package
+
+Before release
+
+	mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.9.0-SNAPSHOT
+
+## Developing
+
+[see src/site/markdown/developing.md file](src/site/markdown/developing.md)
+
+### Maven build
+
+[Maven](http://maven.apache.org/) build (using [Tycho plugin](http://eclipse.org/tycho/)) is headless build, that doesn't require Eclipse.
+
+From Nodeclipse-1 base folder just run `mvn package`. Run offline when to re-build `mvn clean package -o`. 
+
+#### Install site.zip (quick and simple way)
+
+1. Locate zip file under `org.nodeclipse.site\target` in Project Explorer, StartExplore-> Copy Resource Path to Clipboard
+2. Help -> Install New Software ...
+3. <kbd>Add...</kbd>
+4. <kbd>Archive...</kbd>
+5. Insert copied string into name and path.  
+ E.g. `C:\Users\pverest\git\nodeclipse-056\org.nodeclipse.site\target\org.nodeclipse.site-0.5.0-SNAPSHOT.zip`
+ 
+For the next time just select the zip entry from Work With drop-down list. 
+
+#### Install from freshly built p2 repository (cool and long way)
+
+2. `npm install http-server -g`  
+3. `http-server org.nodeclipse.site\target\repository -p 8010`
+4. start http://localhost:8010/  
+5. // navigate `http://localhost:8010/` in browser to check  
+5. Help->Install New Software, enter http://localhost:8010/ in Work With  
+
+### Old stuff
+
 Below is long and a little bit old notes. You should better start with building yourself, checking <http://www.nodeclipse.org>
 that has all links.
-
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
@@ -118,11 +156,12 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 Please participate in discussion, [propose and vote on new feature](http://nodeclipse.uservoice.com/forums/216804-general),
  on raise bugs on <https://github.com/Nodeclipse/nodeclipse-1/issues>
 
-UPDATE: Roadmap is defnied by currently raised issues, voted ideas on uservoice, and desires of developers.
+UPDATE: Roadmap is defined by currently raised issues, voted ideas on uservoice, and desires of developers.
  Below is what was discussed in Spring 2013.
 
+<!-- 
 Check also [developers news](https://github.com/Nodeclipse/nodeclipse-blog#news).
-
+-->
 
 ### 0.x 
 
@@ -167,35 +206,6 @@ Is expected together with Node.js 1.0
   - Text formatting - Text folding for the JSON data format.)	
   No Update site.
 	
-## Developing
-
-[see src/site/markdown/developing.md file](src/site/markdown/developing.md)
-
-### Maven build
-
-[Maven](http://maven.apache.org/) build (using [Tycho plugin](http://eclipse.org/tycho/)) is headless build, that doesn't require Eclipse.
-
-From Nodeclipse-1 base folder just run `mvn package`. Run offline when to re-build `mvn clean package -o`. 
-
-#### Install site.zip (quick and simple way)
-
-1. Locate zip file under `org.nodeclipse.site\target` in Project Explorer, StartExplore-> Copy Resource Path to Clipboard
-2. Help -> Install New Software ...
-3. <kbd>Add...</kbd>
-4. <kbd>Archive...</kbd>
-5. Insert copied string into name and path.  
- E.g. `C:\Users\pverest\git\nodeclipse-056\org.nodeclipse.site\target\org.nodeclipse.site-0.5.0-SNAPSHOT.zip`
- 
-For the next time just select the zip entry from Work With drop-down list. 
-
-#### Install from freshly built p2 repository (cool and long way)
-
-2. `npm install http-server -g`  
-3. `http-server org.nodeclipse.site\target\repository -p 8010`
-4. start http://localhost:8010/  
-5. // navigate `http://localhost:8010/` in browser to check  
-5. Help->Install New Software, enter http://localhost:8010/ in Work With  
-
 ### Code standard
 
 1. If you edited or created file, add yourself as @author in JavaDoc or comments
