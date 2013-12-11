@@ -108,8 +108,8 @@ public class NodeFileWizardPage extends WizardPage {
                 containerText.setText(container.getFullPath().toString());
             }
         }
-        fileText.setText("new_file.js");
-        //TODO focus
+        fileText.setText("noname.js");
+        fileText.setSelection(0, "noname".length());
         fileText.setFocus();
     }
 

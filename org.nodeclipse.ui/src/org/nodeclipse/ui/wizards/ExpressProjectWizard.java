@@ -128,7 +128,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 
 				try {
 					// universal method for all templates
-					generateTemplates("common-templates", newProjectHandle);
+					generateTemplates("templates/common-templates", newProjectHandle);
 					rewriteFile("README.md", newProjectHandle);
 					
 					rewritePackageJson(monitor, newProjectHandle);

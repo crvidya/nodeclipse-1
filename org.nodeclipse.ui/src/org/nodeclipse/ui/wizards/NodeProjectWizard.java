@@ -95,7 +95,7 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 				try {
 					if(!exists) {
 						// copy README.md, package.json & hello-world-server.js
-						generateTemplates("common-templates", newProjectHandle);
+						generateTemplates("templates/common-templates", newProjectHandle);
 						generateTemplates("templates/hello-world", newProjectHandle);
 						rewriteFile("README.md", newProjectHandle);
 						rewriteFile("package.json", newProjectHandle);

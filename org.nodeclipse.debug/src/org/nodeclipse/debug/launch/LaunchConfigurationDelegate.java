@@ -208,9 +208,10 @@ public class LaunchConfigurationDelegate implements
 		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
-		// Launch a process to debug.eg,
+		// Launch a process to run/debug. See also #71 (output is less or no output)
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE);
+		// no way to get private p.handle from java.lang.ProcessImpl
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE); 
 		if (isDebugMode) {
 			if(!process.isTerminated()) { 
 				int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);

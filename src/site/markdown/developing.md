@@ -17,31 +17,41 @@
 
 ### Preparing environment
 
-#### Recommended way
+#### Clone using Eclipse EGit
 
 In Eclipse for Java or RCP developers
 
 1. Copy to clipboard git repository URL: <code>https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. File -> Import.. -> Git / Project from git
 
-##### Other way, not recommended way
+##### Clone using git
 
 1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. File -> Import -> Existing Projects into Workspace
-3. Enter cloned folder path to [Select root directory].
-![ImportProjects](ImportProjects.png)
+3. Enter cloned folder path to [Select root directory]. 
+4. Check "Search for nested project"  
+![ImportProjects-Selected.png](ImportProjects-Selected.png)
+5. Press "Deselect All" button, and select only base project and `org.nodeclipse.ui`, `org.nodeclipse.debug`
+ (or more when you know you need them)
+
 4. Push [Finish] button.
 
-### How to build it
+### Eclipse build
+
+Build will start automatically when you import into your workspace and whenever you save code which is changed.
+
+If you are using Enide Studio it should be OK.
+If you got build error, probably you have not installed JSDT yet. Try following steps:
+
+1. Select [Help]-[Install New Software...].
+2. Select [Juno - http://download.eclipse.org/releases/juno] 
+ or [Kepler - http://download.eclipse.org/releases/kepler] in [Work with] drop-down list.
+3. Check [Web, XML, Java EE and OSGi Enterprise Development]-[JavaScript Development Tools].
+
+### Maven build
 
 (see also Maven build in README.md in base)
 
-It will be started building automatically when you import it into your workspace and whenever you save code which is changed.
-If you got build error, probably you don't have installed JSDT yet.  Try as follows.
-
-1. Select [Help]-[Install New Software...].
-2. Select [Juno - http://download.eclipse.org/releases/juno] in [Work with] drop-down list.
-3. Check [Web, XML, Java EE and OSGi Enterprise Development]-[JavaScript Development Tools].
 
 ### How to Run or Debug it
 
@@ -50,4 +60,4 @@ If you got build error, probably you don't have installed JSDT yet.  Try as foll
 3. Select [Run As / Debug As]-[Eclipse Application].
 ![RunOrDebug](RunOrDebug.png)
 
-A new Eclipse workbench starts. Nodeclipse which you started to run or debug has been installed into this runtime Eclipse.
+A new Eclipse workbench starts with Nodeclipse version that you started to run or debug.

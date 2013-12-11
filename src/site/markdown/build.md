@@ -7,7 +7,7 @@
 
 clone and `mvn package`
 
-- Build with Git Submodules
+- Build with Git Submodules (not used)
 
 clone, init git submodules, enable submodules in `pom.xml` and `org.nodeclipse.site/pom.xml`, `mvn package`
 

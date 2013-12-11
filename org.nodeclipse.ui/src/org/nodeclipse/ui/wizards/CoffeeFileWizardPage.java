@@ -111,8 +111,8 @@ public class CoffeeFileWizardPage extends WizardPage {
                 containerText.setText(container.getFullPath().toString());
             }
         }
-        fileText.setText("new_file.coffee");
-        //TODO focus
+        fileText.setText("noname.coffee");
+        fileText.setSelection(0, "noname".length());
         fileText.setFocus();
     }
 

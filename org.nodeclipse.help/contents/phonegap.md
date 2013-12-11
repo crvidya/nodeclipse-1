@@ -1,0 +1,44 @@
+
+$ phonegap -h
+
+Usage: phonegap [options] [commands]
+
+Description:
+
+  PhoneGap command-line tool.
+
+Commands:
+
+  create <path>        create a phonegap project
+  build <platform>     build a specific platform
+  install <platform>   install a specific platform
+  run <platform>       build and install a specific platform
+  local [command]      development on local system
+  remote [command]     development in cloud with phonegap/build
+  help [command]       output usage information
+  version              output version number
+
+Options:
+
+  -V, --verbose        allow verbose output
+  -v, --version        output version number
+  -h, --help           output usage information
+
+Platforms:
+
+  keyword            | local environment   | remote environment
+  -------------------|---------------------|-------------------
+  android            | Yes                 | Yes
+  blackberry         | Yes (BlackBerry 10) | Yes (BlackBerry 6)
+  ios                | Yes                 | Yes
+  symbian            | No                  | Yes
+  webos              | No                  | Yes
+  wp7                | Yes                 | Yes
+  wp8                | Yes                 | Coming Soon
+
+Examples:
+
+  $ phonegap help create
+  $ phonegap help remote build
+  $ phonegap create path/to/my-app
+  $ phonegap remote build android

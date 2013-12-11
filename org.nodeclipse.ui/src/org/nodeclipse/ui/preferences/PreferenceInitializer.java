@@ -27,7 +27,6 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true); 
-		store.setDefault(PreferenceConstants.NODE_JUST_NODE, true); 
 		store.setDefault(PreferenceConstants.NODE_ALLOW_MANY, true);
 		
 		//store.setDefault(PreferenceConstants.NODE_DEBUG_NO_BREAK, ""); //default is empty,null,no
@@ -41,6 +40,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		
 		File file;
 		if (OSUtils.isWindows()) {
+			store.setDefault(PreferenceConstants.NODE_JUST_NODE, true); 
 			path = "C:/Program Files/nodejs/node.exe".replace('/', File.separatorChar);
 			file = new File(path);
 			if (!file.exists()) {
