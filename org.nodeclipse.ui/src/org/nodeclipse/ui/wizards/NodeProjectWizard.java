@@ -16,6 +16,7 @@ import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.ide.undo.CreateProjectOperation;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.wst.jsdt.internal.ui.workingsets.JavaWorkingSetUpdater;
+import org.nodeclipse.ui.util.Constants;
 import org.nodeclipse.ui.util.LogUtil;
 
 @SuppressWarnings("restriction")
@@ -78,6 +79,7 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 */
 		final IProjectDescription description = createProjectDescription(newProjectHandle, location);
 		final boolean exists = isExistsProjectFolder(description);
+		final String template = mainPage.getSelectedTemplate();
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override
@@ -96,7 +98,10 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 					if(!exists) {
 						// copy README.md, package.json & hello-world-server.js
 						generateTemplates("templates/common-templates", newProjectHandle);
-						generateTemplates("templates/hello-world", newProjectHandle);
+						//generateTemplates("templates/hello-world", newProjectHandle);
+						if (!template.equals(Constants.BLANK_STRING)){
+							generateTemplates("templates/"+template, newProjectHandle);
+						}
 						rewriteFile("README.md", newProjectHandle);
 						rewriteFile("package.json", newProjectHandle);
 					}

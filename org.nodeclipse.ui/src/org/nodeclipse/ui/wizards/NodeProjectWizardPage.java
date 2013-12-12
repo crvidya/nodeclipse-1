@@ -15,6 +15,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
@@ -28,6 +29,7 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
 import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea.IErrorMessageReporter;
+import org.nodeclipse.ui.util.Constants;
 
 @SuppressWarnings("restriction")
 public class NodeProjectWizardPage extends WizardPage {
@@ -37,6 +39,10 @@ public class NodeProjectWizardPage extends WizardPage {
 
     // widgets
     Text projectNameField;
+    Button btnEmpty;
+    Button btnHelloWorld;
+    Button btnHelloCoffee;
+    Button btnHelloTypeScript;
 
     private Listener nameModifyListener = new Listener() {
         public void handleEvent(Event e) {
@@ -66,7 +72,7 @@ public class NodeProjectWizardPage extends WizardPage {
         setPageComplete(false);
     }
 
-    /**
+    /*
      * (non-Javadoc) Method declared on IDialogPage.
      */
     public void createControl(Composite parent) {
@@ -84,6 +90,7 @@ public class NodeProjectWizardPage extends WizardPage {
         if (initialProjectFieldValue != null) {
             locationArea.updateProjectName(initialProjectFieldValue);
         }
+        createTemplatesGroup(composite);
 
         // Scale the button based on the rest of the dialog
         setButtonLayoutData(locationArea.getBrowseButton());
@@ -182,6 +189,31 @@ public class NodeProjectWizardPage extends WizardPage {
         projectNameField.addListener(SWT.Modify, nameModifyListener);
     }
 
+    private final void createTemplatesGroup(Composite parent) {
+        Composite templatesGroup = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 5;
+        templatesGroup.setLayout(layout);
+        templatesGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        Label lblTemplates = new Label(templatesGroup, SWT.NONE);
+        lblTemplates.setText("Template to use:");
+
+        btnEmpty = new Button(templatesGroup, SWT.RADIO);
+        btnEmpty.setSelection(true);
+        btnEmpty.setText("none/empty");
+
+        btnHelloWorld = new Button(templatesGroup, SWT.RADIO);
+        btnHelloWorld.setText("Hello World");
+
+        btnHelloCoffee = new Button(templatesGroup, SWT.RADIO);
+        btnHelloCoffee.setText("Hello Coffee");
+
+        btnHelloTypeScript = new Button(templatesGroup, SWT.RADIO);
+        btnHelloTypeScript.setText("Hello TypeScript");
+    }
+    
+    
     /**
      * Returns the current project location path as entered by the user, or its
      * anticipated initial value. Note that if the default has been returned the
@@ -351,5 +383,18 @@ public class NodeProjectWizardPage extends WizardPage {
      */
     public IWorkingSet[] getSelectedWorkingSets() {
         return workingSetGroup == null ? new IWorkingSet[0] : workingSetGroup.getSelectedWorkingSets();
+    }
+
+   public String getSelectedTemplate() {
+        if (btnHelloWorld.getSelection()) {
+            return Constants.TEMPLATE_HELLO_WORLD;
+        }
+        if (btnHelloCoffee.getSelection()) {
+            return Constants.TEMPLATE_HELLO_COFFEE;
+        }
+        if (btnHelloTypeScript.getSelection()) {
+            return Constants.TEMPLATE_HELLO_TYPESCRIPT;
+        }
+        return Constants.BLANK_STRING;
     }
 }

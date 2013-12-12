@@ -42,7 +42,7 @@ import org.nodeclipse.ui.util.LogUtil;
 import org.osgi.framework.Bundle;
 
 /**
- * Superclass for Node, Express & PhantomJS projects
+ * Superclass for Node, Express, PhantomJS, Nashorn JJS projects
 * @author ..., Paul Verest
 */
 
@@ -139,12 +139,13 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
 	protected void rewriteFile(String filename, IProject projectHandle)
 			throws CoreException {
 		String newLine = System.getProperty("line.separator");
-		IFile readme = projectHandle.getFile(filename);
-		if (!readme.exists()) {
-			throw new CoreException(new Status(IStatus.ERROR,
-					Activator.PLUGIN_ID, filename + "not found"));
+		IFile file = projectHandle.getFile(filename);
+		if (!file.exists()) {
+			return;
+//			throw new CoreException(new Status(IStatus.ERROR,
+//					Activator.PLUGIN_ID, filename + "not found"));
 		}
-		InputStreamReader ir = new InputStreamReader(readme.getContents());
+		InputStreamReader ir = new InputStreamReader(file.getContents());
 		BufferedReader br = new BufferedReader(ir);
 		StringBuilder sb = new StringBuilder();
 		String line;
@@ -159,7 +160,7 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
 			}
 			ByteArrayInputStream source = new ByteArrayInputStream(sb
 					.toString().getBytes());
-			readme.setContents(source, true, true, null);
+			file.setContents(source, true, true, null);
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR,
 					Activator.PLUGIN_ID, "Cannot read " + filename));

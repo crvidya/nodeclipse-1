@@ -99,7 +99,7 @@ public class ExpressProjectWizardPage extends WizardPage {
         setPageComplete(false);
     }
 
-    /**
+    /*
      * (non-Javadoc) Method declared on IDialogPage.
      */
     public void createControl(Composite parent) {
@@ -450,13 +450,13 @@ public class ExpressProjectWizardPage extends WizardPage {
 
     public String getSelectedTemplateEngine() {
         if (btnEjs.getSelection()) {
-            return Constants.TEMPLATE_EJS;
+            return Constants.TEMPLATE_ENGINE_EJS;
         }
         if (btnJshtml.getSelection()) {
-            return Constants.TEMPLATE_JSHTML;
+            return Constants.TEMPLATE_ENGINE_JSHTML;
         }
         if (btnHogan.getSelection()) {
-            return Constants.TEMPLATE_HOGAN;
+            return Constants.TEMPLATE_ENGINE_HOGAN;
         }
         return Constants.BLANK_STRING;
     }
