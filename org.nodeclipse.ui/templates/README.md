@@ -34,9 +34,26 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 ## Other commands (TODO)
 
 	$ nodeclipse -h
-	Usage: nodeclipse [arguments]
+	Usage: nodeclipse [directory] [arguments]
 	
       -f, --force              force on non-empty directory (by default existing files are not updated)
+	  -pg					as general project
+	  -pn	 				as Nodeclipse project (default)
+	  -t, --template <template>     use/copy specified template when creating project (see also `git init`)
+	  --gitclone <repository>			call git clone [directory]
+	  
+TODO Examples:
+
+	git clone repository directory
+	nodeclipse directory -pg	
+	
+	nodeclipse directory -pg --gitclone repository 
+	nodeclipse --gitclone repository directory -pg (bad?)
+	
+Dream - I wish I could get current project in GitHub as project in Eclipse with 1 click.
+options are: 	
+- eclipse wizards accessible with icon, where I only need to git repository URL
+	  
 
 Examples:
 
@@ -49,6 +66,7 @@ Examples:
 	nodeclipse --create project3 --use hello-coffee
 	
 	nodeclipse -c project4 -u hello-coffee
+	
 
 ## Eclipse Workspace and Project
 
