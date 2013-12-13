@@ -72,6 +72,11 @@ try with `npm install . -g` before publishing
 
 <http://howtonode.org/how-to-module>
 
+## Ideas
+
+- add link on Wizard Page
+- options to refine .jshintrc
+
 ## News
 
 Check <http://www.nodeclipse.org/>
