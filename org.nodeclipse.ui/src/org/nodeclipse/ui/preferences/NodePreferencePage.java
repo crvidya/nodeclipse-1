@@ -16,7 +16,7 @@ import org.nodeclipse.ui.Activator;
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private BooleanFieldEditor nodeclipseConsoleEnabled;
-    //private FileFieldEditor completionsPath;
+    private FileFieldEditor completionsPath;
 
 	private BooleanFieldEditor nodeJustNode;
     private FileFieldEditor nodePath;
@@ -62,8 +62,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         		"enable Nodeclipse Console", getFieldEditorParent());
         addField(nodeclipseConsoleEnabled);
 
-//        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
-//        addField(completionsPath);
+        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
+        addField(completionsPath);
     	
         nodeJustNode = new BooleanFieldEditor(PreferenceConstants.NODE_JUST_NODE, 
         		"find node on PATH. Otherwise use Node.js instance in location below", getFieldEditorParent());
