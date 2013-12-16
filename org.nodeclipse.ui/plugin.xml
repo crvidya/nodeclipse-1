@@ -65,6 +65,15 @@
             id="org.nodeclipse.ui.editors.NodeEditor"
             name="Node Editor">
       </editor>
+      <editor
+            class="org.nodeclipse.ui.editors.Nodeclipse01Editor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="true"
+            extensions="js,json,jshintrc,njs,0js"
+            icon="icons/node.png"
+            id="org.nodeclipse.ui.editors.Nodeclipse01Editor"
+            name="Nodeclipse01 Editor">
+      </editor>
       <!-- class is not on plugin classpath!
       <editor
             class="winterwell.markdown.editors.MarkdownEditor"
