@@ -22,14 +22,73 @@ public class NodeContentAssistant implements IContentAssistProcessor {
 
     public static Image METHOD = Activator.getImageDescriptor(Constants.METHOD_ICON).createImage();
 
+    public String getInputString(IDocument doc, int offset) {
+        StringBuffer buf = new StringBuffer();
+        while (true) {
+            try {
+                char charOffset = doc.getChar(--offset);
+                if (Character.isWhitespace(charOffset))
+                    break;
+                buf.append(charOffset);
+            } catch (BadLocationException e) {
+                break;
+            }
+        }
+        return buf.reverse().toString();
+    }
+    
+    private void addCompletionProposalFromNodejsSources(
+			List<CompletionProposal> list, String input, int offset) {
+        try {
+            for (int i = 0; i < ContentFromSources.METHODS.length(); i++) {
+                JSONObject method = (JSONObject) ContentFromSources.METHODS.get(i);
+                String trigger = method.getString("textRaw");
+                if (trigger != null && trigger.startsWith(input)) {
+                    int length = input.length();
+                    list.add(new CompletionProposal(trigger, offset - length, length, trigger.length(), 
+                    		METHOD, null, null, method.getString("desc") )); 
+                    		//method.getString("name")
+                }
+            }
+        } catch (JSONException e) {
+            //e.printStackTrace();
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
+        }		
+	}
+    
+    public void addCompletionProposalFromCompletionJson(
+    		List<CompletionProposal> list, String input, int offset) {
+        //List<CompletionProposal> list = new ArrayList<CompletionProposal>();
+        try {
+            for (int i = 0; i < ContentProvider.COMPLETIONS.length(); i++) {
+                JSONObject method = (JSONObject) ContentProvider.COMPLETIONS.get(i);
+                String trigger = method.getString("trigger");
+                if (trigger != null && trigger.startsWith(input)) {
+                    int length = input.length();
+                    list.add(new CompletionProposal(trigger, offset - length, length, trigger.length(), 
+                    		METHOD, null, null, null));
+                }
+            }
+        } catch (JSONException e) {
+            //e.printStackTrace();
+        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
+        }
+        //return list;
+    }
+
     @Override
     public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
         IDocument doc = viewer.getDocument();
-        List<CompletionProposal> list;
-        list = computCompletionProposal(getInputString(doc, offset), offset);
+        String inputString = getInputString(doc, offset);
+		NodeclipseConsole.write(inputString+"\n");
+        //List<CompletionProposal> list;
+        List<CompletionProposal> list = new ArrayList<CompletionProposal>();
+        //list = getCompletionProposalFromCompletionJson(inputString , offset);
+        addCompletionProposalFromNodejsSources(list, inputString , offset);
+        addCompletionProposalFromCompletionJson(list, inputString , offset);
         return (CompletionProposal[]) list.toArray(new CompletionProposal[list.size()]);
     }
-
+    
     @Override
     public IContextInformation[] computeContextInformation(ITextViewer viewer, int offset) {
         // TODO Auto-generated method stub
@@ -60,36 +119,4 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         return null;
     }
 
-    public String getInputString(IDocument doc, int offset) {
-        StringBuffer buf = new StringBuffer();
-        while (true) {
-            try {
-                char charOffset = doc.getChar(--offset);
-                if (Character.isWhitespace(charOffset))
-                    break;
-                buf.append(charOffset);
-            } catch (BadLocationException e) {
-                break;
-            }
-        }
-        return buf.reverse().toString();
-    }
-
-    public List<CompletionProposal> computCompletionProposal(String input, int offset) {
-        List<CompletionProposal> list = new ArrayList<CompletionProposal>();
-        try {
-            for (int i = 0; i < ContentProvider.COMPLETIONS.length(); i++) {
-                JSONObject method = (JSONObject) ContentProvider.COMPLETIONS.get(i);
-                String trigger = method.getString("trigger");
-                if (trigger != null && trigger.startsWith(input)) {
-                    int length = input.length();
-                    list.add(new CompletionProposal(trigger, offset - length, length, trigger.length(), METHOD, null, null, null));
-                }
-            }
-        } catch (JSONException e) {
-            //e.printStackTrace();
-        	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
-        }
-        return list;
-    }
 }
