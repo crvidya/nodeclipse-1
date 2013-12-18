@@ -22,14 +22,14 @@
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
 			<url>http://winterwell.com/software/updatesite/</url>
-		</repository>
-		--> 
+		</repository> 
+		-->
+		<!--
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
 			<url>http://dl.bintray.com/enide/Markdown/1.0.0/</url>
 		</repository>
-		<!-- -->
 		<repository>
 			<id>restclient-tool</id>
 			<layout>p2</layout>
@@ -58,13 +58,17 @@
 		<repository>
 			<id>Icons-Editor</id>
 			<layout>p2</layout>
-			<!-- <url>http://eclipse-icons-editor.eclipselabs.org.codespot.com/git/site/org.eclipse_icons.editor.site/</url> -->
 			<url>http://dl.bintray.com/nodeclipse/nodeclipse/0.7.0/</url>
 		</repository>
 		<repository>
 			<id>PDE-Tools</id>
 			<layout>p2</layout>
 			<url>https://raw.github.com/jeeeyul/pde-tools/master/net.jeeeyul.pdetools.updatesite/</url>
+		</repository>
+		<repository>
+			<id>net.jeeeyul.eclipse.themes.updatesite</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
 		</repository>
 		<repository>
 			<id>Regular-Expression</id>
@@ -75,8 +79,7 @@
 			<id>net.jumperz.app.MMonjaDB</id>
 			<layout>p2</layout>
 			<url>http://www.jumperz.net/update/</url>
-		</repository>
-		
+		</repository>		
 		<repository>
 			<id>gfm.viewer</id>
 			<layout>p2</layout>
@@ -87,21 +90,12 @@
 			<layout>p2</layout>
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
-		<repository>
-			<id>Closure-by-Vincent.Simonet.p2f</id>
-			<layout>p2</layout>
-			<url>http://www.normalesup.org/~simonet/soft/ow/update/</url>
-		</repository>
-		<!-- can't be used
-		<repository>
-			<id>eclipsejsonedit</id>
-			<layout>p2</layout>
-			<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
-		</repository>
-		 -->
+		--> 
 		
 		
-		<!-- General -->
+		
+		
+		<!-- General 
 		<repository>
 			<id>EclipseRunner</id>
 			<layout>p2</layout>
@@ -112,15 +106,8 @@
 			<layout>p2</layout>
 			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
 		</repository>
-		<!-- 
-		<repository>
-			<id>net.jeeeyul.eclipse.themes.updatesite</id>
-			<layout>p2</layout>
-			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
-		</repository>
-		 -->
 
-		<!-- Other -->
+		<!-- Other 
 		<repository>
 			<id>practicallymacro</id>
 			<layout>p2</layout>
@@ -131,8 +118,26 @@
 			<layout>p2</layout>
 			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/SelectionExplorerUpdateSite</url>
 		</repository>
-
+		-->
 		
+		<!-- can't be bundled
+		<repository>
+			<id>eclipsejsonedit</id>
+			<layout>p2</layout>
+			<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
+		</repository>
+		<repository>
+			<id>Closure-by-Vincent.Simonet.p2f</id>
+			<layout>p2</layout>
+			<url>http://www.normalesup.org/~simonet/soft/ow/update/</url>
+		</repository>
+		<repository>
+			<id>Icons-Editor</id>
+			<layout>p2</layout>
+			<!-- <url>http://eclipse-icons-editor.eclipselabs.org.codespot.com/git/site/org.eclipse_icons.editor.site/</url> 
+			<url>http://dl.bintray.com/nodeclipse/nodeclipse/0.7.0/</url>
+		</repository>
+		 -->
 		<!-- 	
 		<repository>
 			<id>quicksearch</id>
