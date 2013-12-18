@@ -19,8 +19,9 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	Arguments:
 	  -c, --create <name>      create project folder <name> [using template] and prepare it
 	  -u, --use <template>     use/copy specified template when creating project
-	  -p, --prepare            prepare for import (default action), i.e. add needed `.project`
+	  -p, --prepare            prepare Nodeclipse [Node.js] project for import, i.e. add needed `.project`
 	  							and other `.*` files ('.gitignore', '.jshintrc', '.settings/') if there is no `.project` yet
+      -g, --eclipse_project_general   prepare General Eclipse project for import, i.e. add only needed `.project` file
 	  -n, --name [<name>]      project name (default is folder name)
 	  -h, --help               Check README
 	  -v, --version            print nodeclipse CLI's version
@@ -73,7 +74,7 @@ try with `npm install . -g` before publishing
 	
       -f, --force              force on non-empty directory (by default existing files are not updated)
 	  -pg					as general project
-	  -pn	 				as Nodeclipse project (default)
+	  -pn	 				as Nodeclipse Node.js project (default)
 	  -t, --template <template>     use/copy specified template when creating project (see also `git init`)
 	  --gitclone <repository>			call git clone [directory]
 	  
@@ -93,6 +94,10 @@ options are:
 
 - add link on Wizard Page
 - options to refine .jshintrc
+
+## History
+
+0.8.2 fix #101 (bug on MacOS); -g option
 
 ## News
 

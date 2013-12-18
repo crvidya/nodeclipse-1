@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// #101; this file should have UNIX style line endings (\n only) when publishing
 
 var path = require('path');
 var fs   = require('fs');
