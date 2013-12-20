@@ -40,25 +40,26 @@ import org.nodeclipse.ui.util.ProcessUtils;
  */
 public class ContentFromSources {
 	
-	public static final String HTTP_JSON = "org/nodeclipse/ui/contentassist/http.json";
+	public static final String ALL_JSON = "org/nodeclipse/ui/contentassist/all.json";
 	
-	public static JSONArray METHODS;
+	//public static JSONArray METHODS;
+	public static JSONObject NodejsContext;
 
     static {
         try {
-//        	// option to have completions.json as external file
-//        	String completionJsonPath = ProcessUtils.getCompletionsJsonPath();
-//        	if (completionJsonPath == null || completionJsonPath.equals("")) {
-//        		completionJsonPath = Constants.COMPLETIONS_JSON;
-//        	}
-            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(HTTP_JSON);
-            JSONObject object = new JSONObject(inputStream2String(is));
-            JSONArray modules = object.getJSONArray("modules");
-            int modules_length = modules.length();
-            log("modules_length="+modules_length+"\n");
-            
-            JSONObject module = modules.getJSONObject(0);            
-            METHODS = module.getJSONArray("methods");
+        	// check if sources to use are selected 
+        	String sourcesAllJsonPath = ProcessUtils.getSourcesAllJsonPath();
+        	if ("".equals(sourcesAllJsonPath)) {
+        		sourcesAllJsonPath = ALL_JSON;
+        	}
+            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(ALL_JSON);
+            NodejsContext = new JSONObject(inputStream2String(is));
+//            JSONArray modules = object.getJSONArray("modules");
+//            int modules_length = modules.length();
+//            log("modules_length="+modules_length+"\n");
+//            
+//            JSONObject module = modules.getJSONObject(0);            
+//            METHODS = module.getJSONArray("methods");
             
             
         } catch (JSONException e) {
