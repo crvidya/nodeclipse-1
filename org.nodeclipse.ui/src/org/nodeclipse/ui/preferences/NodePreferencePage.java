@@ -16,12 +16,12 @@ import org.nodeclipse.ui.Activator;
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private BooleanFieldEditor nodeclipseConsoleEnabled;
-    private FileFieldEditor completionsPath;
 
 	private BooleanFieldEditor nodeJustNode;
     private FileFieldEditor nodePath;
     private BooleanFieldEditor nodeAllowMany;
-    private FileFieldEditor nodeSourcesLibPath;
+    private FileFieldEditor nodeSourcesPath;
+    private FileFieldEditor completionsPath;
     private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
     private FileFieldEditor nodeMonitorPath;
@@ -62,9 +62,6 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         		"enable Nodeclipse Console", getFieldEditorParent());
         addField(nodeclipseConsoleEnabled);
 
-        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
-        addField(completionsPath);
-    	
         nodeJustNode = new BooleanFieldEditor(PreferenceConstants.NODE_JUST_NODE, 
         		"find node on PATH. Otherwise use Node.js instance in location below", getFieldEditorParent());
         addField(nodeJustNode);
@@ -76,9 +73,12 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         		"allow many Node.js instances running", getFieldEditorParent());
         addField(nodeAllowMany);
 
-        nodeSourcesLibPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_LIB_PATH, "Node sources lib path Help! #75", getFieldEditorParent());
-        addField(nodeSourcesLibPath);
+        nodeSourcesPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_PATH, "Node sources path:", getFieldEditorParent());
+        addField(nodeSourcesPath);
 
+        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Alternative completions.json path:", getFieldEditorParent());
+        addField(completionsPath);
+    	
         // "Node debug no -break (disable interruption of Node.js app on first line, check debug Help)" would make dialog wider
         nodeDebugNoBreak = new BooleanFieldEditor(PreferenceConstants.NODE_DEBUG_NO_BREAK, 
         		"Node debug without -brk (disable interruption of Node.js app)", getFieldEditorParent());

@@ -16,7 +16,7 @@
             name="Node.js Project"
             project="true">
          <description>
-            Create a new Node.js project (or add .project file to an existing project)
+            Create a new Node.js project (or add .project file to an existing project and import)
          </description>
       </wizard>
       <wizard
@@ -60,19 +60,19 @@
             class="org.nodeclipse.ui.editors.NodeEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
-            extensions="js,json,jshintrc,njs"
+            extensions="js,json,jshintrc"
             icon="icons/node.png"
             id="org.nodeclipse.ui.editors.NodeEditor"
-            name="Node Editor">
+            name="Nodeclipse JSDT Editor">
       </editor>
       <editor
-            class="org.nodeclipse.ui.editors.Nodeclipse01Editor"
+            class="org.nodeclipse.ui.editors.NodeclipseNodejsEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
-            extensions="js,json,jshintrc,njs,0js"
-            icon="icons/node.png"
+            extensions="js,json,jshintrc,njs"
+            icon="icons/node_top_right_corner_file.png"
             id="org.nodeclipse.ui.editors.Nodeclipse01Editor"
-            name="Nodeclipse01 Editor">
+            name="Nodeclipse Node.js Editor">
       </editor>
       <!-- class is not on plugin classpath!
       <editor

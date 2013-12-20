@@ -58,6 +58,14 @@ public class ProcessUtils {
 				.getString(PreferenceConstants.COMPLETIONS_JSON_PATH);
 	}
 	
+	public static String getSourcesAllJsonPath() {
+		String path = Activator.getDefault().getPreferenceStore()
+				.getString(PreferenceConstants.NODE_SOURCES_PATH);
+		if (! "".equals(path)){
+			path += "/doc/api/all.json".replace('/', File.separatorChar);
+		}
+		return path;
+	}
 
 	public static int getExpressMajorVersion() {
 		String ver = getExpressVersion();

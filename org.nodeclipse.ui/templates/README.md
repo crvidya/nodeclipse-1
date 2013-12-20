@@ -59,7 +59,11 @@ under https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/t
 
 <https://npmjs.org/doc/developers.html>
 
-try with `npm install . -g` before publishing
+before publishing
+- try with `npm install . -g`
+- check that nodeclipse.js line ending is UNIX style (#101)
+
+[#4341](https://github.com/isaacs/npm/issues/4341) `common-templates/.gitignore` becomes `common-templates/.npmignore` 
 
 #### Links
 

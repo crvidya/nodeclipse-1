@@ -6,7 +6,11 @@ import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.texteditor.SourceViewerDecorationSupport;
 
-public class Nodeclipse01Editor extends TextEditor {
+
+/**
+ * @author Nodeclipse authors
+ */
+public class NodeclipseNodejsEditor extends TextEditor {
 
     public static final String EDITOR_ID = "org.nodeclipse.ui.editors.Nodeclipse01Editor";
     public static final String RULER_CONTEXT = EDITOR_ID + ".ruler";
@@ -15,7 +19,7 @@ public class Nodeclipse01Editor extends TextEditor {
 
     private DefaultCharacterPairMatcher matcher;
 
-    public Nodeclipse01Editor() {
+    public NodeclipseNodejsEditor() {
         setSourceViewerConfiguration(new NodeSourceViewerConfiguration());
     }
 

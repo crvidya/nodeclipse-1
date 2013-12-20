@@ -2,6 +2,11 @@ package org.nodeclipse.ui.editors;
 
 import org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor;
 
+
+/**
+ * Editor based on JSDT JavaScript Editor
+ * @author Nodeclipse authors
+ */
 @SuppressWarnings("restriction")
 public class NodeEditor extends CompilationUnitEditor {
 }
