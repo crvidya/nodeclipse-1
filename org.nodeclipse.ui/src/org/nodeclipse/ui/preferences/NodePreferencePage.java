@@ -19,6 +19,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
 	private BooleanFieldEditor nodeJustNode;
     private FileFieldEditor nodePath;
+    private StringFieldEditor nodeOptions;
     private BooleanFieldEditor nodeAllowMany;
     private FileFieldEditor nodeSourcesPath;
     private FileFieldEditor completionsPath;
@@ -68,6 +69,9 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
         nodePath = new FileFieldEditor(PreferenceConstants.NODE_PATH, "Node.js path:", getFieldEditorParent());
         addField(nodePath);
+        
+        nodeOptions = new StringFieldEditor(PreferenceConstants.NODE_OPTIONS, "Node options (node -h):", getFieldEditorParent());
+        addField(nodeOptions);
 
         nodeAllowMany = new BooleanFieldEditor(PreferenceConstants.NODE_ALLOW_MANY, 
         		"allow many Node.js instances running", getFieldEditorParent());

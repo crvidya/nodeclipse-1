@@ -43,7 +43,7 @@ public class LaunchConfigurationDelegate implements
 		ILaunchConfigurationDelegate {
 	private static RuntimeProcess nodeProcess = null; //since 0.7 it should be debuggable instance
 	//@since 0.7. contain all running Node thread, including under debug. Non Thread-safe, as it should be only in GUI thread
-	private static List<RuntimeProcess> nodeRunningProcesses = new LinkedList<RuntimeProcess>(); 
+	//private static List<RuntimeProcess> nodeRunningProcesses = new LinkedList<RuntimeProcess>(); 
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -110,6 +110,16 @@ public class LaunchConfigurationDelegate implements
 			int nodeDebugPort = preferenceStore.getInt(PreferenceConstants.NODE_DEBUG_PORT);
 			if (nodeDebugPort==0) { nodeDebugPort=5858;};
 			cmdLine.add("--debug"+brk+"="+nodeDebugPort); //--debug-brk=5858
+		}
+		
+		//@since 0.9
+		String nodeOptions= preferenceStore.getString(PreferenceConstants.NODE_OPTIONS);
+		if(!nodeOptions.equals("")) {
+			String[] sa = nodeOptions.split(" ");
+			for(String s : sa) {
+				cmdLine.add(s);
+			}
+			
 		}
 		
 		String nodeArgs = configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, "");
@@ -223,7 +233,7 @@ public class LaunchConfigurationDelegate implements
 			if (isDebugMode){
 				nodeProcess = process;	
 			}
-			nodeRunningProcesses.add(process);
+			//nodeRunningProcesses.add(process);
 		}else{
 			nodeProcess = process;	
 		}
