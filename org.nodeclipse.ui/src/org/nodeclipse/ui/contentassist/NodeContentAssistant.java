@@ -74,7 +74,7 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         // tls_(ssl)(m5)(c4), stringdecoder(c1), fs(m67)(c4), path(m7), net(m10)(c2), dgram(m1)(c1), dns(m10), http(m4)(c4), https(m3)(c2), 
         // url(m3), querystring(m2), punycode(m4), readline(m1)(c1), repl(m1), vm(m5)(c1), child_process(m4)(c1), assert(m11), tty(m2)(c2), zlib(m14)(c8), os(m13), cluster(m3)(c1)
         try {
-        	JSONObject NodejsContext = ContentFromSources.NodejsContext;
+        	JSONObject NodejsContext = ContentFromSources.defaultInstance.NodejsContext;
 			JSONArray modules = NodejsContext.getJSONArray("modules");
 			log("modules"+modules.length()+" ");
 			for (int i = 0; i < modules.length(); i++) {
