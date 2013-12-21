@@ -31,6 +31,7 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	  hello-world              The famous hello world HTTP server in 6 lines
 	  hello-coffee	           The same server written in CoffeeScript
 	  hello-typescript         The same server written in TypeScript
+	  hello-html		       Template with HTML file
 
 Examples:
 

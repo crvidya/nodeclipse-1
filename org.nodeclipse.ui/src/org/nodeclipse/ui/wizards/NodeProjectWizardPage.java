@@ -43,6 +43,7 @@ public class NodeProjectWizardPage extends WizardPage {
     Button btnHelloWorld;
     Button btnHelloCoffee;
     Button btnHelloTypeScript;
+    Button btnHelloHtml;
 
     private Listener nameModifyListener = new Listener() {
         public void handleEvent(Event e) {
@@ -211,6 +212,10 @@ public class NodeProjectWizardPage extends WizardPage {
 
         btnHelloTypeScript = new Button(templatesGroup, SWT.RADIO);
         btnHelloTypeScript.setText("Hello TypeScript");
+
+        btnHelloHtml = new Button(templatesGroup, SWT.RADIO);
+        btnHelloHtml.setText(Constants.TEMPLATE_HELLO_HTML);
+    
     }
     
     
@@ -394,6 +399,9 @@ public class NodeProjectWizardPage extends WizardPage {
         }
         if (btnHelloTypeScript.getSelection()) {
             return Constants.TEMPLATE_HELLO_TYPESCRIPT;
+        }
+        if (btnHelloHtml.getSelection()) {
+            return Constants.TEMPLATE_HELLO_HTML;
         }
         return Constants.BLANK_STRING;
     }
