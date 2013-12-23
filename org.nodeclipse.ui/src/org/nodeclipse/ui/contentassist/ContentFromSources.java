@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,13 +47,20 @@ class ContentFromSources {
 	static final String ALL_JSON = "org/nodeclipse/ui/contentassist/all.json";
 	
 	//public static JSONArray METHODS;
-	public JSONObject NodejsContext;
+	JSONObject NodejsContext;
+	Model model;
 	
 	static ContentFromSources defaultInstance = null; 
 	static {
 		defaultInstance = new ContentFromSources(ALL_JSON);
 	}
-
+	
+	public static ContentFromSources getDefaultInstances() {
+		if (defaultInstance == null) {
+			defaultInstance = new ContentFromSources(ALL_JSON);
+		}
+		return defaultInstance;
+	}
 
     public ContentFromSources(String sourcesAllJsonPath) {
         try {
@@ -61,16 +69,17 @@ class ContentFromSources {
         	if ("".equals(sourcesAllJsonPath)) {
         		sourcesAllJsonPath = ALL_JSON;
         	}
-            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(sourcesAllJsonPath);
+            InputStream is = ContentFromSources.class.getClassLoader().getResourceAsStream(sourcesAllJsonPath);
             NodejsContext = new JSONObject(inputStream2String(is));
         } catch (JSONException e) {
         	log(e.getLocalizedMessage()+"\n");
         } catch (IOException e) {
         	log(e.getLocalizedMessage()+"\n");
         }
-        if (defaultInstance == null){
-        	defaultInstance = this;
-        }
+//        if (defaultInstance == null){
+//        	defaultInstance = this;
+//        }
+        populateModel();
     }
     
     public static String inputStream2String(InputStream is) throws IOException {
@@ -83,13 +92,16 @@ class ContentFromSources {
         return buffer.toString();
     }
     
-    private void readModel(){
+    /**
+     * Reading JSON file
+     */
+    private void populateModel(){
         // modules30: timers(m8), module, addons, util(m13), Events(c1), domain(m1)(c1), buffer(c2), stream(c4), crypto(m18)(c7), 
         // tls_(ssl)(m5)(c4), stringdecoder(c1), fs(m67)(c4), path(m7), net(m10)(c2), dgram(m1)(c1), dns(m10), http(m4)(c4), https(m3)(c2), 
         // url(m3), querystring(m2), punycode(m4), readline(m1)(c1), repl(m1), vm(m5)(c1), child_process(m4)(c1), assert(m11), tty(m2)(c2), zlib(m14)(c8), os(m13), cluster(m3)(c1)
 
     	
-    	IRepo repo = new Model();
+    	model = new Model();
         try {
         	JSONObject nodejsContextJSONObject = NodejsContext;
 			JSONArray modules = nodejsContextJSONObject.getJSONArray("modules");
@@ -99,7 +111,7 @@ class ContentFromSources {
 				String moduleName = module.getString("name");
 				debug( ", "+moduleName);
 				Module moduleObj = new Module(moduleName);
-				repo.addModule(moduleObj);
+				model.addModule(moduleObj);
 
 				if (module.has("methods")) {
 					JSONArray methods = module.getJSONArray("methods");
@@ -112,7 +124,7 @@ class ContentFromSources {
 						String desc = formatedName(name,trigger)+method.getString("desc");
 
 						Entry entry = new Entry(moduleObj,EntryType.method,name,trigger,desc);
-						repo.addEntry(entry);	
+						model.addEntry(entry);	
 					}
 				}
 
@@ -128,7 +140,7 @@ class ContentFromSources {
 	                    }
 	                    String desc = formatedName(trigger,clazz.getString("textRaw"))+clazz.getString("desc");
 						Entry entry = new Entry(moduleObj,EntryType.clazz,trigger,trigger,desc);
-						repo.addEntry(entry);	
+						model.addEntry(entry);	
 	                }
                 }
                 
@@ -160,7 +172,26 @@ class ContentFromSources {
     public static void main(String[] args){
     	//System.out.println(x);
     	ContentFromSources c = new ContentFromSources(ALL_JSON);
-    	c.readModel();    	
+    	//c.populateModel();
+    	List<Entry> matches = c.model.findMatchingEntries("http");
+    	for(Entry entry: matches){
+    		System.out.println(entry);
+    	}
+    	
+//    	modules30 , timers(m8), module, addons, util(m13), Events(c1), domain(m1)(c1), buffer(c2), stream(c4), crypto(m18)(c7), tls_(ssl)(m5)(c4), stringdecoder(c1), fs(m67)(c4), path(m7), net(m10)(c2), dgram(m1)(c1), dns(m10), http(m4)(c4), https(m3)(c2), url(m3), querystring(m2), punycode(m4), readline(m1)(c1), repl(m1), vm(m5)(c1), child_process(m4)(c1), assert(m11), tty(m2)(c2), zlib(m14)(c8), os(m13), cluster(m3)(c1)modules30 , timers(m8), module, addons, util(m13), Events(c1), domain(m1)(c1), buffer(c2), stream(c4), crypto(m18)(c7), tls_(ssl)(m5)(c4), stringdecoder(c1), fs(m67)(c4), path(m7), net(m10)(c2), dgram(m1)(c1), dns(m10), http(m4)(c4), https(m3)(c2), url(m3), querystring(m2), punycode(m4), readline(m1)(c1), repl(m1), vm(m5)(c1), child_process(m4)(c1), assert(m11), tty(m2)(c2), zlib(m14)(c8), os(m13), cluster(m3)(c1)http.Agent
+//    	http.ClientRequest
+//    	http.Server
+//    	http.ServerResponse
+//    	http.createClient([port], [host])
+//    	http.createServer([requestListener])
+//    	http.get(options, callback)
+//    	http.request(options, callback)
+//    	https.Agent
+//    	https.Server
+//    	https.createServer(options, [requestListener])
+//    	https.get(options, callback)
+//    	https.request(options, callback)
+    	
     }
 }
 

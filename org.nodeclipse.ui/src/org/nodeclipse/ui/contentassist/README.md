@@ -1,4 +1,23 @@
 
+# Notes
+
+org.eclipse.jface.text.contentassist.IContentAssistProcessor
+
+
+A content assist processor proposes completions and computes context information for a particular content type. A content assist processor is a org.eclipse.jface.text.contentassist.IContentAssistant plug-in. 
+
+This interface must be implemented by clients. Implementers should be registered with a content assistant in order to get involved in the assisting process. 
+
+      "classes": [
+        {
+          "textRaw": "Class: Domain",
+          "type": "class",
+          "name": "Domain",
+
+          "textRaw": "Class: Domain","type": "class","name": "Domain"
+          
+          "textRaw": "http.createServer([requestListener])","type": "method","name": "createServer",
+          
 
 # all.json
 

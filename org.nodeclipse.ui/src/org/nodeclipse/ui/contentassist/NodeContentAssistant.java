@@ -123,6 +123,24 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         }		
 	}
     
+    private void addCompletionProposalFromModel(
+			List<CompletionProposal> list, String input, int offset) {
+        int length = input.length();
+        // modules30: timers(m8), module, addons, util(m13), Events(c1), domain(m1)(c1), buffer(c2), stream(c4), crypto(m18)(c7), 
+        // tls_(ssl)(m5)(c4), stringdecoder(c1), fs(m67)(c4), path(m7), net(m10)(c2), dgram(m1)(c1), dns(m10), http(m4)(c4), https(m3)(c2), 
+        // url(m3), querystring(m2), punycode(m4), readline(m1)(c1), repl(m1), vm(m5)(c1), child_process(m4)(c1), assert(m11), tty(m2)(c2), zlib(m14)(c8), os(m13), cluster(m3)(c1)
+        
+        //Model model = ContentFromSources.defaultInstance.model;
+        Model model = ContentFromSources.getDefaultInstances().model;
+        for(Entry entry: model.findMatchingEntries(input)){
+        	String trigger = entry.trigger;
+        	String desc = entry.desc;
+        	Image image = (entry.type == EntryType.clazz) ? CLASS : METHOD;
+			list.add(new CompletionProposal(trigger, offset - length, length, trigger.length(), 
+					image, trigger, null, desc));        	
+        }
+	}
+
     private String formatedName(String name) {
 		return "<b>"+name+"</b><br/>";
 	}
@@ -158,7 +176,8 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         //List<CompletionProposal> list;
         List<CompletionProposal> list = new ArrayList<CompletionProposal>();
         //list = getCompletionProposalFromCompletionJson(inputString , offset);
-        addCompletionProposalFromNodejsSources(list, inputString , offset);
+        //addCompletionProposalFromNodejsSources(list, inputString , offset);
+        addCompletionProposalFromModel(list, inputString , offset);
         addCompletionProposalFromCompletionJson(list, inputString , offset);
         return (CompletionProposal[]) list.toArray(new CompletionProposal[list.size()]);
     }
