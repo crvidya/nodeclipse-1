@@ -21,8 +21,8 @@ import org.nodeclipse.ui.util.NodeclipseConsole;
 
 
 /**
+ * proposals are sorted inside Model.
  * TODO make this class JSON independent
- * TODO sorted proposals
  * 
  * @author Lamb Gao
  * @author Paul Verest
@@ -30,8 +30,9 @@ import org.nodeclipse.ui.util.NodeclipseConsole;
  */
 public class NodeContentAssistant implements IContentAssistProcessor {
 
-    public static Image METHOD = Activator.getImageDescriptor(Constants.METHOD_ICON).createImage();
-    public static Image CLASS = Activator.getImageDescriptor(Constants.CLASS_ICON).createImage();
+    public static final Image METHOD = Activator.getImageDescriptor(Constants.METHOD_ICON).createImage();
+    public static final Image CLASS = Activator.getImageDescriptor(Constants.CLASS_ICON).createImage();
+    public static final Image PROPERTY = Activator.getImageDescriptor(Constants.PROPERTY_ICON).createImage();
 
     public String getInputString(IDocument doc, int offset) {
         StringBuffer buf = new StringBuffer();
@@ -67,6 +68,9 @@ public class NodeContentAssistant implements IContentAssistProcessor {
 //        }		
 //	}
 
+    /** old first way, see addCompletionProposalFromModel() below (that most of code moved to ContentFromSources.populateModel() )
+     */
+    @Deprecated
     private void addCompletionProposalFromNodejsSources(
 			List<CompletionProposal> list, String input, int offset) {
         int length = input.length();
@@ -81,7 +85,7 @@ public class NodeContentAssistant implements IContentAssistProcessor {
 				JSONObject module = (JSONObject) modules.get(i);
 				String moduleName = module.getString("name");
 				debug( ", "+moduleName);
-
+				
 				if (module.has("methods")) {
 					JSONArray methods = module.getJSONArray("methods");
 					debug("(m"+methods.length()+")");
@@ -135,7 +139,13 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         for(Entry entry: model.findMatchingEntries(input)){
         	String trigger = entry.trigger;
         	String desc = entry.desc;
-        	Image image = (entry.type == EntryType.clazz) ? CLASS : METHOD;
+        	//Image image = (entry.type == EntryType.clazz) ? CLASS : METHOD;
+        	Image image = null;
+        	switch (entry.type){
+        		case method:	image = METHOD; break;
+        		case clazz:		image = CLASS; break;        		
+        		case property:	image = PROPERTY; break;	
+        	}        		
 			list.add(new CompletionProposal(trigger, offset - length, length, trigger.length(), 
 					image, trigger, null, desc));        	
         }

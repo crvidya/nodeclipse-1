@@ -3,7 +3,9 @@ package org.nodeclipse.ui.util;
 public class Constants {
     public static final String ICONS_PATH = "$nl$/icons/";
     public static final String METHOD_ICON = ICONS_PATH + "contentassist/method.gif";
+    //TODO find 2 good icons:
     public static final String CLASS_ICON = ICONS_PATH + "node.png";
+	public static final String PROPERTY_ICON = ICONS_PATH + "node_top_right_corner_file.png";
     public static final String COMPLETIONS_JSON = "org/nodeclipse/ui/contentassist/completions.json";
     public static final String COMPLETIONS_KEY = "completions";
     

@@ -1,7 +1,9 @@
 package org.nodeclipse.ui.contentassist;
 
 /**
- * immutable Model Entry
+ * immutable Model Entry:
+ * it may represent method, object or property
+ * 
  * 
  * @author Paul Verest
  */
@@ -12,15 +14,26 @@ public class Entry implements Comparable<Entry>{
 	final String name;
 	final String trigger;
 	final String desc;
+	final Entry parent;
 
 	public Entry(Module module,EntryType type, String name, String trigger, String desc){
 		this.module = module;
 		this.type = type;
 		this.name=name;
 		this.trigger=trigger;
-		this.desc=desc;		
+		this.desc=desc;	
+		parent = null;
 	}
 
+	public Entry(Module module,EntryType type, String name, String trigger, String desc, Entry parent){
+		this.module = module;
+		this.type = type;
+		this.name=name;
+		this.trigger=trigger;
+		this.desc=desc;		
+		this.parent = parent;
+	}
+	
 	@Override
 	public int compareTo(Entry o) {
 		return trigger.compareTo(o.trigger);
