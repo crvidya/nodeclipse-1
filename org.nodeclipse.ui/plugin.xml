@@ -57,22 +57,33 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
+            class="org.nodeclipse.ui.editors.NodeclipseNodejsEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="true"
+            extensions="js,njs"
+            icon="icons/node_top_right_corner_file.png"
+            id="org.nodeclipse.ui.editors.NodeclipseNodejsEditor"
+            name="Nodeclipse Node.js Editor">
+      </editor>
+      
+      <editor
             class="org.nodeclipse.ui.editors.NodeEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
-            extensions="js,json,jshintrc"
+            extensions="js"
             icon="icons/node.png"
             id="org.nodeclipse.ui.editors.NodeEditor"
             name="Nodeclipse JSDT Editor">
       </editor>
-      <editor
-            class="org.nodeclipse.ui.editors.NodeclipseNodejsEditor"
+      <!-- just for different icons for json,jshintrc -->
+      <editor 
+            class="org.nodeclipse.ui.editors.NodeEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
-            extensions="js,json,jshintrc,njs"
-            icon="icons/node_top_right_corner_file.png"
-            id="org.nodeclipse.ui.editors.Nodeclipse01Editor"
-            name="Nodeclipse Node.js Editor">
+            extensions="json,jshintrc"
+            icon="icons/node_blue.png"
+            id="org.nodeclipse.ui.editors.NodeEditor"
+            name="Nodeclipse JSDT Editor">
       </editor>
       <!-- class is not on plugin classpath!
       <editor
