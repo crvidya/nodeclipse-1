@@ -1,6 +1,7 @@
 package org.nodeclipse.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IntegerFieldEditor;
@@ -21,7 +22,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private FileFieldEditor nodePath;
     private StringFieldEditor nodeOptions;
     private BooleanFieldEditor nodeAllowMany;
-    private FileFieldEditor nodeSourcesPath;
+    private DirectoryFieldEditor nodeSourcesPath;
     private FileFieldEditor completionsPath;
     private BooleanFieldEditor nodeDebugNoBreak;
     private IntegerFieldEditor nodeDebugPort;
@@ -77,7 +78,7 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         		"allow many Node.js instances running", getFieldEditorParent());
         addField(nodeAllowMany);
 
-        nodeSourcesPath = new FileFieldEditor(PreferenceConstants.NODE_SOURCES_PATH, "Node sources path:", getFieldEditorParent());
+        nodeSourcesPath = new DirectoryFieldEditor(PreferenceConstants.NODE_SOURCES_PATH, "Node sources directory path:", getFieldEditorParent());
         addField(nodeSourcesPath);
 
         completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Alternative completions.json path:", getFieldEditorParent());

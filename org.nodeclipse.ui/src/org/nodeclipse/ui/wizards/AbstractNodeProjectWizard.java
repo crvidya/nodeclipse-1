@@ -91,10 +91,15 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
 		return NodeNature.NATURE_ID;    	
     }
     
+    /**
+     * Set project natures to current type + JavaScriptCore nature
+     * @param newProjectHandle IProject
+     * @param location URI
+     * @return
+     */
     protected IProjectDescription createProjectDescription(IProject newProjectHandle, URI location) {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		final IProjectDescription description = workspace
-				.newProjectDescription(newProjectHandle.getName());
+		final IProjectDescription description = workspace.newProjectDescription(newProjectHandle.getName());
 		description.setLocationURI(location);
 		String[] natures = description.getNatureIds();
 		String[] newNatures = new String[natures.length + 2];

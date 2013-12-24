@@ -58,15 +58,29 @@ public class ProcessUtils {
 				.getString(PreferenceConstants.COMPLETIONS_JSON_PATH);
 	}
 	
+	/**
+	 * @return existing lib folder in Node.js sources, "" otherwise
+	 */
+	public static String getSourcesLibPath() {
+		String path = Activator.getDefault().getPreferenceStore()
+				.getString(PreferenceConstants.NODE_SOURCES_PATH);
+		if (! "".equals(path)){
+			path += "/lib/".replace('/', File.separatorChar);
+		}
+		// TODO //if (workspace.validateLinkLocation(location).isOK()) {
+		return path;
+	}
+
 	public static String getSourcesAllJsonPath() {
 		String path = Activator.getDefault().getPreferenceStore()
 				.getString(PreferenceConstants.NODE_SOURCES_PATH);
 		if (! "".equals(path)){
 			path += "/doc/api/all.json".replace('/', File.separatorChar);
 		}
+		// TODO check if exists
 		return path;
 	}
-
+	
 	public static int getExpressMajorVersion() {
 		String ver = getExpressVersion();
 		int idx = ver.indexOf('.');

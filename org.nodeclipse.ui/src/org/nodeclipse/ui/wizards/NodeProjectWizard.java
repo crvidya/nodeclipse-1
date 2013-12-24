@@ -4,10 +4,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Composite;
@@ -18,11 +22,12 @@ import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.wst.jsdt.internal.ui.workingsets.JavaWorkingSetUpdater;
 import org.nodeclipse.ui.util.Constants;
 import org.nodeclipse.ui.util.LogUtil;
+import org.nodeclipse.ui.util.ProcessUtils;
 
 @SuppressWarnings("restriction")
 public class NodeProjectWizard extends AbstractNodeProjectWizard implements INewWizard {
 
-	private final String WINDOW_TITLE = "New Node Project";
+	private final String WINDOW_TITLE = "New Node.js Project";
 	private NodeProjectWizardPage mainPage;
 
 	private IProject newProject;
@@ -51,8 +56,8 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 				Dialog.applyDialogFont(getControl());
 			}
 		};
-		mainPage.setTitle("Create a Node Project");
-		mainPage.setDescription("Create a new Node project.");
+		mainPage.setTitle("Create a Node.js Project");
+		mainPage.setDescription("Create a new Node.js project.");
 		addPage(mainPage);
 	}
 
@@ -107,6 +112,16 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 					}
 					// JSHint support
 					runJSHint(newProjectHandle);
+					
+					// linking to Node.js sources lib @since 0.9
+					// http://stackoverflow.com/questions/20755770/eclipse-project-add-linked-resources-programmatically
+					String sourcesLibPath = ProcessUtils.getSourcesLibPath();
+					if (! "".equals(sourcesLibPath)){
+						IFolder link = newProjectHandle.getFolder("node_lib"); //newProjectHandle.getName()+"/node_lib"
+						IPath linkedLocation = new Path(sourcesLibPath);
+						link.createLink(linkedLocation, IResource.NONE, null);
+					}
+					
 				} catch (CoreException e) {
 					LogUtil.error(e);
 				}
