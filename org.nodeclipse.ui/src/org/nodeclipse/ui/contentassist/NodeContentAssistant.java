@@ -30,6 +30,7 @@ import org.nodeclipse.ui.util.NodeclipseConsole;
  */
 public class NodeContentAssistant implements IContentAssistProcessor {
 
+	public static final Image MODULE = Activator.getImageDescriptor(Constants.MODULE_ICON).createImage();
     public static final Image METHOD = Activator.getImageDescriptor(Constants.METHOD_ICON).createImage();
     public static final Image CLASS = Activator.getImageDescriptor(Constants.CLASS_ICON).createImage();
     public static final Image PROPERTY = Activator.getImageDescriptor(Constants.PROPERTY_ICON).createImage();
@@ -142,6 +143,7 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         	//Image image = (entry.type == EntryType.clazz) ? CLASS : METHOD;
         	Image image = null;
         	switch (entry.type){
+        		case module:	image = MODULE; break;
         		case method:	image = METHOD; break;
         		case clazz:		image = CLASS; break;        		
         		case property:	image = PROPERTY; break;	

@@ -115,7 +115,11 @@ class ContentFromSources {
 				Module moduleObj = new Module(moduleName);
 				model.addModule(moduleObj);
 				
-				populateCheckProperties(module, moduleName, moduleObj, null);
+				String moduleDesc = formatedName(moduleName)+module.getString("desc");
+				Entry moduleEntry = new Entry(moduleObj,EntryType.module,moduleName,moduleName,moduleDesc,null);
+				model.addEntry(moduleEntry);	
+				
+				populateCheckProperties(module, moduleName, moduleObj, moduleEntry);
 
 				if (module.has("methods")) {
 					JSONArray methods = module.getJSONArray("methods");
@@ -127,7 +131,7 @@ class ContentFromSources {
 						String name = method.getString("name");
 						String desc = formatedName(name,trigger)+method.getString("desc");
 
-						Entry entry = new Entry(moduleObj,EntryType.method,name,trigger,desc);
+						Entry entry = new Entry(moduleObj,EntryType.method,name,trigger,desc,moduleEntry);
 						model.addEntry(entry);	
 					}
 				}
@@ -143,7 +147,7 @@ class ContentFromSources {
 	                    	trigger=moduleName+'.'+trigger;
 	                    }
 	                    String desc = formatedName(trigger,clazz.getString("textRaw"))+clazz.getString("desc");
-						Entry entry = new Entry(moduleObj,EntryType.clazz,trigger,trigger,desc);
+						Entry entry = new Entry(moduleObj,EntryType.clazz,trigger,trigger,desc,moduleEntry);
 						model.addEntry(entry);	
 						
 						// Class may have properties, see http.IncomingMessage -> message.httpVersion
