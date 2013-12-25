@@ -1,5 +1,6 @@
 package org.nodeclipse.ui.preferences;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -9,6 +10,9 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.util.VersionUtil;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * @author Tomoyuki Inagaki
@@ -49,10 +53,12 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     public NodePreferencePage() {
         super(GRID);
         setPreferenceStore(Activator.getDefault().getPreferenceStore());
-        setDescription("Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs and MongoDB Shell settings");
+        setDescription(
+    		"Nodeclipse v"+VersionUtil.versionString+"\n"+
+    		"Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs and MongoDB Shell settings");
     }
 
-    @Override
+	@Override
     public void init(IWorkbench workbench) {
 
     }
