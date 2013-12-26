@@ -27,8 +27,13 @@ import org.nodeclipse.ui.util.NodeclipseConsole;
  * @author Lamb Gao
  * @author Paul Verest
  * 
+ * see grepcode.com/file/repository.grepcode.com/java/eclipse.org/4.3/org.eclipse.ui.workbench/texteditor/3.8.100/org/eclipse/ui/texteditor/HippieProposalProcessor.java
+ * 
  */
 public class NodeContentAssistant implements IContentAssistProcessor {
+	
+ 	private static final ICompletionProposal[] NO_PROPOSALS= new ICompletionProposal[0];
+ 	private static final IContextInformation[] NO_CONTEXTS= new IContextInformation[0];	
 
 	public static final Image MODULE = Activator.getImageDescriptor(Constants.MODULE_ICON).createImage();
     public static final Image METHOD = Activator.getImageDescriptor(Constants.METHOD_ICON).createImage();
@@ -196,31 +201,28 @@ public class NodeContentAssistant implements IContentAssistProcessor {
     
     @Override
     public IContextInformation[] computeContextInformation(ITextViewer viewer, int offset) {
-        // TODO Auto-generated method stub
-        return null;
+        return NO_CONTEXTS;
     }
 
     @Override
     public char[] getCompletionProposalAutoActivationCharacters() {
         // TODO Preferences
+    	// may be null
         return ".abcdefghijklmnopqrstuvwxyz".toCharArray();
     }
 
     @Override
     public char[] getContextInformationAutoActivationCharacters() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public String getErrorMessage() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public IContextInformationValidator getContextInformationValidator() {
-        // TODO Auto-generated method stub
         return null;
     }
 

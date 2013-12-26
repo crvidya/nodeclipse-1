@@ -108,6 +108,25 @@
       </editor>
        -->
     </extension>
+    
+	<extension point="org.eclipse.wst.jsdt.ui.javaCompletionProposalComputer"
+	   id="nodeclispe_textual_proposals"
+	   name="Nodeclipse Text Proposals">
+	   <!-- 
+	   <proposalCategory icon="icons/contentassist/method.gif"/>
+	   -->
+	   <proposalCategory icon="icons/npm/npm.gif"/>
+	 </extension>
+	 <extension point="org.eclipse.wst.jsdt.ui.javaCompletionProposalComputer"
+	   id="NodeclipseProposals"
+	   name="Nodeclipse Proposals">
+	   <javaCompletionProposalComputer
+	      class="org.nodeclipse.ui.contentassist.JSDTProposalComputer"
+	      categoryId="org.eclipse.ui.texteditor.textual_proposals">
+	      <partition type="__java_javadoc"/>
+	   </javaCompletionProposalComputer>
+	 </extension>
+     
 	<extension point="org.eclipse.debug.ui.toggleBreakpointsTargetFactories">
 	    <toggleTargetFactory
 	            id="org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory"
