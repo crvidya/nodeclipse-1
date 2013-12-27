@@ -33,9 +33,10 @@ public class Model implements IRepo {
 
 	@Override
 	public List<Entry> findMatchingEntries(String input) {
-		if ( ( input == null) || ("".equals(input)) )
-			return null;
 		List<Entry> matches = new LinkedList<Entry>();
+		if ( ( input == null) || ("".equals(input)) ){
+			return matches;
+		}	
 		for(Entry entry: entries){
 			if (entry.trigger.startsWith(input)){
 				matches.add(entry);

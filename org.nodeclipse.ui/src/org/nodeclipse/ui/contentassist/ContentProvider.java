@@ -1,6 +1,8 @@
 package org.nodeclipse.ui.contentassist;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,26 +17,38 @@ import org.nodeclipse.ui.util.ProcessUtils;
 /**
  * @author LambGao
  * @author Paul Verest
+ * TODO don't use static {}
  */
 public class ContentProvider {
 
-    public static JSONArray COMPLETIONS;
+    public static JSONArray COMPLETIONS = null;
 
     static {
         try {
+        	InputStream is = null;
         	// option to have completions.json as external file
         	String completionJsonPath = ProcessUtils.getCompletionsJsonPath();
         	if (completionJsonPath == null || completionJsonPath.equals("")) {
         		completionJsonPath = Constants.COMPLETIONS_JSON;
+        		is = ContentProvider.class.getClassLoader().getResourceAsStream(completionJsonPath);
+        	} else {
+    			File file = new File(completionJsonPath);
+    			if (!file.exists()) {
+    				NodeclipseConsole.write("File "+completionJsonPath+" does not exist! \n");
+    			}else{
+    				is = new FileInputStream(file);
+    			}
         	}
-            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(completionJsonPath);
-            JSONObject object = new JSONObject(inputStream2String(is));
-            COMPLETIONS = object.getJSONArray(Constants.COMPLETIONS_KEY);
+            
+            if (is==null){
+            	NodeclipseConsole.write("Error while reading file "+completionJsonPath+"! \n");
+            }else{
+                JSONObject object = new JSONObject(inputStream2String(is));
+                COMPLETIONS = object.getJSONArray(Constants.COMPLETIONS_KEY);
+            }
         } catch (JSONException e) {
-            //e.printStackTrace();
         	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         } catch (IOException e) {
-            //e.printStackTrace();
         	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
         }
     }

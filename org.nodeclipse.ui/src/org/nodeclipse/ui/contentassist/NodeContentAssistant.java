@@ -142,6 +142,9 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         
         //Model model = ContentFromSources.defaultInstance.model;
         Model model = ContentFromSources.getDefaultInstances().model;
+        if (model==null){
+        	log("Model is empty! (There should have been initialization error)");
+        }	
         for(Entry entry: model.findMatchingEntries(input)){
         	String trigger = entry.trigger;
         	String desc = entry.desc;
@@ -195,7 +198,9 @@ public class NodeContentAssistant implements IContentAssistProcessor {
         //list = getCompletionProposalFromCompletionJson(inputString , offset);
         //addCompletionProposalFromNodejsSources(list, inputString , offset);
         addCompletionProposalFromModel(list, inputString , offset);
-        addCompletionProposalFromCompletionJson(list, inputString , offset);
+        if (ContentProvider.COMPLETIONS!=null){
+        	addCompletionProposalFromCompletionJson(list, inputString , offset);
+        }	
         return (CompletionProposal[]) list.toArray(new CompletionProposal[list.size()]);
     }
     
