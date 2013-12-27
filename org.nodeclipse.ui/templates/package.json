@@ -1,6 +1,6 @@
 {
   "name": "nodeclipse",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "nodeclipse CLI - prepare Node.js project to be imported into Eclipse (Nodeclipse)",
   "main": "copier.js",
   "scripts": {

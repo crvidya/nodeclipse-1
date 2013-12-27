@@ -82,6 +82,8 @@ before publishing
 	  -pn	 				as Nodeclipse Node.js project (default)
 	  -t, --template <template>     use/copy specified template when creating project (see also `git init`)
 	  --gitclone <repository>			call git clone [directory]
+	  --js2njs (renamejs)
+	  --njs2js 
 	  
 TODO Examples:
 
@@ -103,6 +105,7 @@ options are:
 ## History
 
 0.8.2 fix #101 (bug on MacOS); -g option
+0.8.3 fix general project template
 
 ## News
 

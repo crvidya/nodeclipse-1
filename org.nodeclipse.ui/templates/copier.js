@@ -51,7 +51,7 @@ var pathIsDirecory = function (filepath) {
 	//fs.statSync(filepath).isDirectory()
 }
 
-//BUG #71 (on x64bit SDK output is less)
+//BUG #71 (on x64bit JDK output is less)
 
 var executeActions = function () {
 	//if (debug) console.log(require.main.filename); // = __filename
@@ -97,6 +97,7 @@ var executeActions = function () {
     hello-world              The famous hello world HTTP server in 6 lines\n\
     hello-coffee             The same server written in CoffeeScript\n\
     hello-typescript         The same server written in TypeScript\n\
+	hello-html		         Template with HTML file\n\
 ";
 
 		console.log(helpstr);
