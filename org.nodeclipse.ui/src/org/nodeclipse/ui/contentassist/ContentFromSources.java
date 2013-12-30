@@ -198,6 +198,12 @@ class ContentFromSources {
 		}
 	}
 
+	// href won't be rendered as link
+	private String formatedModuleName(String moduleName) {
+		String res = formatedName(moduleName)+"<a href=\"http://www.nodejs.org/api/"+moduleName+".html\">Node.js Manual & Documentation</a><br/>";
+		return res;				
+	}
+
 	private String formatedName(String name) {
 		return "<b>"+name+"</b><br/>";
 	}
