@@ -83,7 +83,7 @@
 		<repository>
 			<id>gfm.viewer</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.7.0/</url>
+			<url>http://dl.bintray.com/satyagraha/generic/1.8.0/</url>
 		</repository>
 		<repository>
 			<id>shelled</id>

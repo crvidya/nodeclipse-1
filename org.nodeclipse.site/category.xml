@@ -23,6 +23,9 @@
    <feature url="features/org.nodeclipse.phantomjs.feature_0.8.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.8.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
+   <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.8.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.8.0.qualifier">
+      <category name="Nodeclipse"/>
+   </feature>
 
 <!-- 
    <category-def name="npm-bundle" label="Optional Node.js modules bundles">
@@ -81,7 +84,7 @@
    <feature url="features/net.jumperz.app.MMonjaDB_1.0.16.qualifier.jar" id="net.jumperz.app.MMonjaDB" version="1.0.16.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/code.satyagraha.gfm.viewer.feature_1.7.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.7.0.qualifier">
+   <feature url="features/code.satyagraha.gfm.viewer.feature_1.8.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.8.0.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
