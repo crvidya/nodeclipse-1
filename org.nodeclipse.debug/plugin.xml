@@ -130,22 +130,25 @@
            </contextualLaunch>   
        </shortcut>   
    </extension>
+   
    <!-- http://stackoverflow.com/questions/1437323/assigning-a-keyboard-shortcut-for-a-specific-eclipse-build-configuration -->
-<extension point="org.eclipse.ui.commands">
-    <command id="org.nodeclipse.nodejs.run"
-             categoryId="org.eclipse.debug.ui.category.run"
-             name="Run as Node Application"
-             description="Run as Node Application"/>
- </extension>
-<!-- binding can be configured by user in Properties -> General -> Keys 
-
-<extension point="org.eclipse.ui.bindings">
-    <key sequence="M1+R"
-         contextId="org.eclipse.ui.globalScope"  <- Referenced identifier 'org.eclipse.ui.globalScope' in attribute 'contextId' cannot be found
-         commandId="org.nodeclipse.nodejs.run"
-         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
- </extension>
--->
+	<extension point="org.eclipse.ui.commands">
+	    <command id="org.nodeclipse.nodejs.run"
+	             categoryId="org.eclipse.debug.ui.category.run"
+	             name="Run Node Application"
+	             description="Run Node Application"/>
+	 </extension>
+	<!-- binding can be configured by user in Properties -> General -> Keys (or Ctrl+Sh+L twice) 
+	http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fextension-points%2Forg_eclipse_ui_bindings.html
+	M1 is the COMMAND key on MacOS X, and the CTRL key on most other platforms.
+	-->
+	<extension point="org.eclipse.ui.bindings">
+	    <key sequence="M1+R"
+	         commandId="org.nodeclipse.nodejs.run"
+	         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+	         contextId="org.eclipse.ui.contexts.window" />
+	 </extension>
+	 
       
    <!-- node run/debug with monitor-->
     <extension   
