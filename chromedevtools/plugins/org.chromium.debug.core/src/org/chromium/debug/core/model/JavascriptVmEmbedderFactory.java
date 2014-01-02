@@ -282,12 +282,15 @@ public class JavascriptVmEmbedderFactory {
               DebugEventListener debugEventListener)
               throws CoreException {
             embedderListener = null;
+          //+ @since 0.9 modified exception message string
+            String ERROR_STRING = "Nodeclipse/chromedevtools failed to connect to Standalone V8 VM\n"
+            		+"( Check Help (F1) and Support http://www.nodeclipse.org/#support ). info:"+; 
             try {
               standaloneVm.attach(debugEventListener);
             } catch (IOException e) {
-              throw newCoreException("Failed to connect to Standalone V8 VM", e);
+              throw newCoreException(ERROR_STRING, e);
             } catch (UnsupportedVersionException e) {
-              throw newCoreException("Failed to connect to Standalone V8 VM", e);
+              throw newCoreException(ERROR_STRING, e);
             }
             return new JavascriptVmEmbedder() {
               public JavascriptVm getJavascriptVm() {
