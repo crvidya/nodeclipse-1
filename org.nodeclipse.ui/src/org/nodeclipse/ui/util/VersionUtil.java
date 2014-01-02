@@ -14,8 +14,6 @@ eclipse.buildId=4.3.0.I20130605-2000
 java.version=1.7.0_40
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
- * 
- * 
  */
 public class VersionUtil {
 
@@ -40,7 +38,7 @@ public class VersionUtil {
 	}
 	
 	public static String getLongString(){
-		return "Nodeclipse:v"+VersionUtil.versionString+" Eclipse:v"+VersionUtil.eclipseVersionString
+		return "Nodeclipse:"+VersionUtil.versionString+" Eclipse:"+VersionUtil.eclipseVersionString
 				+" Java:"+VersionUtil.javaVersionString
 	    		+" OS:"+VersionUtil.osVersionString+"\n";
 	}
