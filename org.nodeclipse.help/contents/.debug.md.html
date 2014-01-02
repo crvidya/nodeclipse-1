@@ -454,8 +454,6 @@ function setDocumentScrollTop(ypos)
 <p>Right-click <code>.js</code> file with Node.js app and select &quot;Debug As -&gt; Node Application&quot; (similar to Java applications).</p> 
 <p>Notice that Nodeclipse by default enters step-by-step debugging mode from very first line. Press <kbd>F8</kbd> to continue until breakpoint is reached.</p> 
 <p>Press <kbd>F11</kbd> to launch debug [again].</p> 
-<h3> <a name="issue-with-github-flavored-markdown-gfm-viewer" class="anchor" href="..md.html#issue-with-github-flavored-markdown-gfm-viewer"><span class="octicon octicon-link"></span></a>Issue with Github Flavored Markdown (GFM) Viewer</h3> 
-<p>Check <a href=".github-flavored-markdown.md.html">Github Flavored Markdown (GFM)</a>. It is recommended to close GFM View during debugging time.</p> 
 <h3> <a name="debug-brk-option" class="anchor" href="..md.html#debug-brk-option"><span class="octicon octicon-link"></span></a>debug-brk option</h3> 
 <p>By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms) to connect to Node.js and get actual modules loaded in V8.</p> 
 <p>Since Nodeclipse 0.6 there is option &quot;Node debug no -break:&quot; in Preferences to disable interruption at first line. It is good when your application is web server and you don't need to debug initialization lines, but mostly request handlers. </p> 
@@ -469,6 +467,8 @@ function setDocumentScrollTop(ypos)
 </blockquote> 
 <p>That is, when <code>--debug</code> is used, than small apps and the beginning of an application are unable to debug. You will get &quot;Failed to connect to Standalone V8 VM&quot; error, when the app has already finished.</p> 
 <p><a href="images/Connection-to-V8-timed-out.png" target="_blank"><img src="images/Connection-to-V8-timed-out.png" alt="Connection-to-V8-timed-out.png" style="max-width:100%;" /></a></p> 
+<h3> <a name="failed-to-connect-to-standalone-v8-vm" class="anchor" href="..md.html#failed-to-connect-to-standalone-v8-vm"><span class="octicon octicon-link"></span></a>&quot;Failed to connect to Standalone V8 VM&quot;</h3> 
+<p>There were other reasons reported, when getting &quot;Failed to connect to Standalone V8 VM&quot; error. Check <a href="http://www.nodeclipse.org/#support">http://www.nodeclipse.org/#support</a></p> 
 <h3> <a name="sources" class="anchor" href="..md.html#sources"><span class="octicon octicon-link"></span></a>Sources</h3> 
 <p>Check <a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java">LaunchConfigurationDelegate.java</a> for launching Node.js logic.</p> 
 <h3> <a name="contribute" class="anchor" href="..md.html#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3> 
