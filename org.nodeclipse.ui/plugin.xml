@@ -109,12 +109,11 @@
        -->
     </extension>
     
+    <!-- disable content assist extention for JSDT
+    http://stackoverflow.com/questions/20779899/content-assist-with-javacompletionproposalcomputer-for-eclipse-jsdt-gives-no-pro
 	<extension point="org.eclipse.wst.jsdt.ui.javaCompletionProposalComputer"
 	   id="nodeclispe_textual_proposals"
 	   name="Nodeclipse Text Proposals">
-	   <!-- 
-	   <proposalCategory icon="icons/contentassist/method.gif"/>
-	   -->
 	   <proposalCategory icon="icons/npm/npm.gif"/>
 	 </extension>
 	 <extension point="org.eclipse.wst.jsdt.ui.javaCompletionProposalComputer"
@@ -126,6 +125,7 @@
 	      <partition type="__java_javadoc"/>
 	   </javaCompletionProposalComputer>
 	 </extension>
+     -->
      
 	<extension point="org.eclipse.debug.ui.toggleBreakpointsTargetFactories">
 	    <toggleTargetFactory
