@@ -13,6 +13,7 @@ public class PreferenceConstants {
 	public static final String NODE_JUST_NODE = "node_just_node";
 	public static final String NODE_PATH = "node_path";
 	public static final String NODE_OPTIONS = "node_options";
+	public static final String NODE_APPLICATION_ARGUMENTS = "node_application_arguments";
 	public static final String NODE_ALLOW_MANY = "node_allow_many";
 	public static final String NODE_SOURCES_PATH = "node_sources_lib_path";
 	public static final String NODE_DEBUG_NO_BREAK = "node_debug_no_break";

@@ -3,7 +3,6 @@ package org.nodeclipse.debug.launch;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -65,7 +64,7 @@ public class LaunchConfigurationDelegate implements
 			if ( isDebugMode  
 				&& (nodeProcess != null && !nodeProcess.isTerminated()) ) {
 				showErrorDialog("Only 1 node process can be debugged in 1 Eclipse instance!\n\n"+
-				"Open other Eclipse with different node debug port configurred. ");
+				"Open other Eclipse/Enide Studio with different node debug port configurred. ");
 				return;
 			}
 		
@@ -112,14 +111,13 @@ public class LaunchConfigurationDelegate implements
 			cmdLine.add("--debug"+brk+"="+nodeDebugPort); //--debug-brk=5858
 		}
 		
-		//@since 0.9
+		//@since 0.9 from Preferences
 		String nodeOptions= preferenceStore.getString(PreferenceConstants.NODE_OPTIONS);
 		if(!nodeOptions.equals("")) {
 			String[] sa = nodeOptions.split(" ");
 			for(String s : sa) {
 				cmdLine.add(s);
-			}
-			
+			}			
 		}
 		
 		String nodeArgs = configuration.getAttribute(Constants.ATTR_NODE_ARGUMENTS, "");
@@ -183,6 +181,15 @@ public class LaunchConfigurationDelegate implements
 		// path is relative, so can not found it.
 		cmdLine.add(filePath);
 
+		//@since 0.9 from Preferences
+		String nodeApplicationArguments = preferenceStore.getString(PreferenceConstants.NODE_APPLICATION_ARGUMENTS);
+		if(!nodeApplicationArguments.equals("")) {
+			String[] sa = nodeApplicationArguments.split(" ");
+			for(String s : sa) {
+				cmdLine.add(s);
+			}
+		}
+		
 		String programArgs = configuration.getAttribute(Constants.ATTR_PROGRAM_ARGUMENTS, "");
 		if(!programArgs.equals("")) {
 			String[] sa = programArgs.split(" ");
@@ -190,7 +197,7 @@ public class LaunchConfigurationDelegate implements
 				cmdLine.add(s);
 			}
 		}
-		
+
 		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
 		if(workingDirectory.length() == 0) {
