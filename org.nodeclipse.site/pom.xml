@@ -17,19 +17,22 @@
 	<description>org.nodeclipse.site (p2 repository / update site)</description>
 
 	<repositories>
-		<!-- for Full Build with Maven/Tycho (or Git Submodules)
+		<!-- for Full Build with Maven/Tycho (or Git Submodules)-->
+		
+		<!-- -->
+		<!--
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
 			<url>http://winterwell.com/software/updatesite/</url>
 		</repository> 
 		-->
-		<!--
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
 			<url>http://dl.bintray.com/enide/Markdown/1.0.0/</url>
 		</repository>
+		<!-- --> 
 		<repository>
 			<id>restclient-tool</id>
 			<layout>p2</layout>
@@ -90,12 +93,9 @@
 			<layout>p2</layout>
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
-		--> 
 		
-		
-		
-		
-		<!-- General 
+
+		<!-- General -->
 		<repository>
 			<id>EclipseRunner</id>
 			<layout>p2</layout>
@@ -106,9 +106,9 @@
 			<layout>p2</layout>
 			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
 		</repository>
-		-->
+		
 
-		<!-- Other 
+		<!-- Other -->
 		<repository>
 			<id>practicallymacro</id>
 			<layout>p2</layout>
@@ -119,7 +119,7 @@
 			<layout>p2</layout>
 			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/SelectionExplorerUpdateSite</url>
 		</repository>
-		-->
+		
 		
 		<!-- can't be bundled
 		<repository>
@@ -131,11 +131,6 @@
 			<id>Closure-by-Vincent.Simonet.p2f</id>
 			<layout>p2</layout>
 			<url>http://www.normalesup.org/~simonet/soft/ow/update/</url>
-		</repository>
-		<repository>
-			<id>Icons-Editor</id>
-			<layout>p2</layout>
-			<url>http://dl.bintray.com/nodeclipse/nodeclipse/0.7.0/</url>
 		</repository>
 		 -->
 		<!-- 	
