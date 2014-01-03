@@ -11,16 +11,16 @@
    <feature url="features/org.chromium.sdk_0.3.9.qualifier.jar" id="org.chromium.sdk" version="0.3.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse_0.8.0.qualifier.jar" id="org.nodeclipse" version="0.8.0.qualifier">
+   <feature url="features/org.nodeclipse_0.9.0.qualifier.jar" id="org.nodeclipse" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.jjs.feature_0.8.0.qualifier.jar" id="org.nodeclipse.jjs.feature" version="0.8.0.qualifier">
+   <feature url="features/org.nodeclipse.jjs.feature_0.9.0.qualifier.jar" id="org.nodeclipse.jjs.feature" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.mongodb.feature_0.8.0.qualifier.jar" id="org.nodeclipse.mongodb.feature" version="0.8.0.qualifier">
+   <feature url="features/org.nodeclipse.mongodb.feature_0.9.0.qualifier.jar" id="org.nodeclipse.mongodb.feature" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/org.nodeclipse.phantomjs.feature_0.8.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.8.0.qualifier">
+   <feature url="features/org.nodeclipse.phantomjs.feature_0.9.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
    
@@ -29,7 +29,7 @@
       	Minimalist Gradle Editor by Paul Verest
       </description>
 	</category-def>   
-   <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.8.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.8.0.qualifier">
+   <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.9.0.qualifier">
       <category name="Minimalist"/>
    </feature>
 
@@ -85,9 +85,6 @@
    <feature url="features/net.jeeeyul.pdetools.feature_1.1.0.qualifier.jar" id="net.jeeeyul.pdetools.feature" version="1.1.0.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="net.jeeeyul.eclipse.themes.feature_1.7.4.qualifier.jar" id="net.jeeeyul.eclipse.themes.feature" version="1.7.4.qualifier">
-      <category name="Tools"/>
-   </feature>
    <feature url="features/net.jumperz.app.MMonjaDB_1.0.16.qualifier.jar" id="net.jumperz.app.MMonjaDB" version="1.0.16.qualifier">
       <category name="Tools"/>
    </feature>
@@ -109,7 +106,7 @@
       <category name="General"/>
    </feature>
    <feature url="features/com.xored.glance_1.1.1.qualifier.jar" id="com.xored.glance" version="1.1.1.qualifier">
-      <category name="Other"/>
+      <category name="General"/>
    </feature>
    
    <category-def name="Other" label="Other Optional Tools">
@@ -142,12 +139,18 @@
    <feature url="features/jsonedit-feature_0.9.7.qualifier.jar" id="jsonedit-feature" version="0.9.7.qualifier">
       <category name="Tools"/>
    </feature>
+   <feature url="net.jeeeyul.eclipse.themes.feature_1.7.4.qualifier.jar" id="net.jeeeyul.eclipse.themes.feature" version="1.7.4.qualifier">
+	  Missing requirement: Jeeeyul's Themes 1.7.4.201307160945 (net.jeeeyul.eclipse.themes.feature.feature.group 1.7.4.201307160945) requires 'org.eclipse.xtend2.lib       
+	  <category name="Tools"/>
+   </feature>
     -->
    <!-- Eclipse Quicksearch (Ctrl+Shift+L) by Pivotal,
    <feature url="org.springsource.ide.eclipse.commons.quicksearch.feature_3.3.0.201307040632-RELEASE.jar" id="org.springsource.ide.eclipse.commons.quicksearch.feature" version="3.3.0.201307040632-RELEASE">
       <category name="Tools"/>
    </feature>
    -->
+   
+   
    <!-- as of csep v0.3, we should not include it, as it creates more questions than solves, bug since 4.3.1.
    <category-def name="coffeescript-eclipse" label="coffeescript-eclipse">
       <description>

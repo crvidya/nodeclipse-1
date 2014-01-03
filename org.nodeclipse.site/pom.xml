@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.nodeclipse.nodeclipse-1</groupId>
 		<artifactId>parent</artifactId>
-		<version>0.8.0-SNAPSHOT</version>
+		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.nodeclipse.site</artifactId>
@@ -69,11 +69,6 @@
 			<url>https://raw.github.com/jeeeyul/pde-tools/master/net.jeeeyul.pdetools.updatesite/</url>
 		</repository>
 		<repository>
-			<id>net.jeeeyul.eclipse.themes.updatesite</id>
-			<layout>p2</layout>
-			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
-		</repository>
-		<repository>
 			<id>Regular-Expression</id>
 			<layout>p2</layout>
 			<url>http://zapletnev.github.io/eclipse-regexp/repository/</url>
@@ -132,8 +127,11 @@
 			<layout>p2</layout>
 			<url>http://www.normalesup.org/~simonet/soft/ow/update/</url>
 		</repository>
-		 -->
-		<!-- 	
+		<repository>
+			<id>net.jeeeyul.eclipse.themes.updatesite</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
+		</repository>
 		<repository>
 			<id>quicksearch</id>
 			<layout>p2</layout>
