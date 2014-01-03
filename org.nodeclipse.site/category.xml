@@ -60,10 +60,10 @@
    </category-def>
 
    <!-- for Full Build with Maven/Tycho (or Git Submodules) -->  
+   <!--    
    <feature url="features/markdown.editor.feature_1.0.0.jar" id="markdown.editor.feature" version="1.0.0">
       <category name="Tools"/>
    </feature>
-   <!--    -->
    <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
@@ -94,8 +94,9 @@
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
       <category name="Tools"/>
    </feature>
+   -->
 
-   <!-- -->
+   <!-- 
    <category-def name="General" label="General plugins">
       <description>
         EclipseRunner by Lukasz Wachowicz and Bartosz Roznowski (Runner View) http://code.google.com/p/eclipserunnerplugin/
@@ -121,6 +122,7 @@
    <feature url="features/SelectionExplorerFeature_1.0.2.qualifier.jar" id="SelectionExplorerFeature" version="1.0.2.qualifier">
       <category name="Other"/>
    </feature>
+   -->
      
  
  
