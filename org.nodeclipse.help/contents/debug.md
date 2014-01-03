@@ -10,11 +10,6 @@ Notice that Nodeclipse by default enters step-by-step debugging mode from very f
 
 Press <kbd>F11</kbd> to launch debug [again].
 
-### Issue with Github Flavored Markdown (GFM) Viewer
-
-Check [Github Flavored Markdown (GFM)](.github-flavored-markdown.md.html).
-It is recommended to close GFM View during debugging time.
-
 ### debug-brk option
 
 By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms)
@@ -48,6 +43,11 @@ That is, when `--debug` is used, than small apps and the beginning of an applica
 You will get "Failed to connect to Standalone V8 VM" error, when the app has already finished.
 
 ![Connection-to-V8-timed-out.png](images/Connection-to-V8-timed-out.png)
+
+### "Failed to connect to Standalone V8 VM"
+
+There were other reasons reported, when getting "Failed to connect to Standalone V8 VM" error.
+Check <http://www.nodeclipse.org/#support>
 
 ### Sources
 

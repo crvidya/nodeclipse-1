@@ -25,7 +25,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/phantomjs.png"
+            icon="icons/phantomjs_half_size.png"
             id="org.nodeclipse.phantomjs.PhantomjsNature.Image"
             natureId="org.nodeclipse.phantomjs.PhantomjsNature">
       </image>

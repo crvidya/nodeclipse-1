@@ -1,6 +1,11 @@
 
 var argv = require('optimist')
+// optimist: all one letter parameters maybe stacked after '-'
+// all others should be with '--'
+// '-cg proj1' becomes '-c -g=proj1', so it should be '-cgn proj1'
 			.alias('c','create') .describe('c', 'create project folder and prepare it')
+			//.alias('n','eclipse_project_nodeclipse')
+			.alias('g','eclipse_project_general')
 			.alias('p','prepare').describe('p', 'prepare for import, i.e. add needed `.project` and other `.*` file ')
 			.string('n')
 			.alias('n','name')   .describe('h', 'project name (default is folder name)')
@@ -12,7 +17,10 @@ var argv = require('optimist')
 require('shelljs/global');
 var fs= require('fs');
 var path= require('path');
-//console.dir(process.argv);
+
+var debug = false;
+if (debug) console.dir(process.argv);
+if (debug) console.dir(argv);
 
 // arguments processing 
 var help = argv.help || argv.h || (process.argv.length <= 2);
@@ -24,9 +32,10 @@ if (!create && use){
 	console.log("Template usage without folder creation!");
 	return;
 }
-var prepare = create || argv.prepare || argv.p;
+var projectGeneral = argv.e || argv.eclipse_project_general;
+var projectNodeclipse = argv.en || argv.project_eclipse_nodeclipse; //TODO
+var prepare = argv.prepare || argv.p || (create && (!projectGeneral) ) ; // not triggered by `create` as it maybe `project_general` as well 
 var name = argv.name || argv.n; // could be   create || 
-var debug = false;
 var verbose = debug || argv.verbose || argv.V;
 
 var projectFileExists = false; 
@@ -42,7 +51,7 @@ var pathIsDirecory = function (filepath) {
 	//fs.statSync(filepath).isDirectory()
 }
 
-//BUG #71 (on x64bit SDK output is less)
+//BUG #71 (on x64bit JDK output is less)
 
 var executeActions = function () {
 	//if (debug) console.log(require.main.filename); // = __filename
@@ -76,8 +85,9 @@ var executeActions = function () {
   Arguments: \n\
     -c, --create <name>      create project folder and prepare it \n\
     -u, --use <template>     use/copy specified template when creating project \n\
-    -p, --prepare            prepare for import, i.e. add needed `.project` file and other `.*`\n\
+    -p, --prepare            prepare Nodeclipse [Node.js] project for import, i.e. add needed `.project` file and other `.*`\n\
                               files ('.gitignore', '.jshintrc', '.settings/') if there is no `.project` yet\n\
+    -g, --eclipse_project_general   prepare General Eclipse project for import, i.e. add only needed `.project` file\n\
     -n, --name [<name>]      project name (default is folder name)\n\
     -h, --help               this help screen\n\
     -v, --version            print nodeclipse CLI's version\n\
@@ -87,6 +97,7 @@ var executeActions = function () {
     hello-world              The famous hello world HTTP server in 6 lines\n\
     hello-coffee             The same server written in CoffeeScript\n\
     hello-typescript         The same server written in TypeScript\n\
+	hello-html		         Template with HTML file\n\
 ";
 
 		console.log(helpstr);
@@ -117,9 +128,17 @@ var executeActions = function () {
 	var templatesfolder = __dirname;
 	if (debug) console.log("Templates folder is: " + templatesfolder);
 
+	if (use){
+		//cp(__dirname+use+'/*','.');
+		var fromfolder = path.join(templatesfolder, use, '/*') 
+		if (verbose) console.log("Copying from "+ fromfolder );
+		cp( fromfolder, '.' )
+	}
+	
 	// common-templates 
 	if (prepare){
 		//var fromfolder = path.join(templatesfolder, 'common-templates', '/*') 
+		var fromfolder = path.join(templatesfolder, 'common-templates')
 		if (verbose) console.log("Copying from "+ fromfolder );
 	
 		//cp( '-A', fromfolder, '.' )
@@ -128,7 +147,6 @@ var executeActions = function () {
 		//console.log( fs.readdirSync(fromfolder) ); --> [ '.gitignore', '.jshintrc', '.settings', 'README.md' ]
 		mkdir('.settings'); //HACK1
 		//for file in find(fromfolder)
-		var fromfolder = path.join(templatesfolder, 'common-templates')
 		find(fromfolder).forEach( function copyFile(file) {
 			if (verbose) console.log("Copying "+ file );
 			// cp(file,'.'); // This does not recreate subfolders - DONE with HACK1
@@ -147,38 +165,37 @@ var executeActions = function () {
 		
 	}
 	
-	if (use){
-		//cp(__dirname+use+'/*','.');
-		var fromfolder = path.join(templatesfolder, use, '/*') 
-		if (verbose) console.log("Copying from "+ fromfolder );
-		cp( fromfolder, '.' )
-	}
-	
 	// .project
+	if (debug) console.log('projectNodeclipse='+projectNodeclipse+', projectGeneral='+projectGeneral);
+	var curfolder = pwd();
+	if (verbose) console.log("Current folder is: " + curfolder);
+	if (!name){
+		name = path.basename(curfolder);
+	}	
 	if (prepare){
-		var curfolder = pwd();
-		if (verbose) console.log("Current folder is: " + curfolder);
-		if (!name)
-			name = path.basename(curfolder);
-		
-		var str = cat(__dirname+'/eclipse/.project').replace('${projectname}', name);
-		var destfile = curfolder + '/.project';
-		
-		// http://www.nodejs.org/api/fs.html#fs_fs_appendfile_filename_data_options_callback
-		
-		//console.log(curfolder + '/.project');
-		fs.writeFile(destfile, str, function(err) {	
-			if (err)
-				throw err;
-			if (verbose) console.log('The file "'+destfile+'" was created !');
-			console.log('In Eclipse/Enide select File -> Import... -> General / Existing Projects into Workspace');
-			console.log('and enter current directory: '+curfolder);
-		});
-		
-		if (debug) console.log(str); // ''.toString()
+		copyDotProjectFile('eclipse',curfolder, name);
+	} else if (projectGeneral){
+		copyDotProjectFile('eclipse-project-general',curfolder, name);
 	}
 	
 	inviteToSiteAsTheLastLine();
+}
+var copyDotProjectFile = function (eclipse, curfolder, name) {
+	if (!eclipse) eclipse = 'eclipse';
+	var str = cat(__dirname+'/'+eclipse+'/.project').replace('${projectname}', name);
+	var destfile = curfolder + '/.project';
+	
+	// http://www.nodejs.org/api/fs.html#fs_fs_appendfile_filename_data_options_callback	
+	fs.writeFile(destfile, str, function(err) {	
+		if (err)
+			throw err;
+		if (verbose) console.log('The file "'+destfile+'" was created !');
+		console.log('In Eclipse/Enide select File -> Import... -> General / Existing Projects into Workspace');
+		console.log('and enter project directory: '+curfolder);
+	});
+	
+	if (debug) console.log(str); // ''.toString()
+	
 }
 var inviteToSiteAsTheLastLine = function () {
 	setTimeout(inviteToSite,100);

@@ -19,8 +19,9 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	Arguments:
 	  -c, --create <name>      create project folder <name> [using template] and prepare it
 	  -u, --use <template>     use/copy specified template when creating project
-	  -p, --prepare            prepare for import (default action), i.e. add needed `.project`
+	  -p, --prepare            prepare Nodeclipse [Node.js] project for import, i.e. add needed `.project`
 	  							and other `.*` files ('.gitignore', '.jshintrc', '.settings/') if there is no `.project` yet
+      -g, --eclipse_project_general   prepare General Eclipse project for import, i.e. add only needed `.project` file
 	  -n, --name [<name>]      project name (default is folder name)
 	  -h, --help               Check README
 	  -v, --version            print nodeclipse CLI's version
@@ -30,13 +31,7 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	  hello-world              The famous hello world HTTP server in 6 lines
 	  hello-coffee	           The same server written in CoffeeScript
 	  hello-typescript         The same server written in TypeScript
-
-## Other commands (TODO)
-
-	$ nodeclipse -h
-	Usage: nodeclipse [arguments]
-	
-      -f, --force              force on non-empty directory (by default existing files are not updated)
+	  hello-html		       Template with HTML file
 
 Examples:
 
@@ -49,6 +44,7 @@ Examples:
 	nodeclipse --create project3 --use hello-coffee
 	
 	nodeclipse -c project4 -u hello-coffee
+	
 
 ## Eclipse Workspace and Project
 
@@ -64,13 +60,52 @@ under https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/t
 
 <https://npmjs.org/doc/developers.html>
 
-try with `npm install . -g` before publishing
+before publishing
+- try with `npm install . -g`
+- check that nodeclipse.js line ending is UNIX style (#101)
+
+[#4341](https://github.com/isaacs/npm/issues/4341) `common-templates/.gitignore` becomes `common-templates/.npmignore` 
 
 #### Links
 
 > The only feature that differentiates a command-line program from a library is the bin field in the package.json file.
 
 <http://howtonode.org/how-to-module>
+
+### Ideas
+
+	$ nodeclipse -h
+	Usage: nodeclipse [directory] [arguments]
+	
+      -f, --force              force on non-empty directory (by default existing files are not updated)
+	  -pg					as general project
+	  -pn	 				as Nodeclipse Node.js project (default)
+	  -t, --template <template>     use/copy specified template when creating project (see also `git init`)
+	  --gitclone <repository>			call git clone [directory]
+	  --js2njs (renamejs)
+	  --njs2js 
+	  
+TODO Examples:
+
+	git clone repository directory
+	nodeclipse directory -pg	
+	
+	nodeclipse directory -pg --gitclone repository 
+	nodeclipse --gitclone repository directory -pg (bad?)
+	
+Dream - I wish I could get current project in GitHub as project in Eclipse with 1 click.
+options are: 	
+- eclipse wizards accessible with icon, where I only need to git repository URL
+	  
+
+
+- add link on Wizard Page
+- options to refine .jshintrc
+
+## History
+
+0.8.2 fix #101 (bug on MacOS); -g option
+0.8.3 fix general project template
 
 ## News
 

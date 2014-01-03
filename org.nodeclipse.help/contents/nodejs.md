@@ -73,6 +73,8 @@ Add following snippet to project `.project` file to reference Node.js sources.
 	</linkedResources>
 ``` 
 
+(This is done automatically if Node.js sources are selected since Nodeclipse 0.9)
+
 ![](images/nodejs-sources-lib.PNG) 
 
 

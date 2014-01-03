@@ -114,6 +114,9 @@
 		<!-- for Full Build with Git Submodules only 
 		<module>markdown</module>
 		-->
+
+		<module>org.nodeclipse.enide.editors.gradle</module>
+		<module>features/org.nodeclipse.enide.editors.gradle.feature</module>
 		
 		<module>org.nodeclipse.site</module>
 	</modules>

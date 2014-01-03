@@ -28,6 +28,12 @@ public class NodeclipseConsole {
 				.addConsoles(new IConsole[] { console });
 		stream = console.newOutputStream();
 	}
+	
+	static {
+		getInstance();
+		write(VersionUtil.getLongString());
+		write("visit http://www.nodeclipse.org/\n\n");
+	}
 
 	private static NodeclipseConsole getInstance() {
 		if (instance == null)

@@ -8,20 +8,23 @@ Goto Window->Preferences
 
 General select Show heap status  
 General->Workspace -> Text file encoding select other UTF-8  
-(if Eclipse 4.x Chrome Theme (Optional) installed)  
+(if Eclipse 4.x Chrome Theme installed (Optional, recommended) )  
 General->Appearance ->Theme select Jeeeyul's themes - Chrome Theme, restart Eclipse  
 Team -> Git -> History : Check "Follow renames"  
 
 Switch to Node perspective (e.g. Window -> Open Perspective -> Other ... -> Node)
 
-Window -> Show View -> Other... -> REST Client -> REST Client Tool
+Window -> Show View -> Other... -> REST Client -> REST Client Tool  
+or Ctrl+3 type `rest`
 
 REST Client Tool is also nice to use in Debug perspective.
 
 #### Optional general Eclipse configuration
 
-General -> Workspace ->Refresh using native hooks or polling (so that you don't need to press <kbd>F5</kbd>
+General -> Workspace -> Refresh on access
+General -> Workspace -> Refresh using native hooks or polling (so that you don't need to press <kbd>F5</kbd>
  after <code>npm install<code> or other changes on file system)
+General -> Workspace -> Text file encoding - select UTF-8 
 
 General -> Editors -> Text Editors -> Show print margin, 120
 
