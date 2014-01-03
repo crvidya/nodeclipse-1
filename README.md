@@ -11,7 +11,7 @@ I am Java developer adopting Node.js, ( and then PhantomJS and Nashorn Javascrip
 In January 2013 I just started developing Node.js in Eclipse without any plugins, but then I came to the point "how to debug?".
 That lead me to know Nodeclipse 0.2 by Tomoyuki Inagaki, that by that time was fork in his own account.
 We unified 0.2 back into Nodeclipse organization, the rest can be seen in [history](http://www.nodeclipse.org/history).
-Try out next 0.7 version from this sources just by `git clone`, `mvn package' , then install from .zip (see Maven build below for more)
+Try out next version from this sources just by `git clone`, `mvn package` , then install from .zip (see Maven build below for more)
 
 Check README.md in project modules (e.g. `org.nodeclipse.debug` ). See launching Node.js logic in
 [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
@@ -25,6 +25,8 @@ Before release
 	mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.9.0-SNAPSHOT
 
 ## Developing
+
+Developing doesn't require maven usage, just import one project e.g. `org.nodeclipse.ui` into Eclipse with PDE.
 
 [see src/site/markdown/developing.md file](src/site/markdown/developing.md)
 
@@ -53,7 +55,7 @@ For the next time just select the zip entry from Work With drop-down list.
 5. // navigate `http://localhost:8010/` in browser to check  
 5. Help->Install New Software, enter http://localhost:8010/ in Work With  
 
-### Old stuff
+### A lot of words
 
 Below is long and a little bit old notes. You should better start with building yourself, checking <http://www.nodeclipse.org>
 that has all links.
