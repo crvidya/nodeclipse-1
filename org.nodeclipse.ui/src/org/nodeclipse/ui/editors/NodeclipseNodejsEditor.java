@@ -8,6 +8,7 @@ import org.eclipse.ui.texteditor.SourceViewerDecorationSupport;
 
 
 /**
+ * TODO base classes, color theme support
  * @author Nodeclipse authors
  */
 public class NodeclipseNodejsEditor extends TextEditor {
