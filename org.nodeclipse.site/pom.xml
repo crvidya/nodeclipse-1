@@ -92,7 +92,7 @@
 		 -->
 		
 
-		<!-- General 
+		<!-- General --> 
 		<repository>
 			<id>EclipseRunner</id>
 			<layout>p2</layout>
@@ -103,10 +103,15 @@
 			<layout>p2</layout>
 			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
 		</repository>
-		-->
+		
+		<repository>
+			<id>OpenClosedProjectsFeature</id>
+			<layout>p2</layout>
+			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/OpenClosedProjectsFeatureUpdateSite/</url>
+		</repository>
 		
 
-		<!-- Other 
+		<!-- Other -->
 		<repository>
 			<id>practicallymacro</id>
 			<layout>p2</layout>
@@ -117,7 +122,7 @@
 			<layout>p2</layout>
 			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/SelectionExplorerUpdateSite</url>
 		</repository>
-		-->
+		
 		
 		<!-- can't be bundled
 		<repository>
