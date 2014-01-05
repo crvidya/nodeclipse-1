@@ -27,7 +27,7 @@
 			<url>http://winterwell.com/software/updatesite/</url>
 		</repository> 
 		--> 
-		<!--
+		<!--  -->
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
@@ -89,7 +89,7 @@
 			<layout>p2</layout>
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
-		 -->
+		
 		
 
 		<!-- General --> 
