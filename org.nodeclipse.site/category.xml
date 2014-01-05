@@ -33,10 +33,11 @@
       <category name="Minimalist"/>
    </feature>
 
-<!-- 
+<!-- -->
    <category-def name="npm-bundle" label="Optional Node.js modules bundles">
       <description>
          No need to install these plug-ins, if you have already installed these Node.js packages using npm (e.g. npm installl express -g).
+         See also #109, these bundle's jars are required, and installed even when corresponding features are not selected.
       </description>
    </category-def>
    <feature url="features/org.nodeclipse.bundle.coffee.feature_1.6.3.qualifier.jar" id="org.nodeclipse.bundle.coffee.feature" version="1.6.3.qualifier">
@@ -45,7 +46,7 @@
    <feature url="features/org.nodeclipse.bundle.express.feature_3.2.5.qualifier.jar" id="org.nodeclipse.bundle.express.feature" version="3.2.5.qualifier">
       <category name="npm-bundle"/>
    </feature>
--->
+
    <category-def name="Tools" label="Enide NodeX Tools">
       <description>
         Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
@@ -60,7 +61,7 @@
    </category-def>
 
    <!-- for Full Build with Maven/Tycho (or Git Submodules) -->  
-   <!--    
+   <!--    -->
    <feature url="features/markdown.editor.feature_1.0.0.jar" id="markdown.editor.feature" version="1.0.0">
       <category name="Tools"/>
    </feature>
@@ -94,7 +95,7 @@
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
       <category name="Tools"/>
    </feature>
-   -->
+   
 
    <!--  -->
    <category-def name="General" label="General plugins">
@@ -109,6 +110,9 @@
    </feature>
    <feature url="features/com.xored.glance_1.1.1.qualifier.jar" id="com.xored.glance" version="1.1.1.qualifier">
       <category name="General"/>
+   </feature>
+   <feature url="net.jeeeyul.eclipse.themes.feature_1.7.4.qualifier.jar" id="net.jeeeyul.eclipse.themes.feature" version="1.7.4.qualifier">
+	  <category name="General"/>
    </feature>
    <feature url="features/OpenClosedProjectsFeature_1.0.5.qualifier.jar" id="OpenClosedProjectsFeature" version="1.0.5.qualifier">
       <category name="General"/>

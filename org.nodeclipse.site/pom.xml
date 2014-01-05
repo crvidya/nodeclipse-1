@@ -103,7 +103,11 @@
 			<layout>p2</layout>
 			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
 		</repository>
-		
+		<repository>
+			<id>net.jeeeyul.eclipse.themes.updatesite</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
+		</repository>
 		<repository>
 			<id>OpenClosedProjectsFeature</id>
 			<layout>p2</layout>
