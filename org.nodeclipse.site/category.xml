@@ -24,20 +24,13 @@
       <category name="Nodeclipse"/>
    </feature>
    
-	<category-def name="Minimalist" label="Minimalist Gradle Editor">
-      <description>
-      	Minimalist Gradle Editor by Paul Verest
-      </description>
-	</category-def>   
-   <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.9.0.qualifier">
-      <category name="Minimalist"/>
-   </feature>
 
 <!-- -->
    <category-def name="npm-bundle" label="Optional Node.js modules bundles">
       <description>
          No need to install these plug-ins, if you have already installed these Node.js packages using npm (e.g. npm installl express -g).
          See also #109, these bundle's jars are required, and installed even when corresponding features are not selected.
+         TODO make them really optional.
       </description>
    </category-def>
    <feature url="features/org.nodeclipse.bundle.coffee.feature_1.6.3.qualifier.jar" id="org.nodeclipse.bundle.coffee.feature" version="1.6.3.qualifier">
@@ -46,32 +39,51 @@
    <feature url="features/org.nodeclipse.bundle.express.feature_3.2.5.qualifier.jar" id="org.nodeclipse.bundle.express.feature" version="3.2.5.qualifier">
       <category name="npm-bundle"/>
    </feature>
+   
+
+	<category-def name="Minimalist" label="Minimalist Gradle Editor">
+      <description>
+      	Minimalist Gradle Editor by Paul Verest,
+        Nodeclipse Git Addon by Paul Verest,
+      	YAML YEdit by http://dadacoalition.org/yedit
+      </description>
+	</category-def>   
+   <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.9.0.qualifier">
+      <category name="Minimalist"/>
+   </feature>
+   <feature url="features/org.dadacoalition.yedit.feature_0.0.13.qualifier.jar" id="org.dadacoalition.yedit" version="0.0.13.qualifier">
+      <category name="Minimalist"/>
+   </feature>
+   <feature url="features/gitaddon.feature_1.0.0.qualifier.jar" id="gitaddon.feature" version="1.0.0.qualifier">
+      <category name="Minimalist"/>
+   </feature>
+
 
    <category-def name="Tools" label="Enide NodeX Tools">
       <description>
-        Markdown Editor by Daniel Winterstein, Github Flavored Markdown Viewer by Satyagraha, 
+      	Nodeclipse Plugins List by Paul Verest,
+        Markdown Editor by Daniel Winterstein, 
+        Github Flavored Markdown Viewer by Satyagraha, 
         JSHint integration by Ralf Sternberg, 
         RestClient Tool by Yadu Vendra, StartExplorer by Bastian Krol,
-        Nodeclipse Git Addon and Plugins List by Paul Verest,
         Icons Editor by Jabier Martinez (requires org.eclipse.draw2d), 
  		PDE-Tools and Eclipse Themes by Jeeeyul, 
  		Regular Expression by Igor Zapletnev,
  		MonjaDB (MongoDB GUI) by Kanatoko Anvil          
       </description>
    </category-def>
-
    <!-- for Full Build with Maven/Tycho (or Git Submodules) -->  
    <!--    -->
    <feature url="features/markdown.editor.feature_1.0.0.jar" id="markdown.editor.feature" version="1.0.0">
+      <category name="Tools"/>
+   </feature>
+   <feature url="features/code.satyagraha.gfm.viewer.feature_1.8.1.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.8.1.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
    <feature url="features/org.nodeclipse.pluginslist.feature_0.1.0.qualifier.jar" id="org.nodeclipse.pluginslist.feature" version="0.1.0.qualifier">
-      <category name="Tools"/>
-   </feature>
-   <feature url="features/gitaddon.feature_1.0.0.qualifier.jar" id="gitaddon.feature" version="1.0.0.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/de.bastiankrol.startexplorer.feature_1.5.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.1">
@@ -89,9 +101,6 @@
    <feature url="features/net.jumperz.app.MMonjaDB_1.0.16.qualifier.jar" id="net.jumperz.app.MMonjaDB" version="1.0.16.qualifier">
       <category name="Tools"/>
    </feature>
-   <feature url="features/code.satyagraha.gfm.viewer.feature_1.8.0.qualifier.jar" id="code.satyagraha.gfm.viewer.feature" version="1.8.0.qualifier">
-      <category name="Tools"/>
-   </feature>
    <feature url="features/net.sourceforge.shelled_2.0.3.qualifier.jar" id="net.sourceforge.shelled" version="2.0.3.qualifier">
       <category name="Tools"/>
    </feature>
@@ -102,7 +111,7 @@
       <description>
         EclipseRunner by Lukasz Wachowicz and Bartosz Roznowski (Runner View) http://code.google.com/p/eclipserunnerplugin/
         Glance by Xored (Highlight anywhere, Ctrl+Alt+F)
-        Eclipse 4 color Themes by Jeeeyul, 
+        Eclipse 4 color Themes by Jeeeyul (requires org.eclipse.), 
         Open Closed Projects by Sandip Chitales
       </description>
    </category-def>
@@ -113,6 +122,9 @@
       <category name="General"/>
    </feature>
    <feature url="net.jeeeyul.eclipse.themes.feature_1.7.4.qualifier.jar" id="net.jeeeyul.eclipse.themes.feature" version="1.7.4.qualifier">
+	  <category name="General"/>
+   </feature>
+   <feature url="com.github.eclipseuitheme.themes.feature_0.8.5.qualifier.jar" id="com.github.eclipseuitheme.themes.feature" version="0.8.5.qualifier">
 	  <category name="General"/>
    </feature>
    <feature url="features/OpenClosedProjectsFeature_1.0.5.qualifier.jar" id="OpenClosedProjectsFeature" version="1.0.5.qualifier">

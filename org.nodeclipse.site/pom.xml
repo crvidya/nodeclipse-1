@@ -18,16 +18,7 @@
 
 	<repositories>
 		<!-- for Full Build with Maven/Tycho (or Git Submodules)-->
-		
-		<!-- -->
-		<!--
-		<repository>
-			<id>winterwell.markdown</id>
-			<layout>p2</layout>
-			<url>http://winterwell.com/software/updatesite/</url>
-		</repository> 
-		--> 
-		<!--  -->
+		<!-- General -->
 		<repository>
 			<id>winterwell.markdown</id>
 			<layout>p2</layout>
@@ -45,11 +36,6 @@
 			<url>http://www.nodeclipse.org/updates/pluginslist/</url>
 		</repository>
 		<repository>
-			<id>git-addon</id>
-			<layout>p2</layout>
-			<url>http://www.nodeclipse.org/git/addon/</url>
-		</repository>
-		<repository>
 			<id>startexplorer</id>
 			<layout>p2</layout>
 			<url>http://basti1302.github.com/startexplorer/update/</url>
@@ -62,7 +48,7 @@
 		<repository>
 			<id>Icons-Editor</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/nodeclipse/nodeclipse/0.7.0/</url>
+			<url>http://dl.bintray.com/nodeclipse/nodeclipse/0.9.0/</url>
 		</repository>
 		<repository>
 			<id>PDE-Tools</id>
@@ -82,7 +68,7 @@
 		<repository>
 			<id>gfm.viewer</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.8.0/</url>
+			<url>http://dl.bintray.com/satyagraha/generic/1.8.1/</url>
 		</repository>
 		<repository>
 			<id>shelled</id>
@@ -90,6 +76,18 @@
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
 		
+		
+		<!-- Minimalist Editors -->
+		<repository>
+			<id>org.dadacoalition.yedit</id>
+			<layout>p2</layout>
+			<url>http://dadacoalition.org/yedit</url>
+		</repository>
+		<repository>
+			<id>git-addon</id>
+			<layout>p2</layout>
+			<url>http://www.nodeclipse.org/git/addon/</url>
+		</repository>
 		
 
 		<!-- General --> 
@@ -107,6 +105,11 @@
 			<id>net.jeeeyul.eclipse.themes.updatesite</id>
 			<layout>p2</layout>
 			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
+		</repository>
+		<repository>
+			<id>com.github.eclipseuitheme.themes.feature</id>
+			<layout>p2</layout>
+			<url>https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite</url>
 		</repository>
 		<repository>
 			<id>OpenClosedProjectsFeature</id>
@@ -127,6 +130,15 @@
 			<url>http://sandipchitaleseclipseplugins.googlecode.com/svn/trunk/SelectionExplorerUpdateSite</url>
 		</repository>
 		
+		
+		<!-- outdated -->
+		<!--
+		<repository>
+			<id>winterwell.markdown</id>
+			<layout>p2</layout>
+			<url>http://winterwell.com/software/updatesite/</url>
+		</repository> 
+		--> 
 		
 		<!-- can't be bundled
 		<repository>
