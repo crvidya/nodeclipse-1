@@ -69,7 +69,8 @@
         Icons Editor by Jabier Martinez (requires org.eclipse.draw2d), 
  		PDE-Tools and Eclipse Themes by Jeeeyul, 
  		Regular Expression by Igor Zapletnev,
- 		MonjaDB (MongoDB GUI) by Kanatoko Anvil          
+ 		MonjaDB (MongoDB GUI) by Kanatoko Anvil,
+ 		ShellEd https://sourceforge.net/projects/shelled/ requires 'bundle org.eclipse.dltk.core [4.0.0,6.0.0)'          
       </description>
    </category-def>
    <!-- for Full Build with Maven/Tycho (or Git Submodules) -->  
