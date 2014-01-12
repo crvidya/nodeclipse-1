@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: `build.gradle` Run As Gradle GUI
+Bundle-SymbolicName: org.nodeclipse.enide.gradle;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Activator: org.nodeclipse.enide.gradle.Activator
+Bundle-Vendor: Enide
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.ide,
+ org.eclipse.debug.ui,
+ org.eclipse.core.variables
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
