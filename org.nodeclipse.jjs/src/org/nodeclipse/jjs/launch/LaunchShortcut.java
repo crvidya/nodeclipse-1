@@ -74,7 +74,7 @@ public class LaunchShortcut implements ILaunchShortcut {
         // check for an existing launch config for the file
         String path = file.getFullPath().toString();
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
-        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType("org.nodeclipse.jjs.launch.LaunchConfigurationType"); //Constants."LAUNCH_CONFIGURATION_TYPE_ID"
+        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(ConstantsJJS.LAUNCH_CONFIGURATION_TYPE_ID); 
         ILaunchConfiguration configuration = createLaunchConfiguration(type, path, file);
         DebugUITools.launch(configuration, mode);
         // then execution goes in LaunchConfigurationDelegate.java launch() method

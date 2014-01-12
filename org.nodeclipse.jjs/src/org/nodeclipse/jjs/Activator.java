@@ -1,6 +1,7 @@
 package org.nodeclipse.jjs;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.nodeclipse.jjs.launch.ConstantsJJS;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -9,7 +10,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.nodeclipse.jjs"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = ConstantsJJS.PLUGIN_ID; 
 
 	// The shared instance
 	private static Activator plugin;
