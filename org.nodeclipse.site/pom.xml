@@ -18,32 +18,54 @@
 
 	<repositories>
 		<!-- for Full Build with Maven/Tycho (or Git Submodules)-->
-		<!-- General -->
+		
+		
+		<!-- Nodeclipse -->
 		<repository>
-			<id>winterwell.markdown</id>
+			<id>jshint-eclipse</id>
 			<layout>p2</layout>
-			<url>http://dl.bintray.com/enide/Markdown/1.0.0/</url>
+			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
 		</repository>
-		 
+		
+		
+		<!-- Minimalist Editors -->
 		<repository>
-			<id>restclient-tool</id>
+			<id>org.dadacoalition.yedit</id>
 			<layout>p2</layout>
-			<url>https://svn.codespot.com/a/eclipselabs.org/restclient-tool/trunk/eclipse/update/</url>
+			<url>http://dadacoalition.org/yedit</url>
 		</repository>
+		<repository>
+			<id>git-addon</id>
+			<layout>p2</layout>
+			<url>http://www.nodeclipse.org/git/addon/</url>
+		</repository>
+		
+
+		<!-- Enide Tools Collection -->
 		<repository>
 			<id>plugin-list</id>
 			<layout>p2</layout>
 			<url>http://www.nodeclipse.org/updates/pluginslist/</url>
 		</repository>
 		<repository>
+			<id>winterwell.markdown</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/enide/Markdown/1.0.0/</url>
+		</repository>
+		<repository>
+			<id>gfm.viewer</id>
+			<layout>p2</layout>
+			<url>http://dl.bintray.com/satyagraha/generic/1.8.1/</url>
+		</repository>
+		<repository>
+			<id>restclient-tool</id>
+			<layout>p2</layout>
+			<url>https://svn.codespot.com/a/eclipselabs.org/restclient-tool/trunk/eclipse/update/</url>
+		</repository>
+		<repository>
 			<id>startexplorer</id>
 			<layout>p2</layout>
 			<url>http://basti1302.github.com/startexplorer/update/</url>
-		</repository>
-		<repository>
-			<id>jshint-eclipse</id>
-			<layout>p2</layout>
-			<url>http://github.eclipsesource.com/jshint-eclipse/updates/</url>
 		</repository>
 		<repository>
 			<id>Icons-Editor</id>
@@ -66,30 +88,17 @@
 			<url>http://www.jumperz.net/update/</url>
 		</repository>		
 		<repository>
-			<id>gfm.viewer</id>
-			<layout>p2</layout>
-			<url>http://dl.bintray.com/satyagraha/generic/1.8.1/</url>
-		</repository>
-		<repository>
 			<id>shelled</id>
 			<layout>p2</layout>
 			<url>https://downloads.sourceforge.net/project/shelled/shelled/update/</url>
 		</repository>
-		
-		
-		<!-- Minimalist Editors -->
 		<repository>
-			<id>org.dadacoalition.yedit</id>
+			<id>eclipsejsonedit</id>
 			<layout>p2</layout>
-			<url>http://dadacoalition.org/yedit</url>
-		</repository>
-		<repository>
-			<id>git-addon</id>
-			<layout>p2</layout>
-			<url>http://www.nodeclipse.org/git/addon/</url>
+			<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
 		</repository>
 		
-
+		
 		<!-- General --> 
 		<repository>
 			<id>EclipseRunner</id>
@@ -97,9 +106,19 @@
 			<url>http://eclipserunnerplugin.googlecode.com/svn/trunk/EclipseRunnerSite</url>
 		</repository>
 		<repository>
+			<id>it.unibz.instasearch.feature.indigo</id>
+			<layout>p2</layout>
+			<url>http://code.inf.unibz.it/instasearch/downloads/</url>
+		</repository>
+		<repository>
 			<id>com.xored.glance</id>
 			<layout>p2</layout>
 			<url>http://eclipse-glance.googlecode.com/svn/site/</url>
+		</repository>
+		<repository>
+			<id>com.github.eclipsecolortheme.feature</id>
+			<layout>p2</layout>
+			<url>http://eclipse-color-theme.github.com/update</url>
 		</repository>
 		<repository>
 			<id>net.jeeeyul.eclipse.themes.updatesite</id>
@@ -107,7 +126,7 @@
 			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
 		</repository>
 		<repository>
-			<id>com.github.eclipseuitheme.themes.feature</id>
+			<id>moonrise.com.github.eclipseuitheme.themes.feature</id>
 			<layout>p2</layout>
 			<url>https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite</url>
 		</repository>
@@ -141,11 +160,6 @@
 		--> 
 		
 		<!-- can't be bundled
-		<repository>
-			<id>eclipsejsonedit</id>
-			<layout>p2</layout>
-			<url>https://sourceforge.net/projects/eclipsejsonedit/files/update</url>
-		</repository>
 		<repository>
 			<id>Closure-by-Vincent.Simonet.p2f</id>
 			<layout>p2</layout>
