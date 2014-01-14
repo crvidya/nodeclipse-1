@@ -1,4 +1,4 @@
-# Nodeclipse - Node.js support in Eclipse IDE
+# Nodeclipse - Node.js development in Eclipse-based IDE
 
 [![Build Status](https://secure.travis-ci.org/Nodeclipse/nodeclipse-1.png)](http://travis-ci.org/Nodeclipse/nodeclipse-1)
 <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=759140" title="Drag and drop into a running Eclipse
@@ -6,15 +6,50 @@
 
 ![nodeclipse-logo](Nodeclipse_logo_light.png)
 
+## Developing with Nodeclipse, Enide Studio
+
+Read <http://www.nodeclipse.org/> that has News, post Shares, Installing details, Features list, 
+Usage (incl Video, Demo) with all shortcuts, Help and Hints,
+ Support options, Where Helping needed, How to thank and Contact us, also History page.
+
+## Enhancing Nodeclipse
+
+Some minimal Java & Eclipse plugin development skills are needed for improving code base.
+Check "Plug-in development 101" <http://www.ibm.com/developerworks/library/os-eclipse-plugindev1/> as great tutorial by Chris Aniszczyk (2008).
+That will be great starting point, that lets you get understanding.
+For future references there is also often updated "Eclipse 4 RCP - Tutorial" 
+<http://www.vogella.com/tutorials/EclipseRCP/article.html> for new evolving e4 API by Lars Vogel.
+
+JavaScript experienced leader could help by giving guidance and insight of trends.
+
+Even without skills above you can do even more helping by research. Start by raising an issue, 
+describing what problem you want to solve, sharing some link. It maybe how to use Nodeclipse, new plugin to include,
+how to support newer JavaScript features, Node.js packages, other JS libs like AngularJS, EmberJS etc.
+
+### Personal message
+
 Hello, I am Paul Verest, one of Nodeclipse [contributors](https://github.com/Nodeclipse/nodeclipse-1/graphs/contributors).
-I am Java developer adopting Node.js, ( and then PhantomJS and Nashorn Javascript) into my set of tools.
+I am Java developer adopting Node.js ( and less PhantomJS, Nashorn etc Javascript ) into my set of tools.
 In January 2013 I just started developing Node.js in Eclipse without any plugins, but then I came to the point "how to debug?".
 That lead me to know Nodeclipse 0.2 by Tomoyuki Inagaki, that by that time was fork in his own account.
 We unified 0.2 back into Nodeclipse organization, the rest can be seen in [history](http://www.nodeclipse.org/history).
-Try out next version from this sources just by `git clone`, `mvn package` , then install from .zip (see Maven build below for more)
+
+## Diving-In
+
+Try out next version from this sources just by `git clone`, `mvn package` , then install from .zip (see Maven build below for more).
+(Also there is an idea, that was tried in 0.9 iteration, to develop in GitHub fork and merge before release for a review.
+ So see opened pull requests as well.)
 
 Check README.md in project modules (e.g. `org.nodeclipse.debug` ). See launching Node.js logic in
 [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)
+
+### Developing with PDE
+
+Developing doesn't require maven usage, just import one project e.g. `org.nodeclipse.ui` into Eclipse with PDE.
+
+[see src/site/markdown/developing.md file](src/site/markdown/developing.md)
+
+### Maven build
 
 Build
 
@@ -22,15 +57,8 @@ Build
 
 Before release
 
-	mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.9.0-SNAPSHOT
+	mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.10.0-SNAPSHOT
 
-## Developing
-
-Developing doesn't require maven usage, just import one project e.g. `org.nodeclipse.ui` into Eclipse with PDE.
-
-[see src/site/markdown/developing.md file](src/site/markdown/developing.md)
-
-### Maven build
 
 [Maven](http://maven.apache.org/) build (using [Tycho plugin](http://eclipse.org/tycho/)) is headless build, that doesn't require Eclipse.
 
