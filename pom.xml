@@ -89,18 +89,19 @@
 	</properties>
 
 	<modules>
-		<module>org.nodeclipse.ui</module>
-
-		<module>chromedevtools</module>
-
-		<module>org.nodeclipse.debug</module>
+		<module>org.nodeclipse.help</module>
 
 		<module>org.nodeclipse.bundle.coffee</module>
 		<module>features/org.nodeclipse.bundle.coffee.feature</module>
 		<module>org.nodeclipse.bundle.express</module>
 		<module>features/org.nodeclipse.bundle.express.feature</module>
 
-		<module>org.nodeclipse.help</module>
+		<module>org.nodeclipse.ui</module>
+
+		<module>chromedevtools</module>
+		<module>org.nodeclipse.debug</module>
+		
+		<module>features/org.nodeclipse.enide.nodejs.feature</module>		
 		
 		<module>org.nodeclipse.phantomjs</module>
 		<module>features/org.nodeclipse.phantomjs.feature</module>

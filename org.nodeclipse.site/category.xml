@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="Nodeclipse" label="Nodeclipse Core (nodeclipse-1)">
+   <category-def name="Nodeclipse" label="1st Nodeclipse Core (nodeclipse-1)">
       <description>
         Nodeclipse-1 Core, Chromium Dev tools,
         JSHint integration by Ralf Sternberg 
-        (together make minimal required set for Node.js and server side JavaScript) 
+        (together make Enide Node.js - minimal required set for Node.js and server side JavaScript) 
       </description>
    </category-def>
    <feature url="features/org.chromium.debug_0.3.9.qualifier.jar" id="org.chromium.debug" version="0.3.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>
    <feature url="features/org.chromium.sdk_0.3.9.qualifier.jar" id="org.chromium.sdk" version="0.3.9.qualifier">
+      <category name="Nodeclipse"/>
+   </feature>
+   <feature url="features/org.nodeclipse.enide.nodejs.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.nodejs.feature" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
    <feature url="features/org.nodeclipse_0.9.0.qualifier.jar" id="org.nodeclipse" version="0.9.0.qualifier">
@@ -25,7 +28,7 @@
    <feature url="features/org.nodeclipse.phantomjs.feature_0.9.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.9.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
-   <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
+   <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>
    
@@ -63,7 +66,7 @@
    </feature>
 
 
-   <!--    -->
+   <!--   
    <category-def name="Tools" label="Enide Tools Collection">
       <description>
       	Nodeclipse Plugins List by Paul Verest,
@@ -90,7 +93,7 @@
    <feature url="features/de.bastiankrol.startexplorer.feature_1.5.1.jar" id="de.bastiankrol.startexplorer.feature" version="1.5.1">
       <category name="Tools"/>
    </feature>
-   <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.9.qualifier">
+   <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
    <feature url="features/org.eclipse_icons.editor.feature_2.4.0.qualifier.jar" id="org.eclipse_icons.editor.feature" version="2.4.0.qualifier">
@@ -108,9 +111,9 @@
    <feature url="features/jsonedit-feature_0.9.7.qualifier.jar" id="jsonedit-feature" version="0.9.7.qualifier">
       <category name="Tools"/>
    </feature>
-   
+   --> 
 
-   <!--  -->
+   <!-- 
    <category-def name="General" label="General plugins">
       <description>
         EclipseRunner by Lukasz Wachowicz and Bartosz Roznowski (Runner View) http://code.google.com/p/eclipserunnerplugin/
@@ -137,14 +140,15 @@
    <feature url="net.jeeeyul.eclipse.themes.feature_1.7.4.qualifier.jar" id="net.jeeeyul.eclipse.themes.feature" version="1.7.4.qualifier">
 	  <category name="General"/>
    </feature>
-   <feature url="com.github.eclipseuitheme.themes.feature_0.8.5.qualifier.jar" id="com.github.eclipseuitheme.themes.feature" version="0.8.5.qualifier">
+   <feature url="com.github.eclipseuitheme.themes.feature_0.8.6.qualifier.jar" id="com.github.eclipseuitheme.themes.feature" version="0.8.6.qualifier">
 	  <category name="General"/>
    </feature>
    <feature url="features/OpenClosedProjectsFeature_1.0.5.qualifier.jar" id="OpenClosedProjectsFeature" version="1.0.5.qualifier">
       <category name="General"/>
    </feature>
+    -->
   
-    <!--  --> 
+    <!--  
    <category-def name="Other" label="Other Optional Tools">
       <description>
         PracticallyMacro by Ernest Pasour (Macros for Editors using BeanShell.org) http://sourceforge.net/projects/practicalmacro/ 
@@ -157,7 +161,7 @@
    <feature url="features/SelectionExplorerFeature_1.0.2.qualifier.jar" id="SelectionExplorerFeature" version="1.0.2.qualifier">
       <category name="Other"/>
    </feature>
-  
+  --> 
      
  
  
