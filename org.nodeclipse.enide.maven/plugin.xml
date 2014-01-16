@@ -15,7 +15,7 @@
           point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.enide.maven.launch.LaunchConfigurationType"   
-             icon= "icons/feather-ma16.png"   
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
@@ -24,7 +24,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.enide.maven.launch.LaunchShortcut"   
-             icon= "icons/feather-ma16.png"
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.enide.maven.launch.LaunchShortcut"   
              label= "mvn package Maven build"   
              modes= "run" >   

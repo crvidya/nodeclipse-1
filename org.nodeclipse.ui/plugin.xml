@@ -285,7 +285,7 @@
          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >
       <launchConfigurationTypeImage
             configTypeID= "org.nodeclipse.ui.npm.LaunchConfigurationType"
-            icon= "icons/npm/npm.png"
+            icon= "icons/npm/npm_bottom_right_corner_run_half_size.png"
             id= "org.nodeclipse.ui.npm.LaunchConfigurationTypeImage" >
       </launchConfigurationTypeImage>
    </extension>
@@ -293,7 +293,7 @@
          point= "org.eclipse.debug.ui.launchShortcuts" >
       <shortcut
             class= "org.nodeclipse.ui.npm.InstallLaunchShortcut"
-            icon= "icons/npm/npm.png"
+            icon= "icons/npm/npm_bottom_right_corner_run_half_size.png"
             id= "org.nodeclipse.ui.npm.InstallLaunchShortcut"
             label= "npm install"
             modes= "run, debug" >
@@ -325,7 +325,7 @@
          point= "org.eclipse.debug.ui.launchShortcuts" >
       <shortcut
             class= "org.nodeclipse.ui.npm.LaunchShortcut"
-            icon= "icons/npm/npm.png"
+            icon= "icons/npm/npm_bottom_right_corner_run_half_size.png"
             id= "org.nodeclipse.ui.npm.LaunchShortcut"
             label= "npm ..."
             modes= "run, debug" >

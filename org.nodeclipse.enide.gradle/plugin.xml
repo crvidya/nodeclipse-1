@@ -15,7 +15,7 @@
           point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationType"   
-             icon= "icons/gradle-icon-16x16.png"   
+             icon= "icons/gradle-icon-16x16_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
@@ -24,7 +24,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.enide.gradle.launch.LaunchShortcut"   
-             icon= "icons/gradle-icon-16x16.png"
+             icon= "icons/gradle-icon-16x16_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.enide.gradle.launch.LaunchShortcut"   
              label= "Gradle GUI"   
              modes= "run" >   

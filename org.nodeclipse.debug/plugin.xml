@@ -62,7 +62,7 @@
           point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationType"   
-             icon= "icons/node.png"   
+             icon= "icons/node_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>
        <launchConfigurationTypeImage   
@@ -72,7 +72,7 @@
        </launchConfigurationTypeImage>
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee"   
-             icon= "icons/coffee.png"   
+             icon= "icons/coffee_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeCoffee.image" >   
        </launchConfigurationTypeImage>
        <launchConfigurationTypeImage   
@@ -90,7 +90,7 @@
           
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.debug.launch.LaunchType$StandaloneV8"   
-             icon= "icons/node.png"   
+             icon= "icons/node_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.debug.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
@@ -99,7 +99,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.debug.launch.LaunchShortcut"   
-             icon= "icons/node.png"
+             icon= "icons/node_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcut"   
              label= "Node Application"   
              modes= "run, debug" > <!-- , profile ?how -->  
@@ -191,7 +191,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.debug.launch.LaunchShortcut"   
-             icon= "icons/coffee.png"
+             icon= "icons/coffee_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcut"   
              label= "coffee"   
              modes= "run, debug" >   

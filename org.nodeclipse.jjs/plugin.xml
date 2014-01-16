@@ -68,7 +68,7 @@
           point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.jjs.launch.LaunchConfigurationType"   
-             icon= "icons/java_16x16.png"   
+             icon= "icons/nashorn_16x16_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.jjs.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
@@ -77,7 +77,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.jjs.launch.LaunchShortcut"   
-             icon= "icons/java_16x16.png"
+             icon= "icons/nashorn_16x16_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.debug.launch.LaunchShortcut"   
              label= "JJS Application"   
              modes= "run, debug" >   

@@ -68,7 +68,7 @@
           point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
        <launchConfigurationTypeImage   
              configTypeID= "org.nodeclipse.phantomjs.launch.LaunchConfigurationType"   
-             icon= "icons/phantomjs.png"   
+             icon= "icons/phantomjs_bottom_right_corner_run_half_size.png"   
              id= "org.nodeclipse.phantomjs.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
@@ -77,7 +77,7 @@
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.phantomjs.launch.LaunchShortcut"   
-             icon= "icons/phantomjs.png"
+             icon= "icons/phantomjs_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.phantomjs.launch.LaunchShortcut"   
              label= "PhantomJS Script"   
              modes= "run, debug" >
