@@ -1,5 +1,10 @@
 
-# Node.js debugging
+# chromedevtools
+
+Nodeclipse/chromedevtools are modified "Google Chrome Developer Tools for Java" http://code.google.com/p/chromedevtools/ .
+They make the largest and oldest part of codebase.
+
+## Node.js debugging
 
 From [Node wiki](https://github.com/joyent/node/wiki/Using-Eclipse-as-Node-Applications-Debugger)
 
@@ -11,7 +16,7 @@ support by enabling attachment of the remote debugger on a TCP port (5858 is nod
 
 ## Maven build
 
-We need following plugins and features.
+We use following plugins and features.
 
 - [v] [plugins/org.chromium.debug.core](https://github.com/Nodeclipse/nodeclipse-1/tree/master/chromedevtools/plugins/org.chromium.debug.core)
 - [v] [plugins/org.chromium.debug.ui](https://github.com/Nodeclipse/nodeclipse-1/tree/master/chromedevtools/plugins/org.chromium.debug.ui)
