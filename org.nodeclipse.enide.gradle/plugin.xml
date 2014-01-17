@@ -19,13 +19,54 @@
              id= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
-    <!-- build.gradle run as gradle -->  
+    <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+    
+    <!-- build.gradle run as gradle build -->  
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
              class= "org.nodeclipse.enide.gradle.launch.LaunchShortcut"   
              icon= "icons/gradle-icon-16x16_bottom_right_corner_run_half_size.png"
              id= "org.nodeclipse.enide.gradle.launch.LaunchShortcut"   
+             label= "gradle build"   
+             modes= "run" >   
+          <configurationType
+                id= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.gradle" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+    <!-- build.gradle run as Gradle GUI -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.enide.gradle.launchgui.LaunchShortcut"   
+             icon= "icons/gradle-icon-16x16_bottom_right_corner_run_half_size.png"
+             id= "org.nodeclipse.enide.gradle.launchgui.LaunchShortcut"   
              label= "Gradle GUI"   
              modes= "run" >   
           <configurationType
@@ -53,14 +94,6 @@
    </extension>
    
 
-   <extension
-        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-        <launchConfigurationTabGroup   
-       		class= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTabGroup"   
-      		id= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationTabGroup"   
-        	type= "org.nodeclipse.enide.gradle.launch.LaunchConfigurationType" >   
-		</launchConfigurationTabGroup>
-   </extension>
 
    <extension
          point="org.eclipse.help.toc">
@@ -68,6 +101,15 @@
             file="HelpToc.xml"
             primary="true">
       </toc>
+   </extension>
+
+    <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.nodeclipse.enide.gradle.preferences.GradlePreferencePage"
+            id="org.nodeclipse.enide.gradle.preferences.GradlePreferencePage"
+            name="Gradle(Nodeclipse)">
+      </page>
    </extension>
 
 </plugin>

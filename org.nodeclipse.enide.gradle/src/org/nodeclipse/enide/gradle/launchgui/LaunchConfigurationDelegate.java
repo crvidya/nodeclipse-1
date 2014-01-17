@@ -1,4 +1,4 @@
-package org.nodeclipse.enide.gradle.launch;
+package org.nodeclipse.enide.gradle.launchgui;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import org.nodeclipse.enide.gradle.Activator;
 import org.nodeclipse.enide.gradle.preferences.Dialogs;
 
 /**
- * `build.gradle` Run As gradle build<br>
+ * `build.gradle` Run As Gradle GUI<br>
  * see LaunchConfigurationDelegate in .debug and .phantomjs, .jjs, .enide.maven module for comparison.
  * 
  * @since 0.10
@@ -66,7 +66,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		cmdLine.add("-b");  //  -b, --build-file        Specifies the build file.
 
 		cmdLine.add(filePath);
-		cmdLine.add("build");
+		cmdLine.add("--gui");
 		
 		String workingDirectory = configuration.getAttribute(GradleConstants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
@@ -95,15 +95,6 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //location of your Java installation.
 		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
 		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME");
-		
-//FAILURE: Build failed with an exception.
-//
-//* What went wrong:
-//java.lang.ExceptionInInitializerError (no error message)
-//
-//* Try:
-//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-		
 		
 		
 //		for(String s : cmdLine) NodeclipseConsole.write(s+" ");

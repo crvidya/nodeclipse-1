@@ -1,4 +1,4 @@
-package org.nodeclipse.enide.gradle.launch;
+package org.nodeclipse.enide.gradle.launchgui;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -20,7 +20,7 @@ import org.nodeclipse.enide.gradle.util.NodeclipseLogger;
 //import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
- * Using "Run As" --> "gradle build" will lead here
+ * Using "Run As" --> "Gradle GUI" will lead here
  **/
 public class LaunchShortcut implements ILaunchShortcut {
 

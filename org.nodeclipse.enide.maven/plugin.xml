@@ -19,6 +19,15 @@
              id= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTypeImage" >   
        </launchConfigurationTypeImage>   
     </extension>
+    <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.enide.maven.launch.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+
     <!-- pom.xml run as maven -->  
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
@@ -51,16 +60,6 @@
            </contextualLaunch>   
        </shortcut>   
    </extension>
-   
-
-   <extension
-        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-        <launchConfigurationTabGroup   
-       		class= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTabGroup"   
-      		id= "org.nodeclipse.enide.maven.launch.LaunchConfigurationTabGroup"   
-        	type= "org.nodeclipse.enide.maven.launch.LaunchConfigurationType" >   
-		</launchConfigurationTabGroup>
-   </extension>
 
    <extension
          point="org.eclipse.help.toc">
@@ -69,5 +68,14 @@
             primary="true">
       </toc>
    </extension>
-
+   
+    <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.nodeclipse.enide.maven.preferences.MavenPreferencePage"
+            id="org.nodeclipse.enide.maven.preferences.MavenPreferencePage"
+            name="Maven(Nodeclipse)">
+      </page>
+   </extension>
+   
 </plugin>
