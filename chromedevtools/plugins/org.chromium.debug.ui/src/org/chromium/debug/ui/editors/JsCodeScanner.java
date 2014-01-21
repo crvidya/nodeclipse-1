@@ -21,16 +21,18 @@ import org.eclipse.swt.graphics.RGB;
 
 /**
  * JavaScript code scanner for source code highlighting.
+ * @author Chromium Authors
+ * @author Paul Verest
  */
 public class JsCodeScanner extends BufferedRuleBasedScanner {
 
   private Token commentToken;
 
   private final TextAttribute commentAttribute =
-      new TextAttribute(EditorColors.getColor(new RGB(63, 127, 95)), null, SWT.NORMAL);
+      new TextAttribute(EditorColors.getColor(new RGB(63, 127, 95)), null, SWT.NORMAL); //! hard-coded
 
   private final TextAttribute jsDocAttribute =
-      new TextAttribute(EditorColors.getColor(new RGB(127,127,159)), null, SWT.NORMAL);
+      new TextAttribute(EditorColors.getColor(new RGB(127,127,159)), null, SWT.NORMAL); //! hard-coded
 
   public JsCodeScanner() {
     createRules();
@@ -49,22 +51,22 @@ public class JsCodeScanner extends BufferedRuleBasedScanner {
    */
   private void createRules() {
     Token keywordToken = new Token(
-        new TextAttribute(EditorColors.getColor(new RGB(127, 0, 85)), null, SWT.BOLD));
+        new TextAttribute(EditorColors.getColor(new RGB(127, 0, 85)), null, SWT.BOLD)); //! hard-coded
 
     commentToken = new Token(commentAttribute);
 
     Token jsDocToken = new Token(jsDocAttribute);
 
     Token stringToken = new Token(
-        new TextAttribute(EditorColors.getColor(new RGB(42, 0, 255)), null, SWT.NORMAL));
+        new TextAttribute(EditorColors.getColor(new RGB(42, 0, 255)), null, SWT.NORMAL)); //! hard-coded
 
     RGB blackRgb = new RGB(0, 0, 0);
 
     Token numberToken = new Token(
-        new TextAttribute(EditorColors.getColor(blackRgb), null, SWT.NORMAL));
+        new TextAttribute(null, null, SWT.NORMAL)); //EditorColors.getColor(blackRgb) //! hard-coded
 
     Token normalToken = new Token(
-        new TextAttribute(EditorColors.getColor(blackRgb), null, SWT.NORMAL));
+        new TextAttribute(null, null, SWT.NORMAL)); //EditorColors.getColor(blackRgb) //! hard-coded
     setDefaultReturnToken(normalToken);
 
     setRules(new IRule[] {
@@ -120,6 +122,8 @@ public class JsCodeScanner extends BufferedRuleBasedScanner {
       "void", //$NON-NLS-1$
       "while", //$NON-NLS-1$
       "with", //$NON-NLS-1$
+      //+ @since 0.10
+      "yield", //$NON-NLS-1$
 
       // Highlight important qualifiers
       "__proto__", //$NON-NLS-1$
