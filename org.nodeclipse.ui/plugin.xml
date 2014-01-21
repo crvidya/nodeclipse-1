@@ -308,13 +308,13 @@
                           value= "1" >
                     </count>
                     <iterate>
-                       <or>
+                       <and>
                           <instanceof value="org.eclipse.core.resources.IFile"/>
                           <test
                                 property= "org.eclipse.debug.ui.matchesPattern"
                                 value= "package.json" >
                           </test>
-                       </or>
+                       </and>
                       </iterate>
                  </with>
               </enablement>
@@ -340,13 +340,13 @@
                           value= "1" >
                     </count>
                     <iterate>
-                       <or>
+                       <and>
                           <instanceof value="org.eclipse.core.resources.IFile"/>
                           <test
                                 property= "org.eclipse.debug.ui.matchesPattern"
                                 value= "package.json" >
                           </test>
-                       </or>
+                       </and>
                       </iterate>
                  </with>
               </enablement>
