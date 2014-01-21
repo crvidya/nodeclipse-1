@@ -2,6 +2,7 @@ package org.nodeclipse.enide.gradle.preferences;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.nodeclipse.enide.gradle.Activator;
@@ -12,6 +13,7 @@ import org.nodeclipse.enide.gradle.Activator;
 public class GradlePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor gradlePath;
+    private StringFieldEditor gradleOptions;
 
     public GradlePreferencePage() {
         super(GRID);
@@ -27,8 +29,10 @@ public class GradlePreferencePage extends FieldEditorPreferencePage implements I
 
 	@Override
 	protected void createFieldEditors() {
-	      gradlePath = new FileFieldEditor(GradleConstants.GRADLE_PATH, "Gradle path:", getFieldEditorParent());
-	        addField(gradlePath);		
+      gradlePath = new FileFieldEditor(GradleConstants.GRADLE_PATH, "Gradle path:", getFieldEditorParent());
+        addField(gradlePath);		
+      gradleOptions = new StringFieldEditor(GradleConstants.GRADLE_OPTIONS, "Gradle options (gradle -h):", getFieldEditorParent());
+        addField(gradleOptions);
 	}
 
 

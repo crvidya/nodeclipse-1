@@ -16,6 +16,7 @@ public class MavenConstants {
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";
 	
 	public static final String MAVEN_PATH = "maven_path";	
+	public static final String MAVEN_OPTIONS = "maven_options";
 
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.enide.maven.preferences.MavenPreferencePage";
 	public static final String PREFERENCE_PAGE_NAME ="Maven(Nodeclipse)"; // the same as in plugin.xml	

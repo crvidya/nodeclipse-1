@@ -58,6 +58,23 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			return;
 		}			
 		cmdLine.add(mavenPath);
+		
+		String nodeOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
+		if(!nodeOptions.equals("")) {
+			String[] sa = nodeOptions.split(" ");
+			for(String s : sa) {
+				cmdLine.add(s);
+			}			
+		}
+		
+//		String nodeArgs = configuration.getAttribute(GradleConstants.ATTR_GRADLE_ARGUMENTS, "");
+//		if(!nodeArgs.equals("")) {
+//			String[] sa = nodeArgs.split(" ");
+//			for(String s : sa) {
+//				cmdLine.add(s);
+//			}
+//		}
+		
 
 		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
 		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();

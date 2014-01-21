@@ -18,6 +18,7 @@ public class GradleConstants {
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";	
 
 	public static final String GRADLE_PATH = "gradle_path";	
+	public static final String GRADLE_OPTIONS = "gradle_options";	
 
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.enide.gradle.preferences.GradlePreferencePage";
 	public static final String PREFERENCE_PAGE_NAME ="Gradle(Nodeclipse)"; // the same as in plugin.xml	

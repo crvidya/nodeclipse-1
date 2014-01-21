@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: `build.gradle` Run As Gradle GUI
+Bundle-Name: `build.gradle` Run As Gradle GUI or gradle build
 Bundle-SymbolicName: org.nodeclipse.enide.gradle;singleton:=true
 Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.nodeclipse.enide.gradle.Activator

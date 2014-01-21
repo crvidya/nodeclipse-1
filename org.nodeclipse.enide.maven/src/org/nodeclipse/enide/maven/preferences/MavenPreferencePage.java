@@ -2,6 +2,7 @@ package org.nodeclipse.enide.maven.preferences;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.nodeclipse.enide.maven.Activator;
@@ -12,6 +13,7 @@ import org.nodeclipse.enide.maven.Activator;
 public class MavenPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor mavenPath;
+    private StringFieldEditor mavenOptions;
 
     public MavenPreferencePage() {
         super(GRID);
@@ -27,8 +29,10 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 
 	@Override
 	protected void createFieldEditors() {
-	      mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path:", getFieldEditorParent());
-	        addField(mavenPath);		
+      mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path:", getFieldEditorParent());
+        addField(mavenPath);		
+      mavenOptions = new StringFieldEditor(MavenConstants.MAVEN_OPTIONS, "Maven options (mvn -h):", getFieldEditorParent());
+        addField(mavenOptions);
 	}
 
 

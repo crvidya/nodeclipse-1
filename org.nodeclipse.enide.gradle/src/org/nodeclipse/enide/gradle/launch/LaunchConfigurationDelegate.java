@@ -16,6 +16,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.enide.gradle.Activator;
+import org.nodeclipse.enide.gradle.preferences.Dialogs;
 //import org.eclipse.jface.preference.IPreferenceStore;
 //import org.nodeclipse.debug.util.Constants;
 //import org.nodeclipse.debug.util.VariablesUtil;
@@ -25,8 +27,6 @@ import org.eclipse.jface.preference.IPreferenceStore;
 //import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.gradle.preferences.GradleConstants;
 import org.nodeclipse.enide.gradle.util.VariablesUtil;
-import org.nodeclipse.enide.gradle.Activator;
-import org.nodeclipse.enide.gradle.preferences.Dialogs;
 
 /**
  * `build.gradle` Run As gradle build<br>
@@ -60,6 +60,22 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		}			
 		cmdLine.add(gradlePath);
 
+		String nodeOptions= preferenceStore.getString(GradleConstants.GRADLE_OPTIONS);
+		if(!nodeOptions.equals("")) {
+			String[] sa = nodeOptions.split(" ");
+			for(String s : sa) {
+				cmdLine.add(s);
+			}			
+		}
+		
+//		String nodeArgs = configuration.getAttribute(GradleConstants.ATTR_GRADLE_ARGUMENTS, "");
+//		if(!nodeArgs.equals("")) {
+//			String[] sa = nodeArgs.split(" ");
+//			for(String s : sa) {
+//				cmdLine.add(s);
+//			}
+//		}
+		
 		String file = configuration.getAttribute(GradleConstants.KEY_FILE_PATH,	"");
 		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
 		// path is relative, so cannot find it, unless get absolute path
