@@ -1,5 +1,6 @@
 package org.nodeclipse.debug.launch;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -103,8 +104,14 @@ public class LaunchShortcut implements ILaunchShortcut {
     		}
     	}
     	
+    	IContainer container = null;
+    	//TODO save LaunchConfiguration in project's .settings folder by default
+//    	if(true){
+//    		container =  
+//    	}
+    	
     	// create a new configuration for the file
-        ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, configname);
+        ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(container, configname);
         workingCopy.setAttribute(Constants.KEY_FILE_PATH, path);
         setMoreAttributes(workingCopy);
         return workingCopy.doSave();
