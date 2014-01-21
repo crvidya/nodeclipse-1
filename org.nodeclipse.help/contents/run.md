@@ -7,22 +7,25 @@ Right-click `.js` file with Node.js app and select "Run As -> Node Application" 
 
 Press <kbd>Ctrl+F11</kbd> to run [again].
 
-### Warning 0.6 behavior
-
-In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page)
- or launch coffee util to compile `*.coffee` files. However these have ran into
- problem <http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype> 
- That will be fixed as soon as solution is found.
-
 ### Run Configuration
 
+You can configure node and apps parameters workspace wide in `Preferences -> Nodeclipse`
+or per file:
+
 Right-click `.js` file with Node.js app and select "Run As -> Run Configuration..."
+(Hint: the easiest way to create LaunchConfiguration is actually run the file once.)
 
 You can configure to pass
 
 - program arguments
 - Node arguments
 - set working directory
+
+To have LaunchConfiguration saved within Project folder, select path in `Shared File` field on `Common` Tab of LaunchConfiguration.
+(Yes, dialog string is confusing)
+<!--
+http://stackoverflow.com/questions/8625060/store-run-configuration-with-project-in-eclipse
+-->
 
 Since Nodeclipse 0.5 it is possible to set environment variables in a launch configuration. 
 The "Environment" tab is not there in the Node launcher.
@@ -37,6 +40,12 @@ process.env.NODE_ENV="development";
 require("./app.js");
 },100);
 ```
+
+### Warning 0.6 behavior
+
+In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page)
+ or launch coffee util to compile `*.coffee` files. However these have ran into
+ problem <http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype> 
 
 ### Sources
 
