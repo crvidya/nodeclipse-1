@@ -35,7 +35,7 @@
             category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.NodeFileWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node_top_right_corner_new.png"
+            icon="icons/node_top_right_corner_file_top_right_corner_new.png"
             id="org.nodeclipse.ui.wizards.NodeFileWizard"
             name="JavaScript File">
          <description>
