@@ -1,7 +1,7 @@
 {
   "name": "contents",
   "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
+  "description": "If trying with Node.js marked could be used",
   "main": "index.js",
   "dependencies": {
     "marked": "~0.2.9"

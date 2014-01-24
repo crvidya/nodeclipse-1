@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\weibl\git\Enide-nodeclipse-1\org.nodeclipse.help\contents\.configuration.md.html</title>
+<title>D:\Workspaces\Nodeclipse-DEV\nodeclipse-1\org.nodeclipse.help\contents\.configuration.md.html</title>
 
 
 <style type="text/css">
@@ -453,13 +453,17 @@ function setDocumentScrollTop(ypos)
 <h2> <a name="configuration" class="anchor" href="..md.html#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2> 
 <p>Some recommended configuration (These steps are needed for every new workspace):</p> 
 <p>Goto Window-&gt;Preferences </p> 
-<p>General select Show heap status<br /> General-&gt;Workspace -&gt; Text file encoding select other UTF-8<br /> (if Eclipse 4.x Chrome Theme (Optional) installed)<br /> General-&gt;Appearance -&gt;Theme select Jeeeyul's themes - Chrome Theme, restart Eclipse<br /> Team -&gt; Git -&gt; History : Check &quot;Follow renames&quot; </p> 
+<p>General select Show heap status<br /> General-&gt;Workspace -&gt; Text file encoding select other UTF-8<br /> (if Eclipse 4.x Chrome Theme installed (Optional, recommended) )<br /> General-&gt;Appearance -&gt;Theme select Jeeeyul's themes - Chrome Theme, restart Eclipse<br /> Team -&gt; Git -&gt; History : Check &quot;Follow renames&quot; </p> 
 <p>Switch to Node perspective (e.g. Window -&gt; Open Perspective -&gt; Other ... -&gt; Node)</p> 
-<p>Window -&gt; Show View -&gt; Other... -&gt; REST Client -&gt; REST Client Tool</p> 
+<p>Window -&gt; Show View -&gt; Other... -&gt; REST Client -&gt; REST Client Tool<br /> or Ctrl+3 type <code>rest</code></p> 
 <p>REST Client Tool is also nice to use in Debug perspective.</p> 
-<h3> <a name="preferences" class="anchor" href="..md.html#preferences"><span class="octicon octicon-link"></span></a>Preferences</h3> 
-<p>Check preferences ( Window -&gt; Preferences ) for Node.js related settings.</p> 
-<p><a href="images/Nodeclipse-Preferences.png" target="_blank"><img src="images/Nodeclipse-Preferences.png" alt="" style="max-width:100%;" /></a></p> 
+<h4> <a name="optional-general-eclipse-configuration" class="anchor" href="..md.html#optional-general-eclipse-configuration"><span class="octicon octicon-link"></span></a>Optional general Eclipse configuration</h4> 
+<p>General -&gt; Workspace -&gt; Refresh on access General -&gt; Workspace -&gt; Refresh using native hooks or polling (so that you don't need to press <kbd>F5</kbd> after <code>npm install<code> or other changes on file system) General -&gt; Workspace -&gt; Text file encoding - select UTF-8 </code></code></p> 
+<p>General -&gt; Editors -&gt; Text Editors -&gt; Show print margin, 120</p> 
+<p>General -&gt; Editors -&gt; Text Editors -&gt; Show whitespace characters (just remeber where is this setting)</p> 
+<p>Take a time to explore other Eclipse setting, you may be rewarded with findings. </p> 
+<h3> <a name="nodeclipse-preferences" class="anchor" href="..md.html#nodeclipse-preferences"><span class="octicon octicon-link"></span></a>Nodeclipse Preferences</h3> 
+<p>Check preferences ( Window -&gt; Preferences ) for Node.js, PhantomJS, MongoDB and Nashorn related settings.</p> 
 <h2> <a name="in-previous-versions" class="anchor" href="..md.html#in-previous-versions"><span class="octicon octicon-link"></span></a>In previous versions</h2> 
 <h3> <a name="before-06" class="anchor" href="..md.html#before-06"><span class="octicon octicon-link"></span></a>Before 0.6</h3> 
 <p>Window -&gt; Show View -&gt; Other... -&gt; GFM Support -&gt; GFM View<br /> (Very useful when exploring <code>node_modules</code> folders) </p> 
@@ -467,7 +471,7 @@ function setDocumentScrollTop(ypos)
 <p>Window -&gt; Preferences -&gt; General -&gt; Editors -&gt; File Associations <kbd>Add...</kbd></p> 
 <ul> 
  <li>*.jade - associate with Scrapbook (from JDT)</li> 
- <li>*.ejs - associate with HTML Editor (from WebTools, Aptana, etc)</li> 
+ <li>*.ejs - associate with HTML Editor (from WebTools, Aptana, etc) or better with Amateras HTML Editor (check on Nodeclipse Plugin List)</li> 
 </ul>
 <h4> <a name="nts-only" class="anchor" href="..md.html#nts-only"><span class="octicon octicon-link"></span></a><a href="http://www.nodeclipse.org/nts/">NTS</a> Only</h4> 
 <p>Window -&gt; Show View -&gt; Other... -&gt; MiniMap -&gt; MiniMap</p> 
