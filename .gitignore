@@ -1,22 +1,12 @@
-.metadata
-org.nodeclipse.debug/bin
-org.nodeclipse.ui/bin
-chromedevtools/plugins/org.chromium.debug.core/bin
-chromedevtools/plugins/org.chromium.debug.core.tests/bin
-chromedevtools/plugins/org.chromium.debug.jsdtbridge/bin
-chromedevtools/plugins/org.chromium.debug.ui/bin
-chromedevtools/plugins/org.chromium.sdk/bin
-chromedevtools/plugins/org.chromium.sdk.wip.eclipse/bin
-chromedevtools/plugins/org.chromium.sdk.wipbackend.dev/bin
-chromedevtools/plugins/org.chromium.sdk.wipbackend.protocol_1_0/bin
-chromedevtools/plugins/org.chromium.sdk.wipbackend.wk118685/bin
-chromedevtools/plugins/org.chromium.sdk.wipbackend.wk120709/bin
-chromedevtools/utils/org.chromium.sdk.tests.system/bin
-chromedevtools/utils/org.chromium.sdk.tests.system.runner/bin
-*.DS_Store
-/.project
-/.*.md.html
+# output folders
 target/
 bin/
+
+.metadata
+/.project
+/.*.md.html
 *.settings/
 /*.error
+
+# MacOS
+*.DS_Store
