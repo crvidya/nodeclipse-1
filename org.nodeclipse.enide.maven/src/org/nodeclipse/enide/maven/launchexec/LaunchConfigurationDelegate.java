@@ -1,4 +1,4 @@
-package org.nodeclipse.enide.maven.launch;
+package org.nodeclipse.enide.maven.launchexec;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
@@ -25,10 +28,12 @@ import org.nodeclipse.enide.maven.preferences.Dialogs;
 //import org.nodeclipse.ui.preferences.PreferenceConstants;
 //import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.maven.preferences.MavenConstants;
+import org.nodeclipse.enide.maven.util.NodeclipseLogger;
 import org.nodeclipse.enide.maven.util.VariablesUtil;
 
 /**
- * pom.xml Run As Maven build<br>
+ * mvn compile exec:java -Dexec.mainClass=example.Example
+ * *.java mvn exec<br>
  * see LaunchConfigurationDelegate in .debug and .phantomjs, .jjs module for comparison.
  * 
  * @since 0.10
@@ -75,25 +80,49 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //			}
 //		}
 		
+		//mvn compile exec:java -Dexec.mainClass=example.Example
+		cmdLine.add("compile");
+		cmdLine.add("exec:java");
 
 		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
-		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
-		// path is relative, so cannot find it, unless get absolute path
-		cmdLine.add("-f");  //  -f,--file <arg>                        Force the use of an alternate POM
-		cmdLine.add(filePath);
-		cmdLine.add("package");
+		IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(file);
+		IProject project = res.getProject();
+		IPath relPath = res.getProjectRelativePath(); // =src/main/java/maven/MainClass.java
+		String packageClass = ""+relPath;
+		// remove maven source folder
+		if (packageClass.startsWith("src/main/java/")){
+			packageClass = packageClass.substring("src/main/java/".length());
+		} else if (packageClass.startsWith("src/")){
+			packageClass = packageClass.substring("src/".length());
+		} 
+		// cut .java
+		packageClass = packageClass.substring(0, packageClass.lastIndexOf('.')); 
+		packageClass = packageClass.replace('/', '.');
+		cmdLine.add("-Dexec.mainClass="+packageClass );  
 		
+//		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
+//		File workingPath = null;
+//		String sProjectPath = project.getLocation().toOSString();
+//		if(workingDirectory.length() == 0) {
+//			workingPath = new File(sProjectPath);
+//		} else {
+//			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
+//			if(workingDirectory == null) {
+//				workingPath = new File(sProjectPath);
+//			} else {
+//				workingPath = new File(workingDirectory);
+//			}
+//		}
 		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
-		if(workingDirectory.length() == 0) {
-			workingPath = (new File(filePath)).getParentFile();
-		} else {
+		if(workingDirectory.length() > 0) {
 			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
-			if(workingDirectory == null) {
-				workingPath = (new File(filePath)).getParentFile();
-			} else {
+			if(workingDirectory != null) {
 				workingPath = new File(workingDirectory);
 			}
+		}
+		if (workingPath == null){
+			workingPath = new File(project.getLocation().toOSString());
 		}
 		
 		Map<String, String> envm = new HashMap<String, String>();
@@ -113,6 +142,10 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		
 //		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 //		NodeclipseConsole.write("\n");
+
+		StringBuilder sb = new StringBuilder(100);
+		for(String s : cmdLine) sb.append(s).append(' ');
+		NodeclipseLogger.log(sb.append('\n').toString());
 		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);

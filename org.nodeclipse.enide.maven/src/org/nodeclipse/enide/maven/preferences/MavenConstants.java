@@ -4,6 +4,7 @@ public class MavenConstants {
 	
 	public static final String PLUGIN_ID = "org.nodeclipse.enide.maven";
 	public static final String LAUNCH_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launch.LaunchConfigurationType";
+	public static final String LAUNCH_EXEC_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launchexec.LaunchConfigurationType";
 	
 	public static final String PROCESS_MESSAGE = "Maven Process";
 
