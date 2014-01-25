@@ -10,3 +10,9 @@
 *Description*:  
 Right-click any `.gradle` file, and select `Run As -> Gradle GUI`
 
+### Developing 
+
+`git clone`, import this project and `org.nodeclipse.coomon` (2) in Eclipse with PDE (e.g. Eclipse SDK/Classic)
+ as "Existing Projects into Workspace".
+
+maven build is optional for full build with other plugins.

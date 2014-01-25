@@ -111,14 +111,19 @@
 		<module>features/org.nodeclipse.mongodb.feature</module>
 		
 		<module>features/org.nodeclipse.feature</module>
-
-		<!-- for Full Build with Git Submodules only 
-		<module>markdown</module>
-		-->
-
+		
+		<!-- @since 0.9.0 Gradle Editor -->
 		<module>org.nodeclipse.enide.editors.gradle</module>
 		<module>features/org.nodeclipse.enide.editors.gradle.feature</module>
 		
+		<!-- @since 0.10.0 Enide Gradle and Enide Maven -->
+		<module>org.nodeclipse.common</module>
+		<module>org.nodeclipse.enide.gradle</module>
+		<module>features/org.nodeclipse.enide.gradle.feature</module>
+		<module>org.nodeclipse.enide.maven</module>
+		<module>features/org.nodeclipse.enide.maven.feature</module>
+		
+
 		<module>org.nodeclipse.site</module>
 	</modules>
 

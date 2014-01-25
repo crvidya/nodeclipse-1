@@ -21,6 +21,13 @@ pom.xml Run As `mvn package` Maven build
 Minisite <http://www.nodeclipse.org/enide/maven/>
 GitHub <https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.enide.maven>
 
+### Developing 
+
+`git clone`, import this project and `org.nodeclipse.coomon` (2) in Eclipse with PDE (e.g. Eclipse SDK/Classic)
+ as "Existing Projects into Workspace".
+
+maven build is optional for full build with other plugins.
+
 ### TODO
 
 1)
