@@ -16,8 +16,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.enide.gradle.Activator;
-import org.nodeclipse.enide.gradle.preferences.Dialogs;
 //import org.eclipse.jface.preference.IPreferenceStore;
 //import org.nodeclipse.debug.util.Constants;
 //import org.nodeclipse.debug.util.VariablesUtil;
@@ -26,6 +26,7 @@ import org.nodeclipse.enide.gradle.preferences.Dialogs;
 //import org.nodeclipse.ui.preferences.PreferenceConstants;
 //import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.gradle.preferences.GradleConstants;
+import org.nodeclipse.enide.gradle.util.NodeclipseLogger;
 import org.nodeclipse.enide.gradle.util.VariablesUtil;
 
 /**
@@ -52,7 +53,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		File mavenFile = new File(gradlePath);
 		if(!mavenFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			Dialogs.showPreferencesDialog(GradleConstants.PREFERENCES_PAGE,
+			CommonDialogs.showPreferencesDialog(GradleConstants.PREFERENCES_PAGE,
 					"Gradle installation is not correctly configured.\n\n"
 					+ "Please goto Window -> Preferences -> "+GradleConstants.PREFERENCE_PAGE_NAME
 					+" and configure the correct location");
@@ -125,6 +126,10 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 //		NodeclipseConsole.write("\n");
 		
+		StringBuilder sb = new StringBuilder(100);
+		for(String s : cmdLine) sb.append(s).append(' ');
+		NodeclipseLogger.log(sb.append('\n').toString());
+
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,

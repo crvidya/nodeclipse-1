@@ -1,4 +1,4 @@
-package org.nodeclipse.enide.gradle.preferences;
+package org.nodeclipse.common.preferences;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferenceDialog;
@@ -11,7 +11,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
  * Dialogs used in .enide.maven, .enide.gradle
  * @author Paul Verest, Pushkar Gupte
  */
-public class Dialogs {
+public class CommonDialogs {
 
 	
 	public static void showPreferencesDialog(final String preferencesPage, final String message) {

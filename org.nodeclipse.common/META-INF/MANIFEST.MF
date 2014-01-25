@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: `build.gradle` Run As Gradle GUI or gradle build
-Bundle-SymbolicName: org.nodeclipse.enide.gradle;singleton:=true
+Bundle-Name: Nodeclipse Common
+Bundle-SymbolicName: org.nodeclipse.common; singleton:=true
 Bundle-Version: 0.9.0.qualifier
-Bundle-Activator: org.nodeclipse.enide.gradle.Activator
+Bundle-Activator: org.nodeclipse.common.Activator
 Bundle-Vendor: Enide
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.ide,
- org.eclipse.debug.ui,
- org.eclipse.core.variables,
- org.nodeclipse.common
+ org.eclipse.ui.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Export-Package: org.nodeclipse.common.preferences,
+ org.nodeclipse.common.ui

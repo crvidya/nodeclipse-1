@@ -19,8 +19,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.enide.maven.Activator;
-import org.nodeclipse.enide.maven.preferences.Dialogs;
 //import org.nodeclipse.debug.util.Constants;
 //import org.nodeclipse.debug.util.VariablesUtil;
 //import org.nodeclipse.ui.Activator;
@@ -56,7 +56,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		File mavenFile = new File(mavenPath);
 		if(!mavenFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			Dialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
+			CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
 					"Maven installation is not correctly configured.\n\n"
 					+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
 					+" and configure the correct location");

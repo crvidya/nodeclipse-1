@@ -1,5 +1,7 @@
 package org.nodeclipse.enide.maven.util;
 
+import org.nodeclipse.common.ui.CommonConsole;
+
 /**
  * Allow to use any logger
  * @author pverest
@@ -9,7 +11,7 @@ public class NodeclipseLogger {
 	
 	public static void log(String message){
 		System.out.print(message);
-		//NodeclipseConsole.write(message);
+		CommonConsole.write(message);
 	}
 
 }
