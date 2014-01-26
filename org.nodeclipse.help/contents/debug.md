@@ -10,6 +10,12 @@ Notice that Nodeclipse by default enters step-by-step debugging mode from very f
 
 Press <kbd>F11</kbd> to launch debug [again].
 
+### Debugging issues
+
+
+
+see also Run page.
+
 ### debug-brk option
 
 By default Nodeclipse stops on the first line when debugging. The cause is that V8 remote debugger needs some time (~100ms)

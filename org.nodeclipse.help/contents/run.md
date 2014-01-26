@@ -7,6 +7,28 @@ Right-click `.js` file with Node.js app and select "Run As -> Node Application" 
 
 Press <kbd>Ctrl+F11</kbd> to run [again].
 
+### Running issues
+
+- [#72 All nodejs apps fail to run (JDK 6 only?)](https://github.com/Nodeclipse/nodeclipse-1/issues/72)
+is related to Eclipse and Java version that you use, so updating them would solve. Quote bjm88: 
+
+	Ok working now for me. It does seem you have to uninstall nodeclipse then do Java 7 update ( i tried jre 64 bit and jdk 32 bit, both ok), 
+	and set that new java 7 in your eclipse.ini file (format is important). Then reinstall nodeclipse and it will work.
+	Example eclipse.ini entry:
+	-vm
+	C:/dev/java7/bin/javaw.exe
+	-vmargs
+	-Xms128m
+	-Xmx1024m
+
+- [#107 Failed to connect to Standalone V8 VM](https://github.com/Nodeclipse/nodeclipse-1/issues/107) even on JDK 1.6.0_30
+was solved by running `node --debug-brk app.js` first.
+Quote haroldjiang:
+
+	yes,the solution is to run node --debug-brk app.js first.
+
+see also Debug page.
+
 ### Run Configuration
 
 You can configure node and apps parameters workspace wide in `Preferences -> Nodeclipse`

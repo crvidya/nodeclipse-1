@@ -453,6 +453,12 @@ function setDocumentScrollTop(ypos)
 <h2> <a name="running" class="anchor" href="..md.html#running"><span class="octicon octicon-link"></span></a>Running</h2> 
 <p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Node Application&quot; (similar to Java applications).</p> 
 <p>Press <kbd>Ctrl+F11</kbd> to run [again].</p> 
+<h3> <a name="running-issues" class="anchor" href="..md.html#running-issues"><span class="octicon octicon-link"></span></a>Running issues</h3> 
+<ul> 
+ <li> <p><a href="https://github.com/Nodeclipse/nodeclipse-1/issues/72">#72 All nodejs apps fail to run (JDK 6 only?)</a> is related to Eclipse and Java version that you use, so updating them would solve. Quote bjm88: </p> <p>Ok working now for me. It does seem you have to uninstall nodeclipse then do Java 7 update ( i tried jre 64 bit and jdk 32 bit, both ok), and set that new java 7 in your eclipse.ini file (format is important). Then reinstall nodeclipse and it will work. Example eclipse.ini entry: -vm C:/dev/java7/bin/javaw.exe -vmargs -Xms128m -Xmx1024m</p> </li> 
+ <li> <p><a href="https://github.com/Nodeclipse/nodeclipse-1/issues/107">#107 Failed to connect to Standalone V8 VM</a> even on JDK 1.6.0_30 was solved by running <code>node --debug-brk app.js</code> first. Quote haroldjiang:</p> <p>yes,the solution is to run node --debug-brk app.js first.</p> </li> 
+</ul>
+<p>see also Debug page.</p> 
 <h3> <a name="run-configuration" class="anchor" href="..md.html#run-configuration"><span class="octicon octicon-link"></span></a>Run Configuration</h3> 
 <p>You can configure node and apps parameters workspace wide in <code>Preferences -&gt; Nodeclipse</code> or per file:</p> 
 <p>Right-click <code>.js</code> file with Node.js app and select &quot;Run As -&gt; Run Configuration...&quot; (Hint: the easiest way to create LaunchConfiguration is actually run the file once.)</p> 
