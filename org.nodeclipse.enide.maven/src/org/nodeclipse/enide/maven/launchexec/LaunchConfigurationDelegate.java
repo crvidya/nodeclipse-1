@@ -62,15 +62,15 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 					+" and configure the correct location");
 			return;
 		}			
-		cmdLine.add(mavenPath);
+		//cmdLine.add(mavenPath);
 		
 		String mavenOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
-		if(!mavenOptions.equals("")) {
-			String[] sa = mavenOptions.split(" ");
-			for(String s : sa) {
-				cmdLine.add(s);
-			}			
-		}
+//		if(!mavenOptions.equals("")) {
+//			String[] sa = mavenOptions.split(" ");
+//			for(String s : sa) {
+//				cmdLine.add(s);
+//			}			
+//		}
 		
 //		String nodeArgs = configuration.getAttribute(GradleConstants.ATTR_GRADLE_ARGUMENTS, "");
 //		if(!nodeArgs.equals("")) {
@@ -80,9 +80,10 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //			}
 //		}
 		
-		//mvn compile exec:java -Dexec.mainClass=example.Example
-		cmdLine.add("compile");
-		cmdLine.add("exec:java");
+//		//mvn compile exec:java -Dexec.mainClass=example.Example
+//		cmdLine.add("compile");
+//		cmdLine.add("exec:java");
+//		cmdLine.add("-Dmaven.test.skip=true");
 
 		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
 		IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(file);
@@ -98,7 +99,13 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		// cut .java
 		packageClass = packageClass.substring(0, packageClass.lastIndexOf('.')); 
 		packageClass = packageClass.replace('/', '.');
-		cmdLine.add("-Dexec.mainClass="+packageClass );  
+//		cmdLine.add("-Dexec.mainClass="+packageClass );
+		
+		// as one string
+		//cmdLine.add(mavenPath+" "+mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
+		
+		cmdLine.add(mavenPath);
+		cmdLine.add(mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
 		
 //		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
 //		File workingPath = null;

@@ -28,7 +28,7 @@
 		</launchConfigurationTabGroup>
    </extension>
 
-    <!-- pom.xml run as maven -->  
+    <!-- pom.xml run as maven build -->  
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
        <shortcut   
@@ -60,6 +60,15 @@
            </contextualLaunch>   
        </shortcut>   
    </extension>
+   
+    <!-- -->
+	<extension point="org.eclipse.core.runtime.adapters">
+	    <factory
+	        adaptableType="org.eclipse.jdt.core.ICompilationUnit"
+	        class="org.nodeclipse.enide.jdt.CompilationUnitToFileAdapter">
+	        <adapter type="org.eclipse.core.resources.IFile" />
+	    </factory>
+	</extension>
 
 	<extension 
           point="org.eclipse.debug.core.launchConfigurationTypes"> 

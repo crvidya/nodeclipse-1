@@ -2,6 +2,7 @@ package org.nodeclipse.enide.maven.launchexec;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
@@ -12,6 +13,7 @@ import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
@@ -36,8 +38,19 @@ public class LaunchShortcut implements ILaunchShortcut {
             Object selectObj = ((IStructuredSelection) selection).getFirstElement();
             if (selectObj instanceof IFile) {
                 launchFile((IFile) selectObj, mode);
+            }else if (selection instanceof TreeSelection) { // selectObj instanceof org.eclipse.jface.viewers.TreeSelection
+            	// see http://stackoverflow.com/questions/775709/eclipse-pde-navigator-view-treeselection-obtaining-the-file-type-and-name
+            	TreeSelection treeSelection = (TreeSelection) selection;
+            	IAdaptable firstElement = (IAdaptable) treeSelection.getFirstElement();
+
+            	IFile file = (IFile) firstElement.getAdapter(IFile.class);
+            	if (file != null && file.isAccessible()) {
+            		launchFile(file, mode);
+            	}else{
+            		NodeclipseLogger.log("Impossible to get File for selection: "+selection+"\n");
+            	}
             } else {
-                MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+            	showDialogNotImplemented(selection.getClass().getName());
             }
         } catch (CoreException e) {
         	//NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
@@ -45,7 +58,14 @@ public class LaunchShortcut implements ILaunchShortcut {
         }
     }
 
-    /**
+    private void showDialogNotImplemented(String what) {
+    	//TODO CommonDialog "Not Implemented"
+        MessageDialog.openWarning(null, "Warning", 
+        	"Launching of type "+what+" is not implemeneted yet!\n"+
+        	"Search/raise an issue if you care at https://github.com/nodeclipse/nodeclipse-1/issues/");
+	}
+
+	/**
      * (non-Javadoc)
      * 
      * @see org.eclipse.debug.ui.ILaunchShortcut#launch(org.eclipse.ui.IEditorPart,
@@ -59,7 +79,7 @@ public class LaunchShortcut implements ILaunchShortcut {
                 IFile selectObj = ((IFileEditorInput) editorInput).getFile();
                 launchFile((IFile) selectObj, mode);
             } else {
-                MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+            	showDialogNotImplemented(editor.getClass().getName()+" from Editor");
             }
         } catch (CoreException e) {
         	//NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
