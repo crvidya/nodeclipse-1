@@ -32,7 +32,9 @@ Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 	  hello-coffee	           The same server written in CoffeeScript
 	  hello-typescript         The same server written in TypeScript
 	  hello-html		       Template with HTML file
-
+	  template-gradle-java     Gradle Java project
+	  template-maven-java      Maven Java project
+	  
 Examples:
 
 	nodeclipse -p
@@ -106,6 +108,7 @@ options are:
 
 0.8.2 fix #101 (bug on MacOS); -g option
 0.8.3 fix general project template
+0.10.0 add 2 java templates
 
 ## News
 

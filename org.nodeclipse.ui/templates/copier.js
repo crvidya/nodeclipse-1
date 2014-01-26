@@ -14,6 +14,31 @@ var argv = require('optimist')
 			.alias('v','version').describe('v', 'print nodeclipse CLI version')			
 			.alias('V','verbose').describe('V', 'be verbose')
 			.argv;
+
+var helpstr = 
+"  Usage: nodeclipse [arguments] \n\
+\n\
+Arguments: \n\
+-c, --create <name>      create project folder and prepare it \n\
+-u, --use <template>     use/copy specified template when creating project \n\
+-p, --prepare            prepare Nodeclipse [Node.js] project for import, i.e. add needed `.project` file and other `.*`\n\
+                      files ('.gitignore', '.jshintrc', '.settings/') if there is no `.project` yet\n\
+-g, --eclipse_project_general   prepare General Eclipse project for import, i.e. add only needed `.project` file\n\
+-n, --name [<name>]      project name (default is folder name)\n\
+-h, --help               this help screen\n\
+-v, --version            print nodeclipse CLI's version\n\
+-V, --verbose            be verbose\n\
+\n\
+Templates are just folders in this project sources:\n\
+hello-world              The famous hello world HTTP server in 6 lines\n\
+hello-coffee             The same server written in CoffeeScript\n\
+hello-typescript         The same server written in TypeScript\n\
+hello-html		         Template with HTML file\n\
+template-gradle-java     Gradle Java project\n\
+template-maven-java      Maven Java project\n\
+";
+
+
 require('shelljs/global');
 var fs= require('fs');
 var path= require('path');
@@ -78,28 +103,6 @@ var executeActions = function () {
 //		TypeError: path must be a string
 //		    at Object.fs.open (fs.js:404:11)
 
-		
-		var helpstr = 
-"  Usage: nodeclipse [arguments] \n\
-\n\
-  Arguments: \n\
-    -c, --create <name>      create project folder and prepare it \n\
-    -u, --use <template>     use/copy specified template when creating project \n\
-    -p, --prepare            prepare Nodeclipse [Node.js] project for import, i.e. add needed `.project` file and other `.*`\n\
-                              files ('.gitignore', '.jshintrc', '.settings/') if there is no `.project` yet\n\
-    -g, --eclipse_project_general   prepare General Eclipse project for import, i.e. add only needed `.project` file\n\
-    -n, --name [<name>]      project name (default is folder name)\n\
-    -h, --help               this help screen\n\
-    -v, --version            print nodeclipse CLI's version\n\
-    -V, --verbose            be verbose\n\
-\n\
-  Templates are just folders in this project sources:\n\
-    hello-world              The famous hello world HTTP server in 6 lines\n\
-    hello-coffee             The same server written in CoffeeScript\n\
-    hello-typescript         The same server written in TypeScript\n\
-	hello-html		         Template with HTML file\n\
-";
-
 		console.log(helpstr);
 		console.log("Check README.md and sources at "+__dirname);	
 		return;
@@ -108,7 +111,7 @@ var executeActions = function () {
 		console.log("Nodeclipse CLI "+require('./package.json').version );		
 		return;
 	}
-	if (projectFileExists) {
+	if (projectFileExists && !create) {
 		console.log(".project file already exists!");
 		return;
 	}
@@ -125,14 +128,29 @@ var executeActions = function () {
 		if (verbose) console.log("Created project/folder: " + create);
 	}
 	
+	var curfolder = pwd();
 	var templatesfolder = __dirname;
 	if (debug) console.log("Templates folder is: " + templatesfolder);
+	if (!name){
+		name = path.basename(curfolder);
+	}	
 
-	if (use){
+	if (use){ //template
 		//cp(__dirname+use+'/*','.');
 		var fromfolder = path.join(templatesfolder, use, '/*') 
 		if (verbose) console.log("Copying from "+ fromfolder );
 		cp( fromfolder, '.' )
+		
+		if(use.indexOf('template') == 0 ){ //.startsWith() //http://stackoverflow.com/questions/646628/javascript-startswith
+			// template-* do not use common-templates
+			
+			// .files special treatment ( Node.js shelljs is likely not good tool for this)
+			copyDotProjectFile(use, curfolder, '/.project', name);
+			copyDotProjectFile(use, curfolder, '/.classpath', name);
+			
+			inviteToSiteAsTheLastLine();
+			return;
+		}
 	}
 	
 	// common-templates 
@@ -167,31 +185,30 @@ var executeActions = function () {
 	
 	// .project
 	if (debug) console.log('projectNodeclipse='+projectNodeclipse+', projectGeneral='+projectGeneral);
-	var curfolder = pwd();
 	if (verbose) console.log("Current folder is: " + curfolder);
-	if (!name){
-		name = path.basename(curfolder);
-	}	
 	if (prepare){
-		copyDotProjectFile('eclipse',curfolder, name);
+		copyDotProjectFile('eclipse', curfolder, '/.project', name);
 	} else if (projectGeneral){
-		copyDotProjectFile('eclipse-project-general',curfolder, name);
+		copyDotProjectFile('eclipse-project-general', curfolder, '/.project', name);
 	}
 	
 	inviteToSiteAsTheLastLine();
 }
-var copyDotProjectFile = function (eclipse, curfolder, name) {
+var copyDotProjectFile = function (eclipse, curfolder, what, name) {
 	if (!eclipse) eclipse = 'eclipse';
-	var str = cat(__dirname+'/'+eclipse+'/.project').replace('${projectname}', name);
-	var destfile = curfolder + '/.project';
+	if (!what) eclipse = '/.project';
+	var str = cat(__dirname+'/'+eclipse + what).replace('${projectname}', name);
+	var destfile = curfolder + what;
 	
 	// http://www.nodejs.org/api/fs.html#fs_fs_appendfile_filename_data_options_callback	
 	fs.writeFile(destfile, str, function(err) {	
 		if (err)
 			throw err;
 		if (verbose) console.log('The file "'+destfile+'" was created !');
-		console.log('In Eclipse/Enide select File -> Import... -> General / Existing Projects into Workspace');
-		console.log('and enter project directory: '+curfolder);
+		if (what == '/.project'){
+			console.log('In Eclipse/Enide select File -> Import... -> General / Existing Projects into Workspace');
+			console.log('and enter project directory: '+curfolder);
+		}
 	});
 	
 	if (debug) console.log(str); // ''.toString()
