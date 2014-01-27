@@ -17,7 +17,7 @@ Some helpful commands:
 
 redis-cli doesn't allow to execte scripts only commands.
 
-```txt
+<pre><code>
 	C:\Program Files\Redis>redis-cli.exe -h
 	redis-cli 2.4.6 (git:26cdd13a)
 	
@@ -45,7 +45,7 @@ redis-cli doesn't allow to execte scripts only commands.
 	
 	When no command is given, redis-cli starts in interactive mode.
 	Type "help" in interactive mode for information on available commands.
-```
+</code></pre>
 
 
 ### node_redis

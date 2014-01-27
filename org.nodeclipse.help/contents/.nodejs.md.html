@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>C:\Users\weibl\git\Enide-nodeclipse-1\org.nodeclipse.help\contents\.nodejs.md.html</title>
+<title>D:\Workspaces\Nodeclipse-DEV\nodeclipse-1\org.nodeclipse.help\contents\.nodejs.md.html</title>
 
 
 <style type="text/css">
@@ -454,43 +454,41 @@ function setDocumentScrollTop(ypos)
 <p>Of course <a href="http://nodejs.org/">http://nodejs.org/</a> .</p> 
 <p>Sources at GitHub <a href="https://github.com/joyent/node/">https://github.com/joyent/node/</a> .</p> 
 <h2> <a name="nodejs-1" class="anchor" href="..md.html#nodejs-1"><span class="octicon octicon-link"></span></a>Node.js</h2> 
-<div class="highlight highlight-txt">
- <pre>    <span class="err">$</span> <span class="err">node</span> <span class="err">-h</span>
-    <span class="err">Usage:</span> <span class="err">node</span> <span class="err">[options]</span> <span class="err">[</span> <span class="err">-e</span> <span class="err">script</span> <span class="err">|</span> <span class="err">script.js</span> <span class="err">]</span> <span class="err">[arguments]</span>
-           <span class="err">node</span> <span class="err">debug</span> <span class="err">script.js</span> <span class="err">[arguments]</span>
+<pre><code>
+$ node -h
+Usage: node [options] [ -e script | script.js ] [arguments]
+       node debug script.js [arguments]
 
-    <span class="err">Options:</span>
-      <span class="err">-v,</span> <span class="err">--version</span>        <span class="err">print</span> <span class="err">node's</span> <span class="err">version</span>
-      <span class="err">-e,</span> <span class="err">--eval</span> <span class="err">script</span>    <span class="err">evaluate</span> <span class="err">script</span>
-      <span class="err">-p,</span> <span class="err">--print</span>          <span class="err">evaluate</span> <span class="err">script</span> <span class="err">and</span> <span class="err">print</span> <span class="err">result</span>
-      <span class="err">-i,</span> <span class="err">--interactive</span>    <span class="err">always</span> <span class="err">enter</span> <span class="err">the</span> <span class="err">REPL</span> <span class="err">even</span> <span class="err">if</span> <span class="err">stdin</span>
-                           <span class="err">does</span> <span class="err">not</span> <span class="err">appear</span> <span class="err">to</span> <span class="err">be</span> <span class="err">a</span> <span class="err">terminal</span>
-      <span class="err">--no-deprecation</span>     <span class="err">silence</span> <span class="err">deprecation</span> <span class="err">warnings</span>
-      <span class="err">--trace-deprecation</span>  <span class="err">show</span> <span class="err">stack</span> <span class="err">traces</span> <span class="err">on</span> <span class="err">deprecations</span>
-      <span class="err">--v8-options</span>         <span class="err">print</span> <span class="err">v8</span> <span class="err">command</span> <span class="err">line</span> <span class="err">options</span>
-      <span class="err">--max-stack-size=val</span> <span class="err">set</span> <span class="err">max</span> <span class="err">v8</span> <span class="err">stack</span> <span class="nb">size</span> <span class="p">(</span><span class="s">bytes</span><span class="p">)</span>
+Options:
+  -v, --version        print node's version
+  -e, --eval script    evaluate script
+  -p, --print          evaluate script and print result
+  -i, --interactive    always enter the REPL even if stdin
+                       does not appear to be a terminal
+  --no-deprecation     silence deprecation warnings
+  --trace-deprecation  show stack traces on deprecations
+  --v8-options         print v8 command line options
+  --max-stack-size=val set max v8 stack size (bytes)
 
-    <span class="err">Environment</span> <span class="err">variables:</span>
-    <span class="err">NODE_PATH</span>              <span class="err">';'-separated</span> <span class="err">list</span> <span class="err">of</span> <span class="err">directories</span>
-                           <span class="err">prefixed</span> <span class="err">to</span> <span class="err">the</span> <span class="err">module</span> <span class="err">search</span> <span class="err">path.</span>
-    <span class="err">NODE_MODULE_CONTEXTS</span>   <span class="err">Set</span> <span class="err">to</span> <span class="err">1</span> <span class="err">to</span> <span class="err">load</span> <span class="err">modules</span> <span class="err">in</span> <span class="err">their</span> <span class="err">own</span>
-                           <span class="err">global</span> <span class="err">contexts.</span>
-    <span class="err">NODE_DISABLE_COLORS</span>    <span class="err">Set</span> <span class="err">to</span> <span class="err">1</span> <span class="err">to</span> <span class="err">disable</span> <span class="err">colors</span> <span class="err">in</span> <span class="err">the</span> <span class="err">REPL</span>
+Environment variables:
+NODE_PATH              ';'-separated list of directories
+                       prefixed to the module search path.
+NODE_MODULE_CONTEXTS   Set to 1 to load modules in their own
+                       global contexts.
+NODE_DISABLE_COLORS    Set to 1 to disable colors in the REPL
 
-    <span class="err">Documentation</span> <span class="err">can</span> <span class="err">be</span> <span class="err">found</span> <span class="err">at</span> <span class="err">http://nodejs.org/</span>
-</pre>
-</div> 
-<div class="highlight highlight-txt">
- <pre>    <span class="err">$</span> <span class="err">node</span> <span class="err">-p</span> <span class="err">&quot;process.versions&quot;</span>
-    <span class="err">{</span> <span class="err">http_parser:</span> <span class="err">'1.0',</span>
-      <span class="err">node:</span> <span class="err">'0.10.0',</span>
-      <span class="err">v8:</span> <span class="err">'3.14.5.8',</span>
-      <span class="err">ares:</span> <span class="err">'1.9.0-DEV',</span>
-      <span class="err">uv:</span> <span class="err">'0.9',</span>
-      <span class="err">zlib:</span> <span class="err">'1.2.3',</span>
-      <span class="err">openssl:</span> <span class="err">'1.0.1e'</span> <span class="err">}</span>
-</pre>
-</div> 
+Documentation can be found at http://nodejs.org/
+</code></pre> 
+<pre><code>
+$ node -p &quot;process.versions&quot;
+{ http_parser: '1.0',
+  node: '0.10.0',
+  v8: '3.14.5.8',
+  ares: '1.9.0-DEV',
+  uv: '0.9',
+  zlib: '1.2.3',
+  openssl: '1.0.1e' }
+</code></pre> 
 <h3> <a name="nodejs-instances" class="anchor" href="..md.html#nodejs-instances"><span class="octicon octicon-link"></span></a>Node.js instances</h3> 
 <p>Nodeclipse lets you define exact location of Node.js installations, or with checkbox &quot;just node&quot; let OS to find <code>node</code> on current PATH.</p> 
 <p>Hint: if you have 2 or more Node.js instances, let the newest be on PATH and select older in &quot;Node path:&quot;. Then by checking/unchecking &quot;just node&quot; you can switch to and from the newest Node.js.</p> 
@@ -508,6 +506,7 @@ function setDocumentScrollTop(ypos)
     <span class="nt">&lt;/linkedResources&gt;</span>
 </pre>
 </div> 
+<p>(This is done automatically if Node.js sources are selected since Nodeclipse 0.9)</p> 
 <p><a href="images/nodejs-sources-lib.PNG" target="_blank"><img src="images/nodejs-sources-lib.PNG" alt="" style="max-width:100%;" /></a></p> 
 <h3> <a name="nodejs-modules" class="anchor" href="..md.html#nodejs-modules"><span class="octicon octicon-link"></span></a>Node.js modules</h3> 
 <p>Node.js modules (in <code>node_modules</code>) usually have <code>README.md</code> file. To see <code>README.md</code> as it looks like on GitHub, right-click it and select <code>Show in GFM view</code>. Check also &quot;Markdown&quot; and &quot;Github Flavored Markdown (GFM)&quot; help pages.</p> 

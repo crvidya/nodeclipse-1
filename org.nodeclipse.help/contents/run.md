@@ -58,12 +58,12 @@ e.g.
 
 ```javascript
 setTimeout(function(){
-process.env.NODE_ENV="development";
-require("./app.js");
+  process.env.NODE_ENV="development";
+  require("./app.js");
 },100);
 ```
 
-### Warning 0.6 behavior
+### Warning multiple launch configurations
 
 In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page)
  or launch coffee util to compile `*.coffee` files. However these have ran into

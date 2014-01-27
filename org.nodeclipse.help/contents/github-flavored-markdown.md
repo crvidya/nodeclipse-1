@@ -11,10 +11,10 @@ Github Flavored Markdown (GFM) is extension of [Markdown by GitHub](http://githu
 
 Continue at <https://help.github.com/articles/github-flavored-markdown> .
 
-### Issue during Debug
+### GFM Viewer plugin
 
-When debugging this plugin causes [Error Dialog NullPointerException](https://github.com/satyagraha/gfm_viewer/issues/20).
-So close it before you start your debugging session.
+For GFM Viewer check <https://github.com/satyagraha/gfm_viewer>.
+It also has its own Help.
 
 You can open it any time from Windows -> Show View -> GFM View
 

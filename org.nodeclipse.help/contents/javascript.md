@@ -19,7 +19,8 @@ Check JavaScript Development Guide in Help.
 
 #### Hints
 
-Press <kbd>Ctrl+Shift+F</kbd> to format.
+- Press <kbd>Ctrl+Shift+F</kbd> to format.
+- <http://www.nodeclipse.org/> main page has many usefull shortcuts.
 
 ### Contribute
 

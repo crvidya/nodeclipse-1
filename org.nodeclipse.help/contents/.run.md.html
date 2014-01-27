@@ -474,12 +474,12 @@ function setDocumentScrollTop(ypos)
 <p>e.g.</p> 
 <div class="highlight highlight-javascript">
  <pre><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="o">=</span><span class="s2">&quot;development&quot;</span><span class="p">;</span>
-<span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app.js&quot;</span><span class="p">);</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="o">=</span><span class="s2">&quot;development&quot;</span><span class="p">;</span>
+  <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./app.js&quot;</span><span class="p">);</span>
 <span class="p">},</span><span class="mi">100</span><span class="p">);</span>
 </pre>
 </div> 
-<h3> <a name="warning-06-behavior" class="anchor" href="..md.html#warning-06-behavior"><span class="octicon octicon-link"></span></a>Warning 0.6 behavior</h3> 
+<h3> <a name="warning-multiple-launch-configurations" class="anchor" href="..md.html#warning-multiple-launch-configurations"><span class="octicon octicon-link"></span></a>Warning multiple launch configurations</h3> 
 <p>In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page) or launch coffee util to compile <code>*.coffee</code> files. However these have ran into problem <a href="http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype">http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype</a> </p> 
 <h3> <a name="sources" class="anchor" href="..md.html#sources"><span class="octicon octicon-link"></span></a>Sources</h3> 
 <p>Check <a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java">LaunchConfigurationDelegate.java</a> for launching Node.js logic.</p> 

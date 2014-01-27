@@ -1,12 +1,17 @@
-Title:  Nodeclipse Online Help - Import
+Title:  Nodeclipse Help - Import
 
 ## Import
 
-You can just select File -> New -> Node.js Project. It will add only new `.project` file.
+_1. Add `.project` file (3 option a,b,c,d)
 
-Or do it in longer way:
+a. (via shell) run `nodeclipse -p` from project root. It will add `.project` file and some configuration files.
 
-1. Add file `.project` into your project root with following content (change name):
+b. (GUI) You can just select <code>File -> New -> Node.js Project</code>. It will add only new `.project` file.
+And you have your project opened in Eclipse / Enide Studio.
+
+c. create new project and learn what files there are.
+
+d. (manualy, minimal) add file `.project` into your project root with following content (change name):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -31,7 +36,7 @@ Or do it in longer way:
 
 Now your project is Eclipse project :)
 
-2. Import via standard File -> Import -> General -> Existing Projects into Workspace and select folder where the project is located.
+_2. Import via standard File -> Import -> General -> Existing Projects into Workspace and select folder where the project is located.
  	
 ### Contribute
 

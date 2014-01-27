@@ -23,7 +23,7 @@ console.log('Server running at http://127.0.0.1:1337/');
 	
 ### tsc Util
 
-```txt
+<pre><code>
 $ tsc
 Version 0.9.0.1
 Syntax:   tsc [options] [file ..]
@@ -47,7 +47,7 @@ Options:
   -v, --version               Print the compiler's version: 0.9.0.1
   -w, --watch                 Watch input files
   @<file>                     Insert command line options and files from a file.	
-  ```
+</code></pre>
   
 ### Contribute
 
