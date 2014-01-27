@@ -2,7 +2,7 @@
 <feature
       id="org.nodeclipse.enide.editors.gradle.feature"
       label="Minimalist Gradle Editor"
-      version="0.9.0.qualifier"
+      version="0.10.0.qualifier"
       provider-name="Paul Verest">
 
    <description url="http://www.nodeclipse.org/">

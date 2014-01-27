@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: pom.xml Run As Maven build; *.java Run as compile exec:java
 Bundle-SymbolicName: org.nodeclipse.enide.maven;singleton:=true
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 0.10.0.qualifier
 Bundle-Activator: org.nodeclipse.enide.maven.Activator
 Bundle-Vendor: Enide
 Require-Bundle: org.eclipse.ui,

@@ -2,7 +2,7 @@
 <feature
       id="org.nodeclipse.enide.gradle.feature"
       label="Enide Gradle"
-      version="0.9.0.qualifier"
+      version="0.10.0.qualifier"
       provider-name="Nodeclipse/Enide, Paul Verest">
 
    <description url="https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.enide.gradle">
