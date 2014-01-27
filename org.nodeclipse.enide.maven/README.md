@@ -25,6 +25,10 @@ GitHub <https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.en
 
 Depends on JDT (see link 1).
 
+![](docs/enide-maven-run-as-mvn-package.png)
+
+![](docs/enide-maven-run-as-mvn-package-results-in-console.png)
+
 ### Developing 
 
 `git clone`, import this project and `org.nodeclipse.coomon` (2) in Eclipse with PDE (e.g. Eclipse SDK/Classic)
