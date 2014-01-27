@@ -51,12 +51,17 @@
 
 	<category-def name="Minimalist" label="Minimalist Tools">
       <description>
+      	Enide Gradle,
       	Minimalist Gradle Editor by Paul Verest,
+      	Enide Maven,
         Nodeclipse Git Addon by Paul Verest,
       	YAML YEdit by http://dadacoalition.org/yedit
       </description>
 	</category-def>   
    <feature url="features/org.nodeclipse.enide.editors.gradle.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.editors.gradle.feature" version="0.9.0.qualifier">
+      <category name="Minimalist"/>
+   </feature>
+   <feature url="features/org.nodeclipse.enide.gradle.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.gradle.feature" version="0.9.0.qualifier">
       <category name="Minimalist"/>
    </feature>
    <feature url="features/org.nodeclipse.enide.maven.feature_0.9.0.qualifier.jar" id="org.nodeclipse.enide.maven.feature" version="0.9.0.qualifier">
@@ -70,7 +75,7 @@
    </feature>
 
 
-   <!--   
+   <!--  -->  
    <category-def name="Tools" label="Enide Tools Collection">
       <description>
       	Nodeclipse Plugins List by Paul Verest,
@@ -100,7 +105,7 @@
    <feature url="features/code.google.restclient.tool.feature_1.0.3.jar" id="code.google.restclient.tool.feature" version="1.0.3">
       <category name="Tools"/>
    </feature>
-   <feature url="features/org.eclipse_icons.editor.feature_2.4.0.qualifier.jar" id="org.eclipse_icons.editor.feature" version="2.4.0.qualifier">
+   <feature url="features/org.eclipse_icons.editor.feature_2.4.1.qualifier.jar" id="org.eclipse_icons.editor.feature" version="2.4.1.qualifier">
       <category name="Tools"/>
    </feature>
    <feature url="features/net.jeeeyul.pdetools.feature_1.1.0.qualifier.jar" id="net.jeeeyul.pdetools.feature" version="1.1.0.qualifier">
@@ -115,9 +120,9 @@
    <feature url="features/jsonedit-feature_0.9.7.qualifier.jar" id="jsonedit-feature" version="0.9.7.qualifier">
       <category name="Tools"/>
    </feature>
-   --> 
+   
 
-   <!-- 
+   <!-- -->
    <category-def name="General" label="General plugins">
       <description>
         EclipseRunner by Lukasz Wachowicz and Bartosz Roznowski (Runner View) http://code.google.com/p/eclipserunnerplugin/
@@ -150,9 +155,9 @@
    <feature url="features/OpenClosedProjectsFeature_1.0.5.qualifier.jar" id="OpenClosedProjectsFeature" version="1.0.5.qualifier">
       <category name="General"/>
    </feature>
-    -->
+    
   
-    <!--  
+    <!--  -->
    <category-def name="Other" label="Other Optional Tools">
       <description>
         PracticallyMacro by Ernest Pasour (Macros for Editors using BeanShell.org) http://sourceforge.net/projects/practicalmacro/ 
@@ -165,8 +170,6 @@
    <feature url="features/SelectionExplorerFeature_1.0.2.qualifier.jar" id="SelectionExplorerFeature" version="1.0.2.qualifier">
       <category name="Other"/>
    </feature>
-  --> 
-     
  
  
    
