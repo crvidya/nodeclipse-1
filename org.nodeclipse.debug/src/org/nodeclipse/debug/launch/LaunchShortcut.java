@@ -23,6 +23,14 @@ import org.nodeclipse.ui.util.NodeclipseConsole;
  * Using "Run As" --> "Node Application" or "Run As" --> "coffee" will lead here
  **/
 public class LaunchShortcut implements ILaunchShortcut {
+	
+    private void showDialogNotImplemented(String what) {
+    	//TODO CommonDialog "Not Implemented"
+        MessageDialog.openWarning(null, "Warning", 
+        	"Launching of type "+what+" is not implemeneted yet!\n"+
+        	"Search/raise an issue if you care at https://github.com/nodeclipse/nodeclipse-1/issues/");
+	}
+	
 
     /**
      * (non-Javadoc)
@@ -37,7 +45,8 @@ public class LaunchShortcut implements ILaunchShortcut {
             if (selectObj instanceof IFile) {
                 launchFile((IFile) selectObj, mode);
             } else {
-                MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+                //MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+                showDialogNotImplemented(selection.getClass().getName());
             }
         } catch (CoreException e) {
         	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
@@ -58,7 +67,8 @@ public class LaunchShortcut implements ILaunchShortcut {
                 IFile selectObj = ((IFileEditorInput) editorInput).getFile();
                 launchFile((IFile) selectObj, mode);
             } else {
-                MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+                //MessageDialog.openWarning(null, "Warning", "Not implemeneted yet!");
+                showDialogNotImplemented(editor.getClass().getName());
             }
         } catch (CoreException e) {
         	NodeclipseConsole.write(e.getLocalizedMessage()+"\n");
