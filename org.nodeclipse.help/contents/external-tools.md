@@ -17,7 +17,7 @@ Launched programs are visible in `Debug` View.
 
 Hints.
 
-1. On Windows your `cmd` path is likely is `C:\WINDOWS\system32\cmd.exe`
+1. On Windows your `cmd` path likely is `C:\WINDOWS\system32\cmd.exe`
 2. [Git for Windows](http://msysgit.github.io/) comes with great bash shell. 
  On Windows by default path is like `C:\Program Files (x86)\Git\bin\sh.exe`, add `--login -i` to Arguments.
 
