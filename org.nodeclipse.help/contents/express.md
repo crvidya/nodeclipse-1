@@ -1,5 +1,5 @@
 
-```
+<pre><code>
 	$ express -h
 
   Usage: express [options]
@@ -14,4 +14,4 @@
     -H, --hogan         add hogan.js engine support
     -c, --css <engine>  add stylesheet <engine> support (less|stylus) (defaults to plain css)
     -f, --force         force on non-empty directory
-```    
+</code></pre>    

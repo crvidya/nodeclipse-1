@@ -3,6 +3,7 @@
 
 <toc label="Nodeclipse Help" topic="contents/.index.md.html">
 	<topic label="Configuration"  href="contents/.configuration.md.html"/>
+	<topic label="External Tools"  href="contents/.external-tools.md.html"/>
 	<topic label="Node.js"  href="contents/.nodejs.md.html"/>
 	<topic label="Tutorials"  href="contents/.tutorials.md.html"/>
 	<topic label="Import"  href="contents/.import.md.html"/>
@@ -14,6 +15,7 @@
 	<topic label="JavaScript"  href="contents/.javascript.md.html"/>
 	<topic label="CoffeeScript"  href="contents/.coffeescript.md.html"/>
 	<topic label="TypeScript"  href="contents/.typescript.md.html"/>
+	<topic label="Express"  href="contents/.express.md.html"/>
 	<topic label="node_redis"  href="contents/.node_redis.md.html"/>
 	<topic label="Plugins"  href="contents/.plugins.md.html"/>
 	<topic label="FAQ"  href="contents/.FAQ.md.html"/>

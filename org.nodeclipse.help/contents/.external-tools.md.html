@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>D:\Workspaces\Nodeclipse-DEV\nodeclipse-1\org.nodeclipse.help\contents\.express.md.html</title>
+<title>D:\Workspaces\Nodeclipse-DEV\nodeclipse-1\org.nodeclipse.help\contents\.external-tools.md.html</title>
 
 
 <style type="text/css">
@@ -449,21 +449,49 @@ function setDocumentScrollTop(ypos)
 
 </head>
 <body class="markdown-body">
+<p>Title: Nodeclipse Help - External Tools</p> 
+<h2> <a name="external-tools" class="anchor" href="..md.html#external-tools"><span class="octicon octicon-link"></span></a>External Tools</h2> 
+<p>add <code>External Tool Configuration</code> </p> 
+<p><a href="images/External-Tool-Configuration.png" target="_blank"><img src="images/External-Tool-Configuration.png" alt="" style="max-width:100%;" /></a></p> 
+<p>via <code>Run</code> menu or <code>External Tools</code> icon</p> 
+<p><a href="images/External-Tool-Launch.png" target="_blank"><img src="images/External-Tool-Launch.png" alt="" style="max-width:100%;" /></a></p> 
+<p>Launched programs are visible in <code>Debug</code> View.</p> 
+<p><a href="images/External-Tool-Launch-Are-Seen-In-Debug-View.png" target="_blank"><img src="images/External-Tool-Launch-Are-Seen-In-Debug-View.png" alt="" style="max-width:100%;" /></a></p> 
+<p>Hints.</p> 
+<ol> 
+ <li>On Windows your <code>cmd</code> path is likely is <code>C:\WINDOWS\system32\cmd.exe</code> </li> 
+ <li> <a href="http://msysgit.github.io/">Git for Windows</a> comes with great bash shell. On Windows by default path is like <code>C:\Program Files (x86)\Git\bin\sh.exe</code>, add <code>--login -i</code> to Arguments.</li> 
+</ol>
+<p><a href="http://git-scm.com/"><img src="images/try-git-74x71.png" alt="" style="max-width:100%;" /></a></p> 
 <pre><code>
-    $ express -h
-
-  Usage: express [options]
-
-  Options:
-
-    -h, --help          output usage information
-    -V, --version       output the version number
-    -s, --sessions      add session support
-    -e, --ejs           add ejs engine support (defaults to jade)
-    -J, --jshtml        add jshtml engine support (defaults to jade)
-    -H, --hogan         add hogan.js engine support
-    -c, --css   add stylesheet  support (less|stylus) (defaults to plain css)
-    -f, --force         force on non-empty directory
+&gt;&quot;C:\Program Files (x86)\Git\bin\sh.exe&quot; --help
+GNU bash, version 3.1.0(1)-release-(i686-pc-msys)
+Usage:  &quot;C:/Program Files (x86)/Git/bin/sh.exe&quot; [GNU long option] [option] ...
+        &quot;C:/Program Files (x86)/Git/bin/sh.exe&quot; [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --protected
+        --rcfile
+        --restricted
+        --verbose
+        --version
+        --wordexp
+Shell options:
+        -irsD or -c command or -O shopt_option          (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+Type `&quot;C:/Program Files (x86)/Git/bin/sh.exe&quot; -c &quot;help set&quot;' for more information about shell options.
+Type `&quot;C:/Program Files (x86)/Git/bin/sh.exe&quot; -c help' for more information about shell builtin commands.
+Use the `bashbug' command to report bugs.
 </code></pre>
 </body>
 </html>

@@ -25,6 +25,14 @@ Ideas for tool:
 
 Finally using GFM View
 
+### Problems
+
+Adding links to real site sometime/ after a while causes Eclipse to crash silently.
+
+	<topic label="Site"  href="http://www.nodeclipse.org/"/>
+	<topic label="History"  href="http://www.nodeclipse.org/history"/>
+
+
 ### Q
 
 Can Eclipse Help show .js file?
