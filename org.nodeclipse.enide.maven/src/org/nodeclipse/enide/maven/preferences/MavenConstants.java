@@ -18,6 +18,8 @@ public class MavenConstants {
 	
 	public static final String MAVEN_PATH = "maven_path";	
 	public static final String MAVEN_OPTIONS = "maven_options";
+	public static final String MAVEN_OPTION_OFFLINE = "maven_option_offline";
+	public static final String MAVEN_OPTION_DEBUG = "maven_option_debug";
 
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.enide.maven.preferences.MavenPreferencePage";
 	public static final String PREFERENCE_PAGE_NAME ="Maven(Nodeclipse)"; // the same as in plugin.xml	
