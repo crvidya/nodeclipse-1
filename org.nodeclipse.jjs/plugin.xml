@@ -119,6 +119,24 @@
 		</launchConfigurationTabGroup>
    </extension>
 
+	<!-- not used
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.phantomjs.preferences.PhantomjsPreferenceInitializer">
+      </initializer>
+   </extension>
+    -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.nodeclipse.ui.preferences.NodePreferencePage"
+            class="org.nodeclipse.jjs.preferences.JJSPreferencePage"
+            id="org.nodeclipse.jjs.preferences.JJSPreferencePage"
+            name="JJS">
+      </page>
+   </extension>
+
    <extension
          point="org.eclipse.help.toc">
       <toc

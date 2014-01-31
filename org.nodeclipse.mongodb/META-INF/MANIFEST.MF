@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.ui.editors,
  org.eclipse.debug.ui,
- org.nodeclipse.ui
+ org.nodeclipse.ui,
+ org.nodeclipse.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.nodeclipse.debug.launch,

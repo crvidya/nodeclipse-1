@@ -15,6 +15,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
+import org.nodeclipse.jjs.preferences.JJSConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
 /**
@@ -74,7 +75,7 @@ public class LaunchShortcut implements ILaunchShortcut {
         // check for an existing launch config for the file
         String path = file.getFullPath().toString();
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
-        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(ConstantsJJS.LAUNCH_CONFIGURATION_TYPE_ID); 
+        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(JJSConstants.LAUNCH_CONFIGURATION_TYPE_ID); 
         ILaunchConfiguration configuration = createLaunchConfiguration(type, path, file);
         DebugUITools.launch(configuration, mode);
         // then execution goes in LaunchConfigurationDelegate.java launch() method

@@ -79,6 +79,24 @@
 		</launchConfigurationTabGroup>
    </extension>
 
+	<!-- not used
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.phantomjs.preferences.PhantomjsPreferenceInitializer">
+      </initializer>
+   </extension>
+    -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.nodeclipse.ui.preferences.NodePreferencePage"
+            class="org.nodeclipse.mongodb.preferences.MongodbPreferencePage"
+            id="org.nodeclipse.mongodb.preferences.MongodbPreferencePage"
+            name="MongoDB">
+      </page>
+   </extension>
+
    <extension
          point="org.eclipse.help.toc">
       <toc

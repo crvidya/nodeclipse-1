@@ -118,4 +118,22 @@
         	type= "org.nodeclipse.phantomjs.launch.LaunchConfigurationType" >   
 		</launchConfigurationTabGroup>
    </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.phantomjs.preferences.PhantomjsPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.nodeclipse.ui.preferences.NodePreferencePage"
+            class="org.nodeclipse.phantomjs.preferences.PhantomjsPreferencePage"
+            id="org.nodeclipse.phantomjs.preferences.PhantomjsPreferencePage"
+            name="PhantomJS">
+      </page>
+   </extension>
+   
+   
 </plugin>

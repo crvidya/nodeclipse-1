@@ -37,24 +37,13 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
     
-    private FileFieldEditor phanthomjsPath;
-    private BooleanFieldEditor phanthomjsDebugAutorun;
-    private IntegerFieldEditor phanthomjsDebugPort;
-    
-    private FileFieldEditor jjsPath;
-    private BooleanFieldEditor jjsJustJJS;
-
-    private FileFieldEditor mongoDBShellPath;
-    private StringFieldEditor mongoDBShellOptions;
-    
-    
     public NodePreferencePage() {
         super(GRID);
         setPreferenceStore(Activator.getDefault().getPreferenceStore());
         setDescription(
         	VersionUtil.getLongString()+
         	"\n"+
-    		"Node.js, Express, CoffeeScript, TypeScript, PhantomJS, Java 8 Nashorn jjs and MongoDB Shell settings");
+    		"Node.js, Express, CoffeeScript, TypeScript settings");
     }
 
 	@Override
@@ -124,28 +113,6 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         typescriptCompilerOptions = new StringFieldEditor(PreferenceConstants.TYPESCRIPT_COMPILER_OPTIONS, "TypeScript compiler options:", getFieldEditorParent());
         addField(typescriptCompilerOptions);
 
-        phanthomjsPath = new FileFieldEditor(PreferenceConstants.PHANTOMJS_PATH, "PhanthomJS path:", getFieldEditorParent());
-        addField(phanthomjsPath);
-
-        phanthomjsDebugPort = new IntegerFieldEditor(PreferenceConstants.PHANTOMJS_DEBUG_PORT, "PhantomJS debug port:", getFieldEditorParent());
-        addField(phanthomjsDebugPort);
-
-        phanthomjsDebugAutorun = new BooleanFieldEditor(PreferenceConstants.PHANTOMJS_DEBUG_AUTORUN, "PhantomJS debug autorun", getFieldEditorParent());
-        addField(phanthomjsDebugAutorun);
-        
-        
-        jjsPath = new FileFieldEditor(PreferenceConstants.JJS_PATH, "`jjs` path:", getFieldEditorParent());
-        addField(jjsPath);
-
-        jjsJustJJS = new BooleanFieldEditor(PreferenceConstants.JJS_JUST_JJS, 
-        		"just `jjs` (find `jjs` on PATH. Useful when there are 2 or more JDK 8 instances)", getFieldEditorParent());
-        addField(jjsJustJJS);
-        
-        mongoDBShellPath = new FileFieldEditor(PreferenceConstants.MONGODB_SHELL_PATH, "MongoDB Shell path:", getFieldEditorParent());
-        addField(mongoDBShellPath);
-        
-        mongoDBShellOptions = new StringFieldEditor(PreferenceConstants.MONGODB_SHELL_OPTIONS, "MongoDB Shell options:", getFieldEditorParent());
-        addField(mongoDBShellOptions);
     }
 
     @Override

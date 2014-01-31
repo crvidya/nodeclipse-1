@@ -16,11 +16,12 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.debug.util.VariablesUtil;
+import org.nodeclipse.phantomjs.preferences.PhantomjsConstants;
 import org.nodeclipse.ui.Activator;
-import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
@@ -58,8 +59,12 @@ public class LaunchConfigurationDelegate
 		File phantomjsFile = new File(phantomjsPath);
 		if(!phantomjsFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			Dialogs.showPreferencesDialog("PhantomJS runtime is not correctly configured.\n\n"
-					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'PhanthomJS path:'");
+//			Dialogs.showPreferencesDialog("PhantomJS runtime is not correctly configured.\n\n"
+//					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'PhanthomJS path:'");
+			CommonDialogs.showPreferencesDialog(PhantomjsConstants.PREFERENCES_PAGE,
+					"PhantomJS installation is not correctly configured.\n\n"
+					+ "Please goto Window -> Preferences -> "+PhantomjsConstants.PREFERENCE_PAGE_NAME
+					+" and configure the correct location");
 			return;
 		}			
 		cmdLine.add(phantomjsPath);	
@@ -107,7 +112,7 @@ public class LaunchConfigurationDelegate
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to run or debug
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, ConstantsPhantomJS.PROCESS_MESSAGE);
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, PhantomjsConstants.PROCESS_MESSAGE);
 		if (isDebugMode) {
 			int phantomjsDebugPort = preferenceStore.getInt(PreferenceConstants.PHANTOMJS_DEBUG_PORT);
 			NodeDebugUtil.launch(mode, launch, monitor, phantomjsDebugPort);

@@ -16,10 +16,11 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.VariablesUtil;
+import org.nodeclipse.jjs.preferences.JJSConstants;
 import org.nodeclipse.ui.Activator;
-import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
@@ -49,8 +50,12 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		File jjsFile = new File(jjsPath);
 		if(!jjsFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			Dialogs.showPreferencesDialog("path to jjs util from Java 8 runtime is not correctly configured.\n\n"
-					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'JJS path:'");
+//			Dialogs.showPreferencesDialog("path to jjs util from Java 8 runtime is not correctly configured.\n\n"
+//					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'JJS path:'");
+			CommonDialogs.showPreferencesDialog(JJSConstants.PREFERENCES_PAGE,
+					"Java 8 Nashorn jjs location is not correctly configured.\n\n"
+					+ "Please goto Window -> Preferences -> "+JJSConstants.PREFERENCE_PAGE_NAME
+					+" and configure the correct location");
 			return;
 		}			
 		cmdLine.add(jjsPath);
@@ -94,7 +99,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, ConstantsJJS.PROCESS_MESSAGE);
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, JJSConstants.PROCESS_MESSAGE);
 		if (isDebugMode) {
 			//TODO research how to debug
 		}

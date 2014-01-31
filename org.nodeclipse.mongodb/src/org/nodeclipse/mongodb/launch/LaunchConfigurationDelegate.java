@@ -16,10 +16,11 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.VariablesUtil;
+import org.nodeclipse.mongodb.preferences.MongoDBConstants;
 import org.nodeclipse.ui.Activator;
-import org.nodeclipse.ui.preferences.Dialogs;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 
@@ -36,8 +37,6 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		//NodeclipseConsole.write("launch mongodb shell\n");
-		
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		boolean isDebugMode = mode.equals(ILaunchManager.DEBUG_MODE);
 		
@@ -49,13 +48,15 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		File mongoDBShellFile = new File(mongoDBShellPath);
 		if(!mongoDBShellFile.exists()){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			Dialogs.showPreferencesDialog("Path to MongoDB Shell (e.g. mongo.exe) is not correctly configured.\n\n"
-					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'MongoDB Shell path:'");
+//			Dialogs.showPreferencesDialog("Path to MongoDB Shell (e.g. mongo.exe) is not correctly configured.\n\n"
+//					+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location under 'MongoDB Shell path:'");
+			CommonDialogs.showPreferencesDialog(MongoDBConstants.PREFERENCES_PAGE,
+					"MongoDB Shell location is not correctly configured.\n\n"
+					+ "Please goto Window -> Preferences -> "+MongoDBConstants.PREFERENCE_PAGE_NAME
+					+" and configure the correct location");
 			return;
 		}			
 		cmdLine.add(mongoDBShellPath);
-		
-		//cmdLine.add("--shell"); //run the shell after executing files
 		
 		String mongoShellOptions = preferenceStore.getString(PreferenceConstants.MONGODB_SHELL_OPTIONS);
 		if(!mongoShellOptions.equals("")) {
@@ -101,7 +102,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
-		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, ConstantsMongoDB.PROCESS_MESSAGE);
+		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, MongoDBConstants.PROCESS_MESSAGE);
 		if (isDebugMode) {
 			//TODO research how to debug
 		}
