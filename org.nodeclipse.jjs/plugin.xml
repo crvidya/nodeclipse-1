@@ -27,7 +27,7 @@
       <image
             icon="icons/nashorn_16x16.png"
             id="org.nodeclipse.jjs.NashornNature.Image"
-            natureId="org.nodeclipse.jjs.NashronNature">
+            natureId="org.nodeclipse.jjs.NashornNature">
       </image>
    </extension>
    <extension
