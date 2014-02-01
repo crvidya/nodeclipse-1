@@ -36,6 +36,8 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
     private StringFieldEditor coffeeCompileOutputFolder;
     private FileFieldEditor typescriptCompilerPath;
     private StringFieldEditor typescriptCompilerOptions;
+
+//	private StringFieldEditor nodeclipseVersionsString;
     
     public NodePreferencePage() {
         super(GRID);
@@ -52,7 +54,16 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
 
     @Override
     protected void createFieldEditors() {
-        
+
+    	//TODO possible to copy version string
+//    	String verString = VersionUtil.getLongString();
+//        nodeclipseVersionsString = new StringFieldEditor(PreferenceConstants.NODE_OPTIONS, "Node options (node -h):", getFieldEditorParent());
+//        nodeclipseVersionsString.setStringValue(verString);
+//        nodeclipseVersionsString.setTextLimit(verString.length());
+//        nodeclipseVersionsString.setEnabled(false, (Composite) this);
+//        addField(nodeclipseVersionsString);
+
+    	
         nodeclipseConsoleEnabled = new BooleanFieldEditor(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, 
         		"enable Nodeclipse Console", getFieldEditorParent());
         addField(nodeclipseConsoleEnabled);
