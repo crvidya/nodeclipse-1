@@ -38,3 +38,12 @@ maven build is optional for full build with other plugins.
 > Because some native platforms only provide limited buffer size for standard input and output streams, 
 failure to promptly write the input stream or read the output stream of the subprocess may cause the subprocess to block, and even deadlock.
 
+	"C:\Program Files\Java\jdk1.7.0_25/bin/java.exe"    "-Dorg.gradle.appname=gradle" -classpath "D:\Progs\gradle-1.10\lib\gradle-launcher-1.10.jar" org.gradle.launcher.GradleMain
+
+Java without IDE
+<http://www.cs.swarthmore.edu/~newhall/unixhelp/debuggingtips_Java.html>
+
+<http://stackoverflow.com/questions/502494/execute-a-java-program-from-our-java-program>
+
+	
+
