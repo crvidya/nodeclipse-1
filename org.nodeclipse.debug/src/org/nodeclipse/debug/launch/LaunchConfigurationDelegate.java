@@ -213,12 +213,17 @@ public class LaunchConfigurationDelegate implements
 		
 		Map<String, String> envm = new HashMap<String, String>();
 		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size()];
+		String[] envp = new String[envm.size()+4]; // see below
 		int idx = 0;
 		for(String key : envm.keySet()) {
 			String value = envm.get(key);
 			envp[idx++] = key + "=" + value;
 		}
+		//+ #81
+		envp[idx++] = "PATH=" + System.getenv("PATH");
+		envp[idx++] = "TEMP=" + System.getenv("TEMP");
+		envp[idx++] = "TMP=" + System.getenv("TMP");
+		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
 		
 		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
