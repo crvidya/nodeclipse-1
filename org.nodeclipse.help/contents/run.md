@@ -69,6 +69,37 @@ In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see M
  or launch coffee util to compile `*.coffee` files. However these have ran into
  problem <http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype> 
 
+### Restart
+
+##### Option 1. Right-click on launched application in Debug View and select <kbd>Terminate and Relaunch</kbd>.
+ (In Node perspective Debug View is visible by default) 
+ 
+##### Option 2 by [igor](http://stackoverflow.com/questions/20682485/how-to-autorestart-node-js-application-in-eclipse-aptana-studio-on-source-change):
+
+ 1. Right-click on your project in *Project Explorer* > Properties > Builders
+ 2. New... > Program > OK
+ 3. Name: Terminate existing node.js process(es)
+ 4. Location: C:\Windows\System32\taskkill.exe (${env_var:SystemRoot}\System32\taskkill.exe did not work for me, it might for you)
+ 5. Working Directory: Browse Workspace... > select your project > OK
+ 6. Arguments: /IM node.exe /F
+ 7. Switch to *Build Options* tab and tick *During auto builds*, **untick** *Launch in background* > OK
+ 8. Create another builder: New... > Program > OK
+ 9. Name: Start &lt;your-project-name&gt;
+ 10. Location: C:\Program Files\nodejs\node.exe (you can try ${env_var:ProgramFiles}\nodejs\node.exe as well)
+ 11. Working directory: same as point #5
+ 12. Arguments: app.js (or any other file for application entry point)
+ 13. Switch to *Build Options* tab and **tick both** *During auto builds* and *Launch in background* > OK
+ 14. Turn on project autobuild: Window > Preferences > General > Workspace, tick *Build automatically* > OK
+ 15. Change default build order: Window > Preferences > General > Workspace > Build Order, untick *Use default build order* and remove all projects except your node.js project > OK
+ 16. Restart Aptana/Eclipse (There are bugs, so sometimes preference changes are just not saved and get lost. You have to double-check.)
+ 
+##### Option 3 #57 running app.js with node-dev, forever, supervisor, nodemon etc
+
+A general approach was selected [#57](https://github.com/Nodeclipse/nodeclipse-1/issues/57), however as I don't [yet]
+ use any of Node.js module. Some polishing is needed, like [#118 The use case "Nodeclipse with nodemon"](https://github.com/Nodeclipse/nodeclipse-1/issues/118)
+
+Start talking if you [care](https://github.com/Nodeclipse/nodeclipse-1/issues).
+
 ### Sources
 
 Check [LaunchConfigurationDelegate.java](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java)

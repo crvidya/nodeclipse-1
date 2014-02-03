@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>D:\Workspaces\Nodeclipse-DEV\nodeclipse-1\org.nodeclipse.help\contents\.run.md.html</title>
+<title>D:\workspaces\Nodeclispe-DEV\nodeclipse-1\org.nodeclipse.help\contents\.run.md.html</title>
 
 
 <style type="text/css">
@@ -481,6 +481,31 @@ function setDocumentScrollTop(ypos)
 </div> 
 <h3> <a name="warning-multiple-launch-configurations" class="anchor" href="..md.html#warning-multiple-launch-configurations"><span class="octicon octicon-link"></span></a>Warning multiple launch configurations</h3> 
 <p>In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see Monitor page) or launch coffee util to compile <code>*.coffee</code> files. However these have ran into problem <a href="http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype">http://stackoverflow.com/questions/19157302/eclipse-plugin-development-saved-launchconfiguration-overrides-launchtype</a> </p> 
+<h3> <a name="restart" class="anchor" href="..md.html#restart"><span class="octicon octicon-link"></span></a>Restart</h3> 
+<h5> <a name="option-1-right-click-on-launched-application-in-debug-view-and-select-terminate-and-relaunch" class="anchor" href="..md.html#option-1-right-click-on-launched-application-in-debug-view-and-select-terminate-and-relaunch"><span class="octicon octicon-link"></span></a>Option 1. Right-click on launched application in Debug View and select <kbd>Terminate and Relaunch</kbd>.</h5> 
+<p>(In Node perspective Debug View is visible by default) </p> 
+<h5> <a name="option-2-by-igor" class="anchor" href="..md.html#option-2-by-igor"><span class="octicon octicon-link"></span></a>Option 2 by <a href="http://stackoverflow.com/questions/20682485/how-to-autorestart-node-js-application-in-eclipse-aptana-studio-on-source-change">igor</a>:</h5> 
+<ol> 
+ <li>Right-click on your project in <em>Project Explorer</em> &gt; Properties &gt; Builders</li> 
+ <li>New... &gt; Program &gt; OK</li> 
+ <li>Name: Terminate existing node.js process(es)</li> 
+ <li>Location: C:\Windows\System32\taskkill.exe (${env_var:SystemRoot}\System32\taskkill.exe did not work for me, it might for you)</li> 
+ <li>Working Directory: Browse Workspace... &gt; select your project &gt; OK</li> 
+ <li>Arguments: /IM node.exe /F</li> 
+ <li>Switch to <em>Build Options</em> tab and tick <em>During auto builds</em>, <strong>untick</strong> <em>Launch in background</em> &gt; OK</li> 
+ <li>Create another builder: New... &gt; Program &gt; OK</li> 
+ <li>Name: Start &lt;your-project-name&gt;</li> 
+ <li>Location: C:\Program Files\nodejs\node.exe (you can try ${env_var:ProgramFiles}\nodejs\node.exe as well)</li> 
+ <li>Working directory: same as point #5</li> 
+ <li>Arguments: app.js (or any other file for application entry point)</li> 
+ <li>Switch to <em>Build Options</em> tab and <strong>tick both</strong> <em>During auto builds</em> and <em>Launch in background</em> &gt; OK</li> 
+ <li>Turn on project autobuild: Window &gt; Preferences &gt; General &gt; Workspace, tick <em>Build automatically</em> &gt; OK</li> 
+ <li>Change default build order: Window &gt; Preferences &gt; General &gt; Workspace &gt; Build Order, untick <em>Use default build order</em> and remove all projects except your node.js project &gt; OK</li> 
+ <li>Restart Aptana/Eclipse (There are bugs, so sometimes preference changes are just not saved and get lost. You have to double-check.)</li> 
+</ol>
+<h5> <a name="option-3-57-running-appjs-with-node-dev-forever-supervisor-nodemon-etc" class="anchor" href="..md.html#option-3-57-running-appjs-with-node-dev-forever-supervisor-nodemon-etc"><span class="octicon octicon-link"></span></a>Option 3 #57 running app.js with node-dev, forever, supervisor, nodemon etc</h5> 
+<p>A general approach was selected <a href="https://github.com/Nodeclipse/nodeclipse-1/issues/57">#57</a>, however as I don't [yet] use any of Node.js module. Some polishing is needed, like <a href="https://github.com/Nodeclipse/nodeclipse-1/issues/118">#118 The use case &quot;Nodeclipse with nodemon&quot;</a></p> 
+<p>Start talking if you <a href="https://github.com/Nodeclipse/nodeclipse-1/issues">care</a>.</p> 
 <h3> <a name="sources" class="anchor" href="..md.html#sources"><span class="octicon octicon-link"></span></a>Sources</h3> 
 <p>Check <a href="https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.debug/src/org/nodeclipse/debug/launch/LaunchConfigurationDelegate.java">LaunchConfigurationDelegate.java</a> for launching Node.js logic.</p> 
 <h3> <a name="contribute" class="anchor" href="..md.html#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3> 
