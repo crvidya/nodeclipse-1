@@ -93,10 +93,22 @@ In Nodeclipse version 0.6 add possibility to run Node.js app with monitor (see M
  15. Change default build order: Window > Preferences > General > Workspace > Build Order, untick *Use default build order* and remove all projects except your node.js project > OK
  16. Restart Aptana/Eclipse (There are bugs, so sometimes preference changes are just not saved and get lost. You have to double-check.)
  
+<!-- 
+Welcome to Nodeclipse. Your solution is added to [Nodeclipse Help Run page](https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.help/contents/run.md#running),
+please edit. That is to answer "a better place to post it".
+
+Alternatively, this question should have been broken into problem and solution part to fit stackoverflow.com Q&A format. Also constrains (like without plugin or Node.js modules) should be said in the topic as some percentage of stackoverflow.com users don't really read whole (especially long) question.
+
+*Then my answer is just use Debug View.* (Actually it should be named Launch as it is both for Run and Debug) In your favorite perspective: Window -> Show View -> Others.. -> Debug. (In Nodeclipse Node perspective Debug View is visible by default) 
+Then you can right-click on launched application in Debug View and select <kbd>Terminate and Relaunch</kbd>. That is more explicit and allows to run many applications.
+
+I also don't understand why you first say "without plugins" and don't suggest "to install Nodeclipse", but in the end add "I hope Aptana Studio 3 will start supporting". Wouldn't it be another plugin/extension? Nodeclipse as of 0.10 has code completion for base Node.js modules and improved support for black background color themes. [Open an issue](https://github.com/Nodeclipse/nodeclipse-1/issues/new) when ready to discuss/work together. Nodeclipse was started by developers like you who stopped hoping and waiting and just did it. One small piece at a time. Just like you did.
+--> 
+ 
 ##### Option 3 #57 running app.js with node-dev, forever, supervisor, nodemon etc
 
 A general approach was selected [#57](https://github.com/Nodeclipse/nodeclipse-1/issues/57), however as I don't [yet]
- use any of Node.js module. Some polishing is needed, like [#118 The use case "Nodeclipse with nodemon"](https://github.com/Nodeclipse/nodeclipse-1/issues/118)
+ use any of Node.js module named above, some polishing is needed for this functionality, like [#118 The use case "Nodeclipse with nodemon"](https://github.com/Nodeclipse/nodeclipse-1/issues/118)
 
 Start talking if you [care](https://github.com/Nodeclipse/nodeclipse-1/issues).
 
