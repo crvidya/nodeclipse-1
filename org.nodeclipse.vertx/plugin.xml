@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Copyright (c) 2014 Enide, Paul Verest & other Nodeclipse authors. http://www.nodeclipse.org/
+-->
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.nodeclipse.ui.wizards.category"
+            name="Nodeclipse">
+      </category>
+      <wizard
+            category="org.nodeclipse.ui.wizards.category"
+            class="org.nodeclipse.vertx.wizards.VertxProjectWizard"
+            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
+            icon="icons/dot-x-16_top_right_corner_new.png"
+            id="org.nodeclipse.vertx.wizards.VertxProjectWizard"
+            name="Vert.x JavaScript Project"
+            project="true">
+         <description>
+            Create a new Vert.x JavaScript project (or add .project file to an existing project)
+         </description>
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/dot-x-16_half_size.png"
+            id="org.nodeclipse.vertx.VertxNature.Image"
+            natureId="org.nodeclipse.vertx.VertxNature">
+      </image>
+   </extension>
+   <extension
+         id="org.nodeclipse.vertx.VertxNature"
+         name="Vert.x Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.nodeclipse.vertx.nature.VertxNature">
+         </run>
+      </runtime>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.nodeclipse.ui.editors.NodeEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="true"
+            extensions="vjs"
+            icon="icons/dot-x-16.png"
+            id="org.nodeclipse.vertx.editors.VertxEditor"
+            name="Vert.x JS Editor">
+      </editor>
+    </extension>
+
+	<extension 
+          point="org.eclipse.debug.core.launchConfigurationTypes"> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.vertx.launch.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.vertx.launch.LaunchConfigurationType" 
+            modes="run, debug" 
+            name="Vert.x JS Application">
+        </launchConfigurationType> 
+    </extension>
+    <extension
+          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.vertx.launch.LaunchConfigurationType"   
+             icon= "icons/dot-x-16_bottom_right_corner_run_half_size.png"   
+             id= "org.nodeclipse.vertx.launch.LaunchConfigurationTypeImage" >   
+       </launchConfigurationTypeImage>   
+    </extension>
+    <!-- vertx run/debug -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.vertx.launch.LaunchShortcut"   
+             icon= "icons/dot-x-16_bottom_right_corner_run_half_size.png" 
+             id= "org.nodeclipse.debug.launch.LaunchShortcut"   
+             label= "Vert.x JS Application"   
+             modes= "run, debug" >   
+          <configurationType
+                id= "org.nodeclipse.vertx.launch.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.js" >   
+                          </test>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "*.vjs" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   
+
+   <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.vertx.launch.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.vertx.launch.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.vertx.launch.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+
+	<!-- not used
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.phantomjs.preferences.PhantomjsPreferenceInitializer">
+      </initializer>
+   </extension>
+    -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.nodeclipse.ui.preferences.NodePreferencePage"
+            class="org.nodeclipse.vertx.preferences.VertxPreferencePage"
+            id="org.nodeclipse.vertx.preferences.VertxPreferencePage"
+            name="Vert.x">
+      </page>
+   </extension>
+
+<!-- not used
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="HelpToc.xml"
+            primary="true">
+      </toc>
+   </extension>
+    -->
+
+</plugin>

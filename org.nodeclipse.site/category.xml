@@ -29,6 +29,9 @@
    <feature url="features/org.nodeclipse.phantomjs.feature_0.10.0.qualifier.jar" id="org.nodeclipse.phantomjs.feature" version="0.10.0.qualifier">
       <category name="Nodeclipse"/>
    </feature>
+   <feature url="features/org.nodeclipse.vertx.feature_0.10.0.qualifier.jar" id="org.nodeclipse.vertx.feature" version="0.10.0.qualifier">
+      <category name="Nodeclipse"/>
+   </feature>
    <feature url="features/com.eclipsesource.jshint.feature" id="com.eclipsesource.jshint.feature" version="0.9.9.qualifier">
       <category name="Nodeclipse"/>
    </feature>

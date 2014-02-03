@@ -44,6 +44,11 @@ public class NodeProjectWizardPage extends WizardPage {
     Button btnHelloCoffee;
     Button btnHelloTypeScript;
     Button btnHelloHtml;
+    // @since 0.11
+    Button btnHelloKoa;
+    Button btnHelloNashorn;
+    Button btnHelloVertx;
+    
 
     private Listener nameModifyListener = new Listener() {
         public void handleEvent(Event e) {
@@ -215,8 +220,40 @@ public class NodeProjectWizardPage extends WizardPage {
 
         btnHelloHtml = new Button(templatesGroup, SWT.RADIO);
         btnHelloHtml.setText(Constants.TEMPLATE_HELLO_HTML);
-    
+        
+        // @since 0.11
+        btnHelloKoa = new Button(templatesGroup, SWT.RADIO);
+        btnHelloKoa.setText(Constants.TEMPLATE_HELLO_KOA);
+        btnHelloNashorn = new Button(templatesGroup, SWT.RADIO);
+        btnHelloNashorn.setText(Constants.TEMPLATE_HELLO_NASHORN);
+        btnHelloVertx = new Button(templatesGroup, SWT.RADIO);
+        btnHelloVertx.setText(Constants.TEMPLATE_HELLO_VERTX);
     }
+
+    public String getSelectedTemplate() {
+         if (btnHelloWorld.getSelection()) {
+             return Constants.TEMPLATE_HELLO_WORLD;
+         }
+         if (btnHelloCoffee.getSelection()) {
+             return Constants.TEMPLATE_HELLO_COFFEE;
+         }
+         if (btnHelloTypeScript.getSelection()) {
+             return Constants.TEMPLATE_HELLO_TYPESCRIPT;
+         }
+         if (btnHelloHtml.getSelection()) {
+             return Constants.TEMPLATE_HELLO_HTML;
+         }
+         if (btnHelloKoa.getSelection()) {
+             return Constants.TEMPLATE_HELLO_KOA;
+         }
+         if (btnHelloNashorn.getSelection()) {
+             return Constants.TEMPLATE_HELLO_NASHORN;
+         }
+         if (btnHelloVertx.getSelection()) {
+             return Constants.TEMPLATE_HELLO_VERTX;
+         }
+         return Constants.BLANK_STRING;
+     }
     
     
     /**
@@ -388,21 +425,5 @@ public class NodeProjectWizardPage extends WizardPage {
      */
     public IWorkingSet[] getSelectedWorkingSets() {
         return workingSetGroup == null ? new IWorkingSet[0] : workingSetGroup.getSelectedWorkingSets();
-    }
-
-   public String getSelectedTemplate() {
-        if (btnHelloWorld.getSelection()) {
-            return Constants.TEMPLATE_HELLO_WORLD;
-        }
-        if (btnHelloCoffee.getSelection()) {
-            return Constants.TEMPLATE_HELLO_COFFEE;
-        }
-        if (btnHelloTypeScript.getSelection()) {
-            return Constants.TEMPLATE_HELLO_TYPESCRIPT;
-        }
-        if (btnHelloHtml.getSelection()) {
-            return Constants.TEMPLATE_HELLO_HTML;
-        }
-        return Constants.BLANK_STRING;
     }
 }

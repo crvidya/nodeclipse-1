@@ -122,6 +122,10 @@
 		<module>features/org.nodeclipse.enide.gradle.feature</module>
 		<module>org.nodeclipse.enide.maven</module>
 		<module>features/org.nodeclipse.enide.maven.feature</module>
+
+		<!-- @since 0.11 Nodeclipse Vert.x -->
+		<module>org.nodeclipse.vertx</module>
+		<module>features/org.nodeclipse.vertx.feature</module>
 		
 
 		<module>org.nodeclipse.site</module>

@@ -1,0 +1,107 @@
+
+    vertx run <main> [-options]
+        runs a verticle called <main> in its own instance of vert.x.
+        <main> can be a JavaScript script, a Ruby script, A Groovy script,
+        a Java class, a Java source file, or a Python Script.
+
+    valid options are:
+        -conf <config_file>    Specifies configuration that should be provided
+                               to the verticle. <config_file> should reference
+                               a text file containing a valid JSON object
+                               which represents the configuration.
+        -cp <path>             specifies the path on which to search for
+                               <main> and any referenced resources.
+                               Defaults to '.' (current directory).
+        -instances <instances> specifies how many instances of the verticle
+                               will be deployed. Defaults to 1
+        -worker                if specified then the verticle is a worker
+                               verticle.
+        -includes <mod_list>   optional comma separated list of modules
+                               which will be added to the classpath of
+                               the verticle.
+        -cluster               if specified then the vert.x instance will form
+                               a cluster with any other vert.x instances on
+                               the network.
+        -cluster-port          port to use for cluster communication.
+                               Default is 0 which means chose a spare
+                               random port.
+        -cluster-host          host to bind to for cluster communication.
+                               If this is not specified vert.x will attempt
+                               to choose one from the available interfaces.
+
+    vertx runmod <modname> [-options]
+        runs a module called <modname> in its own instance of vert.x.
+        If the module is not already installed, Vert.x will attempt to install
+        it from a repository before running it.
+
+    valid options are:
+        -conf <config_file>    Specifies configuration that should be provided
+                               to the module. <config_file> should reference
+                               a text file containing a valid JSON object
+                               which represents the configuration.
+        -instances <instances> specifies how many instances of the verticle
+                               will be deployed. Defaults to 1
+        -cluster               if specified then the vert.x instance will form
+                               a cluster with any other vert.x instances on
+                               the network.
+        -cluster-port          port to use for cluster communication.
+                               Default is 0 which means chose a spare
+                               random port.
+        -cluster-host          host to bind to for cluster communication.
+                               If this is not specified vert.x will attempt
+                               to choose one from the available interfaces.
+        -cp <path>             if specified Vert.x will attempt to find the
+                               module on the classpath represented by this
+                               path and not in the modules directory
+        -ha                    if specified the module will be deployed as a
+                               high availability (HA) deployment.
+                               This means it can fail over to any other nodes
+                               in the cluster started with the same HA group
+        -quorum                used in conjunction with -ha this specifies the
+                               minimum number of nodes in the cluster for any
+                               HA deployments to be active. Defaults to 0
+        -hagroup               used in conjunction with -ha this specifies the
+                               HA group this node will join. There can be
+                               multiple HA groups in a cluster. Nodes will only
+                               failover to other nodes in the same group.
+                               Defaults to __DEFAULT__
+
+    vertx runzip <zipfilename> [-options]
+        installs then deploys a module which is contained in the zip specified
+        by <zipfilename>. The module will be installed with a name given by
+        <zipfilename> without the .zip extension. If a module with that name
+        is already installed this will do nothing.
+        The options accepted by this command are exactly the same as those
+        accepted by vertx runmod
+
+    vertx install <modname> [-options]
+        attempts to install a module from a remote repository.
+        Module will be installed into a local 'mods' directory or, if the
+        module is marked as a system module, the sys-mods directory in the
+        Vert.x installation unless the
+        environment variable VERTX_MODS specifies a different location.
+
+    vertx uninstall <modname>
+        attempts to uninstall a module from a remote repository.
+        Module will be uninstalled from the local 'mods' directory unless the
+        environment variable VERTX_MODS specifies a different location.
+
+    vertx pulldeps <modname>
+        Pulls in the tree of dependencies of the module and puts them in the
+        nested module directory (mods) of the module. This allows the module
+        to be a completely self contained unit containing all the modules it
+        needs to run.
+        Vert.x will consult the 'includes' and 'deploys' fields to determine
+        which modules to pull in.
+
+    vertx create-module-link <modname>
+        Creates a link file in the modules directory for the specified module.
+        When vertx tries to deploy a module and it finds a link file it follows
+        the path in the link to find a file vertx_classpath.txt which contains
+        the classpath (one entry on each line) to where the module resources
+        can be found. It then loads the module using that classpath. This is
+        when loading modules from resources in an IDE.
+
+    vertx version
+        displays the version        
+        

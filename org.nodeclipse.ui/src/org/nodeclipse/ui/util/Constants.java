@@ -36,6 +36,10 @@ public class Constants {
 	public static final String TEMPLATE_HELLO_COFFEE = "hello-coffee";
 	public static final String TEMPLATE_HELLO_TYPESCRIPT = "hello-typescript";
 	public static final String TEMPLATE_HELLO_HTML = "hello-html";
+	// @since 0.11
+	public static final String TEMPLATE_HELLO_KOA = "hello-koa";
+	public static final String TEMPLATE_HELLO_NASHORN = "hello-nashorn";
+	public static final String TEMPLATE_HELLO_VERTX = "hello-vertx";
 
 	/**
      * see ExpressProjectWizardPage
