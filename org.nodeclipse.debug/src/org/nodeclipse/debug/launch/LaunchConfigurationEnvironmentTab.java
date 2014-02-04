@@ -220,6 +220,13 @@ public class LaunchConfigurationEnvironmentTab extends AbstractLaunchConfigurati
 			}
 		});
 		replaceEnvironment= createRadioButton(comp, LaunchConfigurationsMessages.EnvironmentTab_17); 
+		//+ #122 "Append to environment" is not working properly { by Paul
+		appendEnvironment.setEnabled(false);
+		replaceEnvironment.setEnabled(false);
+		replaceEnvironment.setSelection(true); 
+		// currently only specified environment variables are passed 
+		// making it replace like .
+		// }
 	}
 	
 	/**
