@@ -69,8 +69,10 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				Dialog.applyDialogFont(getControl());
 			}
 		};
-		mainPage.setTitle("Create a Express Project");
-		mainPage.setDescription("Create a new Express project (Express should be installed before with `npm install -g express`).");
+		mainPage.setTitle("Create an Express Project");
+		mainPage.setDescription("Create a new Node.js Express project (using `express` CLI underneath,\n"
+				+"that should be installed before with `npm install -g express`\n"
+				+"Used `Express` location can be configured in Preferences \"Express path\").");
 		addPage(mainPage);
 	}
 
