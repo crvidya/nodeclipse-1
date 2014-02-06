@@ -46,7 +46,12 @@ Examples:
 	nodeclipse --create project3 --use hello-coffee
 	
 	nodeclipse -c project4 -u hello-coffee
-	
+
+
+## Nodeclipse CLI installer
+
+
+	Issues: I noticed that Eclipse once reported conflict when installing 'nodejs', but was OK for second try.
 
 ## Eclipse Workspace and Project
 
@@ -98,11 +103,11 @@ TODO Examples:
 Dream - I wish I could get current project in GitHub as project in Eclipse with 1 click.
 options are: 	
 - eclipse wizards accessible with icon, where I only need to git repository URL
-	  
-
-
 - add link on Wizard Page
 - options to refine .jshintrc
+
+Build Eclipse Java Project from Command Line
+http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-command-line
 
 ## History
 
