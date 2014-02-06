@@ -101,16 +101,18 @@
 		<module>chromedevtools</module>
 		<module>org.nodeclipse.debug</module>
 		
-		<module>features/org.nodeclipse.enide.nodejs.feature</module>		
-		
 		<module>org.nodeclipse.phantomjs</module>
 		<module>features/org.nodeclipse.phantomjs.feature</module>
 		<module>org.nodeclipse.jjs</module>
 		<module>features/org.nodeclipse.jjs.feature</module>
 		<module>org.nodeclipse.mongodb</module>
 		<module>features/org.nodeclipse.mongodb.feature</module>
+		<!-- @since 0.11 Nodeclipse Vert.x -->
+		<module>org.nodeclipse.vertx</module>
+		<module>features/org.nodeclipse.vertx.feature</module>
 		
 		<module>features/org.nodeclipse.feature</module>
+		<module>features/org.nodeclipse.enide.nodejs.feature</module>		
 		
 		<!-- @since 0.9.0 Gradle Editor -->
 		<module>org.nodeclipse.enide.editors.gradle</module>
@@ -122,11 +124,6 @@
 		<module>features/org.nodeclipse.enide.gradle.feature</module>
 		<module>org.nodeclipse.enide.maven</module>
 		<module>features/org.nodeclipse.enide.maven.feature</module>
-
-		<!-- @since 0.11 Nodeclipse Vert.x -->
-		<module>org.nodeclipse.vertx</module>
-		<module>features/org.nodeclipse.vertx.feature</module>
-		
 
 		<module>org.nodeclipse.site</module>
 	</modules>

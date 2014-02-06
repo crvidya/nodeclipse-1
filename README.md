@@ -49,6 +49,19 @@ Developing doesn't require maven usage, just import one project e.g. `org.nodecl
 
 [see src/site/markdown/developing.md file](src/site/markdown/developing.md)
 
+If getting `java.lang.OutOfMemoryError: PermGen space` error when when running or debugging plugin code,
+edit launch configuration for Eclipse Application -> Arguments -> VM Arguments
+
+    -Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx512m
+    
+	-Xms120m -Xmx2048m -XX:MaxPermSize=1024m    
+	
+	-Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx512m
+    
+    Command-line arguments:  -product org.eclipse.platform.ide -data D:\Progs\Enide-Monster-08-kepler-win32\ws/../runtime-EclipseApplication -dev file:D:/Progs/Enide-Monster-08-kepler-win32/ws/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86 -consoleLog
+    
+    -Dosgi.requiredJavaVersion=1.6  -Xms120m -Xmx1024m -XX:MaxPermSize=128m
+
 ### Maven build
 
 Build

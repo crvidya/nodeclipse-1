@@ -201,7 +201,7 @@ http://www.apache.org/licenses/
    <requires>
       <import feature="org.chromium.sdk" version="0.3.9" match="compatible"/>
       <import feature="org.chromium.debug" version="0.3.9" match="compatible"/>
-      <import feature="org.nodeclipse" version="0.10.0" match="perfect"/>
+      <import feature="org.nodeclipse" version="0.10.0" match="greaterOrEqual"/>
       <!-- build: Unable to satisfy dependency:
       <import feature="com.eclipsesource.jshint.feature" version="0.9.9" match="greaterOrEqual"/>
       -->      
