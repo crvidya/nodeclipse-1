@@ -32,19 +32,19 @@ Depends on JDT (see link 1).
 
 ![](docs/enide-maven-run-as-mvn-package-results-in-console.png)
 
-### Developing 
+### Developing with PDE
 
 `git clone`, import this project and `org.nodeclipse.coomon` (2) in Eclipse with PDE (e.g. Eclipse SDK/Classic)
  as "Existing Projects into Workspace".
 
-from plugin.xml form click Run as Eclipse application
+From plugin.xml form click Run as Eclipse application.
 
-if memory is not enough, change in run configuration -> Argumnet -> VM options 
+If memory is not enough (getting `java.lang.OutOfMemoryError: PermGen space` error when when running or debugging),
+ change in launch configuration for Eclipse Application -> Arguments -> VM Arguments
 
 	-Dosgi.requiredJavaVersion=1.6 -Xms128m -Xmx784m -XX:MaxPermSize=128m -Xss2m
 
-
-maven build is optional for full build with other plugins.
+Maven build is optional for full build with other plugins.
 
 #### Links
 
@@ -52,7 +52,7 @@ maven build is optional for full build with other plugins.
 
 ### Idea
 
-java-run-javac&java
+java-run-javac&java -> bad idea
 
 ### DONE
 

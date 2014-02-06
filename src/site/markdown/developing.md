@@ -9,17 +9,17 @@
 
 ### Before starting development, please do
 
-1. Carefully read materials (this README)
-2. Install and give thorough try
-3. Contact developers, make friends
+3. Raise an issue to contact developers
 4. Say what you are going to do, before you head in. Share and discuss ideas.  
  (We had pull request that we could not merge, because it was not compatible with changes we were going to make.)
+1. Carefully read materials (this README)
+2. Install and give thorough try
 
 ### Preparing environment
 
 #### Clone using Eclipse EGit
 
-In Eclipse for Java or RCP developers
+In Eclipse with PDE (e.g. Eclipse SDK/Classic, for RCP developers)
 
 1. Copy to clipboard git repository URL: <code>https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. File -> Import.. -> Git / Project from git
@@ -38,9 +38,12 @@ In Eclipse for Java or RCP developers
 
 ### Eclipse build
 
-Build will start automatically when you import into your workspace and whenever you save code which is changed.
+Build starts automatically when you import into workspace
+ and whenever you save changes (incremental build).
 
 If you are using Enide Studio it should be OK.
+
+
 If you got build error, probably you have not installed JSDT yet. Try following steps:
 
 1. Select [Help]-[Install New Software...].

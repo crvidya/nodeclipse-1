@@ -45,22 +45,23 @@ Check README.md in project modules (e.g. `org.nodeclipse.debug` ). See launching
 
 ### Developing with PDE
 
-Developing doesn't require maven usage, just import one project e.g. `org.nodeclipse.ui` into Eclipse with PDE.
+From plugin.xml form click Run as Eclipse application.
+
+If memory is not enough (getting `java.lang.OutOfMemoryError: PermGen space` error when when running or debugging),
+ change in launch configuration for Eclipse Application -> Arguments -> VM Arguments
+
+	-Dosgi.requiredJavaVersion=1.6 -Xms128m -Xmx784m -XX:MaxPermSize=128m -Xss2m
+
 
 [see src/site/markdown/developing.md file](src/site/markdown/developing.md)
 
-If getting `java.lang.OutOfMemoryError: PermGen space` error when when running or debugging plugin code,
-edit launch configuration for Eclipse Application -> Arguments -> VM Arguments
-
-    -Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx512m
-    
-	-Xms120m -Xmx2048m -XX:MaxPermSize=1024m    
-	
-	-Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx512m
+FYI when luanching Eclipse Application
     
     Command-line arguments:  -product org.eclipse.platform.ide -data D:\Progs\Enide-Monster-08-kepler-win32\ws/../runtime-EclipseApplication -dev file:D:/Progs/Enide-Monster-08-kepler-win32/ws/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86 -consoleLog
     
-    -Dosgi.requiredJavaVersion=1.6  -Xms120m -Xmx1024m -XX:MaxPermSize=128m
+Developing doesn't require maven usage, just import one project e.g. `org.nodeclipse.ui` into Eclipse with PDE.
+
+Maven build is optional for full build with other plugins.
 
 ### Maven build
 
