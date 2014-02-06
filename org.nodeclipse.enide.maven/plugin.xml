@@ -137,12 +137,18 @@
       </toc>
    </extension>
    
-    <extension
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.enide.maven.preferences.MavenPreferenceInitializer">
+      </initializer>
+  </extension>
+  <extension
          point="org.eclipse.ui.preferencePages">
       <page
             class="org.nodeclipse.enide.maven.preferences.MavenPreferencePage"
             id="org.nodeclipse.enide.maven.preferences.MavenPreferencePage"
-            name="Maven(Nodeclipse)">
+            name="Maven(Enide)">
       </page>
    </extension>
    

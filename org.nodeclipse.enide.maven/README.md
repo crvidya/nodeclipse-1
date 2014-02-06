@@ -13,6 +13,9 @@ Full path to maven `mvn.bat` or `mvn` is used, so you can try different versions
 Specify options to `mvn` that will be Workspace-wide.
 Executed string is shown is Console, so you can check and learn. 
 
+Hint increase Console buffer size in Preferences -> Run\Debug -> Console.
+ and check other preferences there as well.
+ 
 ## org.nodeclipse.enide.maven
 
 - pom.xml Run As `mvn package` Maven build

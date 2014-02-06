@@ -62,8 +62,14 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 					+" and configure the correct location");
 			return;
 		}			
-		//cmdLine.add(mavenPath);
+		cmdLine.add(mavenPath);
 		
+		//TODO shared processing function for 2 launch types.      
+		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_DEBUG))
+			cmdLine.add("-X");
+		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_OFFLINE))
+			cmdLine.add("-o");
+
 		String mavenOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
 //		if(!mavenOptions.equals("")) {
 //			String[] sa = mavenOptions.split(" ");
@@ -104,7 +110,6 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		// as one string
 		//cmdLine.add(mavenPath+" "+mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
 		
-		cmdLine.add(mavenPath);
 		cmdLine.add(mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
 		
 //		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
@@ -134,7 +139,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		
 		Map<String, String> envm = new HashMap<String, String>();
 		envm = configuration.getAttribute(MavenConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size() + 2];
+		String[] envp = new String[envm.size() + 2 + 4 + 2 ];
 		int idx = 0;
 		for(String key : envm.keySet()) {
 			String value = envm.get(key);
@@ -145,12 +150,22 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //Please set the M2_HOME variable in your environment to match the
 //location of the Maven installation
 		envp[idx++] = "M2_HOME=" + System.getenv("MAVEN_HOME");
+		//+ #81
+		envp[idx++] = "PATH=" + System.getenv("PATH");
+		envp[idx++] = "TEMP=" + System.getenv("TEMP");
+		envp[idx++] = "TMP=" + System.getenv("TMP");
+		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		//+
+		envp[idx++] = "HOME=" + System.getenv("HOME");
+		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
 		
-		
-//		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
-//		NodeclipseConsole.write("\n");
-
 		StringBuilder sb = new StringBuilder(100);
+		for(int i=0; i<envp.length; i++){
+			sb.append(envp[i]).append('\n');	
+		}
+		NodeclipseLogger.log(sb.toString());
+
+		sb = new StringBuilder(100);
 		for(String s : cmdLine) sb.append(s).append(' ');
 		NodeclipseLogger.log(sb.append('\n').toString());
 		
