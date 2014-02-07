@@ -1,2 +1,5 @@
-npm-debug.log
 !common-templates/.gitignore
+/.settings/
+/.jshintrc
+/.project
+npm-debug.log
