@@ -1,6 +1,6 @@
 {
   "name": "nodeclipse",
-  "version": "0.10.0",
+  "version": "0.10.5",
   "description": "nodeclipse CLI - prepare Node.js project to be imported into Eclipse (Nodeclipse)",
   "main": "copier.js",
   "scripts": {
@@ -21,7 +21,10 @@
     "import",
     "node.js",
     "debug",
-    "template"
+    "template",
+    "installer",
+    "p2",
+    "director"
   ],
   "author": "Paul Verest",
   "license": "MIT",

@@ -17,6 +17,7 @@ var argv = require('optimist')
 
 var helpstr = 
 "  Usage: nodeclipse [arguments] \n\
+  `nodeclipse --help install` for Nodeclipse CLI Installer Help\n\
 \n\
 Arguments: \n\
 -c, --create <name>      create project folder and prepare it \n\
@@ -104,7 +105,8 @@ var executeActions = function () {
 //		    at Object.fs.open (fs.js:404:11)
 
 		console.log(helpstr);
-		console.log("Check README.md and sources at "+__dirname);	
+		console.log("Check README.md and sources at "+__dirname
+				+" or https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/templates/");	
 		return;
 	}
 	if (version){
@@ -218,5 +220,7 @@ var inviteToSiteAsTheLastLine = function () {
 	setTimeout(inviteToSite,100);
 }
 var inviteToSite = function () {
-	console.log("\nCheck http://www.nodeclipse.org/ for news.");
+	console.log('\n  Visit http://www.nodeclipse.org/ for News, post Shares, Installing details, Features list,' 
+			+' Usage (incl Video, Demo) with all shortcuts, Help and Hints,'
+			+' Support options, Where Helping needed, How to thank and Contact us, also History page.');
 }

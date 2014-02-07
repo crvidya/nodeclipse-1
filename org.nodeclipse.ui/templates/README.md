@@ -1,6 +1,6 @@
 
 
-# Nodeclipse CLI 
+# Nodeclipse CLI & Installer
 
 ## Node.js Development with Eclipse or Enide Studio
 
@@ -12,7 +12,7 @@ In Eclipse `File -> Import -> General / Existing Projects into Workspace`
 
 Check <http://www.nodeclipse.org/> on how to get Nodeclipse or Enide Studio
 
-## Commands
+## Nodeclipse CLI Commands
 
 	Usage: nodeclipse [arguments]
 
@@ -50,8 +50,24 @@ Examples:
 
 ## Nodeclipse CLI installer
 
+Nodeclipse CLI installer is for installing/updating plugins into Eclipse/Enide Studio.
+It is much quicker way when you need to automate and know exactly what you need.
 
-	Issues: I noticed that Eclipse once reported conflict when installing 'nodejs', but was OK for second try.
+	cd path/to/eclipse
+	nodeclipse install egit
+
+or if you are in a hurry
+
+	cd path/to/eclipse && nodeclipse i gfm markdown startexplorer
+	
+If while installing you get errors, that you don't know how to solve, use Eclipse GUI or raise an issue.	
+
+  Usage: nodeclipse install [aliases]
+  Mapped aliases: egit git gfm gradle icons jjs markdown mongodb mongodb.shell moonrise nodejs phantomjs pluginslist restclient shelled startexplorer
+  
+Issues: 
+- When updating, I noticed that Eclipse once reported conflict when installing 'nodejs', but was OK for second try.  
+- Cannot resolute to install required JSDT for Nodeclipse nodejs. Install JSDT version specific for your Eclipse version. (use Eclipse GUI)
 
 ## Eclipse Workspace and Project
 
@@ -111,9 +127,10 @@ http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-comman
 
 ## History
 
-0.8.2 fix #101 (bug on MacOS); -g option
-0.8.3 fix general project template
-0.10.0 add 2 java templates
+- 0.8.2 fix #101 (bug on MacOS); -g option
+- 0.8.3 fix general project template
+- 0.10.0 add 2 java templates
+- 0.10.5 add Nodeclipse CLI Installer (example `nodeclipse install markdown`) 
 
 ## News
 

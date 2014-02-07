@@ -1,6 +1,7 @@
 /* 
  * Nodeclipse CLI Installer, Copyright 2014 Paul Verest within Nodeclipse, MIT license http://www.nodeclipse.org/
-
+ */
+/*
 The Eclipse runtime options
  http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fruntime-options.html
 using p2 director
@@ -55,68 +56,104 @@ eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nod
 */
 
 var mappings = [
-	{alias: 'egit', name: 'org.eclipse.egit.feature.group'}, //TODO check if works without ',org.eclipse.ejgit.feature.group'
-	{alias: 'editors.gradle', name: 'org.nodeclipse.enide.editors.gradle.feature.feature.group'},
-	{alias: 'editors.git', name: 'gitaddon.feature.feature.group'},
-	{alias: 'editors.markdown', name: 'markdown.editor.feature.feature.group'},	
-	{alias: 'moonrise', name: 'com.github.eclipseuitheme.themes.feature.feature.group'},	
+	{alias: 'egit', name: 'org.eclipse.egit.feature.group'}, //TODO check if works without ',org.eclipse.jgit.feature.group' and updates both
+	{alias: 'git', name: 'gitaddon.feature.feature.group'},
+	{alias: 'gfm', name: 'code.satyagraha.gfm.viewer.feature.feature.group'},
+	{alias: 'gradle', name: 'org.nodeclipse.enide.editors.gradle.feature.feature.group'},
+	{alias: 'icons', name: 'org.eclipse_icons.editor.feature.feature.group'},
+	{alias: 'jjs', name: 'org.nodeclipse.jjs.feature.feature.group'},
+	{alias: 'markdown', name: 'markdown.editor.feature.feature.group'},
+	{alias: 'mongodb', name: 'net.jumperz.app.MMonjaDB.feature.group'},
+	{alias: 'mongodb.shell', name: 'org.nodeclipse.mongodb.feature.feature.group'},
+	{alias: 'moonrise', name: 'com.github.eclipseuitheme.themes.feature.feature.group'},
 	{alias: 'nodejs', name: "org.nodeclipse.feature.group,org.chromium.sdk.feature.group,org.chromium.debug.feature.group,com.eclipsesource.jshint.feature.feature.group"}, //TODO org.nodeclipse.enide.nodejs.feature
+	{alias: 'phantomjs', name: 'org.nodeclipse.phantomjs.feature.feature.group'},
+	{alias: 'pluginslist', name: 'org.nodeclipse.pluginslist.feature.feature.group'},
+	{alias: 'restclient', name: 'code.google.restclient.tool.feature.feature.group'},
+	{alias: 'shelled', name: 'net.sourceforge.shelled.feature.group'},
+	{alias: 'startexplorer', name: 'de.bastiankrol.startexplorer.feature.feature.group'},
+	{alias: 'themes', name: 'net.jeeeyul.eclipse.themes.feature.feature.group'},
 ];
 
 console.log('Nodeclipse CLI Installer');
-var argv = process.argv;
-if (argv.length == 2 || argv[2]=='help' || !(argv[2]=='install' || argv[2]=='i') ){
+var argv = process.argv; // 0 - node, 1 - app.js
+//for (var i=0; i<argv.length; i++){
+//	console.log(i + ': ' + argv[i]);
+//}
+//`===` does not compare strings well
+if (argv.length === 2 
+	|| argv[2]=='help' || argv[2]=='--help' || argv[2]=='-h' 
+	|| ( argv[2]=='list' && !argv[3])
+	|| !(argv[2]=='install' || argv[2]=='i' || argv[2]=='list') 
+	)
+{ 
 //	process.argv.forEach(function(val, index, array) {
 //		console.log(index + ': ' + val);
 //	});
-//	for (var i=3; i<argv.length; i++){
-//		console.log(index + ': ' + val);
-//	}
 	//console.log("Nodeclipse CLI Installer Help");
-	console.log('  Usage: nodeclipse install [aliases]');
+	console.log('  Usage (from folder with eclipse): nodeclipse install <aliases> [exact.feature.name.feature.group]');
+	//console.log('         nodeclipse list <repository>');
 	var mappedAliases = '  Mapped aliases: ';
 	for (var mi=0; mi<mappings.length; mi++){
 		mappedAliases += mappings[mi].alias+' ';
 	}
 	console.log(mappedAliases);
-	console.log('\n  Visit http://www.nodeclipse.org/');
+	if (argv[2]==='help'){
+		console.log('mappings: '+JSON.stringify(mappings,null,2));
+	}
+	console.log('\n  Visit http://www.nodeclipse.org/ for News, post Shares, Installing details, Features list,' 
+			+' Usage (incl Video, Demo) with all shortcuts, Help and Hints,'
+			+' Support options, Where Helping needed, How to thank and Contact us, also History page.');
 	process.exit();
 };
+
+// processing commands logic
+var repository = 'http://www.nodeclipse.org/updates/';
+if (argv[2]=='list'){
+	var command = '-list';	
+	var repository = argv[3];
+}
 var comma_separated_list = '';
 for (var i=3; i<argv.length; i++){
 	var argi = argv[i];
 	var found = false;
 	for (var mi=0; mi<mappings.length; mi++){
-		if (argi==mappings[mi].alias){
+		if (argi===mappings[mi].alias){
 			found = true;
-			comma_separated_list += mappings[mi].name;
+			comma_separated_list += mappings[mi].name+',';
 			break;
 		}
 	}
 	if (found) continue;
-	comma_separated_list += argi; //passing as is
+	comma_separated_list += argi+','; //passing as is
 }
+// delete last comma
+comma_separated_list = comma_separated_list.substring(0, comma_separated_list.length-1);
 
-//--- section below can be re-used for scripts with hard-coded values
+// executing
+//--- section below can be re-used for scripts with hard-coded values // Copyright 2014 ... http://www.nodeclipse.org/
 var child_process = require('child_process');
 var spawn = child_process.spawn;
 var isWin = /^win/.test(process.platform);
 var what = isWin ? 'eclipsec' : 'eclipse'; // see [How do I run Eclipse?](https://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F)
-var repository = 'http://www.nodeclipse.org/updates/';
+//var repository = 'http://www.nodeclipse.org/updates/';
 
-var command = '-list';
+//var command = '-list';
 var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', command, '-repository', repository]; //enough for -list
 
-/*eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ 
--installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -tag org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634
--vmargs -Declipse.p2.mirrors=false 
-*/
-var command = '-installIU';
-//var command = '-uninstallIU';
-var version = '/0.10.0.201401270634';
-//var comma_separated_list = 'org.nodeclipse.enide.nodejs.feature.feature.group';
-var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository, 
-               command, comma_separated_list, '-tag', comma_separated_list, '-vmargs', '-Declipse.p2.mirrors=false'];
+if ( command != '-list'){ // do install
+	/*eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ 
+	-installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -tag org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634
+	-vmargs -Declipse.p2.mirrors=false 
+	*/
+	var command = '-installIU';
+	//var command = '-uninstallIU';
+	var version = '/0.10.0.201401270634';
+	//var comma_separated_list = 'org.nodeclipse.enide.nodejs.feature.feature.group';
+	var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
+	               command, comma_separated_list, '-tag', comma_separated_list, '-vmargs', '-Declipse.p2.mirrors=false'];
+}
+
 var spawned = spawn(what, options);
 
 console.log('starting '+what+JSON.stringify(options));
