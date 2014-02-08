@@ -376,3 +376,4 @@ http://stackoverflow.com/questions/2330620/eclipse-i-turned-on-hidden-characters
 [Eclipse JavaScript Development Tools (JSDT)](http://eclipse.org/webtools/jsdt/) has only JS web support.     
 add interesting stuff here...
 
+<a href="http://with-eclipse.github.io/" target="_blank"><img alt="with-Eclipse logo" src="http://with-eclipse.github.io/with-eclipse-1.jpg" /></a>
