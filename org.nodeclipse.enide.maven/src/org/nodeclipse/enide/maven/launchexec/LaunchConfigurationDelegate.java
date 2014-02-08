@@ -39,12 +39,15 @@ import org.nodeclipse.enide.maven.util.VariablesUtil;
  * @since 0.10
  * @author Paul Verest
  */
-public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
+public class LaunchConfigurationDelegate  
+	extends org.nodeclipse.enide.maven.launch.LaunchConfigurationDelegate
+	implements ILaunchConfigurationDelegate {
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
+		//{ copy-paste part
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		
 		// Using configuration to build command line	
@@ -64,67 +67,71 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		}			
 		cmdLine.add(mavenPath);
 		
-		//TODO shared processing function for 2 launch types.      
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_DEBUG))
 			cmdLine.add("-X");
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_OFFLINE))
 			cmdLine.add("-o");
+		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_QUIET))
+			cmdLine.add("-q");
 
-		String mavenOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
-//		if(!mavenOptions.equals("")) {
-//			String[] sa = mavenOptions.split(" ");
-//			for(String s : sa) {
-//				cmdLine.add(s);
-//			}			
-//		}
+		String mavenOptionAlternativeSettings = preferenceStore.getString(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS);
+		if("".equals(mavenOptionAlternativeSettings)){
+		// Check if the settings.xml location is correctly configured
+		File mavenOptionAlternativeSettingsFile = new File(mavenOptionAlternativeSettings);
+		if(!mavenOptionAlternativeSettingsFile.exists()){
+			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+			CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
+					"Alternative settings.xml is not correctly configured.\n\n"
+					+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
+					+" and configure the correct location");
+			return;
+		}			
+		cmdLine.add("-s "+mavenOptionAlternativeSettings);
+		}
 		
-//		String nodeArgs = configuration.getAttribute(GradleConstants.ATTR_GRADLE_ARGUMENTS, "");
-//		if(!nodeArgs.equals("")) {
-//			String[] sa = nodeArgs.split(" ");
-//			for(String s : sa) {
-//				cmdLine.add(s);
-//			}
-//		}
-		
-//		//mvn compile exec:java -Dexec.mainClass=example.Example
-//		cmdLine.add("compile");
-//		cmdLine.add("exec:java");
-//		cmdLine.add("-Dmaven.test.skip=true");
+		//} copy-paste part
 
-		String file = configuration.getAttribute("KEY_FILE_PATH",	"");
-		IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(file);
-		IProject project = res.getProject();
-		IPath relPath = res.getProjectRelativePath(); // =src/main/java/maven/MainClass.java
-		String packageClass = ""+relPath;
-		// remove maven source folder
-		if (packageClass.startsWith("src/main/java/")){
-			packageClass = packageClass.substring("src/main/java/".length());
-		} else if (packageClass.startsWith("src/")){
-			packageClass = packageClass.substring("src/".length());
-		} 
-		// cut .java
-		packageClass = packageClass.substring(0, packageClass.lastIndexOf('.')); 
-		packageClass = packageClass.replace('/', '.');
-//		cmdLine.add("-Dexec.mainClass="+packageClass );
 		
-		// as one string
-		//cmdLine.add(mavenPath+" "+mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
+		//TODO extract
 		
-		cmdLine.add(mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
-		
-//		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
-//		File workingPath = null;
-//		String sProjectPath = project.getLocation().toOSString();
-//		if(workingDirectory.length() == 0) {
-//			workingPath = new File(sProjectPath);
-//		} else {
-//			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
-//			if(workingDirectory == null) {
-//				workingPath = new File(sProjectPath);
-//			} else {
-//				workingPath = new File(workingDirectory);
-//			}
+//		@Override // compile exec:java -Dexec.mainClass=package.Class
+//		protected void specialOptions(ILaunchConfiguration configuration,
+//				IPreferenceStore preferenceStore, List<String> cmdLine) throws CoreException {
+			
+			String mavenOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
+			
+			//mvn compile exec:java -Dexec.mainClass=example.Example
+			// WARNING passing all parameters one-by-one fails on Windows
+			// for what I saw in JDK source Windows magic =variables
+			// i.e. can't pass '=' this way
+			//			cmdLine.add("compile");
+			//			cmdLine.add("exec:java");
+
+			String file = configuration.getAttribute("KEY_FILE_PATH",	"");
+			IResource res = ResourcesPlugin.getWorkspace().getRoot().findMember(file);
+			IProject project = res.getProject();
+			IPath relPath = res.getProjectRelativePath(); // =src/main/java/maven/MainClass.java
+			String packageClass = ""+relPath;
+			// remove maven source folder
+			if (packageClass.startsWith("src/main/java/")){
+				packageClass = packageClass.substring("src/main/java/".length());
+			} else if (packageClass.startsWith("src/")){
+				packageClass = packageClass.substring("src/".length());
+			} 
+			// cut .java
+			packageClass = packageClass.substring(0, packageClass.lastIndexOf('.')); 
+			packageClass = packageClass.replace('/', '.');
+//			cmdLine.add("-Dexec.mainClass="+packageClass );
+			
+			// as one string
+			//cmdLine.add(mavenPath+" "+mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
+			
+			cmdLine.add(mavenOptions+" compile exec:java -Dexec.mainClass="+packageClass);
 //		}
+		
+		
+		
+		//workingDirectory is project root - differs
 		String workingDirectory = configuration.getAttribute(MavenConstants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
 		if(workingDirectory.length() > 0) {
@@ -137,35 +144,11 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			workingPath = new File(project.getLocation().toOSString());
 		}
 		
-		Map<String, String> envm = new HashMap<String, String>();
-		envm = configuration.getAttribute(MavenConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size() + 2 + 4 + 2 ];
-		int idx = 0;
-		for(String key : envm.keySet()) {
-			String value = envm.get(key);
-			envp[idx++] = key + "=" + value;
-		}
-		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
-//ERROR: M2_HOME not found in your environment.
-//Please set the M2_HOME variable in your environment to match the
-//location of the Maven installation
-		envp[idx++] = "M2_HOME=" + System.getenv("MAVEN_HOME");
-		//+ #81
-		envp[idx++] = "PATH=" + System.getenv("PATH");
-		envp[idx++] = "TEMP=" + System.getenv("TEMP");
-		envp[idx++] = "TMP=" + System.getenv("TMP");
-		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
-		//+
-		envp[idx++] = "HOME=" + System.getenv("HOME");
-		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
 		
-		StringBuilder sb = new StringBuilder(100);
-		for(int i=0; i<envp.length; i++){
-			sb.append(envp[i]).append('\n');	
-		}
-		NodeclipseLogger.log(sb.toString());
+		//env
+		String[] envp = getEnvironmentVariables(configuration); 
 
-		sb = new StringBuilder(100);
+		StringBuilder sb = new StringBuilder(100);
 		for(String s : cmdLine) sb.append(s).append(' ');
 		NodeclipseLogger.log(sb.append('\n').toString());
 		
