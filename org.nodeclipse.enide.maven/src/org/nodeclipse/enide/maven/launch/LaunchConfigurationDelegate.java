@@ -75,10 +75,12 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_DEBUG))
 			cmdLine.add("-X");
-		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_OFFLINE))
-			cmdLine.add("-o");
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_QUIET))
 			cmdLine.add("-q");
+		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_FORCED_DEPENDENCIES_UPDATE))
+			cmdLine.add("-U");
+		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_OFFLINE))
+			cmdLine.add("-o");
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_TEST_SKIP))
 			cmdLine.add("-Dmaven.test.skip=true");
 		//    	TODO won't be so simple! 

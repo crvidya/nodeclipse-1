@@ -18,9 +18,10 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
     private FileFieldEditor mavenPath;
     private StringFieldEditor mavenOptions;
     
-    private BooleanFieldEditor mavenOptionOffline;
     private BooleanFieldEditor mavenOptionDebug;
     private BooleanFieldEditor mavenOptionQuiet;
+    private BooleanFieldEditor mavenOptionOffline;
+    private BooleanFieldEditor mavenOptionForcedDependenciesUpdate;
     private BooleanFieldEditor mavenOptionTestSkip;
     private FileFieldEditor mavenOptionAlternativeSettings;
 
@@ -53,12 +54,14 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 		mavenOptions = new StringFieldEditor(MavenConstants.MAVEN_OPTIONS, "Maven options (mvn -h):", getFieldEditorParent());
 		addField(mavenOptions);
 
-		mavenOptionOffline = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_OFFLINE, "-o Offline	(Work offline)", getFieldEditorParent());
-        addField(mavenOptionOffline);
         mavenOptionDebug = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_DEBUG,"-X Debug	(Produce execution debug output)", getFieldEditorParent());
         addField(mavenOptionDebug);
         mavenOptionQuiet = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_QUIET,"-q Quite	(Quiet output - only show errors)", getFieldEditorParent());
         addField(mavenOptionQuiet);
+        mavenOptionForcedDependenciesUpdate = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_FORCED_DEPENDENCIES_UPDATE, "-U Forces a check for updated releases and snapshots on remote repositories", getFieldEditorParent());
+        addField(mavenOptionForcedDependenciesUpdate);
+		mavenOptionOffline = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_OFFLINE, "-o Offline	(Work offline)", getFieldEditorParent());
+        addField(mavenOptionOffline);
         mavenOptionTestSkip = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_TEST_SKIP,"-Dmaven.test.skip=true	(skip unit testing)", getFieldEditorParent());
         addField(mavenOptionTestSkip);
 
