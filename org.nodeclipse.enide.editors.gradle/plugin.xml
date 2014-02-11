@@ -9,7 +9,7 @@
             class="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"            
             extensions="gradle"
-            icon="icons/gradle.png"
+            icon="icons/gradle-icon-16x16.png"
             id="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
             name="Nodeclipse/Enide minimal Editor for build.Gradle">
       </editor>
