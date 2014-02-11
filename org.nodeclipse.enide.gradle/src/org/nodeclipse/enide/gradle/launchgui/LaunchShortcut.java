@@ -78,7 +78,7 @@ public class LaunchShortcut implements ILaunchShortcut {
         // check for an existing launch config for the file
         String path = file.getFullPath().toString();
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
-        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(GradleConstants.LAUNCH_CONFIGURATION_TYPE_ID); 
+        ILaunchConfigurationType type = launchManager.getLaunchConfigurationType(GradleConstants.LAUNCHGUI_CONFIGURATION_TYPE_ID); 
         ILaunchConfiguration configuration = createLaunchConfiguration(type, path, file);
         DebugUITools.launch(configuration, mode);
         // then execution goes in LaunchConfigurationDelegate.java launch() method

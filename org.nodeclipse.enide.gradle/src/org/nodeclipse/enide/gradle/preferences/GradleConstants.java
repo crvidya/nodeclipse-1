@@ -4,6 +4,7 @@ public class GradleConstants {
 	
 	public static final String PLUGIN_ID = "org.nodeclipse.enide.gradle";
 	public static final String LAUNCH_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.gradle.launch.LaunchConfigurationType";
+	public static final String LAUNCHGUI_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.gradle.launchgui.LaunchConfigurationType";
 	
 	public static final String PROCESS_MESSAGE = "Gradle Process";
 	
@@ -19,7 +20,11 @@ public class GradleConstants {
 
 	public static final String GRADLE_PATH = "gradle_path";	
 	public static final String GRADLE_OPTIONS = "gradle_options";	
+	public static final String GRADLE_OPTION_DEBUG = "gradle_option_debug";
+	public static final String GRADLE_OPTION_INFO = "gradle_option_info";
+	public static final String GRADLE_OPTION_QUIET = "gradle_option_quiet";
+	public static final String GRADLE_OPTION_OFFLINE = "gradle_option_offline";
 
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.enide.gradle.preferences.GradlePreferencePage";
-	public static final String PREFERENCE_PAGE_NAME ="Gradle(Nodeclipse)"; // the same as in plugin.xml	
+	public static final String PREFERENCE_PAGE_NAME ="Gradle(Enide)"; // the same as in plugin.xml	
 }

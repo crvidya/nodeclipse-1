@@ -38,6 +38,13 @@ import org.nodeclipse.enide.gradle.util.VariablesUtil;
  */
 public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
 
+	private boolean warned = false;
+	
+	protected void specialOptions(ILaunchConfiguration configuration,
+			IPreferenceStore preferenceStore, List<String> cmdLine) throws CoreException {
+		cmdLine.add("build");
+	}
+
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
@@ -60,6 +67,17 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			return;
 		}			
 		cmdLine.add(gradlePath);
+		
+		//{ TODO should be special as --gui mode is likely doesn't care
+		if (preferenceStore.getBoolean(GradleConstants.GRADLE_OPTION_DEBUG))
+			cmdLine.add("-d");
+		if (preferenceStore.getBoolean(GradleConstants.GRADLE_OPTION_INFO))
+			cmdLine.add("-i");
+		if (preferenceStore.getBoolean(GradleConstants.GRADLE_OPTION_QUIET))
+			cmdLine.add("-q");
+		if (preferenceStore.getBoolean(GradleConstants.GRADLE_OPTION_OFFLINE))
+			cmdLine.add("--offline");
+		
 
 		String nodeOptions= preferenceStore.getString(GradleConstants.GRADLE_OPTIONS);
 		if(!nodeOptions.equals("")) {
@@ -68,22 +86,17 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 				cmdLine.add(s);
 			}			
 		}
-		
-//		String nodeArgs = configuration.getAttribute(GradleConstants.ATTR_GRADLE_ARGUMENTS, "");
-//		if(!nodeArgs.equals("")) {
-//			String[] sa = nodeArgs.split(" ");
-//			for(String s : sa) {
-//				cmdLine.add(s);
-//			}
-//		}
-		
+		//{
+
 		String file = configuration.getAttribute(GradleConstants.KEY_FILE_PATH,	"");
 		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
 		// path is relative, so cannot find it, unless get absolute path
 		cmdLine.add("-b");  //  -b, --build-file        Specifies the build file.
-
 		cmdLine.add(filePath);
-		cmdLine.add("build");
+		
+		//cmdLine.add("build");
+		specialOptions(configuration, preferenceStore, cmdLine);
+		
 		
 		String workingDirectory = configuration.getAttribute(GradleConstants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
@@ -97,34 +110,9 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 				workingPath = new File(workingDirectory);
 			}
 		}
-		
-		Map<String, String> envm = new HashMap<String, String>();
-		envm = configuration.getAttribute(GradleConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size()+2];
-		int idx = 0;
-		for(String key : envm.keySet()) {
-			String value = envm.get(key);
-			envp[idx++] = key + "=" + value;
-		}
-//ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
-//
-//Please set the JAVA_HOME variable in your environment to match the
-//location of your Java installation.
-		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
-		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME");
-		
-//FAILURE: Build failed with an exception.
-//
-//* What went wrong:
-//java.lang.ExceptionInInitializerError (no error message)
-//
-//* Try:
-//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-		
-		
-		
-//		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
-//		NodeclipseConsole.write("\n");
+
+		//env
+		String[] envp = getEnvironmentVariables(configuration); 
 		
 		StringBuilder sb = new StringBuilder(100);
 		for(String s : cmdLine) sb.append(s).append(' ');
@@ -138,4 +126,48 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		
 	}
 
+	/** Get EnvironmentVariables from ILaunchConfiguration
+	 * and adds JAVA_HOME, GRADLE_HOME, PATH, TEMP, SystemDrive, HOME 
+	 * @param configuration ILaunchConfiguration
+	 * @return String[]
+	 * @throws CoreException
+	 */
+	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
+		Map<String, String> envm = new HashMap<String, String>();
+		envm = configuration.getAttribute(GradleConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
+		String[] envp = new String[envm.size() + 2 + 4 + 2];
+		int idx = 0;
+		for(String key : envm.keySet()) {
+			String value = envm.get(key);
+			envp[idx++] = key + "=" + value;
+		}
+		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
+		//FAILURE: Build failed with an exception.
+		//
+		//* What went wrong:
+		//java.lang.ExceptionInInitializerError (no error message)
+		//
+		//* Try:
+		//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME");
+		//+ #81
+		envp[idx++] = "PATH=" + System.getenv("PATH");
+		envp[idx++] = "TEMP=" + System.getenv("TEMP");
+		envp[idx++] = "TMP=" + System.getenv("TMP");
+		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		//+
+		envp[idx++] = "HOME=" + System.getenv("HOME");
+		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
+		
+		if (!warned ){
+			StringBuilder sb = new StringBuilder(100);
+			for(int i=0; i<envp.length; i++){
+				sb.append(envp[i]).append('\n');	
+			}
+			NodeclipseLogger.log(sb.toString());
+			NodeclipseLogger.log("Warning: JAVA_HOME, GRADLE_HOME and others environment variables will be applied automatically to every `gradle` launch.\n");
+			warned = true;
+		}
+		return envp;
+	}
 }
