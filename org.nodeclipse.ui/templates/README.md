@@ -130,7 +130,8 @@ http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-comman
 - 0.8.2 fix #101 (bug on MacOS); -g option
 - 0.8.3 fix general project template
 - 0.10.0 add 2 java templates
-- 0.10.5 add Nodeclipse CLI Installer (example `nodeclipse install markdown`) 
+- 0.10.5 add Nodeclipse CLI Installer (example `nodeclipse install markdown`)
+- 0.10.6 fix #101 again; total aliases=20 
 
 ## News
 

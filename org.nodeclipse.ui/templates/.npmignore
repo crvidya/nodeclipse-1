@@ -3,3 +3,4 @@
 /.jshintrc
 /.project
 npm-debug.log
+*.list

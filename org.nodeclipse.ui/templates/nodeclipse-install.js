@@ -60,6 +60,7 @@ var mappings = [
 	{alias: 'git', name: 'gitaddon.feature.feature.group'},
 	{alias: 'gfm', name: 'code.satyagraha.gfm.viewer.feature.feature.group'},
 	{alias: 'gradle', name: 'org.nodeclipse.enide.editors.gradle.feature.feature.group'},
+	{alias: 'hudson', name: 'org.eclipse.mylyn.hudson.feature.group'},
 	{alias: 'icons', name: 'org.eclipse_icons.editor.feature.feature.group'},
 	{alias: 'jjs', name: 'org.nodeclipse.jjs.feature.feature.group'},
 	{alias: 'markdown', name: 'markdown.editor.feature.feature.group'},
@@ -73,6 +74,9 @@ var mappings = [
 	{alias: 'shelled', name: 'net.sourceforge.shelled.feature.group'},
 	{alias: 'startexplorer', name: 'de.bastiankrol.startexplorer.feature.feature.group'},
 	{alias: 'themes', name: 'net.jeeeyul.eclipse.themes.feature.feature.group'},
+	{alias: 'wikitext', name: 'org.eclipse.mylyn.wikitext_feature.feature.group'}, // textile, mediawiki, tracwiki, twiki
+	{alias: 'yaml', name: 'org.dadacoalition.yedit.feature.group'},
+	
 ];
 
 console.log('Nodeclipse CLI Installer');
@@ -93,7 +97,7 @@ if (argv.length === 2
 	//console.log("Nodeclipse CLI Installer Help");
 	console.log('  Usage (from folder with eclipse): nodeclipse install <aliases> [exact.feature.name.feature.group]');
 	//console.log('         nodeclipse list <repository>');
-	var mappedAliases = '  Mapped aliases: ';
+	var mappedAliases = '  Mapped aliases('+mappings.length+'): ';
 	for (var mi=0; mi<mappings.length; mi++){
 		mappedAliases += mappings[mi].alias+' ';
 	}
