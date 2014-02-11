@@ -79,7 +79,7 @@ var mappings = [
 	
 ];
 
-console.log('Nodeclipse CLI Installer');
+console.log('Nodeclipse CLI Installer aka Eclipse Plugin Mananger epm');
 var argv = process.argv; // 0 - node, 1 - app.js
 //for (var i=0; i<argv.length; i++){
 //	console.log(i + ': ' + argv[i]);
