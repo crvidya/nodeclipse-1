@@ -12,18 +12,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
-//import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.enide.maven.Activator;
-//import org.nodeclipse.debug.util.Constants;
-//import org.nodeclipse.debug.util.VariablesUtil;
-//import org.nodeclipse.ui.Activator;
-//import org.nodeclipse.ui.preferences.Dialogs;
-//import org.nodeclipse.ui.preferences.PreferenceConstants;
-//import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.maven.preferences.MavenConstants;
 import org.nodeclipse.enide.maven.util.NodeclipseLogger;
 import org.nodeclipse.enide.maven.util.VariablesUtil;
@@ -36,6 +29,8 @@ import org.nodeclipse.enide.maven.util.VariablesUtil;
  * @author Paul Verest
  */
 public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
+
+	private boolean warned = false;
 
 	//TODO shared processing function for 2 launch types.      
 //	protected void specialOptions(ILaunchConfiguration configuration,
@@ -160,12 +155,6 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	 * @throws CoreException
 	 */
 	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
-		StringBuilder sb = new StringBuilder(100);
-//		for(String key : envm.keySet()) {
-//			sb.append(key).append('=').append(key).append(' ');	
-//		}
-//		NodeclipseLogger.log(sb.append('\n').toString());
-		
 		Map<String, String> envm = new HashMap<String, String>();
 		envm = configuration.getAttribute(MavenConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
 		String[] envp = new String[envm.size() + 2 + 4 + 2];
@@ -188,10 +177,15 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		envp[idx++] = "HOME=" + System.getenv("HOME");
 		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
 		
-		for(int i=0; i<envp.length; i++){
-			sb.append(envp[i]).append('\n');	
+		if (!warned ){
+			StringBuilder sb = new StringBuilder(100);
+			for(int i=0; i<envp.length; i++){
+				sb.append(envp[i]).append('\n');	
+			}
+			NodeclipseLogger.log(sb.toString());
+			NodeclipseLogger.log("Warning: JAVA_HOME, M2_HOME and others environment variables will be applied automatically to every `mvn` launch.\n");
+			warned = true;
 		}
-		NodeclipseLogger.log(sb.toString());
 		return envp;
 	}
 }

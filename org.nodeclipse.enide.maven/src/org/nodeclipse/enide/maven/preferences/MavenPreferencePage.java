@@ -56,7 +56,7 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 
         mavenOptionDebug = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_DEBUG,"-X Debug	(Produce execution debug output)", getFieldEditorParent());
         addField(mavenOptionDebug);
-        mavenOptionQuiet = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_QUIET,"-q Quite	(Quiet output - only show errors)", getFieldEditorParent());
+        mavenOptionQuiet = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_QUIET,"-q Quiet	(Quiet output - only show errors)", getFieldEditorParent());
         addField(mavenOptionQuiet);
         mavenOptionForcedDependenciesUpdate = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_FORCED_DEPENDENCIES_UPDATE, "-U Forces a check for updated releases and snapshots on remote repositories", getFieldEditorParent());
         addField(mavenOptionForcedDependenciesUpdate);
