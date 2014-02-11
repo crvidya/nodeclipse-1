@@ -17,10 +17,9 @@ import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.nodeclipse.common.preferences.CommonDialogs;
+import org.nodeclipse.common.ui.CommonConsole;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.VariablesUtil;
-//import org.nodeclipse.ui.Activator;
-//import org.nodeclipse.ui.preferences.PreferenceConstants;
 import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.vertx.Activator;
 import org.nodeclipse.vertx.VertxConstants;
@@ -59,9 +58,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		}			
 		cmdLine.add(executablePath);
 		
-		if (isDebugMode) {
-			//TODO research how to debug
-		}
+		cmdLine.add("run");
 
 		String file = configuration.getAttribute(VertxConstants.KEY_FILE_PATH,	"");
 		String filePath = ResourcesPlugin.getWorkspace().getRoot().findMember(file).getLocation().toOSString();
@@ -81,15 +78,8 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			}
 		}
 		
-		Map<String, String> envm = new HashMap<String, String>();
-		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size()];
-		int idx = 0;
-		for(String key : envm.keySet()) {
-			String value = envm.get(key);
-			envp[idx++] = key + "=" + value;
-		}
-		
+		//env
+		String[] envp = getEnvironmentVariables(configuration); 
 		
 		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
@@ -100,9 +90,47 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		Process p = DebugPlugin.exec(cmds, workingPath, envp);
 		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, VertxConstants.PROCESS_MESSAGE);
 		if (isDebugMode) {
-			//TODO research how to debug
+			//TODO research how to debug -> 2 mode rhino & nashorn
 		}
 		
 	}
+	
+	private boolean warned = false;
 
+	/** Get EnvironmentVariables from ILaunchConfiguration
+	 * and adds JAVA_HOME, GRADLE_HOME, PATH, TEMP, SystemDrive, HOME 
+	 * @param configuration ILaunchConfiguration
+	 * @return String[]
+	 * @throws CoreException
+	 */
+	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
+		Map<String, String> envm = new HashMap<String, String>();
+		envm = configuration.getAttribute(VertxConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
+		String[] envp = new String[envm.size() + 1 + 4 + 2];
+		int idx = 0;
+		for(String key : envm.keySet()) {
+			String value = envm.get(key);
+			envp[idx++] = key + "=" + value;
+		}
+		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
+		//+ #81
+		envp[idx++] = "PATH=" + System.getenv("PATH");
+		envp[idx++] = "TEMP=" + System.getenv("TEMP");
+		envp[idx++] = "TMP=" + System.getenv("TMP");
+		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		//+
+		envp[idx++] = "HOME=" + System.getenv("HOME");
+		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
+		
+		if (!warned ){
+			StringBuilder sb = new StringBuilder(100);
+			for(int i=0; i<envp.length; i++){
+				sb.append(envp[i]).append('\n');	
+			}
+			CommonConsole.write(sb.toString());
+			CommonConsole.write("Warning: JAVA_HOME and others environment variables will be applied automatically to every `gradle` launch.\n");
+			warned = true;
+		}
+		return envp;
+	}
 }

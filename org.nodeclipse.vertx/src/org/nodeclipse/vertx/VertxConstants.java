@@ -10,6 +10,8 @@ public class VertxConstants {
 	
 	public static final String VERTX_PATH = "vertx_path";
 	
+	public static final String ATTR_ENVIRONMENT_VARIABLES = "attr_environment_variables";	
+	
 	public static final String PREFERENCES_PAGE = PLUGIN_ID+".preferences.VertxPreferencePage";
 	public static final String PREFERENCE_PAGE_NAME = "Nodeclipse/Vert.x"; // ! not the same as in plugin.xml
 	public static final String PREFERENCE_PAGE_DESCRIPTION = "Vert.x settings";

@@ -20,7 +20,9 @@ public class VertxPreferencePage extends FieldEditorPreferencePage implements IW
 	public VertxPreferencePage(){
 	       super(GRID);
 	        setPreferenceStore(Activator.getDefault().getPreferenceStore());
-	        setDescription(VertxConstants.PREFERENCE_PAGE_DESCRIPTION);
+	        setDescription(VertxConstants.PREFERENCE_PAGE_DESCRIPTION+"\n"
+	        +"Vert.x requires JDK 1.7.0 or later. Make sure the JDK bin directory is on your `PATH`.\n"
+	        +"create VERTX_HOME pointing to folder where you extracted .zip, add %VERTX_HOME%\bin; to your `PATH`");
 	}
 	
 	@Override
