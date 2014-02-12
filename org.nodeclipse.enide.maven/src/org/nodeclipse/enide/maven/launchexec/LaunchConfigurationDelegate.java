@@ -2,9 +2,7 @@ package org.nodeclipse.enide.maven.launchexec;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -15,18 +13,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
-//import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.enide.maven.Activator;
-//import org.nodeclipse.debug.util.Constants;
-//import org.nodeclipse.debug.util.VariablesUtil;
-//import org.nodeclipse.ui.Activator;
-//import org.nodeclipse.ui.preferences.Dialogs;
-//import org.nodeclipse.ui.preferences.PreferenceConstants;
-//import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.maven.preferences.MavenConstants;
 import org.nodeclipse.enide.maven.util.NodeclipseLogger;
 import org.nodeclipse.enide.maven.util.VariablesUtil;
@@ -75,18 +66,18 @@ public class LaunchConfigurationDelegate
 			cmdLine.add("-q");
 
 		String mavenOptionAlternativeSettings = preferenceStore.getString(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS);
-		if("".equals(mavenOptionAlternativeSettings)){
-		// Check if the settings.xml location is correctly configured
-		File mavenOptionAlternativeSettingsFile = new File(mavenOptionAlternativeSettings);
-		if(!mavenOptionAlternativeSettingsFile.exists()){
-			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-			CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
-					"Alternative settings.xml is not correctly configured.\n\n"
-					+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
-					+" and configure the correct location");
-			return;
-		}			
-		cmdLine.add("-s "+mavenOptionAlternativeSettings);
+		if( !"".equals(mavenOptionAlternativeSettings) ){
+			// Check if the settings.xml location is correctly configured
+			File mavenOptionAlternativeSettingsFile = new File(mavenOptionAlternativeSettings);
+			if(!mavenOptionAlternativeSettingsFile.exists()){
+				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+				CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
+						"Alternative settings.xml is not correctly configured.\n\n"
+						+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
+						+" and configure the correct location");
+				return;
+			}			
+			cmdLine.add("-s "+mavenOptionAlternativeSettings);
 		}
 		
 		//} copy-paste part
