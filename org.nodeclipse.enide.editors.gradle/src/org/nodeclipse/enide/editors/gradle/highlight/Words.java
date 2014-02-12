@@ -10,7 +10,9 @@ public class Words {
             
             "android", "compileSdkVersion", "buildToolsVersion",//
             "sourceSets", "main", "manifest",//
-            "srcFile", "srcDirs", "setRoot"//
+            "srcFile", "srcDirs", "setRoot",//
+            "defaultConfig", "signingConfigs", "buildTypes",//
+            "productFlavors", "debug", "release",//
     };
 
     public static final String[] RESERVEDWORDS = { "let", "yield",//
