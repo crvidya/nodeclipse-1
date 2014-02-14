@@ -198,32 +198,22 @@ public class LaunchConfigurationDelegate implements
 			}
 		}
 
-		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		//TODO rename workingPath to workingDirectory, workingDirectory to workingDirectoryConfig
+		//TODO propagate changes to .phantom,.mongo ...
 		File workingPath = null;
-		if(workingDirectory.length() == 0) {
-			workingPath = (new File(filePath)).getParentFile();
-		} else {
+		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		if(workingDirectory.length() > 0) {
 			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
-			if(workingDirectory == null) {
-				workingPath = (new File(filePath)).getParentFile();
-			} else {
+			if(workingDirectory != null) {
 				workingPath = new File(workingDirectory);
 			}
 		}
-		
-		Map<String, String> envm = new HashMap<String, String>();
-		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size()+4]; // see below
-		int idx = 0;
-		for(String key : envm.keySet()) {
-			String value = envm.get(key);
-			envp[idx++] = key + "=" + value;
+		if (workingPath == null){
+			workingPath = (new File(filePath)).getParentFile();
 		}
-		//+ #81
-		envp[idx++] = "PATH=" + System.getenv("PATH");
-		envp[idx++] = "TEMP=" + System.getenv("TEMP");
-		envp[idx++] = "TMP=" + System.getenv("TMP");
-		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		
+		//env
+		String[] envp = getEnvironmentVariables(configuration); 
 		
 		for(String s : cmdLine) NodeclipseConsole.write(s+" ");
 		NodeclipseConsole.write("\n");
@@ -249,6 +239,23 @@ public class LaunchConfigurationDelegate implements
 		}else{
 			nodeProcess = process;	
 		}
+	}
+	
+	private String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
+		Map<String, String> envm = new HashMap<String, String>();
+		envm = configuration.getAttribute(Constants.ATTR_ENVIRONMENT_VARIABLES, envm);
+		String[] envp = new String[envm.size()+4]; // see below
+		int idx = 0;
+		for(String key : envm.keySet()) {
+			String value = envm.get(key);
+			envp[idx++] = key + "=" + value;
+		}
+		//+ #81
+		envp[idx++] = "PATH=" + System.getenv("PATH");
+		envp[idx++] = "TEMP=" + System.getenv("TEMP");
+		envp[idx++] = "TMP=" + System.getenv("TMP");
+		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		return envp;
 	}
 
 	private void showErrorDialog(final String message) {

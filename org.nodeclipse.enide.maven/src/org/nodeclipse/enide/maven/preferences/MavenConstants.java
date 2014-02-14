@@ -17,8 +17,10 @@ public class MavenConstants {
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";
 	
 	public static final String MAVEN_HOME = "maven_home";
-	public static final String MAVEN_PATH = "maven_path";	
+	public static final String MAVEN_HOME_TO_USE = "maven_home_to_use";
+	public static final String MAVEN_PATH = "maven_path"; //@deprecated	
 	public static final String MAVEN_OPTIONS = "maven_options";
+	public static final String MAVEN_OPTION_SHOW_VERSION = "maven_option_show_version";
 	public static final String MAVEN_OPTION_DEBUG = "maven_option_debug";
 	public static final String MAVEN_OPTION_QUIET = "maven_option_quite";
 	public static final String MAVEN_OPTION_FORCED_DEPENDENCIES_UPDATE = "maven_option_forced_dependencies_update";

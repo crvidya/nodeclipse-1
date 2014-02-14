@@ -40,6 +40,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 
 	private boolean warned = false;
 	
+	//specific
 	protected void specialOptions(ILaunchConfiguration configuration,
 			IPreferenceStore preferenceStore, List<String> cmdLine) throws CoreException {
 		cmdLine.add("build");
@@ -98,17 +99,16 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		specialOptions(configuration, preferenceStore, cmdLine);
 		
 		
-		String workingDirectory = configuration.getAttribute(GradleConstants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
-		if(workingDirectory.length() == 0) {
-			workingPath = (new File(filePath)).getParentFile();
-		} else {
+		String workingDirectory = configuration.getAttribute(GradleConstants.ATTR_WORKING_DIRECTORY, "");
+		if(workingDirectory.length() > 0) {
 			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
-			if(workingDirectory == null) {
-				workingPath = (new File(filePath)).getParentFile();
-			} else {
+			if(workingDirectory != null) {
 				workingPath = new File(workingDirectory);
 			}
+		}
+		if (workingPath == null){
+			workingPath = (new File(filePath)).getParentFile();
 		}
 
 		//env
@@ -149,7 +149,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//
 		//* Try:
 		//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME");
+		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME"); //TODO must be preferenced HOME
 		//+ #81
 		envp[idx++] = "PATH=" + System.getenv("PATH");
 		envp[idx++] = "TEMP=" + System.getenv("TEMP");

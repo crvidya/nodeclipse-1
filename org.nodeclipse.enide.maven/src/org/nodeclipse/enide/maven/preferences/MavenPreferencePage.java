@@ -15,9 +15,11 @@ import org.nodeclipse.enide.maven.Activator;
 public class MavenPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	private DirectoryFieldEditor mavenHome;
+	private DirectoryFieldEditor mavenHomeToUse;
     private FileFieldEditor mavenPath;
     private StringFieldEditor mavenOptions;
     
+    private BooleanFieldEditor mavenOptionShowVersion;
     private BooleanFieldEditor mavenOptionDebug;
     private BooleanFieldEditor mavenOptionQuiet;
     private BooleanFieldEditor mavenOptionOffline;
@@ -44,16 +46,20 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 	@Override
 	protected void createFieldEditors() {
 
-		//TODO show maven version
-		mavenHome = new DirectoryFieldEditor(MavenConstants.MAVEN_HOME, "Maven home dirrectory:", getFieldEditorParent());
+		mavenHome = new DirectoryFieldEditor(MavenConstants.MAVEN_HOME, "Maven home directory:", getFieldEditorParent());
 		mavenHome.setEnabled(false, getFieldEditorParent());
 		addField(mavenHome);
 
-		mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path:", getFieldEditorParent());
+		//TODO show maven version in this Preference Page
+		mavenHomeToUse = new DirectoryFieldEditor(MavenConstants.MAVEN_HOME_TO_USE, "Maven home to use:", getFieldEditorParent());
+		addField(mavenHomeToUse);
+		mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path (deprecated)", getFieldEditorParent());
 		addField(mavenPath);
 		mavenOptions = new StringFieldEditor(MavenConstants.MAVEN_OPTIONS, "Maven options (mvn -h):", getFieldEditorParent());
 		addField(mavenOptions);
 
+		mavenOptionShowVersion = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_SHOW_VERSION,"-V, --show-version Display version information without stopping build", getFieldEditorParent());
+        addField(mavenOptionShowVersion);
         mavenOptionDebug = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_DEBUG,"-X Debug	(Produce execution debug output)", getFieldEditorParent());
         addField(mavenOptionDebug);
         mavenOptionQuiet = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_QUIET,"-q Quiet	(Quiet output - only show errors)", getFieldEditorParent());
