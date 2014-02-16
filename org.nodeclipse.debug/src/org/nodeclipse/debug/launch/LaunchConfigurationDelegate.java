@@ -199,7 +199,7 @@ public class LaunchConfigurationDelegate implements
 		}
 
 		//TODO rename workingPath to workingDirectory, workingDirectory to workingDirectoryConfig
-		//TODO propagate changes to .phantom,.mongo ...
+		//DONE propagate changes to .phantom,.mongo ...
 		File workingPath = null;
 		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
 		if(workingDirectory.length() > 0) {

@@ -65,17 +65,16 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		// path is relative, so cannot find it, unless get absolute path
 		cmdLine.add(filePath);
 		
-		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
 		File workingPath = null;
-		if(workingDirectory.length() == 0) {
-			workingPath = (new File(filePath)).getParentFile();
-		} else {
+		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		if(workingDirectory.length() > 0) {
 			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
-			if(workingDirectory == null) {
-				workingPath = (new File(filePath)).getParentFile();
-			} else {
+			if(workingDirectory != null) {
 				workingPath = new File(workingDirectory);
 			}
+		}
+		if (workingPath == null){
+			workingPath = (new File(filePath)).getParentFile();
 		}
 		
 		//env
