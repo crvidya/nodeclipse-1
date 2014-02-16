@@ -71,7 +71,7 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
         mavenOptionTestSkip = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_TEST_SKIP,"-Dmaven.test.skip=true	(skip unit testing)", getFieldEditorParent());
         addField(mavenOptionTestSkip);
 
-        mavenOptionAlternativeSettings = new FileFieldEditor(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS, "Alternative settings.xml:", getFieldEditorParent());
+        mavenOptionAlternativeSettings = new FileFieldEditor(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS, "-s Alternative settings.xml:", getFieldEditorParent());
 		addField(mavenOptionAlternativeSettings);
 	}
 

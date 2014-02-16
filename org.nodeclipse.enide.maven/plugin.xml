@@ -27,7 +27,6 @@
         	type= "org.nodeclipse.enide.maven.launch.LaunchConfigurationType" >   
 		</launchConfigurationTabGroup>
    </extension>
-
     <!-- pom.xml run as maven build -->  
     <extension   
           point= "org.eclipse.debug.ui.launchShortcuts" >   
@@ -51,7 +50,7 @@
                        <or>   
                           <test   
                                 property= "org.eclipse.debug.ui.matchesPattern"   
-                                value= "*.xml" >   
+                                value= "pom*.xml" >   
                           </test>   
                        </or>   
                     </iterate>   
@@ -61,7 +60,125 @@
        </shortcut>   
    </extension>
    
-    <!-- -->
+   <!-- jetty:run -->
+ 	<extension 
+          point="org.eclipse.debug.core.launchConfigurationTypes"> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType" 
+            modes="run" 
+            name="Maven jeety:run">
+        </launchConfigurationType> 
+    </extension>
+    <extension
+          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType"   
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"   
+             id= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationTypeImage" >   
+       </launchConfigurationTypeImage>   
+    </extension>
+    <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+    <!-- pom.xml run as jetty:run -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.enide.maven.launch.jetty.LaunchShortcut"   
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"
+             id= "org.nodeclipse.enide.maven.launch.jetty.LaunchShortcut"   
+             label= "mvn jetty:run Maven start"   
+             modes= "run" >   
+          <configurationType
+                id= "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "pom*.xml" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   
+     <!-- tomcat6:start -->
+ 	<extension 
+          point="org.eclipse.debug.core.launchConfigurationTypes"> 
+        <launchConfigurationType 
+            delegate="org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationDelegate" 
+            id="org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationType" 
+            modes="run" 
+            name="Maven tomcat:start">
+        </launchConfigurationType> 
+    </extension>
+    <extension
+          point= "org.eclipse.debug.ui.launchConfigurationTypeImages" >   
+       <launchConfigurationTypeImage   
+             configTypeID= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationType"   
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"   
+             id= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationTypeImage" >   
+       </launchConfigurationTypeImage>   
+    </extension>
+    <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+        <launchConfigurationTabGroup   
+       		class= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationTabGroup"   
+      		id= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationTabGroup"   
+        	type= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationType" >   
+		</launchConfigurationTabGroup>
+   </extension>
+    <!-- pom.xml run as tomcat6:start -->  
+    <extension   
+          point= "org.eclipse.debug.ui.launchShortcuts" >   
+       <shortcut   
+             class= "org.nodeclipse.enide.maven.launch.tomcat.LaunchShortcut"   
+             icon= "icons/feather-ma16_bottom_right_corner_run_half_size.png"
+             id= "org.nodeclipse.enide.maven.launch.tomcat.LaunchShortcut"   
+             label= "mvn tomcat6:start Maven start"   
+             modes= "run" >   
+          <configurationType
+                id= "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationType" >
+          </configurationType>   
+           <contextualLaunch>   
+              <enablement>   
+                 <with   
+                       variable= "selection" >   
+                    <count   
+                          value= "1" >   
+                    </count>   
+                    <iterate>   
+                       <or>   
+                          <test   
+                                property= "org.eclipse.debug.ui.matchesPattern"   
+                                value= "pom*.xml" >   
+                          </test>   
+                       </or>   
+                    </iterate>   
+                 </with>   
+              </enablement>   
+           </contextualLaunch>   
+       </shortcut>   
+   </extension>
+   
+    <!-- exec -->
 	<extension point="org.eclipse.core.runtime.adapters">
 	    <factory
 	        adaptableType="org.eclipse.jdt.core.ICompilationUnit"

@@ -32,6 +32,79 @@ Depends on JDT (see link 1).
 
 ![](docs/enide-maven-run-as-mvn-package-results-in-console.png)
 
+### Tomcat start
+
+@since 0.11
+
+Check [Apache Tomcat Maven Plugin](http://tomcat.apache.org/maven-plugin) page.
+
+Version 2.2 is release in Nov 2013. http://tomcat.apache.org/maven-plugin-2.2/index.html
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat6-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    
+[Only for Tomcat6 there is goal `:start`](http://tomcat.apache.org/maven-plugin-2.2/context-goals.html)   
+
+	mvn tomcat6:start 
+	
+#### Status
+
+	[INFO] --- tomcat6-maven-plugin:2.2:start (default-cli) @ mavenwar ---
+	[INFO] Starting application at http://localhost:8080/mavenwar
+	SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+	SLF4J: Defaulting to no-operation (NOP) logger implementation
+	SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+	[INFO] ------------------------------------------------------------------------
+	[INFO] BUILD FAILURE
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Total time: 34.560s
+	[INFO] Finished at: Fri Feb 14 22:46:16 CST 2014
+	[INFO] Final Memory: 8M/21M
+	[INFO] ------------------------------------------------------------------------
+	[ERROR] Failed to execute goal org.apache.tomcat.maven:tomcat6-maven-plugin:2.2:start (default-cli) on project mavenwar: Cannot invoke Tomcat manager: Connection refused: connect -> [Help 1]
+	
+
+### Jetty start
+
+@since 0.11
+
+For Jetty 7-8 <https://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin>
+For Jetty 9 onward <http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html>
+ **You need to use Maven 3 and Java 1.7 for this plugin.**
+ mvn -Djetty.port=9999 jetty:run
+
+First, add jetty-maven-plugin to your pom.xml definition:
+
+	<plugin>
+	  <groupId>org.eclipse.jetty</groupId>
+	  <artifactId>jetty-maven-plugin</artifactId>
+	  <version>${project.version}</version>
+	</plugin>
+
+Then, from the same directory as your root pom.xml, type:
+
+	mvn jetty:run
+
+This starts Jetty and serves up your project on http://localhost:8080/.
+
+Jetty continues to run until you stop it. While it runs, it periodically scans for changes to your project files,
+ so if you save changes and recompile your class files, Jetty redeploys your webapp,
+ and you can instantly test the changes you just made.
+
+You can terminate the plugin with a ctrl-c in the terminal window where it is running.
+
 ### Developing with PDE
 
 `git clone`, import this project and `org.nodeclipse.coomon` (2) in Eclipse with PDE (e.g. Eclipse SDK/Classic)

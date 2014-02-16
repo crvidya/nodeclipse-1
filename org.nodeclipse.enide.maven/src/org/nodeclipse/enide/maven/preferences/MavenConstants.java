@@ -5,6 +5,8 @@ public class MavenConstants {
 	public static final String PLUGIN_ID = "org.nodeclipse.enide.maven";
 	public static final String LAUNCH_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launch.LaunchConfigurationType";
 	public static final String LAUNCH_EXEC_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launchexec.LaunchConfigurationType";
+	public static final String LAUNCH_JETTY_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType";
+	public static final String LAUNCH_TOMCAT_CONFIGURATION_TYPE_ID = "org.nodeclipse.enide.maven.launch.tomcat.LaunchConfigurationType";
 	
 	public static final String PROCESS_MESSAGE = "Maven Process";
 
@@ -30,4 +32,5 @@ public class MavenConstants {
 
 	public static final String PREFERENCES_PAGE = "org.nodeclipse.enide.maven.preferences.MavenPreferencePage";
 	public static final String PREFERENCE_PAGE_NAME ="Maven(Enide)"; // the same as in plugin.xml	
+	public static final String KEY_FILE_PATH = "KEY_FILE_PATH";
 }
