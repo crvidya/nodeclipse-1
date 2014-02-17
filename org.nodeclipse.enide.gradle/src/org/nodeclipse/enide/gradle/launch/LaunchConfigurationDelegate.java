@@ -9,22 +9,15 @@ import java.util.Map;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
-//import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.nodeclipse.common.preferences.CommonDialogs;
 import org.nodeclipse.enide.gradle.Activator;
-//import org.eclipse.jface.preference.IPreferenceStore;
-//import org.nodeclipse.debug.util.Constants;
-//import org.nodeclipse.debug.util.VariablesUtil;
-//import org.nodeclipse.ui.Activator;
-//import org.nodeclipse.ui.preferences.Dialogs;
-//import org.nodeclipse.ui.preferences.PreferenceConstants;
-//import org.nodeclipse.ui.util.NodeclipseConsole;
 import org.nodeclipse.enide.gradle.preferences.GradleConstants;
 import org.nodeclipse.enide.gradle.util.NodeclipseLogger;
 import org.nodeclipse.enide.gradle.util.VariablesUtil;
@@ -38,6 +31,8 @@ import org.nodeclipse.enide.gradle.util.VariablesUtil;
  */
 public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
 
+	IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+	boolean isWindows = Platform.getOS().startsWith("win");
 	private boolean warned = false;
 	
 	//specific
@@ -50,16 +45,17 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		//IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		
 		// Using configuration to build command line	
 		List<String> cmdLine = new ArrayList<String>();
 		
 		// Gradle installation path should be stored in preference.
-		String gradlePath= preferenceStore.getString(GradleConstants.GRADLE_PATH);
-		// Check if the maven location is correctly configured
-		File mavenFile = new File(gradlePath);
-		if(!mavenFile.exists()){
+		String gradleHomeToUse = preferenceStore.getString(GradleConstants.GRADLE_HOME_TO_USE);
+		String gradlePath = gradleHomeToUse + (isWindows?"\\bin\\gradle.bat":"/bin/gradle");
+		// Check if the gradle location is correctly configured
+		File gradleFile = new File(gradlePath);
+		if( ("".equals(gradleHomeToUse)) || (!gradleFile.exists()) ){
 			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
 			CommonDialogs.showPreferencesDialog(GradleConstants.PREFERENCES_PAGE,
 					"Gradle installation is not correctly configured.\n\n"
@@ -135,7 +131,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
 		Map<String, String> envm = new HashMap<String, String>();
 		envm = configuration.getAttribute(GradleConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size() + 2 + 4 + 2];
+		String[] envp = new String[envm.size() + (2+2) + 4 + 2];
 		int idx = 0;
 		for(String key : envm.keySet()) {
 			String value = envm.get(key);
@@ -149,7 +145,10 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//
 		//* Try:
 		//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-		envp[idx++] = "GRADLE_HOME=" + System.getenv("GRADLE_HOME"); //TODO must be preferenced HOME
+		envp[idx++] = "GRADLE_HOME=" + preferenceStore.getString(GradleConstants.GRADLE_HOME_TO_USE); 
+		//System.getenv("GRADLE_HOME"); //DONE must be preferenced HOME
+		envp[idx++] = "JAVA_OPTS=" + System.getenv("JAVA_OPTS");
+		envp[idx++] = "GRADLE_OPTS=" + preferenceStore.getString(GradleConstants.GRADLE_OPTS);
 		//+ #81
 		envp[idx++] = "PATH=" + System.getenv("PATH");
 		envp[idx++] = "TEMP=" + System.getenv("TEMP");

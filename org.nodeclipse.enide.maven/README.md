@@ -32,6 +32,8 @@ Depends on JDT (see link 1).
 
 ![](docs/enide-maven-run-as-mvn-package-results-in-console.png)
 
+![](run-maven-build.png)
+
 ### Tomcat start
 
 @since 0.11
@@ -102,8 +104,6 @@ This starts Jetty and serves up your project on http://localhost:8080/.
 Jetty continues to run until you stop it. While it runs, it periodically scans for changes to your project files,
  so if you save changes and recompile your class files, Jetty redeploys your webapp,
  and you can instantly test the changes you just made.
-
-You can terminate the plugin with a ctrl-c in the terminal window where it is running.
 
 ### Developing with PDE
 

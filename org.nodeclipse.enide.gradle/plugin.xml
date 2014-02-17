@@ -131,6 +131,12 @@
       </toc>
    </extension>
 
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.enide.gradle.preferences.GradlePreferenceInitializer">
+      </initializer>
+  </extension>
     <extension
          point="org.eclipse.ui.preferencePages">
       <page

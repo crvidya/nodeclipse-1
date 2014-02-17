@@ -16,9 +16,10 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 
 	private DirectoryFieldEditor mavenHome;
 	private DirectoryFieldEditor mavenHomeToUse;
+	private StringFieldEditor mavenJvmOpts;
     private FileFieldEditor mavenPath;
+
     private StringFieldEditor mavenOptions;
-    
     private BooleanFieldEditor mavenOptionShowVersion;
     private BooleanFieldEditor mavenOptionDebug;
     private BooleanFieldEditor mavenOptionQuiet;
@@ -26,6 +27,7 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
     private BooleanFieldEditor mavenOptionForcedDependenciesUpdate;
     private BooleanFieldEditor mavenOptionTestSkip;
     private FileFieldEditor mavenOptionAlternativeSettings;
+    private StringFieldEditor mavenOptionJettyPort;
 
     public MavenPreferencePage() {
         super(GRID);
@@ -33,10 +35,10 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
         setDescription(
 //        	VersionUtil.getLongString()+  //TODO make plugin to collect Eclipse utils
 //        	"\n"+
-    		"Maven requires to set JAVA_HOME (Eclipse does not) and MAVEN_HOME environment variable to use from shell.\n"
+    		"Maven requires to set JAVA_HOME (that Eclipse does not use) and MAVEN_HOME environment variable to use from shell.\n"
     		+"MAVEN_HOME is to be folder where you extracted downloaded Maven distribution,"
     		+" e.g. D:\\Progs\\Maven\\apache-maven-3.1.1\n" //D:\Progs\Maven\apache-maven-3.1.1
-    		+"Then it is easy to add mvn to Path like \"%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;\" string"
+    		+"Then it is easy to add mvn to Path like following string \"%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;\"."
         		);
     }
 	@Override
@@ -46,18 +48,21 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 	@Override
 	protected void createFieldEditors() {
 
+
 		mavenHome = new DirectoryFieldEditor(MavenConstants.MAVEN_HOME, "Maven home directory:", getFieldEditorParent());
 		mavenHome.setEnabled(false, getFieldEditorParent());
 		addField(mavenHome);
-
 		//TODO show maven version in this Preference Page
 		mavenHomeToUse = new DirectoryFieldEditor(MavenConstants.MAVEN_HOME_TO_USE, "Maven home to use:", getFieldEditorParent());
 		addField(mavenHomeToUse);
-		mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path (deprecated)", getFieldEditorParent());
+		mavenJvmOpts = new StringFieldEditor(MavenConstants.MAVEN_OPTS, "JVM options MAVEN_OPTS:", getFieldEditorParent());
+		addField(mavenJvmOpts);
+		
+		mavenPath = new FileFieldEditor(MavenConstants.MAVEN_PATH, "Maven path (@deprecated)", getFieldEditorParent());
 		addField(mavenPath);
+		
 		mavenOptions = new StringFieldEditor(MavenConstants.MAVEN_OPTIONS, "Maven options (mvn -h):", getFieldEditorParent());
 		addField(mavenOptions);
-
 		mavenOptionShowVersion = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_SHOW_VERSION,"-V, --show-version Display version information without stopping build", getFieldEditorParent());
         addField(mavenOptionShowVersion);
         mavenOptionDebug = new BooleanFieldEditor(MavenConstants.MAVEN_OPTION_DEBUG,"-X Debug	(Produce execution debug output)", getFieldEditorParent());
@@ -73,6 +78,9 @@ public class MavenPreferencePage extends FieldEditorPreferencePage implements IW
 
         mavenOptionAlternativeSettings = new FileFieldEditor(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS, "-s Alternative settings.xml:", getFieldEditorParent());
 		addField(mavenOptionAlternativeSettings);
+
+		mavenOptionJettyPort = new StringFieldEditor(MavenConstants.MAVEN_OPTION_JETTY_PORT, "-Djetty.port=", getFieldEditorParent());
+		addField(mavenOptionJettyPort);
 	}
 
 

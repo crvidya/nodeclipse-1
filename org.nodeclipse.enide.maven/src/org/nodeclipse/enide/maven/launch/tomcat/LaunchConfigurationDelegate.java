@@ -24,7 +24,6 @@ public class LaunchConfigurationDelegate
 	protected void specialOptions(ILaunchConfiguration configuration,
 			IPreferenceStore preferenceStore, List<String> cmdLine) throws CoreException {
 		
-		// special for `mvn package`
 		String mavenOptions= preferenceStore.getString(MavenConstants.MAVEN_OPTIONS);
 		if(!mavenOptions.equals("")) {
 			String[] sa = mavenOptions.split(" ");

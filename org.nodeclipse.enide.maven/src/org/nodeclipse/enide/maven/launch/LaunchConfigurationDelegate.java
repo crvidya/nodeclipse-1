@@ -9,6 +9,7 @@ import java.util.Map;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -30,6 +31,9 @@ import org.nodeclipse.enide.maven.util.VariablesUtil;
  */
 public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
 
+	boolean isWindows = Platform.getOS().startsWith("win");
+	IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+	protected File workingDirectoryDefault = null; //is different for different launch types
 	private boolean warned = false;
 
 	//DONE shared processing function for 2 launch types.      
@@ -39,27 +43,25 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
 		//{ copy-paste part
-		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		//IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		
 		// Using configuration to build command line	
 		List<String> cmdLine = new ArrayList<String>();
 		
 		// Maven home to use is stored in preference.
-		String mavenPath = preferenceStore.getString(MavenConstants.MAVEN_PATH);
+		//String mavenPath = preferenceStore.getString(MavenConstants.MAVEN_PATH);
 		String mavenHomeToUse = preferenceStore.getString(MavenConstants.MAVEN_HOME_TO_USE);
-		//if( "".equals(mavenHomeToUse) ){
-			
-			// Check if the maven location is correctly configured
-			File mavenFile = new File(mavenPath);
-			if(!mavenFile.exists()){
-				// If the location is not valid than show a dialog which prompts the user to goto the preferences page
-				CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
-						"Maven home to use is not correctly configured.\n\n"
-						+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
-						+" and configure the correct location");
-				return;
-			}
-		//}			
+		String mavenPath = mavenHomeToUse+ (isWindows?"\\bin\\mvn.bat":"/bin/mvn");
+		// Check if the maven location is correctly configured
+		File mavenFile = new File(mavenPath);
+		if( ("".equals(mavenHomeToUse)) || (!mavenFile.exists()) ){
+			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+			CommonDialogs.showPreferencesDialog(MavenConstants.PREFERENCES_PAGE,
+					"Maven home to use is not correctly configured.\n\n"
+					+ "Please goto Window -> Preferences -> "+MavenConstants.PREFERENCE_PAGE_NAME
+					+" and configure the correct location");
+			return;
+		}
 		cmdLine.add(mavenPath);
 		
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_SHOW_VERSION))
@@ -74,7 +76,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			cmdLine.add("-o");
 		if (preferenceStore.getBoolean(MavenConstants.MAVEN_OPTION_TEST_SKIP))
 			cmdLine.add("-Dmaven.test.skip=true");
-		//    	TODO won't be so simple! 
+		//    	TODO won't be so simple on Windows! 
 
 
 		String mavenOptionAlternativeSettings = preferenceStore.getString(MavenConstants.MAVEN_OPTION_ALTERNATIVE_SETTINGS);
@@ -127,7 +129,6 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 //	protected File getWorkingDirectoryDefault(String filePath){
 //	return (new File(filePath)).getParentFile();
 //}
-	protected File workingDirectoryDefault = null;
 //	protected void setWorkingDirectoryDefault(String filePath){
 //		workingDirectoryDefault = (new File(filePath)).getParentFile();
 //	}
@@ -175,6 +176,9 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//} copy-paste tail part
 	}
 	
+//	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
+//		return getEnvironmentVariables(configuration, null);
+//	}
 	/** Get EnvironmentVariables from ILaunchConfiguration
 	 * and adds JAVA_HOME, M2_HOME, PATH, TEMP, SystemDrive, HOME</br>
 	 * Used in .launch and .launchexec 
@@ -183,9 +187,10 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	 * @throws CoreException
 	 */
 	protected String[] getEnvironmentVariables(ILaunchConfiguration configuration) throws CoreException {
+		//, IPreferenceStore preferenceStore
 		Map<String, String> envm = new HashMap<String, String>();
 		envm = configuration.getAttribute(MavenConstants.ATTR_ENVIRONMENT_VARIABLES, envm);
-		String[] envp = new String[envm.size() + 2 + 4 + 2];
+		String[] envp = new String[envm.size() + (2+2) + 4 + 2];
 		int idx = 0;
 		for(String key : envm.keySet()) {
 			String value = envm.get(key);
@@ -195,7 +200,11 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//ERROR: M2_HOME not found in your environment.
 		//Please set the M2_HOME variable in your environment to match the
 		//location of the Maven installation
-		envp[idx++] = "M2_HOME=" + System.getenv("MAVEN_HOME"); //TODO
+		// note: MAVEN_HOME does not substitute M2_HOME when called from Java
+		envp[idx++] = "M2_HOME=" + preferenceStore.getString(MavenConstants.MAVEN_HOME_TO_USE); 
+		//System.getenv("MAVEN_HOME");
+		envp[idx++] = "JAVA_OPTS=" + System.getenv("JAVA_OPTS");
+		envp[idx++] = "MAVEN_OPTS=" + preferenceStore.getString(MavenConstants.MAVEN_OPTS); 
 		//+ #81
 		envp[idx++] = "PATH=" + System.getenv("PATH");
 		envp[idx++] = "TEMP=" + System.getenv("TEMP");

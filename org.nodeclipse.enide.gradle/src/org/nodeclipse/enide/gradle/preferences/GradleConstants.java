@@ -18,6 +18,9 @@ public class GradleConstants {
 	public static final String ATTR_ENVIRONMENT_VARIABLES = "attr_environment_variables";	
 	public static final String ATTR_APPEND_ENVIRONMENT_VARIABLES = "attr_append_environment_variables";	
 
+	public static final String GRADLE_HOME = "gradle_home";
+	public static final String GRADLE_HOME_TO_USE = "gradle_home_to_use";
+	public static final String GRADLE_OPTS = "gradle_opts";
 	public static final String GRADLE_PATH = "gradle_path";	
 	public static final String GRADLE_OPTIONS = "gradle_options";	
 	public static final String GRADLE_OPTION_DEBUG = "gradle_option_debug";
