@@ -49,21 +49,36 @@ http://www.vijayp.ca/blog/2011/09/why-eclipses-check-for-updates-is-horribly-slo
 org.nodeclipse.jjs.feature.feature.group[/0.10.0.201401270634]
 Succeded with 
 eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ -installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -vmargs -Declipse.p2.mirrors=false 
-http://stackoverflow.com/questions/21574010/eclipse-how-to-pass-vm-arguments-from-command-line-without-changing-eclipse-i
+-> http://stackoverflow.com/questions/21574010/eclipse-how-to-pass-vm-arguments-from-command-line-without-changing-eclipse-i
 
 eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ -installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -tag org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -vmargs -Declipse.p2.mirrors=false 
--tag works!
+-> -tag works!
+
+eclipsec -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -installIU org.nodeclipse.jjs.feature.feature.group -vmargs -Declipse.p2.mirrors=false
+-> file URL works!
+nodeclipse list jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/
+-> Operation completed in 1528 ms.
+
+eclipsec -nosplash -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -installIU org.nodeclipse.enide.maven.feature.feature.group -tag org.nodeclipse.enide.maven.feature.feature.jar,org.nodeclipse.enide.maven.feature.feature.group -vmargs -Declipse.p2.mirrors=false
+eclipsec -nosplash -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -installIU org.nodeclipse.enide.maven.feature.feature.group -tag org.nodeclipse.enide.maven.feature.feature.group -vmargs -Declipse.p2.mirrors=false
+nodeclipse install -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ maven
+all 3 OK
+
+nodeclipse install -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ maven gradle
+OK in ADT, but not in STS 3.4
+
 */
 
 var mappings = [
 	{alias: 'egit', name: 'org.eclipse.egit.feature.group'}, //TODO check if works without ',org.eclipse.jgit.feature.group' and updates both
 	{alias: 'git', name: 'gitaddon.feature.feature.group'},
 	{alias: 'gfm', name: 'code.satyagraha.gfm.viewer.feature.feature.group'},
-	{alias: 'gradle', name: 'org.nodeclipse.enide.editors.gradle.feature.feature.group'},
+	{alias: 'gradle', name: 'org.nodeclipse.enide.gradle.feature.feature.group,org.nodeclipse.enide.editors.gradle.feature.feature.group'},
 	{alias: 'hudson', name: 'org.eclipse.mylyn.hudson.feature.group'},
 	{alias: 'icons', name: 'org.eclipse_icons.editor.feature.feature.group'},
 	{alias: 'jjs', name: 'org.nodeclipse.jjs.feature.feature.group'},
 	{alias: 'markdown', name: 'markdown.editor.feature.feature.group'},
+	{alias: 'maven', name: 'org.nodeclipse.enide.maven.feature.feature.group'}, //org.nodeclipse.enide.maven.feature.feature.jar,
 	{alias: 'mongodb', name: 'net.jumperz.app.MMonjaDB.feature.group'},
 	{alias: 'mongodb.shell', name: 'org.nodeclipse.mongodb.feature.feature.group'},
 	{alias: 'moonrise', name: 'com.github.eclipseuitheme.themes.feature.feature.group'},
@@ -76,15 +91,20 @@ var mappings = [
 	{alias: 'themes', name: 'net.jeeeyul.eclipse.themes.feature.feature.group'},
 	{alias: 'wikitext', name: 'org.eclipse.mylyn.wikitext_feature.feature.group'}, // textile, mediawiki, tracwiki, twiki
 	{alias: 'yaml', name: 'org.dadacoalition.yedit.feature.group'},
-	
 ];
 
-console.log('Nodeclipse CLI Installer aka Eclipse Plugin Mananger epm');
+console.log('Nodeclipse CLI Installer (Eclipse Plugin Manager epm)');
+var repository = 'http://www.nodeclipse.org/updates/';
+
 var argv = process.argv; // 0 - node, 1 - app.js
 //for (var i=0; i<argv.length; i++){
 //	console.log(i + ': ' + argv[i]);
 //}
 //`===` does not compare strings well
+if (argv[2]=='i'){
+	argv[2]=='install';
+}
+
 if (argv.length === 2 
 	|| argv[2]=='help' || argv[2]=='--help' || argv[2]=='-h' 
 	|| ( argv[2]=='list' && !argv[3])
@@ -95,8 +115,14 @@ if (argv.length === 2
 //		console.log(index + ': ' + val);
 //	});
 	//console.log("Nodeclipse CLI Installer Help");
-	console.log('  Usage (from folder with eclipse): nodeclipse install <aliases> [exact.feature.name.feature.group]');
-	//console.log('         nodeclipse list <repository>');
+	console.log('  Usage (from folder with eclipse):');
+	console.log('    nodeclipse list [repositoryURL]');
+	console.log('      default repositoryURL is '+repository);
+	console.log('      repositoryURL may be file e.g. jar:file:/D:/path/to/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/');
+	console.log('    nodeclipse install <alias|exact.feature.name.feature.group> [...]');
+	console.log('    nodeclipse install from repositoryURL <alias|exact.feature.name.feature.group> [...]');
+	console.log('    nodeclipse install [-repository repositoryURL] <alias|exact.feature.name.feature.group> [...]');
+
 	var mappedAliases = '  Mapped aliases('+mappings.length+'): ';
 	for (var mi=0; mi<mappings.length; mi++){
 		mappedAliases += mappings[mi].alias+' ';
@@ -111,14 +137,24 @@ if (argv.length === 2
 	process.exit();
 };
 
+var startingIndex = 3;
 // processing commands logic
-var repository = 'http://www.nodeclipse.org/updates/';
 if (argv[2]=='list'){
-	var command = '-list';	
-	var repository = argv[3];
+	var command = '-list';
+	if (argv[3]){ //overrride default repository
+		repository = argv[3];
+	}
+} else if (argv[2]=='install'){ // this does not work (from http://www.jshint.com/docs/): jshint ignore:line
+	if (argv[3]=='-repository' || argv[3]=='from'){
+		if (argv[4]){
+			repository = argv[4];
+			startingIndex = 5;
+		}
+	}
 }
+
 var comma_separated_list = '';
-for (var i=3; i<argv.length; i++){
+for (var i=startingIndex; i<argv.length; i++){
 	var argi = argv[i];
 	var found = false;
 	for (var mi=0; mi<mappings.length; mi++){
@@ -160,7 +196,9 @@ if ( command != '-list'){ // do install
 
 var spawned = spawn(what, options);
 
-console.log('starting '+what+JSON.stringify(options));
+//console.log('starting '+what+' '+JSON.stringify(options));
+//console.log('starting '+what+' '+options.toString());
+console.log('starting '+what+' '+options.join(' '));
 
 spawned.stdout.setEncoding('utf8');
 spawned.stdout.on('data', function (data) {
