@@ -1,5 +1,7 @@
 /* 
  * Nodeclipse CLI Installer, Copyright 2014 Paul Verest within Nodeclipse, MIT license http://www.nodeclipse.org/
+ * All well-known open source licenses http://choosealicense.com/licenses/ 
+ * require showing license and copyright notice from author
  */
 /*
 The Eclipse runtime options
@@ -118,7 +120,7 @@ if (argv.length === 2
 	|| ( argv[2]=='list' && !argv[3])
 	|| !(argv[2]=='install' || argv[2]=='i' || argv[2]=='list') 
 	)
-{ 
+{
 //	process.argv.forEach(function(val, index, array) {
 //		console.log(index + ': ' + val);
 //	});
