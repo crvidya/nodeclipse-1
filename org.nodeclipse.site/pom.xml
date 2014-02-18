@@ -77,9 +77,9 @@
 			<url>http://eclipse-icons-editor.eclipselabs.org.codespot.com/git/site/org.eclipse_icons.editor.site/</url>
 		</repository>
 		<repository>
-			<id>PDE-Tools</id>
+			<id>jeeeyul</id>
 			<layout>p2</layout>
-			<url>https://raw.github.com/jeeeyul/pde-tools/master/net.jeeeyul.pdetools.updatesite/</url>
+			<url>http://jeeeyul.github.io/update/</url>
 		</repository>
 		<repository>
 			<id>Regular-Expression</id>
@@ -124,11 +124,13 @@
 			<layout>p2</layout>
 			<url>http://eclipse-color-theme.github.com/update</url>
 		</repository>
+		<!-- 
 		<repository>
 			<id>net.jeeeyul.eclipse.themes.updatesite</id>
 			<layout>p2</layout>
-			<url>https://raw.github.com/jeeeyul/eclipse-themes/master/net.jeeeyul.eclipse.themes.updatesite/</url>
+			<url>http://jeeeyul.github.io/eclipse-themes/update-site/</url>
 		</repository>
+		 -->
 		<repository>
 			<id>moonrise.com.github.eclipseuitheme.themes.feature</id>
 			<layout>p2</layout>

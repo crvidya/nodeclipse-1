@@ -135,7 +135,7 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 
 	protected String getEnvVariableEqualsString(String envvarName){
 		String envvarValue = System.getenv(envvarName);
-		if (envvarValue!=null) envvarValue = "";
+		if (envvarValue==null) envvarValue = "";
 		return envvarName + "=" + envvarValue;		
 	}
 }
