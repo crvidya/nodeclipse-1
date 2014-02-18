@@ -28,7 +28,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.NODECLIPSE_CONSOLE_ENABLED, true);
 		
-		store.setDefault(PreferenceConstants.NODE_OPTIONS, "--harmony");
+		//store.setDefault(PreferenceConstants.NODE_OPTIONS, "--harmony");
 		store.setDefault(PreferenceConstants.NODE_APPLICATION_ARGUMENTS, "--tea-pot-mode");
 		
 		store.setDefault(PreferenceConstants.NODE_ALLOW_MANY, true);
