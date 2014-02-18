@@ -113,13 +113,13 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		}
 		envp[idx++] = "JAVA_HOME=" + System.getProperty("java.home"); //System.getenv("JAVA_HOME");
 		//+ #81
-		envp[idx++] = "PATH=" + System.getenv("PATH");
-		envp[idx++] = "TEMP=" + System.getenv("TEMP");
-		envp[idx++] = "TMP=" + System.getenv("TMP");
-		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		envp[idx++] = getEnvVariableEqualsString("PATH");
+		envp[idx++] = getEnvVariableEqualsString("TEMP");
+		envp[idx++] = getEnvVariableEqualsString("TMP");
+		envp[idx++] = getEnvVariableEqualsString("SystemDrive");
 		//+
-		envp[idx++] = "HOME=" + System.getenv("HOME");
-		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
+		envp[idx++] = getEnvVariableEqualsString("HOME");
+		envp[idx++] = getEnvVariableEqualsString("USERPROFILE");
 		
 		if (!warned ){
 			StringBuilder sb = new StringBuilder(100);
@@ -131,5 +131,11 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			warned = true;
 		}
 		return envp;
+	}
+
+	protected String getEnvVariableEqualsString(String envvarName){
+		String envvarValue = System.getenv(envvarName);
+		if (envvarValue!=null) envvarValue = "";
+		return envvarName + "=" + envvarValue;		
 	}
 }

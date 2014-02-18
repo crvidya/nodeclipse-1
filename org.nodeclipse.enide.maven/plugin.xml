@@ -67,7 +67,7 @@
             delegate="org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationDelegate" 
             id="org.nodeclipse.enide.maven.launch.jetty.LaunchConfigurationType" 
             modes="run" 
-            name="Maven jeety:run">
+            name="Maven jetty:run">
         </launchConfigurationType> 
     </extension>
     <extension

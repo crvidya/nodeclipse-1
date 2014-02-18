@@ -45,13 +45,13 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		//IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore(); //NPE!
 		
 		// Using configuration to build command line	
 		List<String> cmdLine = new ArrayList<String>();
 		
 		// Gradle installation path should be stored in preference.
-		String gradleHomeToUse = preferenceStore.getString(GradleConstants.GRADLE_HOME_TO_USE);
+		String gradleHomeToUse = preferenceStore.getString(GradleConstants.GRADLE_HOME_TO_USE); //NPE!
 		String gradlePath = gradleHomeToUse + (isWindows?"\\bin\\gradle.bat":"/bin/gradle");
 		// Check if the gradle location is correctly configured
 		File gradleFile = new File(gradlePath);
@@ -146,27 +146,32 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//* Try:
 		//Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
 		envp[idx++] = "GRADLE_HOME=" + preferenceStore.getString(GradleConstants.GRADLE_HOME_TO_USE); 
-		//System.getenv("GRADLE_HOME"); //DONE must be preferenced HOME
-		envp[idx++] = "JAVA_OPTS=" + System.getenv("JAVA_OPTS");
 		envp[idx++] = "GRADLE_OPTS=" + preferenceStore.getString(GradleConstants.GRADLE_OPTS);
+		envp[idx++] = getEnvVariableEqualsString("JAVA_OPTS");
 		//+ #81
-		envp[idx++] = "PATH=" + System.getenv("PATH");
-		envp[idx++] = "TEMP=" + System.getenv("TEMP");
-		envp[idx++] = "TMP=" + System.getenv("TMP");
-		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		envp[idx++] = getEnvVariableEqualsString("PATH");
+		envp[idx++] = getEnvVariableEqualsString("TEMP");
+		envp[idx++] = getEnvVariableEqualsString("TMP");
+		envp[idx++] = getEnvVariableEqualsString("SystemDrive");
 		//+
-		envp[idx++] = "HOME=" + System.getenv("HOME");
-		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
+		envp[idx++] = getEnvVariableEqualsString("HOME");
+		envp[idx++] = getEnvVariableEqualsString("USERPROFILE");
 		
 		if (!warned ){
+			NodeclipseLogger.log("  Warning: JAVA_HOME, GRADLE_HOME and others environment variables will be applied automatically to every `gradle` launch.\n");
 			StringBuilder sb = new StringBuilder(100);
 			for(int i=0; i<envp.length; i++){
-				sb.append(envp[i]).append('\n');	
+				sb.append("  ").append(envp[i]).append('\n');	
 			}
 			NodeclipseLogger.log(sb.toString());
-			NodeclipseLogger.log("Warning: JAVA_HOME, GRADLE_HOME and others environment variables will be applied automatically to every `gradle` launch.\n");
 			warned = true;
 		}
 		return envp;
+	}
+	
+	protected String getEnvVariableEqualsString(String envvarName){
+		String envvarValue = System.getenv(envvarName);
+		if (envvarValue!=null) envvarValue = "";
+		return envvarName + "=" + envvarValue;		
 	}
 }

@@ -9,9 +9,14 @@ public class GradlePreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		store.setDefault(GradleConstants.GRADLE_HOME, System.getenv("GRADLE_HOME") ); 
-		store.setDefault(GradleConstants.GRADLE_HOME_TO_USE, System.getenv("GRADLE_HOME") );
-		store.setDefault(GradleConstants.GRADLE_OPTS, System.getenv("GRADLE_OPTS") );
+		String envGradleHome = System.getenv("GRADLE_HOME");
+		if (envGradleHome!=null){
+			store.setDefault(GradleConstants.GRADLE_HOME, envGradleHome ); 
+			store.setDefault(GradleConstants.GRADLE_HOME_TO_USE, envGradleHome );
+		}
+		String envGradleOpts = System.getenv("GRADLE_OPTS");
+		if (envGradleOpts!=null)
+			store.setDefault(GradleConstants.GRADLE_OPTS, envGradleOpts );
 		//store.setDefault(MavenConstants.MAVEN_OPTION_JETTY_PORT, "8080" );
 	}
 

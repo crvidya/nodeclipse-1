@@ -16,6 +16,8 @@ Executed string is shown is Console, so you can check and learn.
 Hint increase Console buffer size in Preferences -> Run\Debug -> Console.
  and check other preferences there as well.
  
+[About 2G in `.m2/repository/.cache/m2e`](http://stackoverflow.com/questions/16442292/cleaning-maven-m2e-cache-directory) 
+ 
 ## org.nodeclipse.enide.maven
 
 - pom.xml Run As `mvn package` Maven build

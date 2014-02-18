@@ -202,17 +202,16 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 		//location of the Maven installation
 		// note: MAVEN_HOME does not substitute M2_HOME when called from Java
 		envp[idx++] = "M2_HOME=" + preferenceStore.getString(MavenConstants.MAVEN_HOME_TO_USE); 
-		//System.getenv("MAVEN_HOME");
-		envp[idx++] = "JAVA_OPTS=" + System.getenv("JAVA_OPTS");
 		envp[idx++] = "MAVEN_OPTS=" + preferenceStore.getString(MavenConstants.MAVEN_OPTS); 
+		envp[idx++] = getEnvVariableEqualsString("JAVA_OPTS");
 		//+ #81
-		envp[idx++] = "PATH=" + System.getenv("PATH");
-		envp[idx++] = "TEMP=" + System.getenv("TEMP");
-		envp[idx++] = "TMP=" + System.getenv("TMP");
-		envp[idx++] = "SystemDrive=" + System.getenv("SystemDrive");
+		envp[idx++] = getEnvVariableEqualsString("PATH");
+		envp[idx++] = getEnvVariableEqualsString("TEMP");
+		envp[idx++] = getEnvVariableEqualsString("TMP");
+		envp[idx++] = getEnvVariableEqualsString("SystemDrive");
 		//+
-		envp[idx++] = "HOME=" + System.getenv("HOME");
-		envp[idx++] = "USERPROFILE=" + System.getenv("USERPROFILE");
+		envp[idx++] = getEnvVariableEqualsString("HOME");
+		envp[idx++] = getEnvVariableEqualsString("USERPROFILE");
 		
 		if (!warned ){
 			NodeclipseLogger.log("  Warning: JAVA_HOME, M2_HOME and others environment variables will be applied automatically to every `mvn` launch.\n");
@@ -224,5 +223,11 @@ public class LaunchConfigurationDelegate implements ILaunchConfigurationDelegate
 			warned = true;
 		}
 		return envp;
+	}
+	
+	protected String getEnvVariableEqualsString(String envvarName){
+		String envvarValue = System.getenv(envvarName);
+		if (envvarValue!=null) envvarValue = "";
+		return envvarName + "=" + envvarValue;		
 	}
 }
