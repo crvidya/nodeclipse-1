@@ -67,6 +67,14 @@ all 3 OK
 nodeclipse install -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ maven gradle
 OK in ADT, but not in STS 3.4
 
+From http://stackoverflow.com/questions/19651482/how-to-install-all-features-from-a-p2-update-site-to-an-eclipse-using-the-comman
+eclipsec.exe -application org.eclipse.equinox.p2.director \
+   -repository <URL of some repository> \
+   -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
+
+eclipsec.exe -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
+
+
 */
 
 var mappings = [
@@ -121,6 +129,7 @@ if (argv.length === 2
 	console.log('      repositoryURL may be file e.g. jar:file:/D:/path/to/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/');
 	console.log('    nodeclipse install <alias|exact.feature.name.feature.group> [...]');
 	console.log('    nodeclipse install from repositoryURL <alias|exact.feature.name.feature.group> [...]');
+//TODO console.log('    nodeclipse install all from repositoryURL // BE CAREFUL WHAT YOU ASK FOR');
 	console.log('    nodeclipse install [-repository repositoryURL] <alias|exact.feature.name.feature.group> [...]');
 
 	var mappedAliases = '  Mapped aliases('+mappings.length+'): ';
@@ -190,8 +199,11 @@ if ( command != '-list'){ // do install
 	//var command = '-uninstallIU';
 	var version = '/0.10.0.201401270634';
 	//var comma_separated_list = 'org.nodeclipse.enide.nodejs.feature.feature.group';
+	var query '"Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"';
 	var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
-	               command, comma_separated_list, '-tag', comma_separated_list, '-vmargs', '-Declipse.p2.mirrors=false'];
+	               command, comma_separated_list, '-tag', comma_separated_list, 
+	               query,
+	               '-vmargs', '-Declipse.p2.mirrors=false'];
 }
 
 var spawned = spawn(what, options);
