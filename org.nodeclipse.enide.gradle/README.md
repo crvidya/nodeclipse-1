@@ -23,6 +23,23 @@ then execution is via
 
 see [Gradle to execute Java class (without modifying build.gradle)](http://stackoverflow.com/questions/21358466/gradle-to-execute-java-class-without-modifying-build-gradle)
 
+### Jetty
+
+As with Maven, your `build.gradle` should have jetty configuration 
+to enable `gradle jetty:run` Gradle start.
+
+### Daemon
+
+see [Chapter 19. The Gradle Daemon](?), [Appendix D. Gradle Command Line](?)
+
+Use Gradle daemon to speed up sequential gradle execution:
+
+launch `gradle --foreground -i` in a shell or configure Eclipse external tool:
+
+![](docs/add-gradle-daemon-as-external-tool-1.PNG)  
+![](docs/add-gradle-daemon-as-external-tool-2.PNG)
+
+
 ### Developing 
 
 1. `git clone`;
