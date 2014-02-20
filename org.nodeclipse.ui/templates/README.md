@@ -125,6 +125,18 @@ options are:
 Build Eclipse Java Project from Command Line
 http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-command-line
 
+List of workspace projects
+`<workspace>\.metadata\.plugins\org.eclipse.core.resources\.projects\`
+
+- http://stackoverflow.com/questions/251116/where-in-an-eclipse-workspace-is-the-list-of-projects-stored
+- http://stackoverflow.com/questions/1718456/create-an-eclipse-project-on-the-command-line
+- http://stackoverflow.com/questions/8908219/eclipse-import-project-using-command-line
+- http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-command-line
+
+	eclipsec.exe -noSplash -data "D:\Source\MyProject\workspace" -application org.eclipse.jdt.apt.core.aptBuild
+	
+	java -cp startup.jar -noSplash -data "D:\Source\MyProject\workspace" -application org.eclipse.jdt.apt.core.aptBuild
+
 ## History
 
 - 0.8.2 fix #101 (bug on MacOS); -g option
@@ -132,7 +144,9 @@ http://stackoverflow.com/questions/206473/build-eclipse-java-project-from-comman
 - 0.10.0 add 2 java templates
 - 0.10.5 add Nodeclipse CLI Installer (example `nodeclipse install markdown`)
 - 0.10.6 fix #101 again; total aliases=20 
-- 0.10.8 add maven, gradle features; install from .zip
+- 0.10.8 add maven, gradle features; install from .zip; install all 
+- 0.10.9 comma-sep-list of repositories; lookup for repositories.  
+	Examples: `epm install from kepler jsdt` 
 
 ## News
 

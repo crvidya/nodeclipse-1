@@ -49,7 +49,7 @@ http://www.vijayp.ca/blog/2011/09/why-eclipses-check-for-updates-is-horribly-slo
 -Declipse.p2.mirrors=false
 
 org.nodeclipse.jjs.feature.feature.group[/0.10.0.201401270634]
-Succeded with 
+Succeeded with 
 eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ -installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -vmargs -Declipse.p2.mirrors=false 
 -> http://stackoverflow.com/questions/21574010/eclipse-how-to-pass-vm-arguments-from-command-line-without-changing-eclipse-i
 
@@ -74,12 +74,26 @@ eclipsec.exe -application org.eclipse.equinox.p2.director \
    -repository <URL of some repository> \
    -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
 
-eclipsec.exe -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
-
+eclipsec.exe -nosplash -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
+-> produces list
+eclipsec.exe -nosplash -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -list "Q:everything.select(x | x.properties ~= filter("(org.eclipse.equinox.p2.type.group=true)"))"
+without \" -> empty output
+st. eclipsec -nosplash -application org.eclipse.equinox.p2.director -repository jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/ -list "Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"
+from Node -> empty output
+=> filtering list using JavaScript
 
 */
 
-var mappings = [
+//TODO can't update
+//TODO epm i all from file
+//TODO epm install from nodeclipse,kepler nodejs 
+// -> too long wating time, recommend to split or use &&
+// epm install from kepler jsdt
+// epm install nodejs
+//TODO specify repository for plugin, e.g. for `less` => not to add it automatically as delays may be big.
+// User is to list `help aliases` to see repository name
+
+var plugins = [
 	{alias: 'egit', name: 'org.eclipse.egit.feature.group'}, //TODO check if works without ',org.eclipse.jgit.feature.group' and updates both
 	{alias: 'git', name: 'gitaddon.feature.feature.group'},
 	{alias: 'gfm', name: 'code.satyagraha.gfm.viewer.feature.feature.group'},
@@ -87,6 +101,8 @@ var mappings = [
 	{alias: 'hudson', name: 'org.eclipse.mylyn.hudson.feature.group'},
 	{alias: 'icons', name: 'org.eclipse_icons.editor.feature.feature.group'},
 	{alias: 'jjs', name: 'org.nodeclipse.jjs.feature.feature.group'},
+	{alias: 'jsdt', name: 'org.eclipse.wst.jsdt.feature.feature.group', requirescurrent: true}, // requires kepler,etc update site
+	{alias: 'less', name: 'net.vtst.ow.eclipse.less.feature.feature.group', repository: 'enide'}, // TODO
 	{alias: 'markdown', name: 'markdown.editor.feature.feature.group'},
 	{alias: 'maven', name: 'org.nodeclipse.enide.maven.feature.feature.group'}, //org.nodeclipse.enide.maven.feature.feature.jar,
 	{alias: 'mongodb', name: 'net.jumperz.app.MMonjaDB.feature.group'},
@@ -102,61 +118,91 @@ var mappings = [
 	{alias: 'wikitext', name: 'org.eclipse.mylyn.wikitext_feature.feature.group'}, // textile, mediawiki, tracwiki, twiki
 	{alias: 'yaml', name: 'org.dadacoalition.yedit.feature.group'},
 ];
-
+var repositories = [
+	{name: 'dev', url: 'jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/'},//hack to help author                    
+	{name: 'nodeclipse', url: 'http://www.nodeclipse.org/updates/'},
+	{name: 'enide', url: 'https://raw.github.com/Enide/eclipse-p2-composite-repository/master/'},
+	{name: 'indigo', url: 'http://download.eclipse.org/releases/indigo'},
+	{name: 'juno', url: 'http://download.eclipse.org/releases/juno'},
+	{name: 'kepler', url: 'http://download.eclipse.org/releases/kepler'}, //current
+	{name: 'luna', url: 'http://download.eclipse.org/releases/luna'},
+];
 console.log('Nodeclipse CLI Installer (Eclipse Plugin Manager epm)');
-var repository = 'http://www.nodeclipse.org/updates/';
+var repository = 'http://www.nodeclipse.org/updates/'; // =repositories[1].url
 
 var argv = process.argv; // 0 - node, 1 - app.js
-//for (var i=0; i<argv.length; i++){
-//	console.log(i + ': ' + argv[i]);
-//}
 //`===` does not compare strings well
 if (argv[2]=='i'){
-	argv[2]=='install';
+	argv[2]='install';
 }
 
 if (argv.length === 2 
 	|| argv[2]=='help' || argv[2]=='--help' || argv[2]=='-h' 
-	|| ( argv[2]=='list' && !argv[3])
+	//|| ( argv[2]=='list' && !argv[3]) //will list default repository
 	|| !(argv[2]=='install' || argv[2]=='i' || argv[2]=='list') 
 	)
 {
-//	process.argv.forEach(function(val, index, array) {
-//		console.log(index + ': ' + val);
-//	});
-	//console.log("Nodeclipse CLI Installer Help");
+	console.log('    nodeclipse help');
+	console.log('    nodeclipse help aliases');
 	console.log('  Usage (from folder with eclipse):');
-	console.log('    nodeclipse list [repositoryURL]');
+	console.log('    nodeclipse list [repository]');
+	console.log('      repository may be name or URL (http of file)');
+	var repositoriesNames = 'Repositories names('+repositories.length+'): ';
+	for (var ri=0; ri<repositories.length; ri++){
+		repositoriesNames += repositories[ri].name+' ';
+	}
+	console.log('        '+repositoriesNames);	
 	console.log('      default repositoryURL is '+repository);
-	console.log('      repositoryURL may be file e.g. jar:file:/D:/path/to/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/');
+	console.log('      <repository> may be file e.g. jar:file:/D:/path/to/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/');
+//	console.log('      repositoryURL may be file e.g. jar:file:/D:/Workspaces/Nodeclipse-DEV/nodeclipse-1/org.nodeclipse.site/target/org.nodeclipse.site-0.10.0-SNAPSHOT.zip!/');
 	console.log('    nodeclipse install <alias|exact.feature.name.feature.group> [...]');
-	console.log('    nodeclipse install from repositoryURL <alias|exact.feature.name.feature.group> [...]');
-//TODO console.log('    nodeclipse install all from repositoryURL // BE CAREFUL WHAT YOU ASK FOR');
-	console.log('    nodeclipse install [-repository repositoryURL] <alias|exact.feature.name.feature.group> [...]');
+	console.log('    nodeclipse install from <repository> <alias|exact.feature.name.feature.group> [...]');
+    console.log('    nodeclipse install all from <repository> // BE CAREFUL WHAT YOU ASK FOR');
+//	console.log('    nodeclipse install [-repository repositoryURL] <alias|exact.feature.name.feature.group> [...]');
 
-	var mappedAliases = '  Mapped aliases('+mappings.length+'): ';
-	for (var mi=0; mi<mappings.length; mi++){
-		mappedAliases += mappings[mi].alias+' ';
+	var mappedAliases = '        Mapped aliases('+plugins.length+'): ';
+	for (var mi=0; mi<plugins.length; mi++){
+		mappedAliases += plugins[mi].alias+' ';
 	}
 	console.log(mappedAliases);
-	if (argv[2]==='help'){
-		console.log('mappings: '+JSON.stringify(mappings,null,2));
+	if (argv[3]==='aliases'){
+		console.log('mappings: '+JSON.stringify(plugins,null,2));
 	}
+    console.log('\n    Examples:');
+    console.log('    nodeclipse install egit');
+    console.log('    nodeclipse install markdown wikitext yaml');
+    console.log('    nodeclipse install from nodeclipse,kepler nodejs');
+    console.log('    nodeclipse install from enide less');
+    
 	console.log('\n  Visit http://www.nodeclipse.org/ for News, post Shares, Installing details, Features list,' 
 			+' Usage (incl Video, Demo) with all shortcuts, Help and Hints,'
 			+' Support options, Where Helping needed, How to thank and Contact us, also History page.');
+	console.log('Project page: https://github.com/Nodeclipse/nodeclipse-1/tree/master/org.nodeclipse.ui/templates#nodeclipse-cli-installer');
 	process.exit();
 };
 
+//-- processing commands logic
+var verbose = false;
 var startingIndex = 3;
-// processing commands logic
-if (argv[2]=='list'){
-	var command = '-list';
+var listInstallAllMode = false;
+if (argv[2]=='list'){ // this does not work (from http://www.jshint.com/docs/): jshint ignore:line
+	var command = 'list';
 	if (argv[3]){ //overrride default repository
 		repository = argv[3];
 	}
-} else if (argv[2]=='install'){ // this does not work (from http://www.jshint.com/docs/): jshint ignore:line
-	if (argv[3]=='-repository' || argv[3]=='from'){
+} else if (argv[2]=='install'){
+	var command = 'install';
+	if (argv[3]=='all'){
+		// list, then install
+		listInstallAllMode = true;
+		if (argv[4]=='from'){
+			if (argv[5]){
+				repository = argv[5];
+				startingIndex = 6; //won't be used; TODO do all-except-for mode ?
+			}
+		}
+	}
+	if (argv[3]=='from' || argv[3]=='-repository'){
 		if (argv[4]){
 			repository = argv[4];
 			startingIndex = 5;
@@ -164,22 +210,53 @@ if (argv[2]=='list'){
 	}
 }
 
+//-- looking up
+
+// lookup plugin alliases
 var comma_separated_list = '';
-for (var i=startingIndex; i<argv.length; i++){
-	var argi = argv[i];
-	var found = false;
-	for (var mi=0; mi<mappings.length; mi++){
-		if (argi===mappings[mi].alias){
-			found = true;
-			comma_separated_list += mappings[mi].name+',';
-			break;
+if (!listInstallAllMode){ // uses plugins
+	for (var i=startingIndex; i<argv.length; i++){
+		var argi = argv[i];
+		var found = false;
+		for (var mi=0; mi<plugins.length; mi++){
+			if (argi===plugins[mi].alias){
+				found = true;
+				comma_separated_list += plugins[mi].name+',';
+				break;
+			}
 		}
+		if (found) continue;
+		comma_separated_list += argi+','; //passing as is
 	}
-	if (found) continue;
-	comma_separated_list += argi+','; //passing as is
+	// delete last comma
+	comma_separated_list = comma_separated_list.substring(0, comma_separated_list.length-1);
 }
-// delete last comma
-comma_separated_list = comma_separated_list.substring(0, comma_separated_list.length-1);
+
+
+//DONE lookup repositories names
+var lookupRepositoriesNames = function(repositorystring){ // uses repositories
+	var repositories_comma_separated_list = '';
+	var reparray = repositorystring.split(",");
+	for (var i=0; i<reparray.length; i++){
+		var repi = reparray[i];
+		console.log(repi);
+		var found = false;
+		for (var ri=0; ri<repositories.length; ri++){
+			if (repi===repositories[ri].name){
+				found = true;
+				repositories_comma_separated_list += repositories[ri].url+',';
+				break;
+			}
+		}
+		if (found) continue;
+		repositories_comma_separated_list += repi+','; //passing as is
+	}
+	// delete last comma
+	repositories_comma_separated_list = repositories_comma_separated_list.substring(0, repositories_comma_separated_list.length-1);
+	return repositories_comma_separated_list;
+};
+repository = lookupRepositoriesNames(repository);
+
 
 // executing
 //--- section below can be re-used for scripts with hard-coded values // Copyright 2014 ... http://www.nodeclipse.org/
@@ -190,39 +267,82 @@ var what = isWin ? 'eclipsec' : 'eclipse'; // see [How do I run Eclipse?](https:
 //var repository = 'http://www.nodeclipse.org/updates/';
 
 //var command = '-list';
-var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', command, '-repository', repository]; //enough for -list
+//var query = '"Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"';
+//var query = '"Q:everything.select(x | x.properties ~= filter(\\\"(org.eclipse.equinox.p2.type.group=true)\\\"))"';
+var query = ''; //both option fails with Node
 
-if ( command != '-list'){ // do install
-	/*eclipsec -application org.eclipse.equinox.p2.director -repository http://www.nodeclipse.org/updates/ 
-	-installIU org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634 -tag org.nodeclipse.jjs.feature.feature.group/0.10.0.201401270634
-	-vmargs -Declipse.p2.mirrors=false 
-	*/
-	var command = '-installIU';
-	//var command = '-uninstallIU';
-	var version = '/0.10.0.201401270634';
-	//var comma_separated_list = 'org.nodeclipse.enide.nodejs.feature.feature.group';
-	var query '"Q:everything.select(x | x.properties ~= filter(\"(org.eclipse.equinox.p2.type.group=true)\"))"';
-	var options = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
-	               command, comma_separated_list, '-tag', comma_separated_list, 
-	               query,
-	               '-vmargs', '-Declipse.p2.mirrors=false'];
+var optionsList = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
+                   '-list', query]; //enough for -list
+var optionsInstall = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
+               '-installIU', comma_separated_list, '-tag', comma_separated_list, '-vmargs', '-Declipse.p2.mirrors=false'];
+
+
+//-- subs {
+var log2console = function (data) {
+	console.log(data);
+};
+var outputString = '';
+var log2consoleAndString = function (data) {
+	console.log(data);
+	outputString += data;
+};
+var onExitShowCode = function (code) {
+	console.log(what+' process exit code ' + code);
+};
+//var onExitShowCodeAndRetryIfMissing = function (code) { // uses comma_separated_list
+//	console.log(what+' process exit code ' + code);
+//	if (code===0) return;
+//	// if there were "Missing requirement" string, then retry with eclipse.p2.mirrors enabled
+//	if (outputString.indexOf('Missing requirement')===-1) return;
+//	console.log("Retry with eclipse.p2.mirrors enabled as there were Missing requirement");
+//	var tag = 'retry_all_from_'+repository;
+//	optionsInstall = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
+//	                  '-installIU', comma_separated_list, '-tag', tag];
+//	
+//	var spawned = spawning(what, optionsInstall, log2consoleAndString, onExitShowCode);
+//}
+var onExitShowCodeAndContinue = function (code) {
+	console.log(what+' process exit code ' + code);
+	if (verbose) console.log(outputString);
+	var array = outputString.split("\n");
+	var filtered = array.filter( function(s){return s.indexOf('feature.group')!==-1;} );
+	console.log(filtered);
+	if (code!=0) return;
+	
+	comma_separated_list = '';
+	for (var i=0; i<filtered.length; i++){
+		var feature = filtered[i].replace('=', '/').replace('\r', '');
+		comma_separated_list += feature+',';
+	}
+	// delete last comma
+	comma_separated_list = comma_separated_list.substring(0, comma_separated_list.length-1);
+	var tag = 'all_from_'+repository;
+	optionsInstall = ['-nosplash', '-application', 'org.eclipse.equinox.p2.director', '-repository', repository,
+	                      '-installIU', comma_separated_list, '-tag', tag, '-vmargs', '-Declipse.p2.mirrors=false'];
+	
+	var spawned = spawning(what, optionsInstall, log2console, onExitShowCode);
+};
+var spawning = function (what, options, dataHandler, closeHandler) {
+	var spawned = spawn(what, options);
+	console.log('starting '+what+' '+options.join(' '));
+	spawned.stdout.setEncoding('utf8');
+	spawned.stdout.on('data', dataHandler);
+	spawned.stderr.setEncoding('utf8');
+	spawned.stderr.on('data', dataHandler);
+	spawned.on('close', closeHandler);
+	return spawned;
+};
+//-- }
+
+if ( command == 'list'){ 
+	// spawn 1 time
+	var spawned = spawning(what, optionsList, log2console, onExitShowCode);
+} else { // (command == 'install')
+	if (listInstallAllMode){
+		//spawn 2 times
+		var spawned = spawning(what, optionsList, log2consoleAndString, onExitShowCodeAndContinue);
+	} else {
+		// spawn 1 time
+		var spawned = spawning(what, optionsInstall, log2console, onExitShowCode);
+	}
 }
-
-var spawned = spawn(what, options);
-
-//console.log('starting '+what+' '+JSON.stringify(options));
-//console.log('starting '+what+' '+options.toString());
-console.log('starting '+what+' '+options.join(' '));
-
-spawned.stdout.setEncoding('utf8');
-spawned.stdout.on('data', function (data) {
-    console.log(data);
-});
-spawned.stderr.setEncoding('utf8');
-spawned.stderr.on('data', function (data) {
-    console.log(data);
-});
-
-spawned.on('close', function (code) {
-    console.log(what+' process exit code ' + code);
-});
